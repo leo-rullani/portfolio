@@ -1,0 +1,20 @@
+.app-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  z-index: -1;
+
+  /*
+    Diagonaler Gradient (135deg), der bei 0% mit reinem Schwarz startet,
+    kurz bei ca. 20% in ein dunkles Grau übergeht und dann
+    wieder in Schwarz endet.
+  */
+  background: linear-gradient(
+    135deg,
+    #000000 0%,
+    #1A1A1A 20%,
+    #000000 100%
+  );
+}

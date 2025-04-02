@@ -1,0 +1,44 @@
+.social-media-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 20px;
+  z-index: 999;
+  background: transparent;
+
+  .social-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    a {
+      width: 30px;
+      height: 30px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .change-language {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+
+    .lang,
+    .separator {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+      cursor: pointer;
+    }
+  }
+}
