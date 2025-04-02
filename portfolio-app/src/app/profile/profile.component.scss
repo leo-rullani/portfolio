@@ -1,9 +1,55 @@
 .photo {
   position: absolute;
-  width: 826px;
-  height: 997px;
-  left: 325px;
-  top: 32px;
+  width: 752px;
+  height: 907px;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
   background: url("/assets/img/portfolio.png") no-repeat center center;
   background-size: cover;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 1; /* Bild liegt hinter den Texten */
+}
+
+/* Name (leuchtendes Grün, gefüllter Text) */
+.name {
+  position: absolute;
+  top: 560px;     /* passe die Werte an dein Layout an */
+  left: 40.5%;
+  z-index: 2;     /* Text soll über dem Bild stehen */
+  font-family: 'Quantico', sans-serif;
+  font-weight: 700;
+  font-size: 100px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #B5E93B; /* leuchtendes Grün */
+}
+
+.role {
+  position: absolute;
+  top: 730px;     /* etwas unter dem Namen */
+  left: 46%;
+  z-index: 2;
+  font-family: 'Quantico', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 120%;
+  letter-spacing: 0;
+
+  /* Outline-Effekt in Grün, kein Füll-Farbwert */
+  color: transparent;
+  -webkit-text-stroke: 1px #B5E93B;
+  text-stroke: 1px #B5E93B; /* nicht in allen Browsern unterstützt */
+}
+
+/* Neuer Pfeil unten rechts */
+.arrow-right {
+  position: absolute;
+  width: 113px;
+  height: 600px;
+  right: 40px;   /* Abstand vom rechten Bildschirmrand (anpassen nach Wunsch) */
+  bottom: 40px;  /* Abstand vom unteren Bildschirmrand */
+  z-index: 999;  /* höher als das Bild und Text (z-index: 1/2) */
+  cursor: pointer;
 }

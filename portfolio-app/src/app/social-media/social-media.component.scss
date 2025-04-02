@@ -1,7 +1,7 @@
 .social-media-header {
   position: fixed;
   top: 0;
-  right: 0;
+  right: 120px;
   height: 60px;
   display: flex;
   align-items: center;
@@ -10,18 +10,25 @@
   z-index: 999;
   background: transparent;
 
+  /* Icons und Language-Switch in einer Zeile,
+     .social-icons links, Language-Switch rechts */
   .social-icons {
     display: flex;
     align-items: center;
     gap: 16px;
 
-    a {
-      width: 30px;
-      height: 30px;
+    /* Gemeinsame Stile für alle Links */
+    .icon-link {
+      display: inline-block;
+      .icon {
+        width: 30px;
+        height: 30px;
+        color: #fff;    /* Standardfarbe Weiß */
+        transition: color 0.3s;
+      }
 
-      img {
-        width: 100%;
-        height: auto;
+      &:hover .icon {
+        color: #B5E93B; /* Hover-Farbe Grün */
       }
     }
   }
