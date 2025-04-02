@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { SocialMediaComponent } from './social-media/social-media.component';
     CommonModule,
     RouterOutlet,
     MenuComponent,
-    SocialMediaComponent
+    SocialMediaComponent,
+    ProfileComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
