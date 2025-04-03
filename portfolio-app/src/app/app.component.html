@@ -1,5 +1,6 @@
 <div class="app-background"></div>
 <app-menu></app-menu>
-<app-social-media></app-social-media>
+<app-social-media [class.hidden]="!showSocialMedia"></app-social-media>
 <app-profile></app-profile>
+<about-me></about-me>
 <router-outlet></router-outlet>

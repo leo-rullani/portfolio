@@ -49,3 +49,14 @@
     }
   }
 }
+
+:host {
+  opacity: 1;
+  transition: opacity 0.5s;
+  pointer-events: auto;
+}
+
+:host(.hidden) {
+  opacity: 0;
+  pointer-events: none;
+}
