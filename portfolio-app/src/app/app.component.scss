@@ -2,10 +2,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 200vw; /* wenn du 2 Seiten nebeneinander hast */
+  width: 200vw; // 2 Screens nebeneinander
   height: 100vh;
-  background: #000;
   z-index: -1;
+
   background: linear-gradient(
     135deg,
     #000000 0%,

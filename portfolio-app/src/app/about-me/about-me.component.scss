@@ -1,34 +1,33 @@
 .about-me {
-  /* Beispiel-Positionierung:
-     Wenn du horizontal scrollen willst und die erste Seite
-     ist 100vw breit, liegt diese Seite bei left: 100vw. */
   position: absolute;
   top: 0;
   left: 100vw;
   width: 100vw;
   height: 100vh;
-  background: #000000; /* oder dein Gradient */
+  background: transparent;
+  z-index: 0;
   color: #fff;
-  overflow: hidden;     /* optional */
 
   .vertical-title {
     position: absolute;
-    top: 100px;
-    left: 30px;
+    top: 150px;      // leicht nach unten verschoben
+    left: 100px;     // ggf. anpassen
     font-family: 'Quantico', sans-serif;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: 0;
+    color: transparent;
     font-size: 36px;
-    color: #B5E93B;
-
-    /* vertikal gedreht (Why me) */
     writing-mode: vertical-rl;
     transform: rotate(180deg);
+    -webkit-text-stroke: 1px #B5E93B;
   }
 
   .intro {
     position: absolute;
-    top: 50px;
-    left: 200px;
-    max-width: 500px;
+    top: 100px;      // etwas nach unten
+    left: 240px;     // etwas nach rechts
+    max-width: 656px;
 
     p {
       font-family: sans-serif;
@@ -40,8 +39,8 @@
 
   .iam-title {
     position: absolute;
-    top: 150px;
-    left: 200px;
+    top: 200px;      // weiter nach unten
+    left: 240px;     // rechts verschoben
     font-family: 'Quantico', sans-serif;
     font-size: 40px;
     font-weight: 700;
@@ -50,8 +49,8 @@
 
   .icon-row {
     position: absolute;
-    top: 220px;
-    left: 200px;
+    top: 270px;      // nach unten
+    left: 240px;     // nach rechts
     display: flex;
     gap: 40px;
 
@@ -76,15 +75,14 @@
 
   .btn-primary {
     position: absolute;
-    left: 678px;
-    top: 289px;
+    left: 700px;     // Button weiter rechts
+    top: 340px;      // etwas nach unten
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 13px 30px;
     gap: 10px;
-
     width: 135px;
     height: 43px;
     background: #B5E93B;
@@ -98,5 +96,16 @@
     &:hover {
       opacity: 0.9;
     }
+  }
+
+  /* Pfeil rechts */
+  .arrow-right {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    width: 113px;
+    height: 40px;
+    cursor: pointer;
   }
 }
