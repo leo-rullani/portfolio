@@ -10,14 +10,14 @@
 
   .vertical-title {
     position: absolute;
-    top: 150px;      // leicht nach unten verschoben
+    top: 140px;      // leicht nach unten verschoben
     left: 100px;     // ggf. anpassen
     font-family: 'Quantico', sans-serif;
     font-weight: 700;
     line-height: 120%;
     letter-spacing: 0;
     color: transparent;
-    font-size: 36px;
+    font-size: 48px;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     -webkit-text-stroke: 1px #B5E93B;
@@ -25,9 +25,9 @@
 
   .intro {
     position: absolute;
-    top: 100px;      // etwas nach unten
+    top: 120px;      // etwas nach unten
     left: 240px;     // etwas nach rechts
-    max-width: 656px;
+    max-width: 1000px;
 
     p {
       font-family: sans-serif;
@@ -39,7 +39,7 @@
 
   .iam-title {
     position: absolute;
-    top: 200px;      // weiter nach unten
+    top: 450px;      // weiter nach unten
     left: 240px;     // rechts verschoben
     font-family: 'Quantico', sans-serif;
     font-size: 40px;
@@ -49,10 +49,10 @@
 
   .icon-row {
     position: absolute;
-    top: 270px;      // nach unten
-    left: 240px;     // nach rechts
+    top: 560px;      // nach unten
+    left: 320px;     // nach rechts
     display: flex;
-    gap: 40px;
+    gap: 80px;
 
     .icon-box {
       display: flex;
@@ -67,7 +67,7 @@
       }
 
       p {
-        font-size: 14px;
+        font-size: 16px;
         color: #fff;
       }
     }
@@ -75,8 +75,8 @@
 
   .btn-primary {
     position: absolute;
-    left: 700px;     // Button weiter rechts
-    top: 340px;      // etwas nach unten
+    left: 1100px;     // Button weiter rechts
+    top: 670px;      // etwas nach unten
     display: flex;
     flex-direction: row;
     justify-content: center;
