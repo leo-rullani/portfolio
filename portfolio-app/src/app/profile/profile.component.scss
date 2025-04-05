@@ -2,20 +2,21 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 300vw;            /* gesamte Bildschirmbreite */
-  height: 100vh;           /* gesamte Bildschirmhöhe */
-  /* Anstelle des separaten Bildes: */
-  background: none;        /* <-- HIER: Bild entfernt, damit .app-background den einzigen BG stellt */
-  z-index: -1;
+  width: 100vw;   /* Nur 1 Slide breit */
+  height: 100vh;  /* Volle Fensterhöhe */
+  background: none;
+  z-index: 0;     /* So liegt es über dem Hintergrund (-1)
+                     und unter den Text-Elementen (1) */
 
-  /* Das Overlay */
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    /* Overlay füllt exakt das .photo-Element aus */
+    width: 600%;
     height: 100%;
+    /* Beispiel: halbtransparentes Schwarz */
     background-color: rgba(0, 0, 0, 0.4);
   }
 }

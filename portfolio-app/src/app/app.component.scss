@@ -2,27 +2,30 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 300vw; /* 2 "Screens" à 100vw, damit der Verlauf + Bild durchgängig ist */
+  width: 600vw; /* 6 Slides x 100vw */
   height: 100vh;
   z-index: -1;
 
-  /* NEU: Geschichteter Hintergrund: Bild & linearer Verlauf */
+  /* Zwei Layer: Bild für Slide 1 (100vw) + Verlauf für alle 6 Slides (600vw) */
   background:
-    url("/assets/img/portfoliorullani-0.png") no-repeat center 15%,
+    url("/assets/img/portfoliorullani-0.png") no-repeat,
     linear-gradient(
-      88.66deg, #000000 11.41%, #2C2B2B 22.29%, #0B0A0A 37.32%, #323232 58.54%, #0B0A0A 70.03%);
+      88.66deg,
+      #000000 11.41%,
+      #2C2B2B 22.29%,
+      #0B0A0A 37.32%,
+      #323232 58.54%,
+      #0B0A0A 70.03%
+    );
 
-  /* Hintergrundgrößen anpassen:
-     1) Bild nur auf der linken Hälfte (100vw x 100vh)
-     2) Verlauf über volle Breite (200vw x 100vh) */
-  background-size: 100vw 100vh, 200vw 100vh;
+  /* 1) Bild = 100vw x 100vh, 2) Gradient = 600vw x 100vh */
+  background-size:
+    100vw 100vh,
+    600vw 100vh;
 
-  /* Positionierung:
-     - Das Bild bleibt links (center 15% vertikal),
-     - Der Verlauf startet ganz links (bedeckt alles). */
-  background-position: left center, left;
+  background-position:
+    left top,
+    left;
+
   background-repeat: no-repeat, no-repeat;
-
-  /* Optional: Um horizontales Scrollen zu vermeiden:
-     overflow-x: hidden; */
 }
