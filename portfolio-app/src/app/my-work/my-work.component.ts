@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './my-work.component.scss'
 })
 export class MyWorkComponent {
-
+  scrollNext() {
+    window.scrollBy({
+      left: window.innerWidth,
+      behavior: 'smooth'
+    });
+  }
 }

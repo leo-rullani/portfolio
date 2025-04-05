@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './references-me.component.scss'
 })
 export class ReferencesMeComponent {
-
+  scrollNext() {
+    window.scrollBy({
+      left: window.innerWidth,
+      behavior: 'smooth'
+    });
+  }
 }
