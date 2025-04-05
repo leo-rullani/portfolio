@@ -2,10 +2,10 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;            /* gesamte Bildschirmbreite */
+  width: 200vw;            /* gesamte Bildschirmbreite */
   height: 100vh;           /* gesamte Bildschirmhöhe */
-  background: url("/assets/img/portfolio.png") no-repeat center 12%;
-  background-size: cover;  /* nicht verzerren, sondern zuschneiden */
+  /* Anstelle des separaten Bildes: */
+  background: none;        /* <-- HIER: Bild entfernt, damit .app-background den einzigen BG stellt */
   z-index: -1;
 
   /* Das Overlay */
@@ -23,7 +23,7 @@
 .name {
   position: absolute;
   top: 54.5%;                /* Beispiel: 30% von oben */
-  left: 51%;               /* Beispiel: zentriert */
+  left: 51%;                 /* Beispiel: zentriert */
   transform: translateX(-50%);
   z-index: 2;
   font-family: 'Quantico', sans-serif;
