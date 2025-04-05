@@ -2,14 +2,13 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 200vw; // 2 Screens nebeneinander
+  width: 200vw; /* 2 Screens nebeneinander, wie du es hattest */
   height: 100vh;
   z-index: -1;
 
   background: linear-gradient(
-    135deg,
-    #000000 0%,
-    #1A1A1A 20%,
-    #000000 100%
+    135deg,        /* Winkel */
+    #1A1A1A 0%,   /* leichteres Schwarz */
+    #000000 100%   /* wieder Schwarz am Ende */
   );
 }
