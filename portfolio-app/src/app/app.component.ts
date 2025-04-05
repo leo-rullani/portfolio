@@ -5,6 +5,10 @@ import { MenuComponent } from './menu/menu.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AboutMeComponent } from './about-me/about-me.component';
+import { SkillSetComponent } from './skill-set/skill-set.component';
+import { MyWorkComponent } from './my-work/my-work.component';
+import { ReferencesMeComponent } from './references-me/references-me.component';
+import { ContactMeComponent } from './contact-me/contact-me.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +19,11 @@ import { AboutMeComponent } from './about-me/about-me.component';
     MenuComponent,
     SocialMediaComponent,
     ProfileComponent,
-    AboutMeComponent
+    AboutMeComponent,
+    SkillSetComponent,
+    MyWorkComponent,
+    ReferencesMeComponent,
+    ContactMeComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']

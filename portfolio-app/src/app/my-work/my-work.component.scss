@@ -1,0 +1,68 @@
+.my-work {
+  position: absolute;
+  top: 0;
+  left: 300vw;  // 5. Slide
+  width: 100vw;
+  height: 100vh;
+
+  /* Hintergrund und Schrift */
+  background: transparent; // oder z. B. #111, je nach Wunsch
+  color: #fff;
+  z-index: 1; // falls du sie über oder unter anderen Ebenen liegen willst
+
+  /* Optionale Container-Einstellung */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  padding: 2rem;
+
+  /* Beispiel: Überschrift */
+  .title {
+    font-family: 'Quantico', sans-serif;
+    font-size: 54px;
+    border: 3px solid #B5E93B;
+    color: #B5E93B;
+    padding: 10px;
+    margin-bottom: 1rem;
+  }
+
+  /* Kurzer Intro-Text */
+  .intro-text {
+    max-width: 800px;
+    font-size: 18px;
+    line-height: 1.4;
+    text-align: justify;
+    margin-bottom: 2rem;
+  }
+
+  /* Beispiellayout für Work-Item-Galerie o. Ä. */
+  .work-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .work-item {
+      width: 200px;
+      height: 150px;
+      background-color: #B5E93B;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* Bild oder Icon könnten hier rein */
+    }
+  }
+
+  /* Beispiel-Pfeil oder Button */
+  .arrow-right {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    width: 113px;
+    height: 40px;
+    cursor: pointer;
+  }
+}

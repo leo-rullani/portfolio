@@ -1,0 +1,85 @@
+.contact-me {
+  position: absolute;
+  top: 0;
+  left: 500vw; // oder 800vw, je nachdem welche Slide es wird
+  width: 100vw;
+  height: 100vh;
+
+  background: transparent;
+  color: #fff;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 2rem;
+
+  .title {
+    font-family: 'Quantico', sans-serif;
+    font-size: 54px;
+    border: 3px solid #B5E93B;
+    color: #B5E93B;
+    padding: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .intro-text {
+    max-width: 800px;
+    font-size: 18px;
+    line-height: 1.4;
+    text-align: justify;
+    margin-bottom: 2rem;
+  }
+
+  /* Einfache Form oder Kontaktinfos */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+
+    label {
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+    }
+
+    input, textarea {
+      padding: 0.5rem;
+      border: 2px solid #B5E93B;
+      background: transparent;
+      color: #fff;
+      font-family: 'Quantico', sans-serif;
+      font-size: 16px;
+      outline: none;
+      &:focus {
+        border-color: #fff;
+      }
+    }
+
+    button {
+      background: #B5E93B;
+      color: #000;
+      font-family: 'Quantico', sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  /* Pfeil/Navigation-Icon */
+  .arrow-right {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    width: 113px;
+    height: 40px;
+    cursor: pointer;
+  }
+}

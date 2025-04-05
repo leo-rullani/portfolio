@@ -1,0 +1,72 @@
+.skillset {
+  position: absolute;
+  top: 0;
+  left: 200vw;  // verschiebt das Ganze nach rechts aus dem sichtbaren Bereich
+  width: 100vw;
+  height: 100vh;
+
+  // Beispiel: etwas Grund-Styling
+  color: #fff;
+  background: transparent; // Damit dein Background-Gradient durchscheint (falls vorhanden)
+  z-index: 1;
+
+  // Falls du drin mit Flex oder Grid arbeiten möchtest, z.B.:
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 2rem; // nur als Beispiel
+
+  /* Ab hier kannst du den Inhalt der Skillset-Section aufbauen */
+  .headline {
+    /* Überschrift, z.B. "My Skill Set" */
+    font-family: 'Quantico', sans-serif;
+    font-size: 54px;
+    color: #b5e93b;
+    /* etc. */
+  }
+
+  .intro-text {
+    margin-top: 1rem;
+    max-width: 800px;
+    font-size: 18px;
+    line-height: 1.4;
+    text-align: justify;
+    /* etc. */
+  }
+
+  .icons-container {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .icon-box {
+      width: 80px;
+      height: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      /* Hintergründe, Rahmen, etc. */
+      background: #b5e93b;
+      color: #000;
+      /* ... */
+
+      .icon {
+        margin-top: 8px;
+        /* z.B. ein <svg> oder <img> */
+        width: 56px;
+        height: 60px;
+      }
+
+      .icon-name {
+        margin-top: 5px;
+        font-family: 'Quantico', sans-serif;
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
+      }
+    }
+  }
+
+  /* Und so weiter ... */
+}
