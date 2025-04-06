@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './skill-set.component.scss'
 })
 export class SkillSetComponent {
-
+  scrollNext() {
+    window.scrollBy({
+      left: window.innerWidth,
+      behavior: 'smooth'
+    });
+  }
 }

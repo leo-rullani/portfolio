@@ -23,8 +23,8 @@
 
 .name {
   position: absolute;
-  top: 54.5%;                /* Beispiel: 30% von oben */
-  left: 51%;                 /* Beispiel: zentriert */
+  top: 45%;                /* Beispiel: 30% von oben */
+  left: 44%;                 /* Beispiel: zentriert */
   transform: translateX(-50%);
   z-index: 2;
   font-family: 'Quantico', sans-serif;
@@ -38,8 +38,8 @@
 /* Rolle (Software Engineer) */
 .role {
   position: absolute;
-  top: 69%;                /* etwas unter dem Namen */
-  left: 53.5%;
+  top: 59%;                /* etwas unter dem Namen */
+  left: 46.5%;
   transform: translateX(-50%);
   z-index: 2;
   font-family: 'Quantico', sans-serif;
