@@ -1,114 +1,114 @@
 .skillset {
-  /* Positionierung im "Slide"-Konzept */
+  /* Wenn du das in deiner "Slides"-Logik nutzt, z.B. 3. Slide */
   position: absolute;
   top: 0;
-  left: 200vw;    // z. B. 3. Slide (0, 100vw, 200vw...)
+  left: 200vw;    // falls es bei 0, 100vw, 200vw etc. liegt
   width: 100vw;
   height: 100vh;
 
-  /* Hintergründe & Schrift */
-  background: transparent; // damit dein globaler BG durchscheint
+  /* Hintergrund und Farbe */
+  background: transparent; // globaler BG soll durchscheinen
   color: #fff;
-  z-index: 2;
+  z-index: 1;
 
-  /* Für Abstände und Fluss */
+  /* Layout: Wir machen 2 große Spalten
+     1) Headline (gedreht)
+     2) restlicher Content
+  */
+  display: flex;
+  flex-direction: row;
   box-sizing: border-box;
   padding: 2rem;
 
-  /* ========== Vertikaler Titel ========== */
-  .vertical-title {
-    position: absolute;
-    top: 100px;   // ein bisschen runter
-    left: 100px;  // ein bisschen rein
-    /* oder du arbeitest mit transform - je nachdem,
-       wie du es positionieren willst. */
+  /* ============ Headline (vertikal gedreht) ============ */
+  .headline {
+    /* reserviere z.B. eine schmale Spalte links */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px; /* Platz für gedrehten Text */
+    margin-right: 2rem; /* Abstand zum Content */
 
-    span {
-      display: block;
+    h2 {
       font-family: 'Quantico', sans-serif;
       font-size: 54px;
       font-weight: 400;
+      line-height: 120%;
       color: #b5e93b;
       border: 3px solid #b5e93b;
       padding: 10px;
 
-      /* Der eigentliche "Dreh" um 90 Grad */
+      /* Drehe den Text um 90 Grad */
       transform: rotate(-90deg);
-      transform-origin: left top; /* ggf. anpassen,
-                                     damit der Drehpunkt stimmt */
+      transform-origin: left top; // optional anpassen
     }
   }
 
-  /* ========== Intro-Text ========== */
-  .intro-text {
-    /* Damit wir den Text nicht hinter dem gedrehten Titel verstecken,
-       geben wir ihm einen margin-top */
-    margin-top: 200px; /* anpassen, wie du willst */
-    max-width: 860px;
-
-    p {
-      font-family: 'Quantico', sans-serif;
-      font-size: 18px;
-      line-height: 120%;
-      text-align: justify;
-      color: #fff;
-      /* Aus Figma: "margin: 0px -83px" war eher ein Fix
-         - wir lassen das hier weg für sauberes Layout. */
-    }
-  }
-
-  /* ========== Container für Skills ========== */
-  .skills-container {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap; /* Skills umbrechen, wenn kein Platz mehr */
-    gap: 2rem;       /* Abstand zwischen den Skills */
-
-    /* Du kannst hier, falls gewünscht,
-       noch width: 728px oder so definieren.
-       Aber lass es am besten responsiv. */
-  }
-
-  /* Jedes Skill-Feld */
-  .skill-item {
-    width: 86px;
-    height: 90px;
-    background: #b5e93b;
+  /* ============ content-wrapper (alles rechts von der Headline) ============ */
+  .content-wrapper {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex: 1;              /* füllt den restlichen Platz aus */
+    align-items: flex-start; /* oder "stretch" */
+    gap: 2rem;            /* Abstand zwischen Intro und Skills */
 
-    /* Icon selbst – hier nur Text,
-       könntest ein <img> oder <svg> einsetzen */
-    .skill-icon {
-      font-size: 16px;
-      color: #000;
-      margin-bottom: 5px;
+    .intro-text {
+      max-width: 860px; /* falls du eine Grenze willst */
+      p {
+        font-family: 'Quantico', sans-serif;
+        font-size: 18px;
+        line-height: 1.4;
+        text-align: justify;
+        color: #fff;
+      }
     }
 
-    .skill-name {
-      font-family: 'Quantico', sans-serif;
-      font-size: 18px;
-      line-height: 120%;
-      text-align: center;
-      color: #fff;
+    /* Skills-Container: eine "Reihe" von Icon-Boxes */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      /* optional: max-width: 728px; wenn du magst */
+
+      .icon-box {
+        width: 86px;
+        height: 90px;
+        background: #b5e93b;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #000;
+
+        .icon {
+          font-size: 16px;
+          font-weight: 700;
+          margin-bottom: 4px;
+        }
+
+        .icon-name {
+          font-family: 'Quantico', sans-serif;
+          font-size: 18px;
+          line-height: 120%;
+          text-align: center;
+          color: #fff;
+        }
+      }
+    }
+
+    /* Hier kann z.B. ein weiterer Info-Block stehen */
+    .text-about-last-icon {
+      max-width: 600px;
+      p {
+        font-family: 'Quantico', sans-serif;
+        font-size: 16px;
+        line-height: 1.4;
+        text-align: justify;
+        color: #fff;
+      }
     }
   }
 
-  /* ========== Falls du so einen Text about the last icon hast ========== */
-  .last-icon-text {
-    margin-top: 2rem;
-    max-width: 600px;
-
-    p {
-      font-family: 'Quantico', sans-serif;
-      font-size: 16px;
-      line-height: 1.4;
-      color: #fff;
-      text-align: justify;
-    }
-  }
   .arrow-right {
     position: absolute;
     top: 50%;

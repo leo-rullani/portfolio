@@ -1,64 +1,94 @@
 <div class="skillset">
-  <!-- Senkrechtes "My Skill Set" links -->
-  <div class="vertical-title">
-    <span>My Skill Set</span>
+  <!-- Headline (vertikal gedreht) -->
+  <div class="headline">
+    <h2>My Skill Set</h2>
   </div>
 
-  <!-- Intro-Text -->
-  <div class="intro-text">
-    <p>
-      A short introduction of your skills. Highlight your experience of working
-      on different projects using different front-end technologies and emphasise
-      your openness to learning and adapting to new technologies.
-    </p>
-  </div>
+  <!-- Haupt-Content: Intro-Text + Skills -->
+  <div class="content-wrapper">
 
-  <!-- Container für Skill-Icons / skill groups -->
-  <div class="skills-container">
-    <!-- Beispiel: Skill 1 -->
-    <div class="skill-item">
-      <div class="skill-icon">Angular</div>
-      <div class="skill-name">Angular</div>
+    <!-- Intro-Text -->
+    <div class="intro-text">
+      <p>
+        A short introduction of your skills. Highlight your experience of working on different
+        projects using various front-end technologies and emphasise your openness to learning
+        and adapting to new technologies.
+      </p>
     </div>
 
-    <div class="skill-item">
-      <div class="skill-icon">HTML</div>
-      <div class="skill-name">HTML</div>
+    <!-- SKILLS: Oben 6 Boxen -->
+    <div class="skills-container">
+      <!-- 1) Angular -->
+      <div class="icon-box">
+        <div class="icon">Angular</div>
+        <div class="icon-name">Angular</div>
+      </div>
+      <!-- 2) TypeScript -->
+      <div class="icon-box">
+        <div class="icon">TypeScript</div>
+        <div class="icon-name">TypeScript</div>
+      </div>
+      <!-- 3) JavaScript -->
+      <div class="icon-box">
+        <div class="icon">JavaScript</div>
+        <div class="icon-name">JavaScript</div>
+      </div>
+      <!-- 4) HTML -->
+      <div class="icon-box">
+        <div class="icon">HTML</div>
+        <div class="icon-name">HTML</div>
+      </div>
+      <!-- 5) CSS -->
+      <div class="icon-box">
+        <div class="icon">CSS</div>
+        <div class="icon-name">CSS</div>
+      </div>
+      <!-- 6) REST-Api -->
+      <div class="icon-box">
+        <div class="icon">REST-Api</div>
+        <div class="icon-name">REST-Api</div>
+      </div>
     </div>
 
-    <div class="skill-item">
-      <div class="skill-icon">CSS/SCSS</div>
-      <div class="skill-name">CSS</div>
+    <!-- SKILLS: Unten 5 Boxen -->
+    <div class="skills-container">
+      <!-- 1) Firebase -->
+      <div class="icon-box">
+        <div class="icon">Firebase</div>
+        <div class="icon-name">Firebase</div>
+      </div>
+      <!-- 2) GIT -->
+      <div class="icon-box">
+        <div class="icon">GIT</div>
+        <div class="icon-name">GIT</div>
+      </div>
+      <!-- 3) Scrum -->
+      <div class="icon-box">
+        <div class="icon">Scrum</div>
+        <div class="icon-name">Scrum</div>
+      </div>
+      <!-- 4) Material Design -->
+      <div class="icon-box">
+        <div class="icon">Material</div>
+        <div class="icon-name">Material Design</div>
+      </div>
+      <!-- 5) Challenge Me -->
+      <div class="icon-box">
+        <div class="icon">Challenge</div>
+        <div class="icon-name">Challenge Me</div>
+      </div>
     </div>
 
-    <div class="skill-item">
-      <div class="skill-icon">JS</div>
-      <div class="skill-name">JavaScript</div>
+    <!-- Optionaler Text zu den Skills -->
+    <div class="text-about-last-icon">
+      <p>
+        Here you can add an extra note about your last skill, or a short description
+        about advanced topics you handle.
+      </p>
     </div>
-
-    <!-- ... weitere Skills ... -->
-  </div>
-
-  <!-- Example: Ein weiterer Abschnitt
-       (falls du z.B. "Skill icons 02" hast) -->
-  <div class="skills-container">
-    <div class="skill-item">
-      <div class="skill-icon">Firebase</div>
-      <div class="skill-name">Firebase</div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-icon">API</div>
-      <div class="skill-name">API</div>
-    </div>
-    <!-- usw. -->
-  </div>
-
-  <!-- Optional: Text about the last icon -->
-  <div class="last-icon-text">
-    <p>Some additional text about the last icon or grouping.</p>
   </div>
   <div class="arrow-right" (click)="scrollNext()">
-    <!-- dein SVG oder Pfeil-Icon -->
+    <!-- Dein Pfeil-SVG oder Icon -->
     <svg
       width="113"
       height="38"
