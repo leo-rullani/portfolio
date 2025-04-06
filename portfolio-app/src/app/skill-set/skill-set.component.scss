@@ -29,18 +29,19 @@
     width: 80px; /* Platz für gedrehten Text */
     margin-right: 2rem; /* Abstand zum Content */
 
-    h2 {
+    .vertical-title {
+      position: absolute;
+      top: 140px;
+      left: 100px;
       font-family: 'Quantico', sans-serif;
-      font-size: 54px;
-      font-weight: 400;
+      font-weight: 700;
       line-height: 120%;
-      color: #b5e93b;
-      border: 3px solid #b5e93b;
-      padding: 10px;
-
-      /* Drehe den Text um 90 Grad */
-      transform: rotate(-90deg);
-      transform-origin: left top; // optional anpassen
+      letter-spacing: 0;
+      color: transparent;
+      font-size: 48px;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      -webkit-text-stroke: 1px #B5E93B;
     }
   }
 
