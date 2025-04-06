@@ -46,7 +46,7 @@
     gap: 2rem;
 
     .intro-text {
-      max-width: 1560px;
+      max-width: 1580px;
       p {
         font-family: 'Quantico', sans-serif;
         font-size: 18px;
@@ -74,14 +74,12 @@
         justify-content: flex-start;
 
         .icon svg {
-          /* Du kannst sie beliebig skalieren */
-          width: 90px;
           height: auto;
         }
 
         .icon-name {
           font-family: 'Quantico', sans-serif;
-          font-size: 18px;
+          font-size: 16px;
           line-height: 120%;
           text-align: center;
           color: #fff;
@@ -91,17 +89,19 @@
 
       /* Challenge Me + Text in einer Box */
       .challenge-me-box {
+        /* Die kleine Anpassung für den Abstand nach rechts */
+        margin-left: 20px;
+
         /* Innerer Flex, der Icon + Name + Text nebeneinander stellt */
         .challenge-inner {
           display: flex;
-          flex-direction: row; /* WICHTIG: Icon & Text in einer Reihe */
+          flex-direction: row; /* Icon & Text in einer Reihe */
           align-items: flex-start;
-          gap: 0.5rem; /* Abstand zwischen Icon & Text */
         }
 
         /* Das Textfeld rechts vom Icon */
         .challenge-text {
-          max-width: 300px; /* oder anpassen nach Wunsch */
+          max-width: 0px; /* oder nach Wunsch anpassen */
           p {
             font-family: 'Quantico', sans-serif;
             font-size: 16px;
@@ -109,6 +109,8 @@
             text-align: justify;
             color: #fff;
             width: 450px;
+            margin-left: 32px;
+            margin-top: 0px;
           }
         }
       }
