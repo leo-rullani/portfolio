@@ -1,7 +1,7 @@
 .skillset {
   /* Wenn du das in deiner "Slides"-Logik nutzt, z.B. 3. Slide */
   position: absolute;
-  top: 0;
+  top: 480px;
   left: 200vw;    // falls es bei 0, 100vw, 200vw etc. liegt
   width: 100vw;
   height: 100vh;
@@ -61,6 +61,7 @@
         line-height: 1.4;
         text-align: justify;
         color: #fff;
+        margin-left: 100px;
       }
     }
 
@@ -69,7 +70,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
-      /* optional: max-width: 728px; wenn du magst */
+      margin-left: 100px;
 
       .icon-box {
 
