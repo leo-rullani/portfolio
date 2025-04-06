@@ -1,60 +1,52 @@
 .skillset {
-  /* Wenn du das in deiner "Slides"-Logik nutzt, z.B. 3. Slide */
   position: absolute;
   top: 480px;
-  left: 200vw;    // falls es bei 0, 100vw, 200vw etc. liegt
+  left: 200vw; // 3. Slide oder was du brauchst
   width: 100vw;
   height: 100vh;
-
-  /* Hintergrund und Farbe */
-  background: transparent; // globaler BG soll durchscheinen
+  background: transparent;
   color: #fff;
   z-index: 1;
 
-  /* Layout: Wir machen 2 große Spalten
-     1) Headline (gedreht)
-     2) restlicher Content
-  */
   display: flex;
   flex-direction: row;
   box-sizing: border-box;
   padding: 2rem;
 
-  /* ============ Headline (vertikal gedreht) ============ */
+  /* ===== HEADLINE ===== */
   .headline {
-    /* reserviere z.B. eine schmale Spalte links */
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px; /* Platz für gedrehten Text */
-    margin-right: 2rem; /* Abstand zum Content */
+    width: 80px;
+    margin-right: 2rem;
 
     .vertical-title {
       position: absolute;
-      top: 140px;
-      left: 100px;
+      top: 55px;
+      left: 80px;
       font-family: 'Quantico', sans-serif;
       font-weight: 700;
       line-height: 120%;
       letter-spacing: 0;
       color: transparent;
-      font-size: 48px;
+      font-size: 60px;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
       -webkit-text-stroke: 1px #B5E93B;
     }
   }
 
-  /* ============ content-wrapper (alles rechts von der Headline) ============ */
+  /* ===== CONTENT-WRAPPER ===== */
   .content-wrapper {
     display: flex;
     flex-direction: column;
-    flex: 1;              /* füllt den restlichen Platz aus */
-    align-items: flex-start; /* oder "stretch" */
-    gap: 2rem;            /* Abstand zwischen Intro und Skills */
+    flex: 1;
+    align-items: flex-start;
+    gap: 2rem;
 
     .intro-text {
-      max-width: 860px; /* falls du eine Grenze willst */
+      max-width: 1560px;
       p {
         font-family: 'Quantico', sans-serif;
         font-size: 18px;
@@ -65,19 +57,26 @@
       }
     }
 
-    /* Skills-Container: eine "Reihe" von Icon-Boxes */
+    /* ========== SKILLS-CONTAINER ========== */
     .skills-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
+      /* 6 Spalten, damit obere und untere Icons exakt übereinander sind */
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 2rem; /* Zwischen Spalten */
+      width: 1260px; /* feste Breite */
       margin-left: 100px;
 
+      /* Jede Icon-Box */
       .icon-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
 
-        .icon {
-          font-size: 16px;
-          font-weight: 700;
-          margin-bottom: 4px;
+        .icon svg {
+          /* Du kannst sie beliebig skalieren */
+          width: 90px;
+          height: auto;
         }
 
         .icon-name {
@@ -86,26 +85,39 @@
           line-height: 120%;
           text-align: center;
           color: #fff;
+          margin-top: 8px;
         }
       }
-    }
 
-    /* Hier kann z.B. ein weiterer Info-Block stehen */
-    .text-about-last-icon {
-      max-width: 600px;
-      p {
-        font-family: 'Quantico', sans-serif;
-        font-size: 16px;
-        line-height: 1.4;
-        text-align: justify;
-        color: #fff;
+      /* Challenge Me + Text in einer Box */
+      .challenge-me-box {
+        /* Innerer Flex, der Icon + Name + Text nebeneinander stellt */
+        .challenge-inner {
+          display: flex;
+          flex-direction: row; /* WICHTIG: Icon & Text in einer Reihe */
+          align-items: flex-start;
+          gap: 0.5rem; /* Abstand zwischen Icon & Text */
+        }
+
+        /* Das Textfeld rechts vom Icon */
+        .challenge-text {
+          max-width: 300px; /* oder anpassen nach Wunsch */
+          p {
+            font-family: 'Quantico', sans-serif;
+            font-size: 16px;
+            line-height: 1.4;
+            text-align: justify;
+            color: #fff;
+          }
+        }
       }
     }
   }
 
+  /* Pfeil / Navigation */
   .arrow-right {
     position: absolute;
-    top: 50%;
+    top: 0%;
     right: 50px;
     transform: translateY(-50%);
     width: 113px;
