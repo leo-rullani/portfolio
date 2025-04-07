@@ -40,9 +40,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   title = 'portfolio-app';
   showSocialMedia = true;           // Steuert Sichtbarkeit der Social-Media-Leiste
   private readonly thresholdFactor = 0.1;
-
-  // Wir greifen die Container-Div mit #scrollRef ab (siehe app.component.html)
-  @ViewChild('scrollRef') scrollContainerRef!: ElementRef<HTMLDivElement>;
+  @ViewChild('scrollRef', { static: true })
+scrollContainerRef!: ElementRef<HTMLDivElement>;
 
   ngOnInit(): void {
     // Entfernt: window-Scroll-Event, da wir jetzt den Container scrollen.
