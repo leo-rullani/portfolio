@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-profile',
@@ -8,8 +8,19 @@ import { Component } from '@angular/core';
 })
 export class ProfileComponent {
 
+  // 3) Wir erwarten, dass der Parent (AppComponent)
+  // uns einen ElementRef<HTMLDivElement> übergibt
+  @Input() scrollEl!: ElementRef<HTMLDivElement>;
+
   scrollNext() {
-    window.scrollBy({
+    // Prüfen, ob wir tatsächlich den Container haben
+    if (!this.scrollEl?.nativeElement) {
+      console.warn('No nativeElement on scrollEl');
+      return;
+    }
+
+    // Dann scrollen wir den Container um eine Bildschirmbreite weiter
+    this.scrollEl.nativeElement.scrollBy({
       left: window.innerWidth,
       behavior: 'smooth'
     });
