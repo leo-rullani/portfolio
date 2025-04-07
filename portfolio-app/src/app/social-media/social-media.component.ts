@@ -8,5 +8,4 @@ import { Component } from '@angular/core';
   styleUrl: './social-media.component.scss'
 })
 export class SocialMediaComponent {
-
 }

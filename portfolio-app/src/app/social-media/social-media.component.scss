@@ -7,7 +7,7 @@
   align-items: center;
   gap: 24px;
   padding: 0 20px;
-  z-index: 999;
+  z-index: 2;
   background: transparent;
 
   /* Icons und Language-Switch in einer Zeile,
@@ -17,13 +17,13 @@
     align-items: center;
     gap: 16px;
 
-    /* Gemeinsame Stile für alle Links */
     .icon-link {
       display: inline-block;
+
       .icon {
         width: 30px;
         height: 30px;
-        color: #fff;    /* Standardfarbe Weiß */
+        color: #fff; /* Standardfarbe Weiß */
         transition: color 0.3s;
       }
 
@@ -49,6 +49,7 @@
   }
 }
 
+/* Der Host ist das <app-social-media> selbst */
 :host {
   opacity: 1;
   transition: opacity 0.5s;

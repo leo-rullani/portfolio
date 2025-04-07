@@ -1,10 +1,15 @@
-<div class="app-background"></div>
-<app-menu></app-menu>
-<app-social-media [class.hidden]="!showSocialMedia"></app-social-media>
-<app-profile></app-profile>
-<about-me></about-me>
-<skill-set></skill-set>
-<my-work></my-work>
-<references-me></references-me>
-<contact-me></contact-me>
-<router-outlet></router-outlet>
+<!-- 1) #scrollRef: Lokale Template-Referenz für das DIV -->
+<div class="container" #scrollRef>
+  <div class="app-background"></div>
+
+  <app-menu></app-menu>
+  <app-profile class="slide"></app-profile>
+  <app-social-media [class.hidden]="!showSocialMedia"></app-social-media>
+  <about-me class="slide" ></about-me>
+  <skill-set class="slide" [scrollEl]="scrollContainerRef"></skill-set>
+  <my-work class="slide"></my-work>
+  <references-me class="slide"></references-me>
+  <contact-me class="slide"></contact-me>
+
+  <router-outlet></router-outlet>
+</div>

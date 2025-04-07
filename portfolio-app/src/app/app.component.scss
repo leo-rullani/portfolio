@@ -1,12 +1,35 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quantico', sans-serif;
+  /* Verhindere global vertikales Scrollen – optional,
+     wenn du wirklich nur horizontal willst. */
+  overflow-y: hidden;
+  /* Du kannst hier overflow-x: hidden lassen,
+     und stattdessen den Scroll-Container definieren. */
+}
+
+.container {
+  position: relative;
+  width: 100%; /* oder fix, wenn nötig */
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  display: flex; /* Legt Slides nebeneinander */
+}
+
 .app-background {
   position: absolute;
   top: 0;
   left: 0;
-  width: 600vw; /* 6 Slides x 100vw */
+  width: 600vw; /* 6 Slides */
   height: 100vh;
   z-index: -1;
 
-  /* Zwei Layer: Bild für Slide 1 (100vw) + Verlauf für alle 6 Slides (600vw) */
+  /* Hintergrund-Bild + Verlauf */
   background:
     url("/assets/img/portfoliorullani-0.png") no-repeat,
     linear-gradient(
@@ -17,15 +40,27 @@
       #323232 58.54%,
       #0B0A0A 70.03%
     );
-
-  /* 1) Bild = 100vw x 100vh, 2) Gradient = 600vw x 100vh */
   background-size:
     100vw 100vh,
     600vw 100vh;
-
-  background-position:
-    left top,
-    left;
-
+  background-position: left top, left;
   background-repeat: no-repeat, no-repeat;
+}
+
+.slide {
+  flex: 0 0 100vw; /* Jede Slide 100vw breit */
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always; /* Erzwungenes Einrasten */
+}
+
+/* Pfeil / Navigation */
+.arrow-right {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+  width: 113px;
+  height: 40px;
+  cursor: pointer;
 }
