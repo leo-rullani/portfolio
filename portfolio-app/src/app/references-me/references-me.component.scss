@@ -1,49 +1,42 @@
 .references-section {
-  /* Layout: Titel links (vertikal), 3 Boxen daneben,
-     und ein Pfeil rechts. */
-  position: relative;
-  margin: 2rem;
-  /* Wir machen die Höhe so groß,
-     dass Boxen + Titel unten abschließen. */
-  height: 578px; /* z.B. an Figma angelehnt */
-
+  /* 100vh, damit oben/unten gleich viel Platz: voll zentriert */
+  min-height: 100vh;
+  /* Nutze Flexbox zum vertikalen/horizontalen Zentrieren des .references-container */
   display: flex;
-  flex-direction: row;
-  align-items: end;   /* sorge dafür, dass die Boxen unten abschließen */
-  gap: 40px;
+  align-items: center;   /* vertikale Zentrierung */
+  justify-content: center; /* horizontale Zentrierung */
+  position: relative;
+  margin: 0; /* kein extra margin, damit 100vh klappt */
 
-  /* Vertikaler Titel: etwas weiter unten,
-     damit sein unteres Ende mit der 3. Box abschließt */
+  /* Vertikaler Titel links */
   .vertical-title {
     position: absolute;
-    /* Du sagtest: x-Achse passt, y-Achse nach unten,
-       also wir platzieren es so, dass es unten bei der 3. Box endet. */
-    bottom: 0; /* unten bündig mit Boxen */
-    left: 40px; /* horizontal offset */
-    /* vertikaler Text in Grün mit Outline */
+    left: 40px;
+    top: 50%;              /* mittig */
+    transform: translateY(-50%) rotate(180deg);
+    writing-mode: vertical-rl;
     font-family: 'Quantico', sans-serif;
     font-weight: 700;
     font-size: 60px;
     line-height: 120%;
     color: transparent;
-    writing-mode: vertical-rl; /* Von oben nach unten */
-    transform: rotate(180deg);
     -webkit-text-stroke: 2px #B5E93B;
   }
 
-  /* Container für die 3 Boxen */
+  /* Container (2 Spalten à 3 Boxen) */
   .references-container {
     display: flex;
-    flex-direction: column;  /* übereinander */
-    justify-content: center;
-    align-items: center;     /* horizontales Zentrieren */
-    gap: 16px;
-    /* Machen wir etwas breiter, damit es in der Mitte steht */
-    width: 550px; /* breiter als 478, sonst leerer Raum */
-    margin: 0 auto; /* zentriert es horizontal im .references-section */
+    flex-direction: row;
+    gap: 2rem; /* Spalten-Abstand */
+    /* kein width => container passt sich an 2 spalten */
   }
 
-  /* Jede Box */
+  .references-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Abstand zwischen Boxen */
+  }
+
   .reference-box {
     position: relative;
     width: 478px;
@@ -52,53 +45,46 @@
     border-radius: 30px;
     box-sizing: border-box;
 
-    /* Zitat links */
     .quote {
       position: absolute;
-      width: 230px; /* etwas schmaler, damit Platz für Name rechts */
-      height: auto;
+      width: 230px;
       left: 20px;
       top: 30px;
-      text-align: left;  /* linksbündig laut Vorgabe */
+      /* TEXT zentrieren */
+      text-align: center;
       font-family: 'Quantico', sans-serif;
       font-size: 18px;
       line-height: 120%;
       color: #FFFDFD;
     }
 
-    /* Vertikale Linie zwischen Text und Name */
     .divider-line {
       position: absolute;
-      top: 30px;       /* etwas unterhalb, damit nicht am oberen Rand */
-      bottom: 30px;    /* bis 30px vom unteren Rand */
-      width: 0;        /* senkrechte Linie */
-      left: 260px;     /* in der Mitte zwischen Zitat (links) und Name (rechts) */
+      top: 30px;
+      bottom: 30px;
+      width: 0;
+      left: 260px;
       border-left: 1px solid #D3ED97;
-      /* Kein transform: rotate(-90deg) mehr,
-         da wir eine senkrechte Linie definieren */
     }
 
-    /* Name (rechts, unter den Zitat-Text) */
     .name {
       position: absolute;
-      left: 280px;   /* rechts von der Linie, z.B. 20px Abstand */
-      top: 40px;     /* minimal tiefer als Zitat-Überschneidung */
+      left: 280px;
+      top: 40px;
       width: 180px;
-      text-align: left; /* linksbündig in diesem Block,
-                          oder center, je nach Wunsch */
+      text-align: center;
       font-family: 'Quantico', sans-serif;
       font-weight: 400;
       font-size: 24px;
       color: #B5E93B;
     }
 
-    /* Projekt (direkt unter Name) */
     .project {
       position: absolute;
       left: 280px;
-      top: 80px;   /* etwas Abstand zum Namen */
+      top: 80px;
       width: 180px;
-      text-align: left;
+      text-align: center;
       font-family: 'Quantico', sans-serif;
       font-weight: 400;
       font-size: 14px;
@@ -108,12 +94,17 @@
   }
 
   .arrow-right {
-    /* Pfeil größer und rechts angeheftet */
-    margin-left: auto;
-    align-self: center;  /* mittig in der Y-Achse,
-                            oder 'end' wenn er unten sein soll */
+    /* Pfeil größer, fix am rechten Rand?
+       Falls du es vollkommen zentrieren willst,
+       könntest du .arrow-right ebenfalls absolute positionieren
+       oder margin-left: auto. */
 
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
     cursor: pointer;
+
     svg {
       width: 80px;
       height: 80px;
