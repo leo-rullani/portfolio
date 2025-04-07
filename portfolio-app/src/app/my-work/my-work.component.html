@@ -1,20 +1,93 @@
-<div class="my-work">
-  <div class="title">My Work</div>
-  <div class="intro-text">
-    Here are some of my recent projects and portfolio pieces.
-    Explore the gallery below to see more details and screenshots.
+<div class="my-work-section">
+  <!-- Vertikaler Titel links -->
+  <div class="vertical-title">My Work</div>
+
+  <!-- Erster Projekt-Kasten -->
+  <div class="project-card">
+    <div class="card-bg"></div>
+    <div class="card-content">
+      <!-- Linke Spalte: Kopfzeile + Bullets -->
+      <div class="left-column">
+        <div class="card-header">
+          <div class="project-number">1</div>
+          <div class="project-title">Project Join</div>
+        </div>
+        <div class="info-block">
+          <h4>About the project</h4>
+          <p>
+            Task manager inspired by the Kanban System.
+            Create and organize tasks using drag & drop, assign categories, etc.
+          </p>
+        </div>
+        <div class="info-block">
+          <h4>Technologies I have used</h4>
+          <p>Angular, TypeScript, HTML, CSS, Firebase</p>
+        </div>
+        <div class="info-block">
+          <h4>What I have learned</h4>
+          <p>
+            Maybe you used a certain technology for the first time?
+            Or learnt more about how to keep your code clean…?
+          </p>
+        </div>
+      </div>
+      <!-- Rechte Spalte: Screenshot & Buttons -->
+      <div class="right-section">
+        <div class="screenshot">
+          <img src="assets/img/join-screenshot.png" alt="Join Screenshot" />
+        </div>
+        <div class="buttons">
+          <button class="btn-secondary">GitHub</button>
+          <button class="btn-primary">Live Test</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="work-gallery">
-    <div class="work-item">Project 1</div>
-    <div class="work-item">Project 2</div>
-    <div class="work-item">Project 3</div>
-    <div class="work-item">Project 4</div>
+  <!-- Zweiter Projekt-Kasten (identisch) -->
+  <div class="project-card">
+    <div class="card-bg"></div>
+    <div class="card-content">
+      <!-- Linke Spalte: Kopfzeile + Bullets -->
+      <div class="left-column">
+        <div class="card-header">
+          <div class="project-number">1</div>
+          <div class="project-title">Project Join</div>
+        </div>
+        <div class="info-block">
+          <h4>About the project</h4>
+          <p>
+            Task manager inspired by the Kanban System.
+            Create and organize tasks using drag & drop, assign categories, etc.
+          </p>
+        </div>
+        <div class="info-block">
+          <h4>Technologies I have used</h4>
+          <p>Angular, TypeScript, HTML, CSS, Firebase</p>
+        </div>
+        <div class="info-block">
+          <h4>What I have learned</h4>
+          <p>
+            Maybe you used a certain technology for the first time?
+            Or learnt more about how to keep your code clean…?
+          </p>
+        </div>
+      </div>
+      <!-- Rechte Spalte: Screenshot & Buttons -->
+      <div class="right-section">
+        <div class="screenshot">
+          <img src="assets/img/join-screenshot.png" alt="Join Screenshot" />
+        </div>
+        <div class="buttons">
+          <button class="btn-secondary">GitHub</button>
+          <button class="btn-primary">Live Test</button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Ein Pfeil oder Button, um weiterzunavigieren -->
+  <!-- Pfeil rechts -->
   <div class="arrow-right" (click)="scrollNext()">
-    <!-- dein SVG oder Pfeil-Icon -->
     <svg
       width="113"
       height="38"
