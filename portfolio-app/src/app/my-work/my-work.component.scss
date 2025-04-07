@@ -14,13 +14,17 @@
   /* Vertikaler Titel links */
   .vertical-title {
     position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%) rotate(-90deg);
-    transform-origin: left top;
-    font-size: 2.5rem;
-    color: #B5E93B;
-    margin-left: 10px;
+    top: 29%;
+    left: 40px;
+    font-family: 'Quantico', sans-serif;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: 0;
+    color: transparent;
+    font-size: 60px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    -webkit-text-stroke: 2px #B5E93B;
   }
 
   .project-card {
@@ -30,6 +34,7 @@
     border-radius: 30px;
     overflow: hidden;
     background: transparent;
+    left: 96px;
 
     .card-bg {
       position: absolute;
@@ -67,12 +72,11 @@
       .project-number {
         font-size: 3rem;
         font-weight: 700;
-        border: 1px solid #B5E93B;
         padding: 0.3rem 0.6rem;
         color: #B5E93B;
       }
       .project-title {
-        font-size: 2rem;
+        font-size: 3rem;
         color: #B5E93B;
         font-weight: 400;
       }
@@ -150,8 +154,8 @@
   /* Pfeil rechts (Absolut) */
   .arrow-right {
     position: absolute;
-    top: 50%;
-    right: 80px;
+    top: 85%;
+    right: 160px;
     transform: translateY(-50%);
     width: 113px;
     height: 38px;

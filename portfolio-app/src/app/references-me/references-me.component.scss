@@ -1,70 +1,130 @@
-.references-me {
-  position: absolute;
-  top: 0;
-  left: 400vw; // Belegst du als 6. oder 7. Seite, ganz nach Bedarf
-  width: 100vw;
-  height: 100vh;
-
-  background: transparent;  // Für deinen ggf. durchscheinenden Hintergrund
-  color: #fff;
-  z-index: 1;
-
-  /* Optionaler Container-Stil */
+.references-section {
+  /* Gesamtbereich als Flex-Container,
+     damit wir links die Titel, in der Mitte die Boxen
+     und rechts den Pfeil anordnen können */
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  padding: 2rem;
+  flex-direction: row;
+  align-items: center;   /* "flex-end" laut Figma? Hier center wirkt ausgeglichener */
+  gap: 40px;            /* Abstand zw. Titel & Boxen, bzw. Boxen & Pfeil */
+  min-height: 600px;    /* oder 578px wie in Figma, anpassen nach Bedarf */
+  position: relative;
+  margin: 2rem;
+  /* background: #111;  // debug-hintergrund falls nötig */
+  /* Du kannst left/top verwenden,
+     falls du es "absolut" platzieren willst. */
 
-  .title {
+  .vertical-title {
+    /* Entspricht dem "Headline References", rotiert -90° */
     font-family: 'Quantico', sans-serif;
+    font-weight: 400;
     font-size: 54px;
-    border: 3px solid #B5E93B;
+    line-height: 1.2;  /* 65px in Figma */
     color: #B5E93B;
-    padding: 10px;
-    margin-bottom: 1rem;
+    border: 3px solid #B5E93B;
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    /* Größe anpassen, evtl. padding etc.:
+       width: 286px;
+       height: 60px;
+       Just be sure it looks right. */
   }
 
-  .intro-text {
-    max-width: 800px;
-    font-size: 18px;
-    line-height: 1.4;
-    text-align: justify;
-    margin-bottom: 2rem;
-  }
-
-  /* Beispiel für Referenzen-Liste */
-  .references-list {
+  /* Container für alle Referenz-Boxen */
+  .references-container {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    flex-direction: column; /* 3 Boxen untereinander */
+    justify-content: center;
+    align-items: center;    /* horizontales Zentrieren der Boxen */
+    gap: 16px;             /* Abstand zwischen Boxen */
 
-    .reference-item {
-      background-color: #B5E93B;
-      color: #000;
-      padding: 1rem;
-      border-radius: 4px;
-      /* kannst du beliebig stylen */
-      .reference-title {
-        font-weight: bold;
-        font-size: 20px;
-      }
-      .reference-details {
-        margin-top: 0.5rem;
-        font-size: 16px;
-      }
+    /* width: 478px;
+       height: 578px;
+       Falls du wirklich Figma-Werte fix übernehmen willst,
+       du kannst sie anpassen. */
+  }
+
+  .reference-box {
+    position: relative;
+    width: 478px;     /* laut Figma */
+    height: 182px;
+    border: 1px solid #D3ED97; /* Light green */
+    border-radius: 30px;
+    box-sizing: border-box;
+    /* Optional margin or 16px separation is in parent's gap. */
+
+    /* Zitat-Text */
+    .quote {
+      position: absolute;
+      width: 253px;
+      height: 121px;
+      left: 26px;
+      top: 35px;
+      text-align: center;
+      font-family: 'Quantico', sans-serif;
+      font-size: 18px; /* Variant 3 WEB Paragraph */
+      line-height: 120%;
+      color: #FFFDFD;
+    }
+
+    /* Name + Projekt:
+       In Figma absolute Position. We'll keep it simple. */
+    .name {
+      position: absolute;
+      /* width: 184px; height: 23px; */
+      left: calc(50% - 92px + 146px);
+      top: 52px;
+      /* So, 184/2=92. We offset from the middle +146
+         to match your original 'calc(50% - 184px/2 + 146px)'
+         but updated for half.
+         You can also do simpler approach: left: 300px, top: 52px. */
+
+      text-align: center;
+      font-family: 'Quantico', sans-serif;
+      font-weight: 400;
+      font-size: 24px;  /* H4 */
+      color: #B5E93B;
+    }
+    .project {
+      position: absolute;
+      left: 303px;
+      top: 91px;
+      width: 174px;
+      font-family: 'Quantico', sans-serif;
+      font-weight: 400;
+      font-size: 14px;  /* small text */
+      line-height: 120%;
+      text-align: center;
+      color: #D3ED97;
+    }
+
+    /* Senkrechte Linie (transform: rotate(-90deg))
+       In Figma: left: 293px, top: 148px */
+    .line {
+      position: absolute;
+      width: 113px;
+      height: 0px;
+      left: 293px;
+      top: 148px;
+      border: 1px solid #D3ED97;
+      transform: rotate(-90deg);
     }
   }
 
-  /* Pfeil oder Button zum Weiterklicken */
+  /* Pfeil-Rechts, optional position absolute */
   .arrow-right {
-    position: absolute;
-    top: 50%;
-    right: 50px;
-    transform: translateY(-50%);
-    width: 113px;
-    height: 40px;
+    /* du kannst es auf die rechte Seite rücken */
+    margin-left: auto;
     cursor: pointer;
+
+    /* oder absolute position:
+       position: absolute;
+       right: 0;
+       top: 50%;
+       transform: translateY(-50%);
+    */
+    svg {
+      width: 50px;
+      height: 50px;
+    }
   }
 }
