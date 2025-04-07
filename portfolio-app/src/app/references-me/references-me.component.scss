@@ -1,130 +1,122 @@
 .references-section {
-  /* Gesamtbereich als Flex-Container,
-     damit wir links die Titel, in der Mitte die Boxen
-     und rechts den Pfeil anordnen können */
-  display: flex;
-  flex-direction: row;
-  align-items: center;   /* "flex-end" laut Figma? Hier center wirkt ausgeglichener */
-  gap: 40px;            /* Abstand zw. Titel & Boxen, bzw. Boxen & Pfeil */
-  min-height: 600px;    /* oder 578px wie in Figma, anpassen nach Bedarf */
+  /* Layout: Titel links (vertikal), 3 Boxen daneben,
+     und ein Pfeil rechts. */
   position: relative;
   margin: 2rem;
-  /* background: #111;  // debug-hintergrund falls nötig */
-  /* Du kannst left/top verwenden,
-     falls du es "absolut" platzieren willst. */
+  /* Wir machen die Höhe so groß,
+     dass Boxen + Titel unten abschließen. */
+  height: 578px; /* z.B. an Figma angelehnt */
 
+  display: flex;
+  flex-direction: row;
+  align-items: end;   /* sorge dafür, dass die Boxen unten abschließen */
+  gap: 40px;
+
+  /* Vertikaler Titel: etwas weiter unten,
+     damit sein unteres Ende mit der 3. Box abschließt */
   .vertical-title {
-    /* Entspricht dem "Headline References", rotiert -90° */
+    position: absolute;
+    /* Du sagtest: x-Achse passt, y-Achse nach unten,
+       also wir platzieren es so, dass es unten bei der 3. Box endet. */
+    bottom: 0; /* unten bündig mit Boxen */
+    left: 40px; /* horizontal offset */
+    /* vertikaler Text in Grün mit Outline */
     font-family: 'Quantico', sans-serif;
-    font-weight: 400;
-    font-size: 54px;
-    line-height: 1.2;  /* 65px in Figma */
-    color: #B5E93B;
-    border: 3px solid #B5E93B;
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    /* Größe anpassen, evtl. padding etc.:
-       width: 286px;
-       height: 60px;
-       Just be sure it looks right. */
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 120%;
+    color: transparent;
+    writing-mode: vertical-rl; /* Von oben nach unten */
+    transform: rotate(180deg);
+    -webkit-text-stroke: 2px #B5E93B;
   }
 
-  /* Container für alle Referenz-Boxen */
+  /* Container für die 3 Boxen */
   .references-container {
     display: flex;
-    flex-direction: column; /* 3 Boxen untereinander */
+    flex-direction: column;  /* übereinander */
     justify-content: center;
-    align-items: center;    /* horizontales Zentrieren der Boxen */
-    gap: 16px;             /* Abstand zwischen Boxen */
-
-    /* width: 478px;
-       height: 578px;
-       Falls du wirklich Figma-Werte fix übernehmen willst,
-       du kannst sie anpassen. */
+    align-items: center;     /* horizontales Zentrieren */
+    gap: 16px;
+    /* Machen wir etwas breiter, damit es in der Mitte steht */
+    width: 550px; /* breiter als 478, sonst leerer Raum */
+    margin: 0 auto; /* zentriert es horizontal im .references-section */
   }
 
+  /* Jede Box */
   .reference-box {
     position: relative;
-    width: 478px;     /* laut Figma */
+    width: 478px;
     height: 182px;
-    border: 1px solid #D3ED97; /* Light green */
+    border: 1px solid #D3ED97;
     border-radius: 30px;
     box-sizing: border-box;
-    /* Optional margin or 16px separation is in parent's gap. */
 
-    /* Zitat-Text */
+    /* Zitat links */
     .quote {
       position: absolute;
-      width: 253px;
-      height: 121px;
-      left: 26px;
-      top: 35px;
-      text-align: center;
+      width: 230px; /* etwas schmaler, damit Platz für Name rechts */
+      height: auto;
+      left: 20px;
+      top: 30px;
+      text-align: left;  /* linksbündig laut Vorgabe */
       font-family: 'Quantico', sans-serif;
-      font-size: 18px; /* Variant 3 WEB Paragraph */
+      font-size: 18px;
       line-height: 120%;
       color: #FFFDFD;
     }
 
-    /* Name + Projekt:
-       In Figma absolute Position. We'll keep it simple. */
+    /* Vertikale Linie zwischen Text und Name */
+    .divider-line {
+      position: absolute;
+      top: 30px;       /* etwas unterhalb, damit nicht am oberen Rand */
+      bottom: 30px;    /* bis 30px vom unteren Rand */
+      width: 0;        /* senkrechte Linie */
+      left: 260px;     /* in der Mitte zwischen Zitat (links) und Name (rechts) */
+      border-left: 1px solid #D3ED97;
+      /* Kein transform: rotate(-90deg) mehr,
+         da wir eine senkrechte Linie definieren */
+    }
+
+    /* Name (rechts, unter den Zitat-Text) */
     .name {
       position: absolute;
-      /* width: 184px; height: 23px; */
-      left: calc(50% - 92px + 146px);
-      top: 52px;
-      /* So, 184/2=92. We offset from the middle +146
-         to match your original 'calc(50% - 184px/2 + 146px)'
-         but updated for half.
-         You can also do simpler approach: left: 300px, top: 52px. */
-
-      text-align: center;
+      left: 280px;   /* rechts von der Linie, z.B. 20px Abstand */
+      top: 40px;     /* minimal tiefer als Zitat-Überschneidung */
+      width: 180px;
+      text-align: left; /* linksbündig in diesem Block,
+                          oder center, je nach Wunsch */
       font-family: 'Quantico', sans-serif;
       font-weight: 400;
-      font-size: 24px;  /* H4 */
+      font-size: 24px;
       color: #B5E93B;
     }
+
+    /* Projekt (direkt unter Name) */
     .project {
       position: absolute;
-      left: 303px;
-      top: 91px;
-      width: 174px;
+      left: 280px;
+      top: 80px;   /* etwas Abstand zum Namen */
+      width: 180px;
+      text-align: left;
       font-family: 'Quantico', sans-serif;
       font-weight: 400;
-      font-size: 14px;  /* small text */
+      font-size: 14px;
       line-height: 120%;
-      text-align: center;
       color: #D3ED97;
-    }
-
-    /* Senkrechte Linie (transform: rotate(-90deg))
-       In Figma: left: 293px, top: 148px */
-    .line {
-      position: absolute;
-      width: 113px;
-      height: 0px;
-      left: 293px;
-      top: 148px;
-      border: 1px solid #D3ED97;
-      transform: rotate(-90deg);
     }
   }
 
-  /* Pfeil-Rechts, optional position absolute */
   .arrow-right {
-    /* du kannst es auf die rechte Seite rücken */
+    /* Pfeil größer und rechts angeheftet */
     margin-left: auto;
-    cursor: pointer;
+    align-self: center;  /* mittig in der Y-Achse,
+                            oder 'end' wenn er unten sein soll */
 
-    /* oder absolute position:
-       position: absolute;
-       right: 0;
-       top: 50%;
-       transform: translateY(-50%);
-    */
+    cursor: pointer;
     svg {
-      width: 50px;
-      height: 50px;
+      width: 80px;
+      height: 80px;
     }
   }
 }
