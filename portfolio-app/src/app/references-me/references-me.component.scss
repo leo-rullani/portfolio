@@ -12,7 +12,7 @@
   .vertical-title {
     position: absolute;
     left: 40px;
-    top: 50%;              /* mittig */
+    top: 63%;              /* mittig */
     transform: translateY(-50%) rotate(180deg);
     writing-mode: vertical-rl;
     font-family: 'Quantico', sans-serif;
@@ -94,20 +94,12 @@
   }
 
   .arrow-right {
-    /* Pfeil größer, fix am rechten Rand?
-       Falls du es vollkommen zentrieren willst,
-       könntest du .arrow-right ebenfalls absolute positionieren
-       oder margin-left: auto. */
-
     position: absolute;
-    top: 50%;
-    right: 40px;
+    top: 85%;
+    right: 160px;
     transform: translateY(-50%);
+    width: 113px;
+    height: 38px;
     cursor: pointer;
-
-    svg {
-      width: 80px;
-      height: 80px;
-    }
   }
 }

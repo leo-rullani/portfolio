@@ -1,39 +1,95 @@
-<div class="contact-me">
-  <div class="title">Contact Me</div>
-  <div class="intro-text">
-    Interested in working together or have any questions?
-    Reach out via the form below or connect with me on social media.
+<div class="contact-section">
+  <!-- Vertikaler Titel links -->
+  <div class="vertical-title">Contact me</div>
+
+  <!-- Haupt-Container (zwei Spalten) -->
+  <div class="contact-container">
+
+    <!-- Linke Spalte: Formular -->
+    <div class="contact-form-area">
+
+      <!-- Kontakt-Formular-Überschrift rotiert?
+           Falls du sie brauchst:
+           <div class="form-headline">Contact me</div> -->
+
+      <div class="contact-form">
+        <!-- Input-Feld Name -->
+        <div class="input-box name-field">
+          <span class="placeholder">Your name</span>
+        </div>
+
+        <!-- Input-Feld E-Mail -->
+        <div class="input-box email-field">
+          <span class="placeholder">Your e-mail</span>
+        </div>
+
+        <!-- Großes Textfeld Nachricht -->
+        <div class="input-box message-field">
+          <span class="placeholder">Your message</span>
+        </div>
+
+        <!-- Checkbox + Text -->
+        <div class="privacy-area">
+          <input type="checkbox" id="privacy-check" />
+          <label for="privacy-check">
+            I've read the
+            <span class="privacy-policy">privacy policy</span>
+            and agree to the processing of my data as outlined.
+          </label>
+        </div>
+
+        <!-- Button -->
+        <button class="send-button">Send</button>
+      </div>
+    </div>
+
+    <!-- Rechte Spalte: Infos + Pfeil + Footer -->
+    <div class="contact-details-area">
+
+      <!-- Überschrift / Einleitung -->
+      <div class="intro-text">
+        <h3>Let us work together.</h3>
+        <p>
+          Encourage people to contact you and describe what role you are interested in.
+          Express confidence in your ability to make a meaningful contribution to a team
+          through your expertise and enthusiasm for improving your skills.
+        </p>
+
+        <!-- Kontakt-Daten (Mail, Tel) -->
+        <div class="contact-data">
+          <p><strong>E-mail:</strong> m.huber&#64;mail.com</p>
+          <p><strong>Tel:</strong> 0157 123 456 68</p>
+        </div>
+      </div>
+
+      <!-- Pfeil nach links -->
+      <div class="arrow-left">
+        <!-- SVG-Beispiel -->
+        <svg
+          width="50"
+          height="50"
+          viewBox="0 0 113 38"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 16.5C1.61929 16.5 0.5 17.6193 0.5 19C0.5 20.3807 1.61929 21.5 3 21.5L3 16.5ZM111.768 20.7678C112.744 19.7914 112.744 18.2085 111.768 17.2322L95.8579 1.32232C94.8816 0.346012 93.2986 0.346012 92.3223 1.32232C91.346 2.29863 91.346 3.88155 92.3223 4.85786L106.464 19L92.3223 33.1421C91.346 34.1184 91.346 35.7014 92.3223 36.6777C93.2986 37.654 94.8816 37.654 95.8579 36.6777L111.768 20.7678ZM3 21.5L110 21.5L110 16.5L3 16.5L3 21.5Z"
+            fill="#B5E93B"
+          />
+        </svg>
+      </div>
+
+      <!-- Footer-Bereich -->
+      <div class="footer-info">
+        <div class="privacy-policy-link">Privacy policy</div>
+        <div class="legal-notice-link">Legal notice</div>
+        <div class="copyright">
+          © Michael Huber 2024
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="contact-form">
-    <label for="name">Name</label>
-    <input id="name" type="text" />
-
-    <label for="email">Email</label>
-    <input id="email" type="email" />
-
-    <label for="message">Message</label>
-    <textarea id="message" rows="4"></textarea>
-
-    <button type="submit">Send</button>
-  </div>
-
-  <!-- Pfeil nach links:
-       Wir haben den SVG horizontal gespiegelt (scale(-1,1)) und
-       rufen hier "scrollPrev()" auf -->
-  <div class="arrow-left" (click)="scrollPrev()">
-    <svg
-      style="transform: scale(-1, 1);"
-      width="113"
-      height="38"
-      viewBox="0 0 113 38"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M3 16.5C1.61929 16.5 0.5 17.6193 0.5 19C0.5 20.3807 1.61929 21.5 3 21.5L3 16.5ZM111.768 20.7678C112.744 19.7914 112.744 18.2085 111.768 17.2322L95.8579 1.32232C94.8816 0.346012 93.2986 0.346012 92.3223 1.32232C91.346 2.29863 91.346 3.88155 92.3223 4.85786L106.464 19L92.3223 33.1421C91.346 34.1184 91.346 35.7014 92.3223 36.6777C93.2986 37.654 94.8816 37.654 95.8579 36.6777L111.768 20.7678ZM3 21.5L110 21.5L110 16.5L3 16.5L3 21.5Z"
-        fill="#B5E93B"
-      />
-    </svg>
-  </div>
+  <!-- Rechter Gradient (100px breit) -->
+  <div class="right-gradient"></div>
 </div>
