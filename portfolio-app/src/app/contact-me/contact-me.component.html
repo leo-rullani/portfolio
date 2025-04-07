@@ -18,9 +18,10 @@
     <button type="submit">Send</button>
   </div>
 
-  <!-- Der Pfeil ist rechts positioniert, zeigt aber nach links -->
-  <div class="arrow-left" (click)="onArrowLeftClick()">
-    <!-- Durch scale(-1,1) wird er nach links gespiegelt -->
+  <!-- Pfeil nach links:
+       Wir haben den SVG horizontal gespiegelt (scale(-1,1)) und
+       rufen hier "scrollPrev()" auf -->
+  <div class="arrow-left" (click)="scrollPrev()">
     <svg
       style="transform: scale(-1, 1);"
       width="113"
