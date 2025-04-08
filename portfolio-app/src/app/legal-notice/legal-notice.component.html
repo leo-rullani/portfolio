@@ -1,1 +1,34 @@
-<p>legal-notice works!</p>
+<div class="overlay" (click)="closeOverlay($event)">
+  <div class="overlay-content" (click)="$event.stopPropagation()">
+    <div class="close-button">
+      <!-- Klick auf “X” => zurück zur Startseite -->
+      <a routerLink="/" class="close-link">X</a>
+    </div>
+
+    <h2 class="title">Legal Notice</h2>
+
+    <p>
+      Owner of this Website: <strong>Leo Rullani</strong><br/>
+      E-mail: leugzimrullani&#64;mail.com<br/>
+      Tel: +41 76 488 56 10
+    </p>
+
+    <h3>Disclaimer</h3>
+    <p>
+      I strive to keep the information on this site up to date but assume no
+      liability for the accuracy or completeness. Access is at your own risk.
+    </p>
+
+    <h3>External Links</h3>
+    <p>
+      This website may contain external links. I have no influence on the content
+      of those sites and assume no liability for them.
+    </p>
+
+    <h3>Copyright</h3>
+    <p>
+      All content on this site is subject to copyright.
+      Unauthorized use, reproduction, or distribution is prohibited without permission.
+    </p>
+  </div>
+</div>

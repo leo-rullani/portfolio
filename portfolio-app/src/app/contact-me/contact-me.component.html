@@ -7,7 +7,6 @@
 
     <!-- Linke Spalte: Formular -->
     <div class="contact-form-area">
-
       <div class="contact-form">
         <!-- Input-Feld Name -->
         <div class="input-box name-field">
@@ -58,7 +57,7 @@
         </div>
       </div>
 
-      <!-- Pfeil nach links (gleiche Größe wie andere Pfeile) -->
+      <!-- Pfeil nach links -->
       <div class="arrow-left" (click)="scrollPrev()">
         <svg
           width="113"
@@ -76,8 +75,9 @@
 
       <!-- Footer-Bereich -->
       <div class="footer-info">
-        <div class="privacy-policy-link">Privacy policy</div>
-        <div class="legal-notice-link">Legal notice</div>
+        <!-- Jetzt als RouterLink mit Hover-Farbe -->
+        <a routerLink="/privacy" class="privacy-policy-link">Privacy policy</a>
+        <a routerLink="/legal" class="legal-notice-link">Legal notice</a>
         <div class="copyright">
           © Leo Rullani 2025
         </div>

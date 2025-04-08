@@ -1,7 +1,7 @@
 .contact-section {
   position: relative;
   width: 100%;
-  min-height: 100vh; /* Bildfüllend */
+  min-height: 100vh;
   font-family: 'Quantico', sans-serif;
   color: #FFFDFD;
 
@@ -10,28 +10,25 @@
     position: absolute;
     top: 5%;
     left: 40px;
-    font-family: 'Quantico', sans-serif;
     font-weight: 700;
-    line-height: 120%;
-    letter-spacing: 0;
-    color: transparent;
     font-size: 60px;
+    color: transparent;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     -webkit-text-stroke: 2px #B5E93B;
   }
 
-  /* Flex-Container für 2 Spalten: links Formular, rechts Daten */
+  /* Container (2 Spalten) */
   .contact-container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     padding: 2rem;
-    margin-right: 100px; /* Platz für den Gradient rechts */
-    margin-left: 100px;  /* Platz links, falls nötig */
+    margin-right: 100px;
+    margin-left: 100px;
   }
 
-  /* ==================== Linke Spalte: Formular ===================== */
+  /* ============ Linke Spalte: Formular ============ */
   .contact-form-area {
     display: flex;
     flex-direction: column;
@@ -62,12 +59,10 @@
       }
     }
 
-    /* Größeres Textfeld */
     .message-field {
       height: 200px;
     }
 
-    /* Checkbox-Bereich */
     .privacy-area {
       margin: 1rem 0;
       display: flex;
@@ -78,9 +73,7 @@
         width: 20px;
         height: 20px;
         cursor: pointer;
-        /* Hover: grau, Checked: Grüner Haken (accent-color) */
-        accent-color: #B5E93B; /* grüner Haken in Browsern, die es unterstützen */
-
+        accent-color: #B5E93B;
         &:hover {
           background-color: rgba(158, 157, 157, 0.4);
         }
@@ -89,7 +82,6 @@
       label {
         font-size: 14px;
         color: #B5E93B;
-
         .privacy-policy {
           color: #FFFDFD;
           text-decoration: underline;
@@ -98,7 +90,6 @@
       }
     }
 
-    /* Senden-Button */
     .send-button {
       width: 100px;
       height: 43px;
@@ -114,19 +105,16 @@
     }
   }
 
-  /* ==================== Rechte Spalte: Infos + Pfeil + Footer ===================== */
+  /* ============ Rechte Spalte: Infos + Pfeil + Footer ============ */
   .contact-details-area {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     width: 400px;
-
-    /* Wir verkleinern hier evtl. den gap, damit Footer nicht zu weit unten */
     gap: 1.5rem;
   }
 
-  /* Einleitungstext */
   .intro-text {
     text-align: right;
     h3 {
@@ -142,7 +130,6 @@
     }
   }
 
-  /* Kontakt-Daten (Mail, Tel) */
   .contact-data {
     text-align: right;
     p {
@@ -154,17 +141,13 @@
     }
   }
 
-  /* Pfeil nach links => exakt wie andere Pfeile */
   .arrow-left {
-    /* Anstatt margin-top: 1rem; => positioniere oder setze align-self if needed */
     cursor: pointer;
-    /* Gleiche Größe wie andere Pfeile (113×38) */
     width: 113px;
     height: 38px;
-    margin-top: 200px;
-
+    /* margin-top: ... falls du Abstand willst,
+       sonst entfernen */
     svg {
-      /* Spiegeln nach links */
       transform: scaleX(-1);
       width: 100%;
       height: 100%;
@@ -172,23 +155,24 @@
     }
   }
 
-  /* Footer-Bereich, nah an Pfeil => kein riesiger Abstand nach unten */
   .footer-info {
     text-align: right;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 0.3rem; /* etwas kleinerer Gap, damit nicht zu tief unten */
-    margin-top: 300px;
+    gap: 0.3rem;
 
+    /* Routerlinks statt div */
     .privacy-policy-link,
     .legal-notice-link {
       font-size: 14px;
+      color: #FFFDFD;
       cursor: pointer;
+      text-decoration: none; /* optional */
       &:hover {
+        color: #B5E93B; /* Grün beim Hover */
         text-decoration: underline;
       }
-      color: #FFFDFD;
     }
 
     .copyright {
@@ -197,18 +181,13 @@
     }
   }
 
-  /* Rechter Gradient */
   .right-gradient {
     position: absolute;
     right: 0;
     top: 0;
     width: 100px;
     height: 100vh;
-    background: linear-gradient(
-      160.33deg,
-      #b5e93b 50.78%,
-      #547800 133.54%
-    );
+    background: linear-gradient(160.33deg, #b5e93b 50.78%, #547800 133.54%);
     z-index: 1;
   }
 }

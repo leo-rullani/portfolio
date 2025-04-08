@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+
 import { MenuComponent } from './menu/menu.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -16,13 +17,15 @@ import { SkillSetComponent } from './skill-set/skill-set.component';
 import { MyWorkComponent } from './my-work/my-work.component';
 import { ReferencesMeComponent } from './references-me/references-me.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     CommonModule,
-    RouterOutlet,
+    RouterOutlet, // Für <router-outlet> in app.component.html
     MenuComponent,
     SocialMediaComponent,
     ProfileComponent,
@@ -30,7 +33,11 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
     SkillSetComponent,
     MyWorkComponent,
     ReferencesMeComponent,
-    ContactMeComponent
+    ContactMeComponent,
+
+    // Optional, falls du Privacy/Legal direkt einbinden willst
+    PrivacyPolicyComponent,
+    LegalNoticeComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -38,14 +45,14 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   title = 'portfolio-app';
-  showSocialMedia = true;           // Steuert Sichtbarkeit der Social-Media-Leiste
+  showSocialMedia = true; // Steuert Sichtbarkeit der Social-Media-Leiste
   private readonly thresholdFactor = 0.1;
+
   @ViewChild('scrollRef', { static: true })
-scrollContainerRef!: ElementRef<HTMLDivElement>;
+  scrollContainerRef!: ElementRef<HTMLDivElement>;
 
   ngOnInit(): void {
-    // Entfernt: window-Scroll-Event, da wir jetzt den Container scrollen.
-    // window.addEventListener('scroll', this.handleScroll);
+    // ...
   }
 
   ngAfterViewInit(): void {
@@ -58,18 +65,13 @@ scrollContainerRef!: ElementRef<HTMLDivElement>;
   }
 
   ngOnDestroy(): void {
-    // Entfernen des Container-Scroll-Events
     this.scrollContainerRef.nativeElement.removeEventListener('scroll', this.handleScroll);
-
-    // Entfernt: window.removeEventListener('scroll', this.handleScroll);
   }
 
   /**
-   * Wird jetzt bei jedem Scroll im Container aufgerufen.
-   * Ab einer gewissen Scroll-Position -> showSocialMedia = false.
+   * Scroll-Handler: Ab einer gewissen Scroll-Position -> showSocialMedia = false
    */
   handleScroll = (): void => {
-    // Wir bestimmen den "threshold" relativ zur Containerbreite.
     const threshold = this.scrollContainerRef.nativeElement.clientWidth * this.thresholdFactor;
     const currentScroll = this.scrollContainerRef.nativeElement.scrollLeft;
 
