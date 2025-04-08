@@ -1,13 +1,15 @@
 .my-work-section {
-  /* Übergeordnetes Layout: Zwei Cards nebeneinander + vertikal zentriert. */
+  /* Zwei Projekt-Karten nebeneinander, vertikal zentriert */
   display: flex;
-  align-items: center;       /* Zentriert vertikal */
-  justify-content: flex-start; /* Linksbündig (kannst du auf "center" ändern) */
-  gap: 2rem;                 /* Abstand zwischen den zwei Projekten */
-  min-height: 100vh;         /* Ganze Viewport-Höhe */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  min-height: 100vh;
   position: relative;
   width: 100%;
-  margin: 0 auto;
+
+  /* Abstand zu "References" */
+  margin: 0 0 0 96px;
   padding: 2rem;
   font-family: 'Quantico', sans-serif;
 
@@ -15,7 +17,7 @@
   .vertical-title {
     position: absolute;
     top: 29%;
-    left: 40px;
+    left: -80px;
     font-family: 'Quantico', sans-serif;
     font-weight: 700;
     line-height: 120%;
@@ -34,11 +36,13 @@
     border-radius: 30px;
     overflow: hidden;
     background: transparent;
-    left: 96px;
 
     .card-bg {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       background: #B5E93B;
       opacity: 0.2;
       border-radius: 30px;
@@ -48,15 +52,13 @@
     .card-content {
       position: relative;
       z-index: 2;
-
       display: grid;
       grid-template-columns: 1fr 350px;
       column-gap: 2rem;
       align-items: start;
-
       padding: 2rem;
       box-sizing: border-box;
-      color: #FFFDFD;
+      color: #fff;
 
       .left-column {
         display: block;
@@ -70,13 +72,14 @@
       margin-bottom: 1rem;
 
       .project-number {
-        font-size: 3rem;
+        font-size: 2.5rem;
         font-weight: 700;
         padding: 0.3rem 0.6rem;
-        color: #B5E93B;
+        color: transparent;
+        -webkit-text-stroke: 2px #B5E93B;
       }
       .project-title {
-        font-size: 3rem;
+        font-size: 2.5rem;
         color: #B5E93B;
         font-weight: 400;
       }
@@ -107,6 +110,7 @@
       p {
         font-size: 1rem;
         line-height: 1.4;
+        padding-left: 2rem;
       }
     }
 
@@ -118,14 +122,21 @@
       max-width: 350px;
 
       .screenshot {
+        /* Nimm die gesamte Breite der rechten Spalte ein */
         width: 100%;
         img {
+          /* Bild auf 100% der parent width,
+             height auto => kein Verzerren,
+             behält Proportion. */
           width: 100%;
-          margin-top: 104px;
           height: auto;
+          margin-top: 0; /* margin-top entfernt */
           border-radius: 20px;
+          display: block;
+          margin-top: 104px;
         }
       }
+
       .buttons {
         display: flex;
         gap: 1rem;
@@ -151,11 +162,10 @@
     }
   }
 
-  /* Pfeil rechts (Absolut) */
   .arrow-right {
     position: absolute;
     top: 85%;
-    right: 160px;
+    right: 260px;
     transform: translateY(-50%);
     width: 113px;
     height: 38px;
