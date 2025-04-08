@@ -8,10 +8,6 @@
     <!-- Linke Spalte: Formular -->
     <div class="contact-form-area">
 
-      <!-- Kontakt-Formular-Überschrift rotiert?
-           Falls du sie brauchst:
-           <div class="form-headline">Contact me</div> -->
-
       <div class="contact-form">
         <!-- Input-Feld Name -->
         <div class="input-box name-field">
@@ -50,7 +46,9 @@
       <div class="intro-text">
         <h3>Let us work together.</h3>
         <p>
-          I invite teams to reach out as I'm pursuing a front-end developer role. I trust my strengths, enjoy team-based projects, and eagerly seek to advance my skills for meaningful impact. I remain confident in growth daily.
+          I invite teams to reach out as I'm pursuing a front-end developer role.
+          I trust my strengths, enjoy team-based projects, and eagerly seek to
+          advance my skills for meaningful impact. I remain confident in growth daily.
         </p>
 
         <!-- Kontakt-Daten (Mail, Tel) -->
@@ -60,12 +58,11 @@
         </div>
       </div>
 
-      <!-- Pfeil nach links -->
-      <div class="arrow-left">
-        <!-- SVG-Beispiel -->
+      <!-- Pfeil nach links (gleiche Größe wie andere Pfeile) -->
+      <div class="arrow-left" (click)="scrollPrev()">
         <svg
-          width="50"
-          height="50"
+          width="113"
+          height="38"
           viewBox="0 0 113 38"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

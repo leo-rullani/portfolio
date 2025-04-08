@@ -1,9 +1,9 @@
 .contact-section {
   position: relative;
   width: 100%;
-  min-height: 100vh; /* Falls du es bildschirmfüllend willst */
+  min-height: 100vh; /* Bildfüllend */
   font-family: 'Quantico', sans-serif;
-  color: #FFFDFD; /* Standard-Farbe (Weiß) auf dunklem Hintergrund */
+  color: #FFFDFD;
 
   /* Vertikaler Titel links */
   .vertical-title {
@@ -27,82 +27,90 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 2rem;
-    margin-right: 100px; /* Platz lassen für den Gradient */
-    margin-left: 100px;
+    margin-right: 100px; /* Platz für den Gradient rechts */
+    margin-left: 100px;  /* Platz links, falls nötig */
   }
 
   /* ==================== Linke Spalte: Formular ===================== */
   .contact-form-area {
-    /* Falls du vertikal mittig sein willst: align-items center oder so...
-       We'll keep it top for now. */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     width: 500px;
-    /* Height as needed. */
   }
 
   .contact-form {
     position: relative;
-    /* optional background if needed */
-    /* background: rgba(255,255,255,0.1); */
     padding: 1rem;
     box-sizing: border-box;
-  }
 
-  .input-box {
-    position: relative;
-    width: 100%;
-    border: 1px solid #B5E93B;
-    border-radius: 30px;
-    height: 60px;
-    margin-bottom: 1rem;
+    .input-box {
+      position: relative;
+      width: 100%;
+      border: 1px solid #B5E93B;
+      border-radius: 30px;
+      height: 60px;
+      margin-bottom: 1rem;
 
-    .placeholder {
-      position: absolute;
-      top: 21px;
-      left: 25px;
-      font-size: 14px;
-      color: #D3ED97;
-      opacity: 0.4;
-    }
-  }
-  .message-field {
-    height: 200px; /* Größeres Textfeld */
-  }
-
-  .privacy-area {
-    margin: 1rem 0;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    input[type="checkbox"] {
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-    }
-    label {
-      font-size: 14px;
-      color: #B5E93B;
-      .privacy-policy {
-        color: #FFFDFD; /* z.B. abheben */
-        text-decoration: underline;
-        cursor: pointer;
+      .placeholder {
+        position: absolute;
+        top: 21px;
+        left: 25px;
+        font-size: 14px;
+        color: #D3ED97;
+        opacity: 0.4;
       }
     }
-  }
 
-  .send-button {
-    width: 100px;
-    height: 43px;
-    border-radius: 30px;
-    border: none;
-    background: #9E9D9D; /* hellgrau? */
-    color: #4A4A4A;
-    cursor: pointer;
-    font-size: 14px;
-    &:hover {
-      opacity: 0.85;
+    /* Größeres Textfeld */
+    .message-field {
+      height: 200px;
+    }
+
+    /* Checkbox-Bereich */
+    .privacy-area {
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        /* Hover: grau, Checked: Grüner Haken (accent-color) */
+        accent-color: #B5E93B; /* grüner Haken in Browsern, die es unterstützen */
+
+        &:hover {
+          background-color: rgba(158, 157, 157, 0.4);
+        }
+      }
+
+      label {
+        font-size: 14px;
+        color: #B5E93B;
+
+        .privacy-policy {
+          color: #FFFDFD;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+
+    /* Senden-Button */
+    .send-button {
+      width: 100px;
+      height: 43px;
+      border-radius: 30px;
+      border: none;
+      background: #9E9D9D;
+      color: #4A4A4A;
+      cursor: pointer;
+      font-size: 14px;
+      &:hover {
+        opacity: 0.85;
+      }
     }
   }
 
@@ -113,10 +121,12 @@
     flex-direction: column;
     align-items: flex-end;
     width: 400px;
-    /* height: 600px; // if needed */
-    gap: 2rem;
+
+    /* Wir verkleinern hier evtl. den gap, damit Footer nicht zu weit unten */
+    gap: 1.5rem;
   }
 
+  /* Einleitungstext */
   .intro-text {
     text-align: right;
     h3 {
@@ -132,6 +142,7 @@
     }
   }
 
+  /* Kontakt-Daten (Mail, Tel) */
   .contact-data {
     text-align: right;
     p {
@@ -143,23 +154,32 @@
     }
   }
 
+  /* Pfeil nach links => exakt wie andere Pfeile */
   .arrow-left {
-    margin-top: 1rem;
+    /* Anstatt margin-top: 1rem; => positioniere oder setze align-self if needed */
     cursor: pointer;
+    /* Gleiche Größe wie andere Pfeile (113×38) */
+    width: 113px;
+    height: 38px;
+    margin-top: 200px;
+
     svg {
-      width: 50px;
-      height: 50px;
-      transform: scaleX(-1); /* spiegelt den Pfeil nach links */
+      /* Spiegeln nach links */
+      transform: scaleX(-1);
+      width: 100%;
+      height: 100%;
       fill: #B5E93B;
     }
   }
 
+  /* Footer-Bereich, nah an Pfeil => kein riesiger Abstand nach unten */
   .footer-info {
     text-align: right;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 0.5rem;
+    gap: 0.3rem; /* etwas kleinerer Gap, damit nicht zu tief unten */
+    margin-top: 300px;
 
     .privacy-policy-link,
     .legal-notice-link {
@@ -168,31 +188,27 @@
       &:hover {
         text-decoration: underline;
       }
-    }
-    .privacy-policy-link {
       color: #FFFDFD;
     }
-    .legal-notice-link {
-      color: #FFFDFD;
-    }
+
     .copyright {
       font-size: 14px;
       color: #FFFDFD;
     }
   }
 
-  /* ==================== Rechter Gradient (100px) ===================== */
+  /* Rechter Gradient */
   .right-gradient {
     position: absolute;
     right: 0;
     top: 0;
     width: 100px;
-    height: 100vh; /* oder 900px, je nach Design */
+    height: 100vh;
     background: linear-gradient(
       160.33deg,
       #b5e93b 50.78%,
       #547800 133.54%
     );
-    z-index: 1; /* Falls es drüber liegen soll */
+    z-index: 1;
   }
 }

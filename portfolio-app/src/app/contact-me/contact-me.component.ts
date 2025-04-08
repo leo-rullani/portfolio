@@ -11,13 +11,11 @@ export class ContactMeComponent {
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
 
   scrollPrev() {
-    // Prüfen, ob wir tatsächlich den Container haben
     if (!this.scrollEl?.nativeElement) {
       console.warn('No nativeElement on scrollEl');
       return;
     }
-
-    // Dann scrollen wir den Container um eine Bildschirmbreite NACH LINKS weiter
+    /* Horizontales Scrollen: eine Viewportbreite nach links */
     this.scrollEl.nativeElement.scrollBy({
       left: -window.innerWidth,
       behavior: 'smooth'
