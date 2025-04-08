@@ -12,14 +12,26 @@ export class PrivacyPolicyComponent {
   constructor(private router: Router) {}
 
   /**
-   * Wird aufgerufen, wenn man auf den dunklen Overlay-Hintergrund klickt.
-   * Falls man NICHT auf den Inhalt klickt, navigieren wir zurück zur Startseite ("/").
+   * Klick auf den dunklen Overlay-Hintergrund -> Schließen
    */
   closeOverlay(event: MouseEvent) {
-    // Wenn genau das Overlay (event.currentTarget) angeklickt wurde
-    // und nicht das Kind-Element (.overlay-content), dann navigate nach "/"
+    // Nur wenn man wirklich die overlay-Box selbst anklickt,
+    // NICHT overlay-content => navigate("/")
     if (event.target === event.currentTarget) {
       this.router.navigate(['/']);
     }
+  }
+
+  /**
+   * Klick auf den X-Button
+   * -> Da wir außerdem "routerLink='/'" nutzen,
+   *    navigiert Angular in jedem Fall zur Startseite.
+   * Falls du manuell per TS navigieren willst,
+   *    setze e.preventDefault() + this.router.navigate(['/']);
+   */
+  closeOnX(event: MouseEvent) {
+    // Optional, falls du das Routing komplett im TS-Logik steuern willst:
+    event.preventDefault();
+    this.router.navigate(['/']);
   }
 }

@@ -2,7 +2,13 @@
   <div class="overlay-content" (click)="$event.stopPropagation()">
     <div class="close-button">
       <!-- Klick auf “X” => zurück zur Startseite -->
-      <a routerLink="/" class="close-link">X</a>
+      <a
+        routerLink="/"
+        class="close-link"
+        (click)="closeOnX($event)"
+      >
+        X
+      </a>
     </div>
 
     <h2 class="title">Legal Notice</h2>

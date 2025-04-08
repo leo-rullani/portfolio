@@ -1,8 +1,16 @@
 <div class="overlay" (click)="closeOverlay($event)">
   <div class="overlay-content" (click)="$event.stopPropagation()">
     <div class="close-button">
-      <!-- Klick auf “X” => zurück zur Startseite -->
-      <a routerLink="/" class="close-link">X</a>
+      <!-- Klick auf “X” => wir rufen closeOnX()
+           und/oder navigieren zu '/',
+           je nachdem, was du bevorzugst -->
+      <a
+        routerLink="/"
+        class="close-link"
+        (click)="closeOnX($event)"
+      >
+        X
+      </a>
     </div>
 
     <h2 class="title">Privacy Policy</h2>
@@ -18,12 +26,14 @@
 
     <h3>1. Data Collection</h3>
     <p>
-      Any personal data (e.g., name, email) provided via the contact form is used solely to respond to your inquiries.
+      Any personal data (e.g., name, email) provided via the contact form
+      is used solely to respond to your inquiries.
     </p>
 
     <h3>2. Cookies / Analytics</h3>
     <p>
-      Currently, no analytics or cookies are used. (Update this if you implement cookies or tracking.)
+      Currently, no analytics or cookies are used.
+      (Update this if you implement cookies or tracking.)
     </p>
 
     <h3>3. Third-Party Services</h3>
@@ -33,8 +43,8 @@
 
     <h3>4. Your Rights</h3>
     <p>
-      You have the right to access, correct, and delete your personal data at any time.
-      Contact me at leugzimrullani&#64;mail.com
+      You have the right to access, correct, and delete your personal data
+      at any time. Contact me at leugzimrullani&#64;mail.com
     </p>
   </div>
 </div>
