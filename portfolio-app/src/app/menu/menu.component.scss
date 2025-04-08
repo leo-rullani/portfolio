@@ -54,13 +54,30 @@
       font-size: 30px;
       line-height: 36px;
       color: #4A4A4A;
-      cursor: pointer; /* <-- Hand-Cursor on hover */
+      cursor: pointer; /* Hand-Cursor on hover */
       white-space: nowrap;
+
+      /* Drehe jedes Span vertikal */
       transform: rotate(-90deg);
       transform-origin: left top;
       display: inline-block;
       min-width: 120px;
       text-align: center;
+
+      /* Für sanfte Hover-Übergänge */
+      transition: transform 0.2s ease, color 0.2s ease;
+
+      /* Hover-Effekt: Farbe wird transparent, Outline in Grün,
+         plus leichte Skalierung ("pulsieren") */
+      &:hover {
+        -webkit-text-stroke: 0.5px #B5E93B; /* Outline in Grün */
+        transform: rotate(-90deg) scale(1.1);
+      }
+
+      /* Optional: kleiner Effekt bei Klick (aktiv) */
+      &:active {
+        transform: rotate(-90deg) scale(1.15);
+      }
     }
   }
 }
