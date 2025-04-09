@@ -5,7 +5,7 @@
   font-family: 'Quantico', sans-serif;
   color: #FFFDFD;
 
-  /* Vertikaler Titel links */
+  /* Titel links (vertikal rotiert) */
   .vertical-title {
     position: absolute;
     top: 5%;
@@ -18,7 +18,7 @@
     -webkit-text-stroke: 2px #B5E93B;
   }
 
-  /* Container (2 Spalten) */
+  /* Container: Zwei Spalten */
   .contact-container {
     display: flex;
     justify-content: space-between;
@@ -28,7 +28,7 @@
     margin-left: 100px;
   }
 
-  /* ============ Linke Spalte: Formular ============ */
+  /* ========== Linke Spalte ========== */
   .contact-form-area {
     display: flex;
     flex-direction: column;
@@ -74,6 +74,7 @@
         height: 20px;
         cursor: pointer;
         accent-color: #B5E93B;
+
         &:hover {
           background-color: rgba(158, 157, 157, 0.4);
         }
@@ -82,6 +83,7 @@
       label {
         font-size: 14px;
         color: #B5E93B;
+
         .privacy-policy {
           color: #FFFDFD;
           text-decoration: underline;
@@ -99,13 +101,14 @@
       color: #4A4A4A;
       cursor: pointer;
       font-size: 14px;
+
       &:hover {
         opacity: 0.85;
       }
     }
   }
 
-  /* ============ Rechte Spalte: Infos + Pfeil + Footer ============ */
+  /* ========== Rechte Spalte: Infos + Pfeil + Footer ========== */
   .contact-details-area {
     position: relative;
     display: flex;
@@ -117,6 +120,7 @@
 
   .intro-text {
     text-align: right;
+
     h3 {
       color: #B5E93B;
       margin-bottom: 1rem;
@@ -132,9 +136,11 @@
 
   .contact-data {
     text-align: right;
+
     p {
       font-size: 18px;
       margin: 0.2rem 0;
+
       strong {
         color: #B5E93B;
       }
@@ -145,8 +151,7 @@
     cursor: pointer;
     width: 113px;
     height: 38px;
-    /* margin-top: ... falls du Abstand willst,
-       sonst entfernen */
+
     svg {
       transform: scaleX(-1);
       width: 100%;
@@ -162,15 +167,15 @@
     align-items: flex-end;
     gap: 0.3rem;
 
-    /* Routerlinks statt div */
     .privacy-policy-link,
     .legal-notice-link {
       font-size: 14px;
       color: #FFFDFD;
       cursor: pointer;
-      text-decoration: none; /* optional */
+      text-decoration: none;
+
       &:hover {
-        color: #B5E93B; /* Grün beim Hover */
+        color: #B5E93B;
       }
     }
 
@@ -188,5 +193,62 @@
     height: 100vh;
     background: linear-gradient(160.33deg, #b5e93b 50.78%, #547800 133.54%);
     z-index: 1;
+  }
+}
+
+/* ========== Responsive <= 800px => Stapelung ========== */
+@media (max-width: 800px) {
+  .contact-section {
+    min-height: auto;
+
+    .vertical-title {
+      display: none; /* Titel weg oder position: static; transform:none; */
+    }
+
+    .right-gradient {
+      display: none; /* optional: kein Gradient am Rand */
+    }
+  }
+
+  .contact-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    margin: 0;
+    width: 100%;
+  }
+
+  .contact-form-area,
+  .contact-details-area {
+    width: 100%;
+  }
+
+  .contact-form {
+    padding: 1rem 0;
+
+    .message-field {
+      height: 160px;
+    }
+  }
+
+  .arrow-left {
+    display: none; /* Pfeil ausblenden */
+  }
+
+  .footer-info {
+    margin-top: 2rem;
+    align-items: center;
+    text-align: center;
+
+    .privacy-policy-link,
+    .legal-notice-link {
+      font-size: 14px;
+      &:hover {
+        color: #B5E93B;
+      }
+    }
+    .copyright {
+      margin-top: 0.5rem;
+    }
   }
 }

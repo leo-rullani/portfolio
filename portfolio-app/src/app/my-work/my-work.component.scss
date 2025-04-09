@@ -1,17 +1,16 @@
 .my-work-section {
-  /* Zwei Projekt-Karten nebeneinander, vertikal zentriert */
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;  /* Zentriere den gesamten Container horizontal */
   gap: 2rem;
   min-height: 100vh;
   position: relative;
   width: 100%;
-
-  /* Abstand zu "References" */
-  margin-left: 136px;
+  margin-left: 0; /* Statt 136px, wenn du zentrieren möchtest */
   padding: 2rem;
   font-family: 'Quantico', sans-serif;
+  /* Hintergrund = transparent, kein „Grün“ über alles */
+  background: transparent;
 
   /* Vertikaler Titel links */
   .vertical-title {
@@ -29,13 +28,14 @@
     -webkit-text-stroke: 2px #B5E93B;
   }
 
+  /* Einzelnes Projekt-Kärtchen */
   .project-card {
     position: relative;
     width: 800px;
     min-height: 350px;
     border-radius: 30px;
     overflow: hidden;
-    background: transparent;
+    background: transparent; /* nur die card-bg hat leichte grüne Opacity */
 
     .card-bg {
       position: absolute;
@@ -122,15 +122,10 @@
       max-width: 350px;
 
       .screenshot {
-        /* Nimm die gesamte Breite der rechten Spalte ein */
         width: 100%;
         img {
-          /* Bild auf 100% der parent width,
-             height auto => kein Verzerren,
-             behält Proportion. */
           width: 100%;
           height: auto;
-          margin-top: 0; /* margin-top entfernt */
           border-radius: 20px;
           display: block;
           margin-top: 104px;
@@ -170,5 +165,100 @@
     width: 113px;
     height: 38px;
     cursor: pointer;
+  }
+}
+
+/* ========== Responsive <= 800px => Vertikale Stapelung ========== */
+@media (max-width: 800px) {
+  .my-work-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-left: 0;  /* Kein extra left-Abstand */
+    padding: 2rem;
+    position: static;
+    width: 100%;
+    min-height: auto;
+    background: transparent; /* Keine Grüne Flächen */
+
+    .vertical-title {
+      position: static;
+      margin: 0 auto 1rem;
+      font-size: 2.2rem;
+      color: #B5E93B;
+      writing-mode: initial;
+      transform: none;
+      -webkit-text-stroke: 1px #B5E93B;
+      text-align: center; /* Zentriert den Titel */
+    }
+
+    .project-card {
+      position: static;
+      width: 90%;
+      min-height: auto;
+      margin: 0 auto 2rem;
+      border-radius: 20px;
+      background: transparent;
+
+      .card-bg {
+        position: absolute;  /* kann man auch static machen, wenn du willst */
+        top: 0; left: 0; right: 0; bottom: 0;
+        border-radius: 20px;
+      }
+
+      .card-content {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+      }
+
+      .card-header {
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+
+        .project-number {
+          font-size: 2rem;
+          -webkit-text-stroke: 1px #B5E93B;
+        }
+        .project-title {
+          font-size: 2rem;
+        }
+      }
+
+      .info-block {
+        margin-bottom: 1rem;
+        h4 {
+          font-size: 1.1rem;
+          padding-left: 1.5rem;
+        }
+        p {
+          font-size: 0.95rem;
+          padding-left: 1.5rem;
+        }
+      }
+
+      .right-section {
+        margin-top: 1rem;
+        max-width: 100%;
+
+        .screenshot {
+          width: 100%;
+          margin-top: 0;
+          img {
+            margin-top: 0;
+            border-radius: 12px;
+          }
+        }
+        .buttons {
+          justify-content: center;
+          button {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+
+    .arrow-right {
+      display: none; /* Pfeil ausblenden in Mobile */
+    }
   }
 }
