@@ -4,7 +4,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: none;
+  /* Bild verkleinern in Responsive */
+  background-size: cover;
   z-index: 0;
 
   &::after {
@@ -18,20 +19,7 @@
   }
 }
 
-.name {
-  position: absolute;
-  top: 45.15%;
-  left: 44%;
-  transform: translateX(-50%);
-  z-index: 0;
-  font-family: 'Quantico', sans-serif;
-  font-weight: 700;
-  font-size: 100px;
-  line-height: 120%;
-  letter-spacing: 0;
-  color: #B5E93B;
-}
-
+/* Desktop: Name, Role, Location */
 .role {
   position: absolute;
   top: 59%;
@@ -48,6 +36,33 @@
   text-stroke: 1px #B5E93B;
 }
 
+.name {
+  position: absolute;
+  top: 45.15%;
+  left: 44%;
+  transform: translateX(-50%);
+  z-index: 0;
+  font-family: 'Quantico', sans-serif;
+  font-weight: 700;
+  font-size: 100px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: #B5E93B;
+}
+
+.location {
+  position: absolute;
+  top: 70%;
+  left: 46%;
+  transform: translateX(-50%);
+  z-index: 2;
+  font-family: 'Quantico', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 120%;
+  color: #B5E93B;
+}
+
 .arrow-right {
   position: absolute;
   right: 40px;
@@ -58,16 +73,35 @@
   cursor: pointer;
 }
 
-/* ============= Responsive: unter 800px => vertikales Layout ============= */
+/* ============= Responsive unter 800px => vertikales Layout ============= */
 @media (max-width: 800px) {
+
+  /* Bild nur ~70vh, damit darunter Platz für Text */
   .photo {
     position: relative;
     width: 100%;
-    height: 100vh; /* gewünscht: bleibt 100vh auch mobil */
+    height: 70vh;
+    background: url("/assets/img/portfoliorullani-0.png") center center no-repeat;
+    background-size: cover;
+    margin-top: 80px;
+
     &::after {
       width: 100%;
       height: 100%;
     }
+  }
+
+  /* Zuerst Role, dann Name, dann Location =>
+     wir machen sie "static" in DOM-Reihenfolge
+     + margin-top. */
+  .role {
+    position: static;
+    transform: none;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-top: 1rem;
+    color: transparent;
+    -webkit-text-stroke: 1px #B5E93B;
   }
 
   .name {
@@ -75,27 +109,19 @@
     transform: none;
     font-size: 2rem;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 
-  .role {
+  .location {
     position: static;
     transform: none;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     text-align: center;
     margin-top: 1rem;
-    color: transparent;
-    -webkit-text-stroke: 1px #B5E93B;
   }
 
+  /* Pfeil ausblenden in Responsiv */
   .arrow-right {
-    position: static;
-    margin: 2rem auto 0;
-    display: block;
-    right: auto;
-    bottom: auto;
-    width: 113px;
-    height: 38px;
-    transform: none;
+    display: none;
   }
 }

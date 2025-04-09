@@ -1,7 +1,7 @@
 .skillset {
   position: absolute;
   top: 480px;
-  left: 200vw; // 3. Slide oder was du brauchst
+  left: 200vw; /* Slide 3 */
   width: 100vw;
   height: 100vh;
   background: transparent;
@@ -13,7 +13,6 @@
   box-sizing: border-box;
   padding: 2rem;
 
-  /* ===== HEADLINE ===== */
   .headline {
     display: flex;
     justify-content: center;
@@ -37,7 +36,6 @@
     }
   }
 
-  /* ===== CONTENT-WRAPPER ===== */
   .content-wrapper {
     display: flex;
     flex-direction: column;
@@ -47,6 +45,7 @@
 
     .intro-text {
       max-width: 1580px;
+
       p {
         font-family: 'Quantico', sans-serif;
         font-size: 18px;
@@ -57,16 +56,13 @@
       }
     }
 
-    /* ========== SKILLS-CONTAINER ========== */
     .skills-container {
-      /* 6 Spalten, damit obere und untere Icons exakt übereinander sind */
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 2rem; /* Zwischen Spalten */
-      width: 1260px; /* feste Breite */
+      gap: 2rem;
+      width: 1260px;
       margin-left: 100px;
 
-      /* Jede Icon-Box */
       .icon-box {
         display: flex;
         flex-direction: column;
@@ -76,7 +72,6 @@
         .icon svg {
           height: auto;
         }
-
         .icon-name {
           font-family: 'Quantico', sans-serif;
           font-size: 16px;
@@ -87,21 +82,17 @@
         }
       }
 
-      /* Challenge Me + Text in einer Box */
       .challenge-me-box {
-        /* Die kleine Anpassung für den Abstand nach rechts */
         margin-left: 20px;
 
-        /* Innerer Flex, der Icon + Name + Text nebeneinander stellt */
         .challenge-inner {
           display: flex;
-          flex-direction: row; /* Icon & Text in einer Reihe */
+          flex-direction: row;
           align-items: flex-start;
         }
 
-        /* Das Textfeld rechts vom Icon */
         .challenge-text {
-          max-width: 0px; /* oder nach Wunsch anpassen */
+          max-width: 0px;
           p {
             font-family: 'Quantico', sans-serif;
             font-size: 16px;
@@ -117,7 +108,6 @@
     }
   }
 
-  /* Pfeil / Navigation */
   .arrow-right {
     position: absolute;
     top: 0%;
@@ -126,5 +116,93 @@
     width: 113px;
     height: 40px;
     cursor: pointer;
+  }
+}
+
+/* ================== Responsive <= 800px => vertikales Layout ================== */
+@media (max-width: 800px) {
+  .skillset {
+    position: static;
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+    display: block;
+    padding: 1rem;
+    background: transparent;
+  }
+
+  .skillset .headline {
+    position: static;
+    margin: 0 auto 1rem;
+
+    .vertical-title {
+      position: static;
+      top: auto;
+      left: auto;
+      transform: none;
+      writing-mode: initial;
+      font-size: 2rem;
+      color: #B5E93B;
+      margin: 0;
+      text-align: center;
+    }
+  }
+
+  .skillset .content-wrapper {
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 0 auto;
+
+    /* Text oben zentrieren */
+    .intro-text {
+      max-width: 90%;
+      margin-left: 0;
+
+      p {
+        font-size: 1rem;
+        margin: 0 auto 1rem;
+        text-align: center; /* zentriert den Intro-Text */
+      }
+    }
+
+    .skills-container {
+      width: 100%;
+      margin-left: 0;
+      /* 3 Icons pro Zeile */
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+
+      .icon-box {
+        .icon-name {
+          font-size: 0.9rem;
+        }
+      }
+
+      .challenge-me-box {
+        margin-left: 0;
+
+        .challenge-inner {
+          flex-direction: column;
+
+          .challenge-text {
+            max-width: 100%;
+
+            p {
+              width: auto;
+              margin-left: 0;
+              margin-top: 0.5rem;
+              text-align: center; /* optional zentriert */
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* Pfeil ausblenden in Responsive */
+  .skillset .arrow-right {
+    display: none;
   }
 }

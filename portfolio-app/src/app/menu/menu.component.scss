@@ -106,7 +106,7 @@
 
   .menu-system .logo {
     position: static;
-    width: 80px;    /* verkleinert */
+    width: 64px;    /* verkleinert */
     height: auto;
     margin-left: 16px; /* etwas Abstand vom linken Rand */
     top: auto;
@@ -125,6 +125,7 @@
     align-items: center;
     gap: 1.5rem; /* weniger Abstand statt 136px */
     transform: none;
+    display: none;
 
     span {
       transform: none;  /* kein rotate(-90deg) */
