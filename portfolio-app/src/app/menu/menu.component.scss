@@ -54,30 +54,92 @@
       font-size: 30px;
       line-height: 36px;
       color: #4A4A4A;
-      cursor: pointer; /* Hand-Cursor on hover */
+      cursor: pointer;
       white-space: nowrap;
-
-      /* Drehe jedes Span vertikal */
       transform: rotate(-90deg);
       transform-origin: left top;
       display: inline-block;
       min-width: 120px;
       text-align: center;
-
-      /* Für sanfte Hover-Übergänge */
       transition: transform 0.2s ease, color 0.2s ease;
 
-      /* Hover-Effekt: Farbe wird transparent, Outline in Grün,
-         plus leichte Skalierung ("pulsieren") */
       &:hover {
-        -webkit-text-stroke: 0.5px #B5E93B; /* Outline in Grün */
+        -webkit-text-stroke: 0.5px #B5E93B;
         transform: rotate(-90deg) scale(1.1);
         color: black;
       }
 
-      /* Optional: kleiner Effekt bei Klick (aktiv) */
       &:active {
         transform: rotate(-90deg) scale(1.15);
+      }
+    }
+  }
+}
+
+/* ================== Breakpoint: <= 800px => horizontales Top-Bar ================== */
+@media (max-width: 800px) {
+  .menu-system {
+    position: fixed;        /* bleibt oben sichtbar */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;           /* Höhe des Top-Bars */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 999;           /* über dem Inhalt */
+
+    /* Beispiel: Dein Grüner Verlauf fürs Menü oben
+       statt dem .menu-bg/.shadow-menu */
+    background: linear-gradient(
+      160.33deg,
+      #B5E93B 50.78%,
+      #547800 133.54%
+    );
+  }
+
+  /* Wir blenden .menu-bg & .shadow-menu aus */
+  .menu-system .menu-bg,
+  .menu-system .shadow-menu {
+    display: none;
+  }
+
+  .menu-system .logo {
+    position: static;
+    width: 80px;    /* verkleinert */
+    height: auto;
+    margin-left: 16px; /* etwas Abstand vom linken Rand */
+    top: auto;
+    left: auto;
+  }
+
+  .menu-system .menu-items {
+    position: static;
+    margin-left: auto;
+    margin-right: 16px;
+    top: auto;
+    left: auto;
+    width: auto;
+    height: auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem; /* weniger Abstand statt 136px */
+    transform: none;
+
+    span {
+      transform: none;  /* kein rotate(-90deg) */
+      font-size: 1.2rem;
+      line-height: normal;
+      min-width: auto;
+      text-align: center;
+
+      &:hover {
+        transform: scale(1.1);
+        -webkit-text-stroke: 0px #B5E93B;
+        color: #4A4A4A; /* oder was du willst */
+      }
+      &:active {
+        transform: scale(1.15);
       }
     }
   }

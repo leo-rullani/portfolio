@@ -7,102 +7,175 @@
   z-index: 0;
   color: #fff;
   background: transparent;
+
+  .vertical-title {
+    position: absolute;
+    top: 140px;
+    left: 100px;
+    font-family: 'Quantico', sans-serif;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: 0;
+    color: transparent;
+    font-size: 48px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    -webkit-text-stroke: 2px #B5E93B;
+  }
+
+  .intro {
+    position: absolute;
+    top: 120px;
+    left: 240px;
+    max-width: 1000px;
+
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      color: #fff;
+    }
+  }
+
+  .iam-title {
+    position: absolute;
+    top: 450px;
+    left: 240px;
+    font-family: 'Quantico', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #B5E93B;
+  }
+
+  .icon-row {
+    position: absolute;
+    top: 560px;
+    left: 320px;
+    display: flex;
+    gap: 80px;
+
+    .icon-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      svg {
+        width: 33px;
+        height: 40px;
+        margin-bottom: 5px;
+      }
+      p {
+        font-size: 16px;
+        color: #fff;
+      }
+    }
+  }
+
+  .btn-primary {
+    position: absolute;
+    left: 1100px;
+    top: 670px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 13px 30px;
+    gap: 10px;
+    width: 135px;
+    height: 43px;
+    background: #B5E93B;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: #000;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .arrow-right {
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    transform: translateY(-50%);
+    width: 113px;
+    height: 40px;
+    cursor: pointer;
+  }
 }
 
-.about-me .vertical-title {
-  position: absolute;
-  top: 140px;
-  left: 100px;
-  font-family: 'Quantico', sans-serif;
-  font-weight: 700;
-  line-height: 120%;
-  letter-spacing: 0;
-  color: transparent;
-  font-size: 48px;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  -webkit-text-stroke: 2px #B5E93B;
-}
+@media (max-width: 800px) {
+  .about-me {
+    position: static;
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+    background: transparent;
+  }
 
-.about-me .intro {
-  position: absolute;
-  top: 120px;
-  left: 240px;
-  max-width: 1000px;
-}
+  .about-me .vertical-title {
+    position: static;
+    writing-mode: initial;
+    transform: none;
+    font-size: 2rem;
+    color: #B5E93B;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
 
-.about-me .intro p {
-  font-size: 16px;
-  line-height: 1.5;
-  color: #fff;
-}
+  .about-me .intro {
+    position: static;
+    max-width: 90%;
+    margin: 0 auto 1.5rem;
 
-.about-me .iam-title {
-  position: absolute;
-  top: 450px;
-  left: 240px;
-  font-family: 'Quantico', sans-serif;
-  font-size: 40px;
-  font-weight: 700;
-  color: #B5E93B;
-}
+    p {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+  }
 
-.about-me .icon-row {
-  position: absolute;
-  top: 560px;
-  left: 320px;
-  display: flex;
-  gap: 80px;
-}
+  .about-me .iam-title {
+    position: static;
+    font-size: 1.8rem;
+    margin: 1rem auto;
+    text-align: center;
+    color: #B5E93B;
+  }
 
-.about-me .icon-row .icon-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
+  .about-me .icon-row {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 
-.about-me .icon-row .icon-box svg {
-  width: 33px;
-  height: 40px;
-  margin-bottom: 5px;
-}
+    .icon-box {
+      svg {
+        width: 33px;
+        height: 40px;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
 
-.about-me .icon-row .icon-box p {
-  font-size: 16px;
-  color: #fff;
-}
+  .about-me .btn-primary {
+    position: static;
+    margin: 1.5rem auto 0;
+    display: block;
+    width: 140px;
+    height: auto;
+  }
 
-.about-me .btn-primary {
-  position: absolute;
-  left: 1100px;
-  top: 670px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 13px 30px;
-  gap: 10px;
-  width: 135px;
-  height: 43px;
-  background: #B5E93B;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  color: #000;
-}
-
-.about-me .btn-primary:hover {
-  opacity: 0.9;
-}
-
-.about-me .arrow-right {
-  position: absolute;
-  top: 50%;
-  right: 50px;
-  transform: translateY(-50%);
-  width: 113px;
-  height: 40px;
-  cursor: pointer;
+  .about-me .arrow-right {
+    position: static;
+    margin: 2rem auto 0;
+    display: block;
+    transform: none;
+  }
 }

@@ -35,3 +35,16 @@ body {
   font-weight: 700;
   font-style: italic;
 }
+
+@media (max-width: 800px) {
+  html, body {
+    overflow-y: auto; /* Jetzt darf man vertical scrollen */
+  }
+
+  .container {
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto; /* Ebenfalls vertical scrollen hier */
+    height: auto;
+  }
+}

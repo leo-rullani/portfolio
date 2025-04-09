@@ -2,34 +2,35 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: 'Quantico', sans-serif;
-  /* Verhindere global vertikales Scrollen – optional,
-     wenn du wirklich nur horizontal willst. */
-  overflow-y: hidden;
-  /* Du kannst hier overflow-x: hidden lassen,
-     und stattdessen den Scroll-Container definieren. */
+  overflow-y: hidden; /* Standard: kein vert. Scroll */
 }
 
 .container {
   position: relative;
-  width: 100%; /* oder fix, wenn nötig */
+  width: 100%;
   height: 100vh;
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
+  display: flex; /* Slides nebeneinander */
 
-  display: flex; /* Legt Slides nebeneinander */
+  /* =========== Breakpoint für max. 800px =========== */
+  @media (max-width: 800px) {
+    flex-direction: column;    /* Stapelt die Slides untereinander */
+    height: auto;             /* Passt sich dem Inhalt an */
+    overflow-x: hidden;       /* Kein horizontales Scrollen */
+    overflow-y: auto;         /* Vertikales Scrollen */
+  }
 }
 
 .app-background {
   position: absolute;
   top: 0;
   left: 0;
-  width: 600vw; /* 6 Slides */
+  width: 600vw; /* 6 Slides, horizontales Layout */
   height: 100vh;
   z-index: -1;
-
-  /* Hintergrund-Bild + Verlauf */
   background:
     url("/assets/img/portfoliorullani-0.png") no-repeat,
     linear-gradient(
@@ -45,16 +46,30 @@ html, body {
     600vw 100vh;
   background-position: left top, left;
   background-repeat: no-repeat, no-repeat;
+
+  /* Bei <= 800px lieber nur 100% breit + Cover? */
+  @media (max-width: 800px) {
+    width: 100%;
+    height: auto; /* oder 100vh, je nach Wunsch */
+    background-size: cover; /* Deckend oder je nach Design anpassen */
+    background-position: center;
+  }
 }
 
 .slide {
-  flex: 0 0 100vw; /* Jede Slide 100vw breit */
+  flex: 0 0 100vw;
   height: 100vh;
   scroll-snap-align: start;
-  scroll-snap-stop: always; /* Erzwungenes Einrasten */
+  scroll-snap-stop: always;
+
+  /* Unter 800px => width=100%, height=auto */
+  @media (max-width: 800px) {
+    flex: 0 0 auto; /* Löst die fixe 100vw-Breite */
+    width: 100%;
+    height: auto;
+  }
 }
 
-/* Pfeil / Navigation */
 .arrow-right {
   position: absolute;
   top: 50%;
