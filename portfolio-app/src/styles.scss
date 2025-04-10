@@ -1,13 +1,22 @@
-/* Global Styles */
+/* Global Reset / Grund-Styles */
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
   font-family: 'Quantico', sans-serif;
-  /* Verhindert vertikales Scrollen */
+  /* Standard: Keine vertikale Scrollleiste (z.B. für Desktop) */
   overflow-y: hidden;
+  /* Falls du auf größeren Screens horizontales Scrollen zulassen willst:
+     overflow-x: auto;
+     Wenn nicht, dann overflow-x: hidden; */
+  overflow-x: auto;
 }
 
+/* Schriftarten einbinden */
 @font-face {
   font-family: 'Quantico';
   src: url('assets/fonts/Quantico-Regular.ttf') format('truetype');
@@ -36,15 +45,29 @@ body {
   font-style: italic;
 }
 
+/* Bilder auf volle Breite begrenzen, damit sie nicht aus dem Layout "rauswachsen" */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive-Anpassung unter 800px */
 @media (max-width: 800px) {
-  html, body {
-    overflow-y: auto; /* Jetzt darf man vertical scrollen */
+  html,
+  body {
+    /* Jetzt darf man vertikal scrollen */
+    overflow-y: auto;
+    /* Horizontales Scrollen verhindern */
+    overflow-x: hidden;
   }
 
   .container {
     flex-direction: column;
+    /* Ebenfalls horizontales Scrollen unterbinden */
     overflow-x: hidden;
-    overflow-y: auto; /* Ebenfalls vertical scrollen hier */
+    /* Vertikales Scrollen erlauben */
+    overflow-y: auto;
     height: auto;
   }
 }

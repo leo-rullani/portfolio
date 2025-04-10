@@ -28,11 +28,35 @@
       font-weight: 700;
       line-height: 120%;
       letter-spacing: 0;
-      color: transparent;
+      color: transparent; /* Text ist transparent */
       font-size: 60px;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
-      -webkit-text-stroke: 2px #B5E93B;
+      -webkit-text-stroke: 2px #B5E93B; /* Grüner Rahmen */
+    }
+  }
+
+  /* ======================================
+     Challenge-Text-Wrapper (außerhalb vom Grid)
+     ====================================== */
+  .challenge-text-wrapper {
+    /* Wähle eine der beiden margin-lefts:
+       a) 100px (etwas Abstand)
+       b) 600px (sehr weit rechts)
+       Du kannst das natürlich anpassen ;) */
+    margin-left: 1120px;
+    margin-top: -166px;
+
+    .challenge-text {
+      max-width: 450px;
+
+      p {
+        font-family: 'Quantico', sans-serif;
+        font-size: 16px;
+        line-height: 1.4;
+        text-align: justify;
+        color: #fff;
+      }
     }
   }
 
@@ -56,6 +80,9 @@
       }
     }
 
+    /* ======================================
+       Grid für die Icons
+       ====================================== */
     .skills-container {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -72,6 +99,7 @@
         .icon svg {
           height: auto;
         }
+
         .icon-name {
           font-family: 'Quantico', sans-serif;
           font-size: 16px;
@@ -82,28 +110,9 @@
         }
       }
 
-      .challenge-me-box {
-        margin-left: 20px;
-
-        .challenge-inner {
-          display: flex;
-          flex-direction: row;
-          align-items: flex-start;
-        }
-
-        .challenge-text {
-          max-width: 0px;
-          p {
-            font-family: 'Quantico', sans-serif;
-            font-size: 16px;
-            line-height: 1.4;
-            text-align: justify;
-            color: #fff;
-            width: 450px;
-            margin-left: 32px;
-            margin-top: 0px;
-          }
-        }
+      /* Challenge-Icon-Box nur Icon+Name, kein Text mehr hier */
+      .challenge-icon-box {
+        /* Falls du extra Styles möchtest, z.B. margin-left: 20px; */
       }
     }
   }
@@ -119,7 +128,7 @@
   }
 }
 
-/* ================== Responsive <= 800px => vertikales Layout ================== */
+/* ================ Responsive <= 800px ================ */
 @media (max-width: 800px) {
   .skillset {
     position: static;
@@ -133,9 +142,16 @@
     background: transparent;
   }
 
+  .headline {
+    display: flex;
+    justify-content: flex-start;
+  }
+
   .skillset .headline {
-    position: static;
-    margin: 0 auto 1rem;
+    display: flex;
+    justify-content: flex-start;
+    width: 300px;
+    margin-bottom: 1rem;
 
     .vertical-title {
       position: static;
@@ -144,7 +160,8 @@
       transform: none;
       writing-mode: initial;
       font-size: 2rem;
-      color: #B5E93B;
+      color: transparent;
+      -webkit-text-stroke: 2px #B5E93B;
       margin: 0;
       text-align: center;
     }
@@ -155,53 +172,42 @@
     gap: 1rem;
     margin: 0 auto;
 
-    /* Text oben zentrieren */
     .intro-text {
-      max-width: 90%;
-      margin-left: 0;
-
+      max-width: 100%;
       p {
         font-size: 1rem;
-        margin: 0 auto 1rem;
-        text-align: center; /* zentriert den Intro-Text */
+        margin: 0;
+        text-align: justify;
       }
     }
 
     .skills-container {
       width: 100%;
       margin-left: 0;
-      /* 3 Icons pro Zeile */
+      /* 3 Icons pro Zeile statt 6 */
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
 
-      .icon-box {
-        .icon-name {
-          font-size: 0.9rem;
-        }
-      }
-
-      .challenge-me-box {
-        margin-left: 0;
-
-        .challenge-inner {
-          flex-direction: column;
-
-          .challenge-text {
-            max-width: 100%;
-
-            p {
-              width: auto;
-              margin-left: 0;
-              margin-top: 0.5rem;
-              text-align: center; /* optional zentriert */
-            }
-          }
-        }
+      /* Challenge-Icon-Box: kann z.B. grid-column: span 3; falls es allein stehen soll */
+      .challenge-icon-box {
+        /* grid-column: span 3; */
       }
     }
   }
 
-  /* Pfeil ausblenden in Responsive */
+  /* Hier das Wrapper-Layout fürs Handy */
+  .challenge-text-wrapper {
+    margin-left: 0 !important; /* überschreibt Desktop */
+    margin-top: 0 !important;
+    .challenge-text {
+      max-width: 100% !important;
+      p {
+        /* Falls du magst */
+        margin-top: 0.5rem;
+      }
+    }
+  }
+
   .skillset .arrow-right {
     display: none;
   }

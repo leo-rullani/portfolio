@@ -5,7 +5,6 @@
   font-family: 'Quantico', sans-serif;
   color: #FFFDFD;
 
-  /* Titel links (vertikal rotiert) */
   .vertical-title {
     position: absolute;
     top: 5%;
@@ -18,22 +17,21 @@
     -webkit-text-stroke: 2px #B5E93B;
   }
 
-  /* Container: Zwei Spalten */
   .contact-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
     padding: 2rem;
-    margin-right: 100px;
-    margin-left: 100px;
+    margin: 0 auto;
+    max-width: 1100px;
+    gap: 2rem;
+    flex-wrap: wrap;
   }
 
-  /* ========== Linke Spalte ========== */
   .contact-form-area {
+    flex: 1 1 450px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    width: 500px;
   }
 
   .contact-form {
@@ -42,12 +40,12 @@
     box-sizing: border-box;
 
     .input-box {
-      position: relative;
       width: 100%;
       border: 1px solid #B5E93B;
       border-radius: 30px;
       height: 60px;
       margin-bottom: 1rem;
+      position: relative;
 
       .placeholder {
         position: absolute;
@@ -108,24 +106,23 @@
     }
   }
 
-  /* ========== Rechte Spalte: Infos + Pfeil + Footer ========== */
   .contact-details-area {
-    position: relative;
+    flex: 1 1 450px;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    width: 400px;
     gap: 1.5rem;
+    align-items: flex-start;
   }
 
   .intro-text {
-    text-align: right;
+    text-align: left;
 
     h3 {
       color: #B5E93B;
       margin-bottom: 1rem;
       font-size: 1.8rem;
     }
+
     p {
       font-size: 18px;
       line-height: 1.4;
@@ -135,7 +132,7 @@
   }
 
   .contact-data {
-    text-align: right;
+    text-align: left;
 
     p {
       font-size: 18px;
@@ -148,24 +145,16 @@
   }
 
   .arrow-left {
-    cursor: pointer;
-    width: 113px;
-    height: 38px;
-
-    svg {
-      transform: scaleX(-1);
-      width: 100%;
-      height: 100%;
-      fill: #B5E93B;
-    }
+    display: none;
   }
 
   .footer-info {
-    text-align: right;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     gap: 0.3rem;
+    margin-top: 2rem;
 
     .privacy-policy-link,
     .legal-notice-link {
@@ -179,76 +168,86 @@
       }
     }
 
-    .copyright {
-      font-size: 14px;
-      color: #FFFDFD;
-    }
+    /* Weitere Footer-Styles bleiben unverändert */
+    /* Hier kein position: fixed, damit es nur ab < 800px genutzt wird */
   }
 
   .right-gradient {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 100px;
-    height: 100vh;
-    background: linear-gradient(160.33deg, #b5e93b 50.78%, #547800 133.54%);
-    z-index: 1;
+    display: none;
   }
-}
 
-/* ========== Responsive <= 800px => Stapelung ========== */
-@media (max-width: 800px) {
-  .contact-section {
-    min-height: auto;
+  /* =========== Desktop / ab 801px =========== */
+  @media (min-width: 801px) {
+    .arrow-left {
+      display: block;
+      cursor: pointer;
+      width: 113px;
+      height: 38px;
 
-    .vertical-title {
-      display: none; /* Titel weg oder position: static; transform:none; */
+      svg {
+        transform: scaleX(-1);
+        width: 100%;
+        height: 100%;
+        fill: #B5E93B;
+      }
+    }
+
+    .footer-info {
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .contact-container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .contact-details-area {
+      align-items: flex-end;
+    }
+
+    .intro-text,
+    .contact-data {
+      text-align: right;
     }
 
     .right-gradient {
-      display: none; /* optional: kein Gradient am Rand */
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100px;
+      height: 100vh;
+      background: linear-gradient(160.33deg, #b5e93b 50.78%, #547800 133.54%);
+      z-index: 1;
     }
   }
 
-  .contact-container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 2rem;
-    margin: 0;
-    width: 100%;
-  }
-
-  .contact-form-area,
-  .contact-details-area {
-    width: 100%;
-  }
-
-  .contact-form {
-    padding: 1rem 0;
-
-    .message-field {
-      height: 160px;
+  /* =========== NEU: Mobile / bis 800px =========== */
+  @media (max-width: 800px) {
+    /* NEU: Unten ausreichend Platz schaffen,
+       damit der Footer nicht über den Inhalt rutscht */
+    .contact-container {
+      padding-bottom: 80px; /* anpassen nach Bedarf */
     }
-  }
 
-  .arrow-left {
-    display: none; /* Pfeil ausblenden */
-  }
+    /* NEU: Footer als grüner Balken unten fixieren */
+    .footer-info {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      /* Beispiel-Farbe: gleiche Farbgebung wie Akzente (#B5E93B)
+         oder ein anderer Grünton, z. B. #547800 */
+      background-color: #547800;
+      padding: 1rem 0;
+      margin-top: 0;  /* überschreibt den margin-top: 2rem */
+      gap: 0.5rem;    /* etwas Abstand zwischen den Links */
+      z-index: 999;   /* sicherstellen, dass der Footer über dem Content liegt */
 
-  .footer-info {
-    margin-top: 2rem;
-    align-items: center;
-    text-align: center;
-
-    .privacy-policy-link,
-    .legal-notice-link {
-      font-size: 14px;
-      &:hover {
-        color: #B5E93B;
-      }
-    }
-    .copyright {
-      margin-top: 0.5rem;
+      /* Falls du willst, dass der Text weiß bleibt:
+         color: #FFFDFD;
+       */
     }
   }
 }
