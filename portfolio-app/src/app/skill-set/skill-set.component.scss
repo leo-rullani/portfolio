@@ -40,10 +40,6 @@
      Challenge-Text-Wrapper (außerhalb vom Grid)
      ====================================== */
   .challenge-text-wrapper {
-    /* Wähle eine der beiden margin-lefts:
-       a) 100px (etwas Abstand)
-       b) 600px (sehr weit rechts)
-       Du kannst das natürlich anpassen ;) */
     margin-left: 1120px;
     margin-top: -166px;
 
@@ -58,6 +54,28 @@
         color: #fff;
       }
     }
+
+    /* NEU: Der Button-Container */
+    .lets-talk-section {
+      display: none; /* Desktop: unsichtbar */
+
+      .primary-mob {
+        position: static;
+        margin: 1.5rem auto 0;
+        display: block;
+        width: 140px;
+        height: auto;
+        background: #B5E93B;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        color: #000;
+        align-items: center;
+        padding: 13px 30px;
+      }
+    }
+    /* Ende .lets-talk-section */
   }
 
   .content-wrapper {
@@ -188,7 +206,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
 
-      /* Challenge-Icon-Box: kann z.B. grid-column: span 3; falls es allein stehen soll */
+      /* Challenge-Icon-Box: kann z.B. grid-column: span 3; wenn es allein stehen soll */
       .challenge-icon-box {
         /* grid-column: span 3; */
       }
@@ -199,12 +217,20 @@
   .challenge-text-wrapper {
     margin-left: 0 !important; /* überschreibt Desktop */
     margin-top: 0 !important;
+
     .challenge-text {
       max-width: 100% !important;
       p {
         /* Falls du magst */
         margin-top: 0.5rem;
       }
+    }
+
+    /* Button nur in Mobile sichtbar */
+    .lets-talk-section {
+      display: flex !important; /* ab <= 800px erscheint */
+      justify-content: center;
+      margin-top: 1rem; /* kleiner Abstand über dem Button */
     }
   }
 
