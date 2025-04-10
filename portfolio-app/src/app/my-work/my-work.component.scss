@@ -1,7 +1,7 @@
 .my-work-section {
   display: flex;
   align-items: center;
-  justify-content: center;  /* Zentriere den gesamten Container horizontal */
+  justify-content: center; /* Zentriere den gesamten Container horizontal */
   gap: 2rem;
   min-height: 100vh;
   position: relative;
@@ -200,9 +200,9 @@
       border-radius: 20px;
       background: transparent;
 
+      /* Hier die NEUE Regel: card-bg im mobile NICHT absolute */
       .card-bg {
-        position: absolute;  /* kann man auch static machen, wenn du willst */
-        top: 0; left: 0; right: 0; bottom: 0;
+        position: static; /* Überschreibt die absolute-POS (Desktop) */
         border-radius: 20px;
       }
 
