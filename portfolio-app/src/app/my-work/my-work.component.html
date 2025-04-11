@@ -1,12 +1,9 @@
 <div class="my-work-section">
-  <!-- Vertikaler Titel links -->
   <div class="vertical-title">My Work</div>
 
-  <!-- Erstes Projekt-Kästchen: Project Join -->
   <div class="project-card">
     <div class="card-bg"></div>
     <div class="card-content">
-      <!-- Linke Spalte: Kopfzeile + Bullets -->
       <div class="left-column">
         <div class="card-header">
           <div class="project-number">1</div>
@@ -27,12 +24,11 @@
           <h4>What I have learned</h4>
           <p>
             I improved my knowledge of JSDoc, wrote cleaner code,
-            and successfully collaborated with a small team on a shared codebase.
+            and successfully collaborated with a small team
+            on a shared codebase.
           </p>
         </div>
       </div>
-
-      <!-- Rechte Spalte: Screenshot & Buttons -->
       <div class="right-section">
         <div class="screenshot">
           <img src="assets/img/screenshot-join.png" alt="Join Screenshot" />
@@ -45,11 +41,17 @@
     </div>
   </div>
 
-  <!-- Zweites Projekt-Kästchen: Project Pollo Loco -->
+  <!-- "Show me more" ist für Desktop ausgeblendet -->
+  <div class="show-more" style="display: none;">
+    Show me more
+    <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.629035 12.6314L8.55688 0.885022L14.7998 12.7638L0.629035 12.6314Z" fill="#B5E93B" />
+    </svg>
+  </div>
+
   <div class="project-card">
     <div class="card-bg"></div>
     <div class="card-content">
-      <!-- Linke Spalte: Kopfzeile + Bullets -->
       <div class="left-column">
         <div class="card-header">
           <div class="project-number">2</div>
@@ -75,7 +77,6 @@
           </p>
         </div>
       </div>
-      <!-- Rechte Spalte: Screenshot & Buttons -->
       <div class="right-section">
         <div class="screenshot">
           <img src="assets/img/screenshot-pollo.png" alt="Pollo Loco Screenshot" />
@@ -88,7 +89,14 @@
     </div>
   </div>
 
-  <!-- Pfeil rechts -->
+  <!-- "Show me more" ist für Desktop ausgeblendet -->
+  <div class="show-more" style="display: none;">
+    Show me more
+    <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.629035 12.6314L8.55688 0.885022L14.7998 12.7638L0.629035 12.6314Z" fill="#B5E93B" />
+    </svg>
+  </div>
+
   <div class="arrow-right" (click)="scrollNext()">
     <svg
       width="113"

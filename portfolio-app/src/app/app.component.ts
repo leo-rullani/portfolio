@@ -43,10 +43,14 @@ import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
-
   title = 'portfolio-app';
-  showSocialMedia = true; // Steuert Sichtbarkeit der Social-Media-Leiste
+
+  // Steuert Sichtbarkeit der Social-Media-Leiste beim Scrollen
+  showSocialMedia = true;
   private readonly thresholdFactor = 0.1;
+
+  // Globale Sprachverwaltung (einfacher Ansatz)
+  activeLang: 'DE' | 'EN' = 'EN';
 
   @ViewChild('scrollRef', { static: true })
   scrollContainerRef!: ElementRef<HTMLDivElement>;
@@ -59,7 +63,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     if (!this.scrollContainerRef) {
       console.warn('No scroll container found.');
     } else {
-      // Scroll-Event an den Container binden
       this.scrollContainerRef.nativeElement.addEventListener('scroll', this.handleScroll);
     }
   }
@@ -68,9 +71,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     this.scrollContainerRef.nativeElement.removeEventListener('scroll', this.handleScroll);
   }
 
-  /**
-   * Scroll-Handler: Ab einer gewissen Scroll-Position -> showSocialMedia = false
-   */
   handleScroll = (): void => {
     const threshold = this.scrollContainerRef.nativeElement.clientWidth * this.thresholdFactor;
     const currentScroll = this.scrollContainerRef.nativeElement.scrollLeft;
@@ -81,4 +81,12 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       this.showSocialMedia = true;
     }
   };
+
+  // Sprachumschaltung auf App-Ebene
+  changeLang(lang: 'DE' | 'EN') {
+    this.activeLang = lang;
+    console.log(`Sprache gewechselt zu: ${lang}`);
+    // Hier könntest du z. B. einen i18n-Service aufrufen,
+    // oder andere globale Aktionen für die Sprachwahl einbinden.
+  }
 }

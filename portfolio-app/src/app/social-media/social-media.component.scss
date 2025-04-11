@@ -10,8 +10,6 @@
   z-index: 2;
   background: transparent;
 
-  /* Icons und Language-Switch in einer Zeile,
-     .social-icons links, Language-Switch rechts */
   .social-icons {
     display: flex;
     align-items: center;
@@ -23,12 +21,12 @@
       .icon {
         width: 30px;
         height: 30px;
-        color: #fff; /* Standardfarbe Weiß */
+        color: #fff;
         transition: color 0.3s;
       }
 
       &:hover .icon {
-        color: #B5E93B; /* Hover-Farbe Grün */
+        color: #B5E93B;
       }
     }
   }
@@ -43,13 +41,21 @@
     .separator {
       font-weight: 700;
       font-size: 18px;
-      color: #fff;
       cursor: pointer;
+      transition: color 0.3s;
+      color: #fff;
+    }
+
+    .lang.active {
+      color: #B5E93B; /* Aktive Sprache in Grün */
+    }
+
+    .lang:not(.active):hover {
+      color: #B5E93B; /* Hover-Effekt für nicht aktive Sprache */
     }
   }
 }
 
-/* Der Host ist das <app-social-media> selbst */
 :host {
   opacity: 1;
   transition: opacity 0.5s;

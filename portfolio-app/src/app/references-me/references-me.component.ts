@@ -5,24 +5,22 @@ import { Component, Input, ElementRef } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './references-me.component.html',
-  styleUrl: './references-me.component.scss'
+  styleUrls: ['./references-me.component.scss']
 })
 export class ReferencesMeComponent {
 
-  // 3) Wir erwarten, dass der Parent (AppComponent)
-  // uns einen ElementRef<HTMLDivElement> übergibt
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
 
   scrollNext() {
-    // Prüfen, ob wir tatsächlich den Container haben
     if (!this.scrollEl?.nativeElement) {
       console.warn('No nativeElement on scrollEl');
       return;
     }
 
-    // Dann scrollen wir den Container um eine Bildschirmbreite weiter
+    // Passe diesen Wert an die Breite deiner Boxen an,
+    // damit jede Pfeil-Klick-Aktion genau eine Box weiter scrollt.
     this.scrollEl.nativeElement.scrollBy({
-      left: window.innerWidth,
+      left: 300,
       behavior: 'smooth'
     });
   }
