@@ -61,6 +61,7 @@
   font-size: 32px;
   line-height: 120%;
   color: #B5E93B;
+  display: none;
 }
 
 .arrow-right {
@@ -113,6 +114,7 @@
   }
 
   .location {
+    display: block;
     position: static;
     transform: none;
     font-size: 1.4rem;
