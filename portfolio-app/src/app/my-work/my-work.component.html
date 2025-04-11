@@ -7,6 +7,7 @@
   <div class="project-card">
     <div class="card-bg"></div>
     <div class="card-content">
+
       <div class="left-column">
         <div class="card-header">
           <div class="project-number">1</div>
@@ -22,29 +23,34 @@
           </p>
         </div>
 
-        <!-- Info-Blocks, die NUR sichtbar sind, wenn expanded -->
-        <div class="info-block" *ngIf="isProject1Expanded">
-          <h4>Technologies I have used</h4>
-          <p>JavaScript, HTML, CSS, Firebase</p>
-        </div>
+        <!-- Alle weiteren Info-Blöcke in expanded-content (nur Mobile einklappbar) -->
+        <div class="expanded-content" [class.is-expanded]="isProject1Expanded">
+          <div class="info-block">
+            <h4>Technologies I have used</h4>
+            <p>JavaScript, HTML, CSS, Firebase</p>
+          </div>
 
-        <div class="info-block" *ngIf="isProject1Expanded">
-          <h4>What I have learned</h4>
-          <p>
-            I improved my knowledge of JSDoc, wrote cleaner code,
-            and successfully collaborated with a small team
-            on a shared codebase.
-          </p>
+          <div class="info-block">
+            <h4>What I have learned</h4>
+            <p>
+              I improved my knowledge of JSDoc, wrote cleaner code,
+              and successfully collaborated with a small team
+              on a shared codebase.
+            </p>
+          </div>
         </div>
       </div>
 
-      <div class="right-section">
-        <div class="screenshot">
-          <img src="assets/img/screenshot-join.png" alt="Join Screenshot" />
-        </div>
-        <div class="buttons">
-          <button class="btn-secondary">GitHub</button>
-          <button class="btn-primary">Live Test</button>
+      <!-- Dieser right-section ebenfalls nur im Mobile ein-/ausblendbar -->
+      <div class="expanded-content" [class.is-expanded]="isProject1Expanded">
+        <div class="right-section">
+          <div class="screenshot">
+            <img src="assets/img/screenshot-join.png" alt="Join Screenshot" />
+          </div>
+          <div class="buttons">
+            <button class="btn-secondary">GitHub</button>
+            <button class="btn-primary">Live Test</button>
+          </div>
         </div>
       </div>
     </div>
@@ -52,10 +58,10 @@
 
   <!-- Show More / Show Less Button für Projekt 1 -->
   <div class="show-more" (click)="toggleExpandCard1()">
-    <!-- Wenn NICHT expanded => „Show me more“ + Pfeil nach unten -->
+    <!-- Nur der Text + Pfeil wechseln (Show me more vs. Show me less) -->
     <ng-container *ngIf="!isProject1Expanded; else showLess1">
       Show me more
-      <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
         <!-- Pfeil nach unten -->
         <path
           d="M0.629035 12.6314L8.55688 0.885022L14.7998 12.7638L0.629035 12.6314Z"
@@ -64,10 +70,9 @@
       </svg>
     </ng-container>
 
-    <!-- Wenn expanded => „Show me less“ + Pfeil nach oben -->
     <ng-template #showLess1>
       Show me less
-      <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
         <!-- Pfeil nach oben -->
         <path
           d="M0.660203 0.828544L14.8316 0.811831L8.49194 12.6392L0.660203 0.828544Z"
@@ -84,6 +89,7 @@
   <div class="project-card">
     <div class="card-bg"></div>
     <div class="card-content">
+
       <div class="left-column">
         <div class="card-header">
           <div class="project-number">2</div>
@@ -99,29 +105,33 @@
           </p>
         </div>
 
-        <!-- Info-Blocks, die NUR sichtbar sind, wenn expanded -->
-        <div class="info-block" *ngIf="isProject2Expanded">
-          <h4>Technologies I have used</h4>
-          <p>JavaScript, OOP, HTML, CSS</p>
-        </div>
+        <!-- Alle weiteren Info-Blöcke in expanded-content -->
+        <div class="expanded-content" [class.is-expanded]="isProject2Expanded">
+          <div class="info-block">
+            <h4>Technologies I have used</h4>
+            <p>JavaScript, OOP, HTML, CSS</p>
+          </div>
 
-        <div class="info-block" *ngIf="isProject2Expanded">
-          <h4>What I have learned</h4>
-          <p>
-            I deepened my skills in OOP and game loops while
-            adding features like player movement, enemy logic,
-            collisions and more.
-          </p>
+          <div class="info-block">
+            <h4>What I have learned</h4>
+            <p>
+              I deepened my skills in OOP and game loops while
+              adding features like player movement, enemy logic,
+              collisions and more.
+            </p>
+          </div>
         </div>
       </div>
 
-      <div class="right-section">
-        <div class="screenshot">
-          <img src="assets/img/screenshot-pollo.png" alt="Pollo Loco Screenshot" />
-        </div>
-        <div class="buttons">
-          <button class="btn-secondary">GitHub</button>
-          <button class="btn-primary">Live Test</button>
+      <div class="expanded-content" [class.is-expanded]="isProject2Expanded">
+        <div class="right-section">
+          <div class="screenshot">
+            <img src="assets/img/screenshot-pollo.png" alt="Pollo Loco Screenshot" />
+          </div>
+          <div class="buttons">
+            <button class="btn-secondary">GitHub</button>
+            <button class="btn-primary">Live Test</button>
+          </div>
         </div>
       </div>
     </div>
@@ -129,11 +139,9 @@
 
   <!-- Show More / Show Less Button für Projekt 2 -->
   <div class="show-more" (click)="toggleExpandCard2()">
-    <!-- Wenn NICHT expanded => „Show me more“ + Pfeil nach unten -->
     <ng-container *ngIf="!isProject2Expanded; else showLess2">
       Show me more
-      <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Pfeil nach unten -->
+      <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
         <path
           d="M0.629035 12.6314L8.55688 0.885022L14.7998 12.7638L0.629035 12.6314Z"
           fill="#B5E93B"
@@ -141,11 +149,9 @@
       </svg>
     </ng-container>
 
-    <!-- Wenn expanded => „Show me less“ + Pfeil nach oben -->
     <ng-template #showLess2>
       Show me less
-      <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Pfeil nach oben -->
+      <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
         <path
           d="M0.660203 0.828544L14.8316 0.811831L8.49194 12.6392L0.660203 0.828544Z"
           fill="#B5E93B"

@@ -197,6 +197,25 @@
         fill: #B5E93B;
       }
     }
+
+    /* =========================================
+       expanded-content: Desktop vs Mobile
+       -----------------------------------------
+       Desktop => immer sichtbar
+       Mobile => nur sichtbar wenn .is-expanded
+    */
+    .expanded-content {
+      display: block; /* Desktop default -> immer an */
+
+      /* Mobile: ausblenden, erst durch .is-expanded sichtbar */
+      @media (max-width: 800px) {
+        display: none;
+
+        &.is-expanded {
+          display: block;
+        }
+      }
+    }
   }
 
   /* =========================================
