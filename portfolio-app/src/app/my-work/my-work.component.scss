@@ -182,10 +182,9 @@
        "Show me more" – Button (außerhalb der Karte)
        ========================================= */
     .show-more {
+      /* Standard: im Desktop ausblenden */
+      display: none;
       margin-top: 1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
       color: #B5E93B;
       cursor: pointer;
       font-size: 1rem;
@@ -234,8 +233,6 @@
       }
 
       .project-card {
-        /* Wichtig: Weiterhin position: relative lassen,
-           damit .card-bg nur in der jeweiligen Karte bleibt */
         position: relative;
         width: 100%;
         min-height: auto;
@@ -244,8 +241,6 @@
         background: transparent;
 
         .card-bg {
-          /* Du kannst es auf absolute lassen,
-             damit die grüne Fläche nicht verloren geht */
           position: absolute;
           top: 0;
           left: 0;
@@ -313,12 +308,14 @@
         display: none;
       }
 
-      /* "Show me more" bleibt schlicht, kann aber
-         z.B. zentriert oder umgestylt werden, wenn gewünscht */
+      /* "Show me more" – jetzt anzeigen und zentrieren */
       .show-more {
-        font-size: 1rem;
-        margin-left: 1.5rem; /* falls du es links eingerückt möchtest */
-        /* oder z.B. margin-left: 0; text-align: center; etc. */
+        display: inline-flex;       /* statt none */
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        margin: 1rem auto 0 auto;  /* auto links/rechts => zentriert */
+        text-decoration: underline;
       }
     }
   }
