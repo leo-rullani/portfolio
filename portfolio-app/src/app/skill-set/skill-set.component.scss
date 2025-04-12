@@ -32,7 +32,7 @@
       font-size: 60px;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
-      -webkit-text-stroke: 2px #B5E93B; /* Grüner Rahmen */
+      -webkit-text-stroke: 1px #B5E93B; /* Grüner Rahmen */
     }
   }
 
@@ -179,7 +179,7 @@
       writing-mode: initial;
       font-size: 2rem;
       color: transparent;
-      -webkit-text-stroke: 2px #B5E93B;
+      -webkit-text-stroke: 1px #B5E93B;
       margin: 0;
       text-align: center;
     }

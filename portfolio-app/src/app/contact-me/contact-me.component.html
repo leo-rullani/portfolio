@@ -1,5 +1,5 @@
 <div class="contact-section">
-  <!-- Vertikaler Titel links -->
+  <!-- Vertikaler Titel links (Desktop) -->
   <div class="vertical-title">Contact me</div>
 
   <!-- Haupt-Container (zwei Spalten) -->
@@ -36,6 +36,27 @@
         <!-- Button -->
         <button class="send-button">Send</button>
       </div>
+
+      <!-- Pfeil nach oben (für Mobile). Im Desktop blenden wir ihn per SCSS aus. -->
+      <div class="arrow-up" (click)="scrollToTop()">
+        <svg
+          width="16"
+          height="46"
+          viewBox="0 0 16 46"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8.7071 0.292892C8.31658 -0.0976296 7.68341 -0.0976295 7.29289 0.292892L0.92893 6.65685C0.538406 7.04738 0.538406 7.68054 0.92893 8.07107C1.31945 8.46159 1.95262 8.46159 2.34314 8.07107L8 2.41422L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.7071 0.292892ZM9 46L9 1L7 1L7 46L9 46Z"
+            fill="#B5E93B"
+          />
+        </svg>
+      </div>
+
+      <!-- Platzhalter für Social-Media-Icons -->
+      <div class="social-media-placeholder">
+        <!-- später fügst du deine Social Media Icons hier ein -->
+      </div>
     </div>
 
     <!-- Rechte Spalte: Infos + Pfeil + Footer -->
@@ -49,14 +70,36 @@
           advance my skills for meaningful impact. I remain confident in growth daily.
         </p>
 
-        <!-- Kontakt-Daten (Mail, Tel) -->
+        <!-- Kontakt-Daten (Mail, Tel) mit Icons -->
         <div class="contact-data">
-          <p><strong>E-mail:</strong> leugzimrullani&#64;mail.com</p>
-          <p><strong>Tel:</strong> +41 76 488 56 10</p>
+          <p>
+            <span class="icon">
+              <!-- E-Mail SVG -->
+              <svg width="23" height="30" viewBox="0 0 23 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M20.6041 5H9.0272C8.23128 5 7.58731 5.99831 7.58731 7.21846L7.58008 20.5292C7.58008 21.7494 8.23128 22.7477 9.0272 22.7477H20.6041C21.4001 22.7477 22.0513 21.7494 22.0513 20.5292V7.21846C22.0513 5.99831 21.4001 5 20.6041 5ZM20.3147 9.71423L15.1992 14.617C14.9676 14.8389 14.6637 14.8389 14.4322 14.617L9.31662 9.71423C9.13573 9.53675 9.0272 9.23726 9.0272 8.91559C9.0272 8.1724 9.55539 7.72871 9.96782 8.11694L14.8157 12.7646L19.6635 8.11694C20.0759 7.72871 20.6041 8.1724 20.6041 8.91559C20.6041 9.23726 20.4956 9.53675 20.3147 9.71423Z"
+                  fill="#FFFDFD"
+                />
+              </svg>
+            </span>
+            E-mail: <a href="mailto:leugzimrullani@mail.com">leugzimrullani&#64;mail.com</a>
+          </p>
+          <p>
+            <span class="icon">
+              <!-- Telefon SVG -->
+              <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M5.29197 11.5079C6.44299 14.0016 8.29742 16.0371 10.5595 17.3148L12.318 15.3763C12.5338 15.1383 12.8535 15.059 13.1333 15.1648C14.0285 15.4908 14.9957 15.667 15.9869 15.667C16.4265 15.667 16.7862 16.0636 16.7862 16.5482V19.6235C16.7862 20.1082 16.4265 20.5047 15.9869 20.5047C8.48126 20.5047 2.39844 13.799 2.39844 5.52473C2.39844 5.04008 2.75813 4.64355 3.19776 4.64355H5.99538C6.435 4.64355 6.7947 5.04008 6.7947 5.52473C6.7947 6.6262 6.95456 7.68361 7.25031 8.67052C7.33823 8.97893 7.27429 9.32259 7.05048 9.56932L5.29197 11.5079Z"
+                  fill="#FFFDFD"
+                />
+              </svg>
+            </span>
+            Tel: +41 76 488 56 10
+          </p>
         </div>
       </div>
 
-      <!-- Pfeil nach links -->
+      <!-- Pfeil nach links (Desktop) -->
       <div class="arrow-left" (click)="scrollPrev()">
         <svg
           width="113"

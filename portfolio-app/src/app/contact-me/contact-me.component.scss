@@ -1,10 +1,16 @@
 .contact-section {
-  position: relative;
+  /* Mehr Platz oben im Desktop */
+  @media (min-width: 801px) {
+    padding-top: 4rem;
+  }
+
   width: 100%;
   min-height: 100vh;
   font-family: 'Quantico', sans-serif;
   color: #FFFDFD;
+  position: relative;
 
+  /* ===== Titel (Desktop) ===== */
   .vertical-title {
     position: absolute;
     top: 5%;
@@ -14,115 +20,138 @@
     color: transparent;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    -webkit-text-stroke: 2px #B5E93B;
+    -webkit-text-stroke: 1px #B5E93B;
   }
 
+  /* Arrow-up nur in Mobile sichtbar */
+  .arrow-up {
+    display: none;
+  }
+
+  /* ===== Container (Desktop: 2 Spalten) ===== */
   .contact-container {
     display: flex;
-    justify-content: center;
     align-items: flex-start;
-    padding: 2rem;
-    margin: 0 auto;
+    gap: 1.5rem; /* Weniger Gap => Panel rechts näher am Rand */
     max-width: 1100px;
-    gap: 2rem;
+    margin: 0 auto;
+    padding: 2rem;
     flex-wrap: wrap;
+    justify-content: flex-start;
+
+    @media (min-width: 801px) {
+      /* Desktop: Spalten weit auseinander */
+      justify-content: space-between;
+    }
   }
 
+  /* ===== Linke Spalte: Formular ===== */
   .contact-form-area {
     flex: 1 1 450px;
     display: flex;
     flex-direction: column;
-  }
 
-  .contact-form {
-    position: relative;
-    padding: 1rem;
-    box-sizing: border-box;
-
-    .input-box {
-      width: 100%;
-      border: 1px solid #B5E93B;
-      border-radius: 30px;
-      height: 60px;
-      margin-bottom: 1rem;
-      position: relative;
-
-      .placeholder {
-        position: absolute;
-        top: 21px;
-        left: 25px;
-        font-size: 14px;
-        color: #D3ED97;
-        opacity: 0.4;
-      }
-    }
-
-    .message-field {
-      height: 200px;
-    }
-
-    .privacy-area {
-      margin: 1rem 0;
+    .contact-form {
+      /* Button nach rechts (Desktop & Mobile) */
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      flex-direction: column;
+      align-items: flex-end;
+      box-sizing: border-box;
+      position: relative;
+      padding: 1rem;
 
-      input[type="checkbox"] {
-        width: 20px;
-        height: 20px;
+      .input-box {
+        align-self: stretch; /* 100% Breite */
+        border: 1px solid #B5E93B;
+        border-radius: 30px;
+        height: 60px;
+        margin-bottom: 1rem;
+        position: relative;
+
+        .placeholder {
+          position: absolute;
+          top: 21px;
+          left: 25px;
+          font-size: 14px;
+          color: #D3ED97;
+          opacity: 0.4;
+        }
+      }
+
+      .message-field {
+        height: 200px;
+      }
+
+      .privacy-area {
+        align-self: stretch;
+        margin: 1rem 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        input[type="checkbox"] {
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+          accent-color: #B5E93B;
+
+          &:hover {
+            background-color: rgba(158, 157, 157, 0.4);
+          }
+        }
+
+        label {
+          font-size: 14px;
+          color: #B5E93B;
+
+          .privacy-policy-link {
+            color: #fff;
+            text-decoration: none;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      .send-button {
+        width: 100px;
+        height: 43px;
+        border-radius: 30px;
+        border: none;
+        background: #9E9D9D;
+        color: #4A4A4A;
         cursor: pointer;
-        accent-color: #B5E93B;
+        font-size: 14px;
 
         &:hover {
-          background-color: rgba(158, 157, 157, 0.4);
+          opacity: 0.85;
         }
-      }
-
-      label {
-        font-size: 14px;
-        color: #B5E93B;
-
-        .privacy-policy {
-          color: #FFFDFD;
-          text-decoration: underline;
-          cursor: pointer;
-        }
-      }
-    }
-
-    .send-button {
-      width: 100px;
-      height: 43px;
-      border-radius: 30px;
-      border: none;
-      background: #9E9D9D;
-      color: #4A4A4A;
-      cursor: pointer;
-      font-size: 14px;
-
-      &:hover {
-        opacity: 0.85;
       }
     }
   }
 
+  /* ===== Rechte Spalte: Intro + Daten + Footer ===== */
   .contact-details-area {
     flex: 1 1 450px;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    align-items: flex-start;
+
+    @media (min-width: 801px) {
+      align-items: flex-end;
+      text-align: right;
+    }
   }
 
   .intro-text {
-    text-align: left;
-
+    text-align: left; /* Mobile default; Desktop -> text-align: right via parent */
     h3 {
       color: #B5E93B;
       margin-bottom: 1rem;
       font-size: 1.8rem;
     }
-
     p {
       font-size: 18px;
       line-height: 1.4;
@@ -131,23 +160,68 @@
     }
   }
 
+  /*
+     NEU: Icons + Text
+     p { display:flex; align-items:center }
+     .icon { inline-flex + vertical-align middle }
+  */
   .contact-data {
     text-align: left;
 
     p {
+      /* Damit Icon & Text auf einer Linie sitzen */
+      display: flex;
+      align-items: center;
       font-size: 18px;
       margin: 0.2rem 0;
 
       strong {
         color: #B5E93B;
       }
+      a {
+        text-decoration: none;
+        color: #fff;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 
-  .arrow-left {
-    display: none;
+  .icon {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+
+    svg {
+      width: 20px;
+      height: auto;
+      fill: #fff;
+      display: block;
+    }
   }
 
+  /* ===== Arrow-Left (Desktop) ===== */
+  .arrow-left {
+    display: none;
+
+    @media (min-width: 801px) {
+      display: block;
+      cursor: pointer;
+      width: 113px;
+      height: 38px;
+
+      svg {
+        transform: scaleX(-1);
+        width: 100%;
+        height: 100%;
+        fill: #B5E93B;
+      }
+    }
+  }
+
+  /* ===== Footer ===== */
   .footer-info {
     text-align: center;
     display: flex;
@@ -167,51 +241,13 @@
         color: #B5E93B;
       }
     }
-
-    /* Weitere Footer-Styles bleiben unverändert */
-    /* Hier kein position: fixed, damit es nur ab < 800px genutzt wird */
   }
 
+  /* ===== Right Gradient (Desktop) ===== */
   .right-gradient {
     display: none;
-  }
 
-  /* =========== Desktop / ab 801px =========== */
-  @media (min-width: 801px) {
-    .arrow-left {
-      display: block;
-      cursor: pointer;
-      width: 113px;
-      height: 38px;
-
-      svg {
-        transform: scaleX(-1);
-        width: 100%;
-        height: 100%;
-        fill: #B5E93B;
-      }
-    }
-
-    .footer-info {
-      align-items: flex-end;
-      text-align: right;
-    }
-
-    .contact-container {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-
-    .contact-details-area {
-      align-items: flex-end;
-    }
-
-    .intro-text,
-    .contact-data {
-      text-align: right;
-    }
-
-    .right-gradient {
+    @media (min-width: 801px) {
       display: block;
       position: absolute;
       right: 0;
@@ -223,31 +259,58 @@
     }
   }
 
-  /* =========== NEU: Mobile / bis 800px =========== */
+  /* ===============================================
+     MOBILE / bis 800px
+     =============================================== */
   @media (max-width: 800px) {
-    /* NEU: Unten ausreichend Platz schaffen,
-       damit der Footer nicht über den Inhalt rutscht */
-    .contact-container {
-      padding-bottom: 80px; /* anpassen nach Bedarf */
+    .vertical-title {
+      writing-mode: initial;
+      transform: none;
+      -webkit-text-stroke: 1;
+      color: transparent;
+      font-size: 32px;
+      top: 10px;
+      left: 10px;
     }
 
-    /* NEU: Footer als grüner Balken unten fixieren */
+    /* Reihenfolge: Intro(1) -> Form(2) -> Arrow-Up(3) -> Social(4) -> Footer(5) */
+    .contact-container {
+      padding-bottom: 120px; /* Platz für Footer */
+    }
+    .contact-details-area {
+      order: 1;
+    }
+    .contact-form-area {
+      order: 2;
+    }
+    .arrow-up {
+      display: flex;
+      justify-content: center;
+      margin: 3rem 0;
+      order: 3;
+    }
+    .arrow-left {
+      display: none;
+    }
+    .social-media-placeholder {
+      order: 4;
+      margin: 1rem 0;
+    }
+
+    /* Send-Button bleibt per align-self: flex-end; */
     .footer-info {
+      order: 5;
       position: absolute;
       left: 0;
       bottom: 0;
       width: 100%;
-      /* Beispiel-Farbe: gleiche Farbgebung wie Akzente (#B5E93B)
-         oder ein anderer Grünton, z. B. #547800 */
       background-color: #547800;
       padding: 1rem 0;
-      margin-top: 0;  /* überschreibt den margin-top: 2rem */
-      gap: 0.5rem;    /* etwas Abstand zwischen den Links */
-      z-index: 999;   /* sicherstellen, dass der Footer über dem Content liegt */
-
-      /* Falls du willst, dass der Text weiß bleibt:
-         color: #FFFDFD;
-       */
+      margin-top: 0;
+      gap: 0.5rem;
+      z-index: 999;
+      text-align: center;
+      color: #fff;
     }
   }
 }

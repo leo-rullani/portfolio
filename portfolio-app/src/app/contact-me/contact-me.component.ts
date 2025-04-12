@@ -6,8 +6,6 @@ import { RouterLink } from '@angular/router'; // <== NEU
   standalone: true,
   templateUrl: './contact-me.component.html',
   styleUrls: ['./contact-me.component.scss'],
-
-  // Wichtig: RouterLink in "imports"
   imports: [
     RouterLink
   ]
@@ -24,6 +22,14 @@ export class ContactMeComponent {
     /* Horizontales Scrollen: eine Viewportbreite nach links */
     this.scrollEl.nativeElement.scrollBy({
       left: -window.innerWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  // NEU: Scrollt die Seite zum Anfang
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
       behavior: 'smooth'
     });
   }
