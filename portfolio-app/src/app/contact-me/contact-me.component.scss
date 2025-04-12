@@ -1,3 +1,14 @@
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end !important;
+  text-align: right !important;
+}
+.privacy-policy-link, .legal-notice-link, .copyright {
+  text-align: right;
+  align-items: flex-end;
+}
+
 .contact-section {
 
   @media (min-width: 801px) {
@@ -13,7 +24,7 @@
   /* ===== Titel (Desktop) ===== */
   .vertical-title {
     position: absolute;
-    top: 5%;
+    top: 10%;
     left: 40px;
     font-weight: 700;
     font-size: 60px;
@@ -34,7 +45,7 @@
     gap: 1.5rem;
     max-width: 1800px;
     margin: 0 auto;
-    padding: 2rem;
+    padding-left: 16rem;
     flex-wrap: wrap;
     justify-content: flex-start;
 
@@ -48,6 +59,8 @@
     flex: 1 1 450px;
     display: flex;
     flex-direction: column;
+    margin-top: 32px;
+    max-width: 35%;
 
     .contact-form {
       display: flex;
@@ -55,7 +68,6 @@
       align-items: flex-end;
       box-sizing: border-box;
       position: relative;
-      padding: 1rem;
 
       .input-box {
         align-self: stretch;
@@ -158,9 +170,9 @@
     }
 
     p {
-      font-size: 18px;
+      font-size: 16px;
       line-height: 1.4;
-      color: #D3ED97;
+      color: white;
       margin-bottom: 1rem;
     }
   }
