@@ -1,5 +1,5 @@
 import { Component, Input, ElementRef } from '@angular/core';
-import { RouterLink } from '@angular/router'; // <== NEU
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'contact-me',
@@ -19,14 +19,14 @@ export class ContactMeComponent {
       console.warn('No nativeElement on scrollEl');
       return;
     }
-    /* Horizontales Scrollen: eine Viewportbreite nach links */
-    this.scrollEl.nativeElement.scrollBy({
-      left: -window.innerWidth,
+
+    // ❗ Geändert: Statt nur um 1 Viewportbreite scrollen → Ganz nach links
+    this.scrollEl.nativeElement.scrollTo({
+      left: 0,
       behavior: 'smooth'
     });
   }
 
-  // NEU: Scrollt die Seite zum Anfang
   scrollToTop() {
     window.scrollTo({
       top: 0,

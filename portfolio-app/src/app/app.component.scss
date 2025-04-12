@@ -14,6 +14,7 @@ html, body {
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
+  scrollbar-width: none;
   display: flex; /* Slides nebeneinander */
 
   /* =========== Breakpoint für max. 800px =========== */
