@@ -74,6 +74,28 @@
       }
     }
   }
+
+  /*
+    BURGER-MENÜ: Zunächst im Desktop-Layout ausgeblendet.
+    Später im Mobile-Layout (unter 800px) sichtbar.
+  */
+  .burger-menu {
+    display: none; /* Standard: unsichtbar (für Desktop) */
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+
+    /* Drei Linien übereinander */
+    .line {
+      width: 30px;
+      height: 2px;
+      background: #4A4A4A;
+      margin: 4px 0;
+    }
+  }
 }
 
 /* ================== Breakpoint: <= 800px => horizontales Top-Bar ================== */
@@ -143,5 +165,16 @@
         transform: scale(1.15);
       }
     }
+  }
+
+  /*  BURGER-MENÜ => nun sichtbar im Mobile */
+  .menu-system .burger-menu {
+    display: flex; /* Zeig das Symbol im Mobile */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 20px;
+    top: 15px;
   }
 }
