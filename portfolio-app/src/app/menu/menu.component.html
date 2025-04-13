@@ -1,3 +1,4 @@
+<!-- NAV: Desktop-Menü links + Burger (im Mobile) -->
 <nav class="menu-system">
   <div class="menu-bg"></div>
   <div class="shadow-menu"></div>
@@ -14,10 +15,37 @@
     <span (click)="scrollToContact()">Contact</span>
   </div>
 
-  <!-- Burger-Menü (nur unter 800px sichtbar, noch ohne Funktion) -->
-  <div class="burger-menu">
+  <!-- Burger-Menü für Mobile -->
+  <div class="burger-menu" (click)="toggleMenu()">
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
   </div>
 </nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" [ngClass]="{'show': isOverlayOpen}">
+  <!-- Grüne BG -->
+  <div class="overlay-bg"></div>
+
+  <!-- Close-Button (X) -->
+  <div class="close-btn" (click)="toggleMenu()">
+    <div class="line1"></div>
+    <div class="line2"></div>
+  </div>
+
+  <!-- Menü-Items in einer Spalte -->
+  <div class="menu-items-column">
+    <span (click)="onWhyMe()">Why me</span>
+    <span (click)="onSkillSet()">My Skill Set</span>
+    <span (click)="onMyWork()">My Work</span>
+    <span (click)="onContact()">Contact me</span>
+
+    <!-- Sprache umschalten (DE | EN) -->
+    <div class="change-language">
+      <span>DE</span>
+      <span>|</span>
+      <span>EN</span>
+    </div>
+  </div>
+</div>

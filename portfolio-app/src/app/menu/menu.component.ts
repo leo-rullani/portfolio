@@ -1,13 +1,25 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [],
+
+  // Wichtig: CommonModule importieren, damit [ngClass] etc. funktionieren!
+  imports: [CommonModule],
+
   templateUrl: './menu.component.html',
-  styleUrl: './menu.component.scss' // <--- Falls dein Build "styleUrls" nicht unterstützt
+  styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
+
+  // Steuert das Overlay im Mobile
+  isOverlayOpen = false;
+
+  // Burger klick => Overlay an/aus
+  toggleMenu(): void {
+    this.isOverlayOpen = !this.isOverlayOpen;
+  }
 
   /**
    * 1) Why me -> about-me (Index 1)
@@ -15,7 +27,6 @@ export class MenuComponent {
   scrollToAboutMe(): void {
     const container = document.querySelector('.container') as HTMLElement | null;
     if (!container) return;
-    // Scroll auf Slide 1 (about-me)
     container.scrollTo({
       left: 1 * window.innerWidth,
       behavior: 'smooth'
@@ -28,7 +39,6 @@ export class MenuComponent {
   scrollToSkills(): void {
     const container = document.querySelector('.container') as HTMLElement | null;
     if (!container) return;
-    // Slide 2 (skill-set)
     container.scrollTo({
       left: 2 * window.innerWidth,
       behavior: 'smooth'
@@ -41,7 +51,6 @@ export class MenuComponent {
   scrollToMyWork(): void {
     const container = document.querySelector('.container') as HTMLElement | null;
     if (!container) return;
-    // Slide 3 (my-work)
     container.scrollTo({
       left: 3 * window.innerWidth,
       behavior: 'smooth'
@@ -49,16 +58,38 @@ export class MenuComponent {
   }
 
   /**
-   * 4) Contact -> contact-me (Index 5, da 4 evtl. references?)
+   * 4) Contact -> contact-me (Index 5)
    */
   scrollToContact(): void {
     const container = document.querySelector('.container') as HTMLElement | null;
     if (!container) return;
-    // Slide 5 (contact-me). Falls du references (Index 4) hast,
-    // und contact-me ist 5.
     container.scrollTo({
       left: 5 * window.innerWidth,
       behavior: 'smooth'
     });
+  }
+
+  // =========================================================
+  // Die Klick-Handler im Overlay, damit sich das Overlay
+  // nach dem Scroll wieder schließt
+  // =========================================================
+  onWhyMe(): void {
+    this.scrollToAboutMe();
+    this.isOverlayOpen = false;
+  }
+
+  onSkillSet(): void {
+    this.scrollToSkills();
+    this.isOverlayOpen = false;
+  }
+
+  onMyWork(): void {
+    this.scrollToMyWork();
+    this.isOverlayOpen = false;
+  }
+
+  onContact(): void {
+    this.scrollToContact();
+    this.isOverlayOpen = false;
   }
 }
