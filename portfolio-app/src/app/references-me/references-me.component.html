@@ -2,14 +2,12 @@
   <!-- Vertikaler Titel links, rotiert -->
   <div class="vertical-title">References</div>
 
-  <!-- Container für 2 Spalten mit je 3 Boxen -->
-  <!-- Nur minimaler Eingriff: style="overflow-x: auto;"
-       damit .references-container eigenständig scrollen kann -->
-  <div class="references-container" #scrollEl style="overflow-x: auto;">
-
+  <!-- Scrollbarer Container für Referenzen -->
+  <!-- WICHTIG: Hier heißt der lokale Ref jetzt #localScrollEl
+       statt #scrollEl, damit es nicht mit dem @Input scrollEl kollidiert -->
+  <div class="references-container" #localScrollEl>
     <!-- Spalte 1 mit 3 Boxen -->
     <div class="references-column">
-      <!-- Box 1 -->
       <div class="reference-box">
         <p class="quote">
           “Leo is a reliable and friendly person. Work in a structured way
@@ -20,7 +18,6 @@
         <div class="project">Project Join</div>
       </div>
 
-      <!-- Box 2 -->
       <div class="reference-box">
         <p class="quote">
           “He is a trustworthy teamplayer and can cope with the stress of deadlines.
@@ -31,7 +28,6 @@
         <div class="project">Project SFL</div>
       </div>
 
-      <!-- Box 3 -->
       <div class="reference-box">
         <p class="quote">
           “Leo had to develop, format and deliver content
@@ -46,7 +42,6 @@
 
     <!-- Spalte 2 mit 3 Boxen -->
     <div class="references-column">
-      <!-- Box 4 -->
       <div class="reference-box">
         <p class="quote">
           “He demonstrated good problem-solving skills and
@@ -57,7 +52,6 @@
         <div class="project">Project Pollo Loco</div>
       </div>
 
-      <!-- Box 5 -->
       <div class="reference-box">
         <p class="quote">
           “We worked together on multiple sprints.
@@ -68,7 +62,6 @@
         <div class="project">Project SFL</div>
       </div>
 
-      <!-- Box 6 -->
       <div class="reference-box">
         <p class="quote">
           “He is a reliable and friendly person,
@@ -79,7 +72,6 @@
         <div class="project">Project SPEAT</div>
       </div>
     </div>
-
   </div>
 
   <!-- Pfeil rechts -->

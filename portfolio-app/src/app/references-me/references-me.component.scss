@@ -114,17 +114,16 @@
       -webkit-text-stroke: 1px #B5E93B;
     }
 
-    /* Ermöglicht horizontales Scrollen der Spalten */
     .references-container {
       display: flex;
       flex-direction: row;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       gap: 1rem;
-      /* white-space: nowrap;  Optional, falls du gar kein Umbruch willst */
+      scroll-snap-type: x mandatory;
+      scroll-padding: 1rem;
     }
 
-    /* Jede Spalte wird nebeneinander angezeigt */
     .references-column {
       display: flex;
       flex-direction: row;
@@ -133,16 +132,15 @@
     }
 
     .reference-box {
-      position: relative;
       flex: 0 0 auto;
-      width: 70vw;         /* ca. 70% der Bildschirmbreite */
-      max-width: 320px;    /* begrenze nach oben */
+      width: 75vw;
+      max-width: none;
       height: auto;
       padding: 1rem;
       border-radius: 20px;
+      margin-right: 1rem;
+      scroll-snap-align: start;
 
-      /* Aufhebung des absoluten Positionierens,
-         damit Inhalte sauber im Box-Fluss angezeigt werden */
       .quote,
       .divider-line,
       .name,
@@ -182,5 +180,5 @@
     .arrow-right {
       display: none;
     }
-}
+  }
 }

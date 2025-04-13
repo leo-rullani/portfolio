@@ -3,12 +3,17 @@
   <div class="app-background"></div>
 
   <app-menu></app-menu>
+
+  <!-- Andere Components, die ggf. [scrollEl] benötigen -->
   <app-profile class="slide" [scrollEl]="scrollContainerRef"></app-profile>
   <app-social-media [class.hidden]="!showSocialMedia"></app-social-media>
   <about-me class="slide" [scrollEl]="scrollContainerRef"></about-me>
   <skill-set class="slide" [scrollEl]="scrollContainerRef"></skill-set>
   <my-work class="slide" [scrollEl]="scrollContainerRef"></my-work>
+
+  <!-- References-Me ebenfalls mit [scrollEl] -->
   <references-me class="slide" [scrollEl]="scrollContainerRef"></references-me>
+
   <contact-me class="slide" [scrollEl]="scrollContainerRef"></contact-me>
 
   <router-outlet></router-outlet>

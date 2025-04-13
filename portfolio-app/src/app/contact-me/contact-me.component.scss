@@ -1,16 +1,4 @@
-.footer-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end !important;
-  text-align: right !important;
-}
-.privacy-policy-link, .legal-notice-link, .copyright {
-  text-align: right;
-  align-items: flex-end;
-}
-
 .contact-section {
-
   @media (min-width: 801px) {
     padding-top: 4rem;
   }
@@ -21,10 +9,9 @@
   color: #FFFDFD;
   position: relative;
 
-  /* ===== Titel (Desktop) ===== */
   .vertical-title {
     position: absolute;
-    top: 10%;
+    top: 13%;
     left: 40px;
     font-weight: 700;
     font-size: 60px;
@@ -38,29 +25,30 @@
     display: none;
   }
 
-  /* ===== Container (Desktop: 2 Spalten) ===== */
   .contact-container {
     display: flex;
     align-items: flex-start;
     gap: 1.5rem;
     max-width: 1800px;
     margin: 0 auto;
-    padding-left: 16rem;
+    padding: 2rem;
     flex-wrap: wrap;
-    justify-content: flex-start;
-
-    @media (min-width: 801px) {
-      justify-content: space-between;
-    }
+    justify-content: space-between;
   }
 
-  /* ===== Linke Spalte: Formular ===== */
   .contact-form-area {
-    flex: 1 1 450px;
     display: flex;
     flex-direction: column;
     margin-top: 32px;
-    max-width: 35%;
+
+    @media (min-width: 801px) {
+      width: 35%;
+      flex: none;
+    }
+
+    @media (max-width: 800px) {
+      width: 100%;
+    }
 
     .contact-form {
       display: flex;
@@ -141,7 +129,6 @@
     }
   }
 
-  /* ===== Rechte Spalte: Intro + Daten + Footer ===== */
   .contact-details-area {
     flex: 1 1 450px;
     display: flex;
