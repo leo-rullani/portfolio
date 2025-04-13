@@ -111,8 +111,7 @@
     justify-content: flex-start;
     z-index: 999;           /* über dem Inhalt */
 
-    /* Beispiel: Dein Grüner Verlauf fürs Menü oben
-       statt dem .menu-bg/.shadow-menu */
+    /* Grüner Verlauf fürs Menü oben (statt .menu-bg/.shadow-menu) */
     background: linear-gradient(
       160.33deg,
       #B5E93B 50.78%,
@@ -159,7 +158,7 @@
       &:hover {
         transform: scale(1.1);
         -webkit-text-stroke: 0px #B5E93B;
-        color: #4A4A4A; /* oder was du willst */
+        color: #4A4A4A;
       }
       &:active {
         transform: scale(1.15);
@@ -169,7 +168,7 @@
 
   /*  BURGER-MENÜ => nun sichtbar im Mobile */
   .menu-system .burger-menu {
-    display: flex; /* Zeig das Symbol im Mobile */
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -179,122 +178,111 @@
   }
 }
 
-/* Overlay nur im Mobile-Kontext
-   – du kannst es unter @media (max-width: 800px)
-   – oder global.
-   – Hauptsache, es taucht nicht im Desktop auf. */
+/* =========================
+   MOBILE OVERLAY (unter 800px)
+   ========================= */
 
-   .mobile-overlay {
-    /* standardmäßig unsichtbar,
-       per .show wird es sichtbar */
-    display: none;
+.mobile-overlay {
+  /* standardmäßig unsichtbar,
+     per .show wird es sichtbar */
+  display: none;
+
+  /* Wichtig: fixiert an den Viewport
+     (wie der Header) */
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 350px;      /* oder so hoch, wie du brauchst */
+  z-index: 999;
+
+  /* Abgerundete Ecken unten */
+  border-radius: 0 0 30px 30px;
+
+  &.show {
+    display: block;   /* => Overlay sichtbar */
+  }
+
+  /* Grüner Hintergrund */
+  .overlay-bg {
     position: absolute;
     width: 100%;
-    height: 350px;
+    height: 100%;     /* passt sich an .mobile-overlay */
+    left: 0;
+    top: 0;
 
-    /* Figma: links minus 146px / top minus 52px
-       In der Praxis kann man es zentrieren oder
-       z. B. unter dem fixed-Menü platzieren.
-       Wir übernehmen jetzt 1:1 deine Werte:
-    */
-
-    /* Der z-index sollte über deinem Burger liegen */
-    z-index: 999;
-
-    /* Abgerundete Ecken unten */
+    background: linear-gradient(
+      160.33deg,
+      rgba(181, 233, 59, 0.96) 49.55%,
+      rgba(84, 120, 0, 0.96) 119.53%
+    );
     border-radius: 0 0 30px 30px;
+  }
 
-    &.show {
-      display: block; /* => Overlay sichtbar */
-    }
+  /* Das "X" zum Schließen */
+  .close-btn {
+    position: absolute;
+    width: 35px;
+    height: 32px;
+    top: 12px;
+    right: 20px;
+    background: none;
+    cursor: pointer;
 
-    /* Grüner Hintergrund = "Backgraound" (sic) */
-    .overlay-bg {
+    /* Zwei schräg gekreuzte Linien: */
+    .line1,
+    .line2 {
       position: absolute;
-      width: 100%;
-      height: 350px;
-      left: 0;
-      top: 0;
-
-      background: linear-gradient(
-        160.33deg,
-        rgba(181, 233, 59, 0.96) 49.55%,
-        rgba(84, 120, 0, 0.96) 119.53%
-      );
-      border-radius: 0 0 30px 30px;
+      width: 30px;
+      height: 0;
+      left: 2px;
+      top: 14px;
+      border: 2px solid #4A4A4A;
     }
-
-    /* Das "X" zum Schließen */
-    .close-btn {
-      position: absolute;
-      width: 35px;
-      height: 32px;
-      top: 12px;    /*
-                      Je nach Geschmack anpassen,
-                      in Figma stand "top: -36px" (?)
-                      aber dann wäre es außerhalb
-                    */
-      right: 12px;
-      background: none;   /* falls du
-                             reinen Lines-X willst */
-      cursor: pointer;
-
-      /* Zwei schräg gekreuzte Linien: */
-      .line1,
-      .line2 {
-        position: absolute;
-        width: 30px;
-        height: 0;
-        left: 2px;
-        top: 14px; /* halbe Höhe */
-        border: 2px solid #4A4A4A;
-      }
-      .line1 {
-        transform: rotate(45deg);
-      }
-      .line2 {
-        transform: rotate(-45deg);
-      }
+    .line1 {
+      transform: rotate(45deg);
     }
-
-    /* Menü-Spalte (Why me, My skill set …) */
-    .menu-items-column {
-      position: absolute;
-      width: 100%;
-      height: 238px;
-      top: 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      /* so verteilst du Why me … Contact
-         gleichmäßig,
-         oder du nutzt "gap" */
-
-      span {
-        font-family: 'Quantico', sans-serif;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 120%;
-        color: #4A4A4A;
-        text-align: center;
-        cursor: pointer;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-
-      /* Language Switch am unteren Ende */
-      .change-language {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 6px;
-        font-family: 'Quantico', sans-serif;
-        font-size: 18px;
-        line-height: 120%;
-        color: #4A4A4A;
-      }
+    .line2 {
+      transform: rotate(-45deg);
     }
   }
+
+  /* Menü-Spalte (Why me, My skill set …) */
+  .menu-items-column {
+    position: absolute;
+    top: 80px; /* oder 40px, je nach Geschmack */
+    left: 0;
+    width: 100%;
+    height: 238px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      font-family: 'Quantico', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 120%;
+      color: #4A4A4A;
+      text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    /* Language Switch am unteren Ende */
+    .change-language {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 6px;
+      font-family: 'Quantico', sans-serif;
+      font-size: 18px;
+      line-height: 120%;
+      color: #4A4A4A;
+    }
+  }
+}
