@@ -12,31 +12,46 @@ import { CommonModule } from '@angular/common';
 })
 export class ReferencesMeComponent {
 
-  // Erlaubt dem Parent, ein ElementRef zu übergeben
-  // => <references-me [scrollEl]="scrollContainerRef"></references-me>
+  /**
+   * Erlaubt dem Parent, ein ElementRef<HTMLDivElement> zu übergeben
+   * Beispiel:
+   * <references-me [scrollEl]="scrollContainerRef"></references-me>
+   *
+   * Falls du das nicht brauchst, kannst du @Input() gerne entfernen.
+   */
   @Input() scrollEl?: ElementRef<HTMLDivElement>;
 
-  // Falls du zusätzlich einen lokalen ViewChild nutzen willst:
+  /**
+   * Lokaler ViewChild für <div class="references-container" #localScrollEl>
+   * Im Template-HTML:
+   * <div class="references-container" #localScrollEl> ... </div>
+   */
   @ViewChild('localScrollEl', { static: true })
   localScrollEl!: ElementRef<HTMLDivElement>;
 
+  /**
+   * Pfeil (click)="scrollNext()"
+   * -> Scrollt wahlweise den per [scrollEl] übergebenen Container
+   *    oder den lokalen Container.
+   */
   scrollNext(): void {
-    // Wenn du den vom Eltern übergebenen Container scrollen willst:
+    // 1) Falls du den vom Eltern übergebenen Container scrollen willst:
     if (this.scrollEl?.nativeElement) {
       this.scrollEl.nativeElement.scrollBy({
         left: 300,
         behavior: 'smooth'
       });
-    } else {
-      console.warn('No scrollEl or no nativeElement found!');
     }
-
-    // ODER falls du lieber den lokalen Container scrolst:
-    // if (this.localScrollEl?.nativeElement) {
-    //   this.localScrollEl.nativeElement.scrollBy({
-    //     left: 300,
-    //     behavior: 'smooth'
-    //   });
-    // }
+    else {
+      // 2) Ansonsten versuche den lokalen Container zu scrollen:
+      if (this.localScrollEl?.nativeElement) {
+        this.localScrollEl.nativeElement.scrollBy({
+          left: 300,
+          behavior: 'smooth'
+        });
+      } else {
+        console.warn('No localScrollEl or scrollEl found!');
+      }
+    }
   }
 }

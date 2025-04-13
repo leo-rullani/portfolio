@@ -3,7 +3,9 @@
   <div class="vertical-title">References</div>
 
   <!-- Scrollbarer Container für Referenzen -->
+  <!-- WICHTIG: #localScrollEl für das ViewChild in der TS-Datei -->
   <div class="references-container" #localScrollEl>
+
     <!-- Spalte 1 mit 3 Boxen -->
     <div class="references-column">
       <div class="reference-box">
@@ -72,7 +74,7 @@
     </div>
   </div>
 
-  <!-- Pfeil rechts -->
+  <!-- Pfeil rechts, klick => horizontales Scrollen -->
   <div class="arrow-right" (click)="scrollNext()">
     <svg
       width="113"

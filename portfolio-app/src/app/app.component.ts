@@ -9,6 +9,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
+// Import deiner Child-Components
 import { MenuComponent } from './menu/menu.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -25,7 +26,7 @@ import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
   standalone: true,
   imports: [
     CommonModule,
-    RouterOutlet, // Für <router-outlet> in app.component.html
+    RouterOutlet,        // Für <router-outlet> in app.component.html
     MenuComponent,
     SocialMediaComponent,
     ProfileComponent,
@@ -35,7 +36,7 @@ import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
     ReferencesMeComponent,
     ContactMeComponent,
 
-    // Optional, falls du Privacy/Legal direkt einbinden willst
+    // Optional, falls du Privacy/Legal direkt einbinden willst:
     PrivacyPolicyComponent,
     LegalNoticeComponent
   ],
@@ -43,15 +44,24 @@ import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
+
   title = 'portfolio-app';
 
   // Steuert Sichtbarkeit der Social-Media-Leiste beim Scrollen
   showSocialMedia = true;
+
+  // Threshold-Faktor, ab wann Social-Media verborgen wird
   private readonly thresholdFactor = 0.1;
 
-  // Globale Sprachverwaltung (einfacher Ansatz)
+  // Sprachverwaltung (einfacher Ansatz)
   activeLang: 'DE' | 'EN' = 'EN';
 
+  /**
+   * Unser "Globaler" Scrollcontainer in der HTML:
+   * <div class="container" #scrollRef> ... </div>
+   *
+   * => Ggf. an Child-Komponenten via [scrollEl]="scrollContainerRef" weitergeben.
+   */
   @ViewChild('scrollRef', { static: true })
   scrollContainerRef!: ElementRef<HTMLDivElement>;
 
@@ -60,6 +70,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    // Hier hängen wir unser Scroll-Event dran
     if (!this.scrollContainerRef) {
       console.warn('No scroll container found.');
     } else {
@@ -68,9 +79,15 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
+    // Beim Zerstören => Eventlistener entfernen
     this.scrollContainerRef.nativeElement.removeEventListener('scroll', this.handleScroll);
   }
 
+  /**
+   * Reagiert auf horizontales Scrollen:
+   * Ab einer bestimmten Scroll-Distanz (thresholdFactor)
+   * verstecken wir die Social-Media-Leiste.
+   */
   handleScroll = (): void => {
     const threshold = this.scrollContainerRef.nativeElement.clientWidth * this.thresholdFactor;
     const currentScroll = this.scrollContainerRef.nativeElement.scrollLeft;
@@ -82,11 +99,12 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   };
 
-  // Sprachumschaltung auf App-Ebene
+  /**
+   * Globale Sprachumschaltung
+   */
   changeLang(lang: 'DE' | 'EN') {
     this.activeLang = lang;
     console.log(`Sprache gewechselt zu: ${lang}`);
-    // Hier könntest du z. B. einen i18n-Service aufrufen,
-    // oder andere globale Aktionen für die Sprachwahl einbinden.
+    // Hier könntest du ggf. einen I18n-Service aufrufen oder andere globale Aktionen
   }
 }

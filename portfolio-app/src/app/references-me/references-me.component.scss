@@ -96,6 +96,9 @@
   }
 }
 
+/* ==============================
+   Breakpoint: <= 800px (Mobile)
+   ============================== */
 @media (max-width: 800px) {
   .references-section {
     flex-direction: column;
@@ -133,7 +136,9 @@
 
     .reference-box {
       flex: 0 0 auto;
+      /* Standardbreite (wird für Boxen ab der 3. verwendet) */
       width: 75vw;
+
       max-width: none;
       height: auto;
       padding: 1rem;
@@ -141,6 +146,9 @@
       margin-right: 1rem;
       scroll-snap-align: start;
 
+      /*
+         Positionen entfernen => statisches Layout
+      */
       .quote,
       .divider-line,
       .name,
@@ -177,8 +185,22 @@
       }
     }
 
+    /*
+      1. Box => 80% viewport
+      2. Box => 20% viewport
+      Rest => 75% (Standard aus "width: 75vw")
+    */
+    .references-column .reference-box:nth-child(1) {
+      flex: 0 0 80vw;
+      width: auto; /* override the 75vw above */
+    }
+    .references-column .reference-box:nth-child(2) {
+      flex: 0 0 20vw;
+      width: auto;
+    }
+
     .arrow-right {
-      display: none;
+      display: none; /* Pfeil ausblenden in Mobile, da scroll = wisch */
     }
   }
 }
