@@ -37,7 +37,7 @@
         <button class="send-button">Send</button>
       </div>
 
-      <!-- Pfeil nach oben (für Mobile). Im Desktop blenden wir ihn per SCSS aus. -->
+      <!-- Pfeil nach oben (für Mobile). Im Desktop ausgeblendet. -->
       <div class="arrow-up" (click)="scrollToTop()">
         <svg
           width="16"
@@ -55,7 +55,7 @@
 
       <!-- Platzhalter für Social-Media-Icons -->
       <div class="social-media-placeholder">
-        <!-- später fügst du deine Social Media Icons hier ein -->
+        <!-- später deine Social Media Icons hier einfügen -->
       </div>
     </div>
 
@@ -82,7 +82,8 @@
                 />
               </svg>
             </span>
-            E-mail: <a href="mailto:leugzimrullani@mail.com">leugzimrullani&#64;mail.com</a>
+            E-mail:
+            <a href="mailto:leugzimrullani@mail.com">leugzimrullani&#64;mail.com</a>
           </p>
           <p>
             <span class="icon">
@@ -117,10 +118,22 @@
 
       <!-- Footer-Bereich -->
       <div class="footer-info">
-        <a routerLink="/privacy" class="privacy-policy-link">Privacy policy</a>
-        <a routerLink="/legal" class="legal-notice-link">Legal notice</a>
+        <!-- Logo für Mobile (zentriert) -->
+        <img
+          class="footer-logo"
+          src="/assets/img/profil.png"
+          alt="Profile Logo"
+        />
+
+        <!-- Copyright -->
         <div class="copyright">
           © Leo Rullani 2025
+        </div>
+
+        <!-- Links: Legal & Privacy (nebeneinander, zentriert) -->
+        <div class="footer-links">
+          <a routerLink="/legal" class="legal-notice-link">Legal notice</a>
+          <a routerLink="/privacy" class="privacy-policy-link">Privacy policy</a>
         </div>
       </div>
     </div>

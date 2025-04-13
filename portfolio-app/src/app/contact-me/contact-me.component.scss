@@ -127,6 +127,22 @@
         }
       }
     }
+
+    .arrow-up {
+      display: none; // Im Desktop
+
+      @media (max-width: 800px) {
+        display: flex;
+        justify-content: center;
+        margin: 3rem 0;
+        order: 3;
+      }
+    }
+
+    .social-media-placeholder {
+      order: 4; // Nur relevant im Mobile-Kontext
+      margin: 1rem 0;
+    }
   }
 
   .contact-details-area {
@@ -159,7 +175,7 @@
     p {
       font-size: 16px;
       line-height: 1.4;
-      color: white;
+      color: #fff;
       margin-bottom: 1rem;
     }
   }
@@ -180,10 +196,6 @@
 
       @media (min-width: 801px) {
         justify-content: flex-end;
-      }
-
-      strong {
-        color: #B5E93B;
       }
 
       a {
@@ -237,19 +249,42 @@
     gap: 0.3rem;
     margin-top: 2rem;
 
-    .privacy-policy-link,
-    .legal-notice-link {
+    // ----------------
+    // Logo (nur mobil)
+    // ----------------
+    .footer-logo {
+      display: none;       // Im Desktop ausgeblendet
+
+      @media (max-width: 800px) {
+        display: block;    // Ab unter 800px sichtbar
+        width: 80px;
+        height: auto;
+      }
+    }
+
+    .copyright {
       font-size: 14px;
       color: #FFFDFD;
-      cursor: pointer;
-      text-decoration: none;
+    }
 
-      &:hover {
-        color: #B5E93B;
+    // Die Links sind im Desktop schon vorhanden; wir bauen sie
+    // im Mobile extra etwas um (eigene Flex-Reihe).
+    .footer-links {
+      display: flex;
+      gap: 1rem; // Kleiner Abstand zwischen den zwei Links
+
+      a {
+        color: #FFFDFD;
+        text-decoration: none;
+
+        &:hover {
+          color: #B5E93B;
+        }
       }
     }
   }
 
+  // Rechter Gradient
   .right-gradient {
     display: none;
 
@@ -265,7 +300,11 @@
     }
   }
 
+  // ------------------------------------
+  // => Mobile-Anpassungen unter 800px <=
+  // ------------------------------------
   @media (max-width: 800px) {
+
     .vertical-title {
       writing-mode: initial;
       transform: none;
@@ -277,7 +316,7 @@
     }
 
     .contact-container {
-      padding-bottom: 120px;
+      padding-bottom: 200px; // Platz für Footer
     }
 
     .contact-details-area {
@@ -288,35 +327,51 @@
       order: 2;
     }
 
-    .arrow-up {
-      display: flex;
-      justify-content: center;
-      margin: 3rem 0;
-      order: 3;
-    }
-
+    // Pfeil nach links (Desktop) hier ausblenden
     .arrow-left {
       display: none;
     }
 
-    .social-media-placeholder {
-      order: 4;
-      margin: 1rem 0;
-    }
-
+    // Footer für Mobil
     .footer-info {
       order: 5;
       position: absolute;
-      left: 0;
       bottom: 0;
+      left: 0;
       width: 100%;
-      background-color: #547800;
-      padding: 1rem 0;
-      margin-top: 0;
-      gap: 0.5rem;
-      z-index: 999;
+      padding: 1.5rem 1rem;
+      // Hintergrund wie gewünscht:
+      background: linear-gradient(160.33deg, #B5E93B 50.78%, #547800 133.54%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
       text-align: center;
-      color: #fff;
+      z-index: 999;
+
+      // Textfarbe mobil (Logo, Copyright etc.)
+      .footer-logo {
+        // wird oben bereits auf block gestellt
+      }
+
+      .copyright {
+        color: #4A4A4A;
+        margin: 0.3rem 0;
+        font-size: 23px;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+
+        a {
+          color: #4A4A4A; // Links ebenfalls dunkler
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
     }
   }
 }
