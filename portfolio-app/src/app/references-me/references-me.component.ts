@@ -1,34 +1,42 @@
-import { Component, ElementRef, ViewChild, Input } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+// ACHTUNG: CommonModule ist wichtig für ngClass, ngIf etc.
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'references-me',
   standalone: true,
-  imports: [],
+  // CommonModule importieren => kein Fehler mehr bei [ngClass] & Co
+  imports: [CommonModule],
   templateUrl: './references-me.component.html',
   styleUrls: ['./references-me.component.scss']
 })
 export class ReferencesMeComponent {
 
-  // Dient nur dazu, dass das [scrollEl] in app.component.html
-  // keinen Angular-Compiler-Fehler wirft. Wir nutzen es hier
-  // im Beispielcode NICHT aktiv, aber du könntest es verwenden.
-  @Input() scrollEl: ElementRef<HTMLDivElement> | undefined;
+  // Erlaubt dem Parent, ein ElementRef zu übergeben
+  // => <references-me [scrollEl]="scrollContainerRef"></references-me>
+  @Input() scrollEl?: ElementRef<HTMLDivElement>;
 
-  // Lokales Scroll-Element für die Referenzen (unverändert, nur umbenannt)
+  // Falls du zusätzlich einen lokalen ViewChild nutzen willst:
   @ViewChild('localScrollEl', { static: true })
   localScrollEl!: ElementRef<HTMLDivElement>;
 
-  scrollNext() {
-    // Prüfen, ob wir tatsächlich den Container haben
-    if (!this.scrollEl?.nativeElement) {
-      console.warn('No nativeElement on scrollEl');
-      return;
+  scrollNext(): void {
+    // Wenn du den vom Eltern übergebenen Container scrollen willst:
+    if (this.scrollEl?.nativeElement) {
+      this.scrollEl.nativeElement.scrollBy({
+        left: 300,
+        behavior: 'smooth'
+      });
+    } else {
+      console.warn('No scrollEl or no nativeElement found!');
     }
 
-    // Dann scrollen wir den Container um eine Bildschirmbreite weiter
-    this.scrollEl.nativeElement.scrollBy({
-      left: window.innerWidth,
-      behavior: 'smooth'
-    });
+    // ODER falls du lieber den lokalen Container scrolst:
+    // if (this.localScrollEl?.nativeElement) {
+    //   this.localScrollEl.nativeElement.scrollBy({
+    //     left: 300,
+    //     behavior: 'smooth'
+    //   });
+    // }
   }
 }
