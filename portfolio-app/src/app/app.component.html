@@ -1,19 +1,50 @@
+<!-- app.component.html -->
+
 <!-- 1) #scrollRef => Referenz am DIV -->
 <div class="container" #scrollRef>
   <div class="app-background"></div>
 
   <app-menu></app-menu>
 
-  <!-- [scrollEl]="scrollContainerRef" an Kind-Komponenten -->
-  <app-profile class="slide" [scrollEl]="scrollContainerRef"></app-profile>
+  <!-- Wir fügen id-Attribute für scrollIntoView hinzu -->
+  <app-profile
+    class="slide"
+    id="profile-slide"
+    [scrollEl]="scrollContainerRef">
+  </app-profile>
+
+  <!-- Social Media ist kein "Slide", braucht keine ID -->
   <app-social-media [class.hidden]="!showSocialMedia"></app-social-media>
-  <about-me class="slide" [scrollEl]="scrollContainerRef"></about-me>
-  <skill-set class="slide" [scrollEl]="scrollContainerRef"></skill-set>
-  <my-work class="slide" [scrollEl]="scrollContainerRef"></my-work>
 
-  <references-me class="slide" [scrollEl]="scrollContainerRef"></references-me>
+  <about-me
+    class="slide"
+    id="about-me-slide"
+    [scrollEl]="scrollContainerRef">
+  </about-me>
 
-  <contact-me class="slide" [scrollEl]="scrollContainerRef"></contact-me>
+  <skill-set
+    class="slide"
+    id="skill-set-slide"
+    [scrollEl]="scrollContainerRef">
+  </skill-set>
+
+  <my-work
+    class="slide"
+    id="my-work-slide"
+    [scrollEl]="scrollContainerRef">
+  </my-work>
+
+  <references-me
+    class="slide"
+    id="references-slide"
+    [scrollEl]="scrollContainerRef">
+  </references-me>
+
+  <contact-me
+    class="slide"
+    id="contact-slide"
+    [scrollEl]="scrollContainerRef">
+  </contact-me>
 
   <router-outlet></router-outlet>
 </div>

@@ -1,4 +1,4 @@
-<!-- NAV: Desktop-Menü links + Burger (im Mobile) -->
+<!-- NAV: Desktop-Menü links + Burger (für Mobile) -->
 <nav class="menu-system">
   <div class="menu-bg"></div>
   <div class="shadow-menu"></div>
@@ -7,7 +7,7 @@
     <img src="/assets/img/profil.png" alt="Profil" />
   </div>
 
-  <!-- Desktop-Menü-Punkte (sichtbar nur über 800px) -->
+  <!-- Desktop-Menü-Punkte (nur >= 800px sichtbar) -->
   <div class="menu-items">
     <span (click)="scrollToAboutMe()">Why me</span>
     <span (click)="scrollToSkills()">Skills</span>
@@ -15,7 +15,7 @@
     <span (click)="scrollToContact()">Contact</span>
   </div>
 
-  <!-- Burger-Menü für Mobile -->
+  <!-- Burger-Menü für Mobile (< 800px) -->
   <div class="burger-menu" (click)="toggleMenu()">
     <div class="line"></div>
     <div class="line"></div>
@@ -23,7 +23,7 @@
   </div>
 </nav>
 
-<!-- MOBILE OVERLAY -->
+<!-- MOBILE OVERLAY (nur < 800px sichtbar) -->
 <div class="mobile-overlay" [ngClass]="{'show': isOverlayOpen}">
   <!-- Grüne BG -->
   <div class="overlay-bg"></div>
@@ -39,6 +39,7 @@
     <span (click)="onWhyMe()">Why me</span>
     <span (click)="onSkillSet()">My Skill Set</span>
     <span (click)="onMyWork()">My Work</span>
+    <!-- KEIN References -->
     <span (click)="onContact()">Contact me</span>
 
     <!-- Sprache umschalten (DE | EN) -->

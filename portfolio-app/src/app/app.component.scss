@@ -1,31 +1,37 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Quantico', sans-serif;
-  overflow-y: hidden; /* Standard: kein vert. Scroll */
-  background-color: #000; /* Falls irgendwo noch Schwarz nötig ist */
-}
+/* app.component.scss */
 
+/*
+   1) Entfernen wir die globalen html,body {...},
+      denn das steuert jetzt styles.scss
+*/
+
+/* .container => horizontales Layout für Desktop,
+   wechselt zu vertikal in Mobile
+*/
 .container {
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow-x: auto;
-  overflow-y: hidden;
+  display: flex;           /* Slidenebeneinander am Desktop */
+  flex-direction: row;
+  overflow-x: auto;        /* horizontales Scrolling (Desktop) */
+  overflow-y: hidden;      /* kein vert. Scroll (Desktop) */
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
-  display: flex; /* Slides nebeneinander */
 
-  /* =========== Breakpoint für max. 800px =========== */
+  /* <= 800px => Kolumnen => vertikaler Scroll */
   @media (max-width: 800px) {
-    flex-direction: column;    /* Stapelt die Slides untereinander */
-    height: auto;             /* Passt sich dem Inhalt an */
-    overflow-x: hidden;       /* Kein horizontales Scrollen */
-    overflow-y: auto;         /* Vertikales Scrollen */
+    flex-direction: column;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 }
 
+/* Hintergund 600vw => 6 Slides a 100vw
+   -> Im Mobile => width: 100%
+*/
 .app-background {
   position: absolute;
   top: 0;
@@ -49,34 +55,34 @@ html, body {
   background-position: left top, left;
   background-repeat: no-repeat, no-repeat;
 
-  /* Bei <= 800px lieber nur 100% breit + Cover? */
   @media (max-width: 800px) {
+    /* Mobil => Breite = 100%,
+       dann kann man vertikal scrollen */
     width: 100%;
-    height: auto; /* oder 100vh, je nach Wunsch */
-    background-size: cover; /* Deckend oder je nach Design anpassen */
+    height: auto;
+    background-size: cover;
     background-position: center;
   }
 }
 
+/* Jede Slide => 100vw (Desktop), 100vh hoch */
 .slide {
   flex: 0 0 100vw;
   height: 100vh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 
-  /* Unter 800px => width=100%, height=auto + angepasster GRADIENT */
+  /* Mobile => full width, height: auto oder 100vh */
   @media (max-width: 800px) {
     flex: 0 0 auto;
     width: 100%;
     height: auto;
 
-    /* 1) Keine unbeabsichtigten Abstände */
     margin: 0;
     padding: 0;
     border: none;
 
-    /* 2) Letzter Farbstop auf 100% => #000
-       für einen nahtlosen Übergang */
+    /* Evtl. extra BG-Farbe */
     background: linear-gradient(
       180deg,
       #000000 11.41%,
@@ -89,6 +95,7 @@ html, body {
   }
 }
 
+/* Falls du den Pfeil brauchst in Desktop */
 .arrow-right {
   position: absolute;
   top: 50%;

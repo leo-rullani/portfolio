@@ -4,16 +4,14 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-menu',
   standalone: true,
-
-  // Wichtig: CommonModule importieren, damit [ngClass] etc. funktionieren!
+  // Wichtig: CommonModule importieren, damit [ngClass], *ngIf etc. funktionieren
   imports: [CommonModule],
-
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
 
-  // Steuert das Overlay im Mobile
+  // Steuert das Overlay (Mobile)
   isOverlayOpen = false;
 
   // Burger klick => Overlay an/aus
@@ -22,57 +20,70 @@ export class MenuComponent {
   }
 
   /**
-   * 1) Why me -> about-me (Index 1)
+   * Scroll im Desktop (horizontales Layout)
    */
+  private scrollDesktop(index: number): void {
+    const container = document.querySelector('.container') as HTMLElement | null;
+    if (!container) return;
+
+    container.scrollTo({
+      left: index * window.innerWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  /**
+   * Scroll im Mobile (vertikales Layout) => per ID direkt hin
+   */
+  private scrollMobile(slideId: string): void {
+    const el = document.getElementById(slideId);
+    if (!el) return;
+
+    el.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+
+  /**
+   * Helfer => wähle Desktop vs. Mobile
+   */
+  private handleScroll(index: number, slideId: string): void {
+    if (window.innerWidth >= 800) {
+      // Desktop => horizontale Slides
+      this.scrollDesktop(index);
+    } else {
+      // Mobile => vertikal per ID
+      this.scrollMobile(slideId);
+    }
+  }
+
+  // =========== Menü-Klick-Methoden ===========
+
+  // 1) Why me -> about-me => Desktop(Index=1), Mobile(ID="about-me-slide")
   scrollToAboutMe(): void {
-    const container = document.querySelector('.container') as HTMLElement | null;
-    if (!container) return;
-    container.scrollTo({
-      left: 1 * window.innerWidth,
-      behavior: 'smooth'
-    });
+    this.handleScroll(1, 'about-me-slide');
   }
 
-  /**
-   * 2) Skills -> skill-set (Index 2)
-   */
+  // 2) Skills => skill-set => Desktop(Index=2), Mobile(ID="skill-set-slide")
   scrollToSkills(): void {
-    const container = document.querySelector('.container') as HTMLElement | null;
-    if (!container) return;
-    container.scrollTo({
-      left: 2 * window.innerWidth,
-      behavior: 'smooth'
-    });
+    this.handleScroll(2, 'skill-set-slide');
   }
 
-  /**
-   * 3) My Work -> my-work (Index 3)
-   */
+  // 3) My Work => my-work => Desktop(Index=3), Mobile(ID="my-work-slide")
   scrollToMyWork(): void {
-    const container = document.querySelector('.container') as HTMLElement | null;
-    if (!container) return;
-    container.scrollTo({
-      left: 3 * window.innerWidth,
-      behavior: 'smooth'
-    });
+    this.handleScroll(3, 'my-work-slide');
   }
 
-  /**
-   * 4) Contact -> contact-me (Index 5)
-   */
+  // 4) Contact => contact-me => Desktop(Index=5), Mobile(ID="contact-slide")
   scrollToContact(): void {
-    const container = document.querySelector('.container') as HTMLElement | null;
-    if (!container) return;
-    container.scrollTo({
-      left: 5 * window.innerWidth,
-      behavior: 'smooth'
-    });
+    this.handleScroll(5, 'contact-slide');
   }
 
   // =========================================================
-  // Die Klick-Handler im Overlay, damit sich das Overlay
-  // nach dem Scroll wieder schließt
+  // Mobile-Overlay-Methoden => Schließt Overlay nach Klick
   // =========================================================
+
   onWhyMe(): void {
     this.scrollToAboutMe();
     this.isOverlayOpen = false;

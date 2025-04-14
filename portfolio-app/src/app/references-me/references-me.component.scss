@@ -1,3 +1,12 @@
+/*
+   references-me.component.scss
+   ----------------------------
+   Desktop: 2 Spalten à 3 Boxen.
+   Mobile: Alle Boxen horizontal in einer Reihe,
+   mit "erster Box = 90vw" => 10% Teaser der nächsten Box.
+*/
+
+/* ========== Desktop-Styles (Default) ========== */
 .references-section {
   min-height: 100vh;
   display: flex;
@@ -8,6 +17,7 @@
   font-family: 'Quantico', sans-serif;
   color: #FFFDFD;
 
+  /* Desktop-Schriftzug */
   .vertical-title {
     position: absolute;
     left: 40px;
@@ -21,18 +31,21 @@
     -webkit-text-stroke: 2px #B5E93B;
   }
 
+  /* Container => 2 Spalten nebeneinander (für Desktop) */
   .references-container {
     display: flex;
     flex-direction: row;
     gap: 2rem;
   }
 
+  /* Jede Spalte => 3 Boxen untereinander (Desktop) */
   .references-column {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 1rem;
   }
 
+  /* Einzelne Box (Desktop-Layout: Positionierung) */
   .reference-box {
     position: relative;
     width: 478px;
@@ -85,6 +98,7 @@
     }
   }
 
+  /* Desktop-Pfeil (Klick => scrollNext) */
   .arrow-right {
     position: absolute;
     top: 20%;
@@ -96,37 +110,40 @@
   }
 }
 
-/* ==============================
-   Breakpoint: <= 800px (Mobile)
-   ============================== */
+/* Für Desktop: sichtbar, Mobile: ausgeblendet */
+.desktop-only { display: block; }
+/* Für Mobile: sichtbar, Desktop: ausgeblendet */
+.mobile-only  { display: none; }
+
+/* ========== MOBILE-STYLING ========== */
 @media (max-width: 800px) {
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: block !important;
+  }
+
   .references-section {
     flex-direction: column;
     justify-content: flex-start;
     min-height: auto;
-    padding: 2rem 1rem;
-
-    .vertical-title {
-      position: static;
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-      color: #B5E93B;
-      writing-mode: initial;
-      transform: none;
-      text-align: center;
-      -webkit-text-stroke: 1px #B5E93B;
-    }
+    padding: 1rem;
 
     .references-container {
       display: flex;
       flex-direction: row;
+      /* HORIZONTALES SCROLLEN */
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain; /* Minimiert Rubber-Banding */
       gap: 1rem;
       scroll-snap-type: x mandatory;
       scroll-padding: 1rem;
+      margin-bottom: 2rem;
     }
 
+    /* Jede "Spalte" => row => Boxen alle in einer Reihe */
     .references-column {
       display: flex;
       flex-direction: row;
@@ -134,73 +151,74 @@
       gap: 1rem;
     }
 
+    /*
+       Jede Box ~80vw (Standard).
+       => 6 Boxen nacheinander, horizontal scrollbar.
+     */
     .reference-box {
-      flex: 0 0 auto;
-      /* Standardbreite (wird für Boxen ab der 3. verwendet) */
-      width: 75vw;
-
-      max-width: none;
+      position: relative;
+      flex: 0 0 auto;   /* verhindert flex-Skalierung */
+      width: 80vw;      /* 80% des Viewports */
       height: auto;
-      padding: 1rem;
       border-radius: 20px;
-      margin-right: 1rem;
       scroll-snap-align: start;
+      padding: 1rem;
+      margin: 0;
 
-      /*
-         Positionen entfernen => statisches Layout
-      */
+      /* Absolute Pos. ausschalten => statische Anordnung */
       .quote,
       .divider-line,
       .name,
       .project {
         position: static !important;
-        margin: 0 auto;
-        text-align: center;
+        margin: 0;
+        text-align: left;
       }
 
+      /* Mobile-Schriftgrößen */
       .quote {
-        width: 100%;
         font-size: 1rem;
         line-height: 1.3;
         margin-bottom: 0.5rem;
-        color: #FFFDFD;
       }
-
       .divider-line {
-        display: none;
+        width: 100%;
+        height: 1px;
+        background: #D3ED97;
+        margin: 0.5rem 0;
+        border: none; /* kein vertikaler Strich */
       }
-
       .name {
-        width: 100%;
         font-size: 1.2rem;
-        margin-top: 0.5rem;
         color: #B5E93B;
+        margin-top: 0.5rem;
       }
-
       .project {
-        width: 100%;
         font-size: 0.85rem;
-        margin-top: 0.3rem;
         color: #D3ED97;
+        margin-top: 0.3rem;
       }
     }
 
     /*
-      1. Box => 80% viewport
-      2. Box => 20% viewport
-      Rest => 75% (Standard aus "width: 75vw")
-    */
-    .references-column .reference-box:nth-child(1) {
-      flex: 0 0 80vw;
-      width: auto; /* override the 75vw above */
-    }
-    .references-column .reference-box:nth-child(2) {
-      flex: 0 0 20vw;
-      width: auto;
+       Erste Box => 90vw =>
+       => So sieht man 10% der nächsten Box => "Wisch-Hinweis".
+     */
+    .reference-box:nth-child(1) {
+      flex: 0 0 90vw;
     }
 
-    .arrow-right {
-      display: none; /* Pfeil ausblenden in Mobile, da scroll = wisch */
+    /*
+       Letzte Box => snappt an der rechten Kante =>
+       => Kein Weiterwischen ins Leere
+     */
+    .reference-box:last-child {
+      scroll-snap-align: end;
     }
-  }
+
+    /* Pfeil in Mobile ausblenden */
+    .arrow-right {
+      display: none;
+    }
+}
 }

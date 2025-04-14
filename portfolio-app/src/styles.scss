@@ -8,12 +8,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Quantico', sans-serif;
-  /* Standard: Keine vertikale Scrollleiste (z.B. für Desktop) */
-  overflow-y: hidden;
-  /* Falls du auf größeren Screens horizontales Scrollen zulassen willst:
-     overflow-x: auto;
-     Wenn nicht, dann overflow-x: hidden; */
-  overflow-x: auto;
+
+  /* Für Desktop: horizontales Scrollen erlaubt */
+  overflow-y: hidden; /* Kein vert. Scroll */
+  overflow-x: auto;  /* horizontales Scrollen, falls breiter Inhalt */
 }
 
 /* Schriftarten einbinden */
@@ -23,21 +21,18 @@ body {
   font-weight: 400;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'Quantico';
   src: url('assets/fonts/Quantico-Italic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
 }
-
 @font-face {
   font-family: 'Quantico';
   src: url('assets/fonts/Quantico-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
 }
-
 @font-face {
   font-family: 'Quantico';
   src: url('assets/fonts/Quantico-BoldItalic.ttf') format('truetype');
@@ -45,29 +40,21 @@ body {
   font-style: italic;
 }
 
-/* Bilder auf volle Breite begrenzen, damit sie nicht aus dem Layout "rauswachsen" */
+/* Bilder auf volle Breite begrenzen */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Responsive-Anpassung unter 800px */
+/*
+  Responsive-Anpassung unter 800px:
+  Jetzt wollen wir vertikal scrollen, KEIN horizontales
+*/
 @media (max-width: 800px) {
   html,
   body {
-    /* Jetzt darf man vertikal scrollen */
-    overflow-y: auto;
-    /* Horizontales Scrollen verhindern */
-    overflow-x: hidden;
-  }
-
-  .container {
-    flex-direction: column;
-    /* Ebenfalls horizontales Scrollen unterbinden */
-    overflow-x: hidden;
-    /* Vertikales Scrollen erlauben */
-    overflow-y: auto;
-    height: auto;
+    overflow-y: auto;   /* Erlaube vertikales Scrollen */
+    overflow-x: hidden; /* Unterbinde horizontales Scrollen */
   }
 }

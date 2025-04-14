@@ -1,11 +1,14 @@
-<div class="references-section">
-  <!-- Vertikaler Titel links, rotiert -->
-  <div class="vertical-title">References</div>
+<div class="references-section" #localScrollEl>
 
-  <!-- Scrollbarer Container für Referenzen -->
-  <!-- WICHTIG: #localScrollEl für das ViewChild in der TS-Datei -->
-  <div class="references-container" #localScrollEl>
+  <!-- Desktop-Titel (nur bei großen Bildschirmen) -->
+  <div class="vertical-title desktop-only">References</div>
 
+  <!-- Mobile-Titel (nur bei kleinen Bildschirmen) -->
+  <h2 class="mobile-headline mobile-only">Need a teamplayer?</h2>
+  <p class="mobile-subtitle mobile-only">Here what my colleagues said about me</p>
+
+  <!-- Haupt-Container für die Referenzen -->
+  <div class="references-container">
     <!-- Spalte 1 mit 3 Boxen -->
     <div class="references-column">
       <div class="reference-box">
@@ -74,8 +77,8 @@
     </div>
   </div>
 
-  <!-- Pfeil rechts, klick => horizontales Scrollen -->
-  <div class="arrow-right" (click)="scrollNext()">
+  <!-- Desktop-Pfeil (nur auf großem Screen) -->
+  <div class="arrow-right desktop-only" (click)="scrollNext()">
     <svg
       width="113"
       height="38"
