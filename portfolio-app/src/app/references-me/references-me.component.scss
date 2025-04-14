@@ -198,7 +198,7 @@
 
       /* Erste Box => 90vw => 10% Teaser */
       .reference-box-mob:nth-child(1) {
-        width: 90vw;
+        width: 80vw;
       }
 
       /* Letzte Box => snappt am rechten Ende */
@@ -206,12 +206,9 @@
         scroll-snap-align: end;
       }
     }
-
-    /* Carousel-Indicator optional
        .carousel-indicator {
-         text-align: center;
-         ...
+        display: flex;
+        justify-content: center;
        }
-    */
   }
 }
