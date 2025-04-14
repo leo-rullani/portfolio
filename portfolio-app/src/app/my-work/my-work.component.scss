@@ -1,340 +1,322 @@
-/* =========================================
-   .my-work-section – Desktop Layout
-   ========================================= */
-   .my-work-section {
-    /* Desktop: füllt die Breite (oder max-width, falls gewünscht) */
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Zentriere den Inhalt */
-    gap: 2rem;
-    min-height: 100vh;
-    position: relative;
-    width: 100%;
-    margin-left: 0; /* Startwert, kein extra Margin */
-    padding: 2rem;
-    font-family: 'Quantico', sans-serif;
-    background: transparent; /* Kein Overlay-Hintergrund hier */
+.my-work-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  min-height: 100vh;
+  position: relative;
+  width: 100%;
+  margin-left: 0;
+  padding: 2rem;
+  font-family: 'Quantico', sans-serif;
+  background: transparent;
 
-    /* Vertikaler Titel links */
-    .vertical-title {
+  .vertical-title {
+    position: absolute;
+    top: 26%;
+    left: 60px;
+    font-family: 'Quantico', sans-serif;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: 0;
+    color: transparent;
+    font-size: 60px;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    -webkit-text-stroke: 2px #B5E93B;
+  }
+
+  .project-card {
+    position: relative;
+    width: 800px;
+    min-height: 350px;
+    border-radius: 30px;
+    overflow: hidden;
+    background: transparent;
+
+    .card-bg {
       position: absolute;
-      top: 26%;
-      left: 60px;
-      font-family: 'Quantico', sans-serif;
-      font-weight: 700;
-      line-height: 120%;
-      letter-spacing: 0;
-      color: transparent;
-      font-size: 60px;
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      -webkit-text-stroke: 2px #B5E93B;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #B5E93B;
+      opacity: 0.2;
+      border-radius: 30px;
+      z-index: 1;
     }
 
-    /* =========================================
-       Einzelne Projektkarten
-       ========================================= */
+    .card-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      column-gap: 2rem;
+      align-items: start;
+      padding: 2rem;
+      box-sizing: border-box;
+      color: #fff;
+
+      .left-column {
+        display: block;
+      }
+    }
+
+    .show-more svg {
+      display: none;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1rem;
+
+      .project-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        padding: 0.3rem 0.6rem;
+        color: transparent;
+        -webkit-text-stroke: 2px #B5E93B;
+      }
+      .project-title {
+        font-size: 2.5rem;
+        color: #B5E93B;
+        font-weight: 400;
+      }
+    }
+
+    .info-block {
+      margin-bottom: 1.5rem;
+
+      h4 {
+        position: relative;
+        font-size: 1.2rem;
+        margin-bottom: 0.4rem;
+        padding-left: 2rem;
+        font-weight: 400;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0.45rem;
+          width: 9px;
+          height: 9px;
+          border: 1px solid #D3ED97;
+          border-radius: 50%;
+        }
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.4;
+        padding-left: 2rem;
+      }
+    }
+
+    .right-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      max-width: 350px;
+
+      .screenshot {
+        width: 100%;
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 20px;
+          display: block;
+          margin-top: 104px;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        gap: 1rem;
+
+        /* Secondary Button/Link */
+        .btn-secondary,
+        button.btn-secondary,
+        a.btn-secondary {
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+          border-radius: 30px;
+          cursor: pointer;
+          border: 1px solid #B5E93B;
+          background: transparent;
+          color: #B5E93B;
+          font-family: inherit;
+          text-decoration: none;
+          display: inline-block;
+        }
+
+        /* Primary Button/Link */
+        .btn-primary,
+        button.btn-primary,
+        a.btn-primary {
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+          border-radius: 30px;
+          cursor: pointer;
+          border: none;
+          background: #B5E93B;
+          color: #252525;
+          font-family: inherit;
+          text-decoration: none;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .arrow-right {
+    position: absolute;
+    top: 85%;
+    right: 260px;
+    transform: translateY(-50%);
+    width: 113px;
+    height: 38px;
+    cursor: pointer;
+  }
+
+  .show-more {
+    display: none;
+    margin-top: 1rem;
+    color: #B5E93B;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: 'Quantico', sans-serif;
+
+    svg {
+      width: 15px;
+      height: 13px;
+      fill: #B5E93B;
+    }
+  }
+
+  .expanded-content {
+    display: block;
+    @media (max-width: 800px) {
+      display: none;
+      &.is-expanded {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .my-work-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-left: 0;
+    padding: 2rem;
+    position: static;
+    width: 100%;
+    min-height: auto;
+    background: transparent;
+
+    .vertical-title {
+      position: static;
+      font-size: 2.2rem;
+      writing-mode: initial;
+      transform: none;
+      margin-left: -16px;
+      color: transparent;
+      -webkit-text-stroke: 1px #B5E93B;
+    }
+
     .project-card {
       position: relative;
-      width: 800px;
-      min-height: 350px;
-      border-radius: 30px;
-      overflow: hidden;
-      background: transparent; /* Nur .card-bg hat die grüne Opacity */
+      width: 100%;
+      min-height: auto;
+      margin: 0 auto;
+      border-radius: 20px;
+      background: transparent;
 
-      /* Grüne Hintergrund-Ebene mit Opacity */
       .card-bg {
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background: #B5E93B;
-        opacity: 0.2;
-        border-radius: 30px;
-        z-index: 1;
+        border-radius: 20px;
       }
 
       .card-content {
-        position: relative;
-        z-index: 2;
-        display: grid;
-        grid-template-columns: 1fr 350px;
-        column-gap: 2rem;
-        align-items: start;
-        padding: 2rem;
-        box-sizing: border-box;
-        color: #fff;
-
-        .left-column {
-          display: block;
-        }
-      }
-
-      .show-more svg {
-        display: none;
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
       }
 
       .card-header {
-        display: flex;
-        align-items: baseline;
-        gap: 1rem;
+        gap: 0.5rem;
         margin-bottom: 1rem;
-
         .project-number {
-          font-size: 2.5rem;
-          font-weight: 700;
-          padding: 0.3rem 0.6rem;
-          color: transparent;
-          -webkit-text-stroke: 2px #B5E93B;
+          font-size: 2rem;
+          -webkit-text-stroke: 1px #B5E93B;
         }
         .project-title {
-          font-size: 2.5rem;
-          color: #B5E93B;
-          font-weight: 400;
+          font-size: 2rem;
         }
       }
 
       .info-block {
-        margin-bottom: 1.5rem;
-
+        margin-bottom: 1rem;
         h4 {
-          position: relative;
-          font-size: 1.2rem;
-          margin-bottom: 0.4rem;
-          padding-left: 2rem;
-          font-weight: 400;
-
-          &::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0.45rem;
-            width: 9px;
-            height: 9px;
-            border: 1px solid #D3ED97;
-            border-radius: 50%;
-          }
+          font-size: 1.1rem;
+          padding-left: 1.5rem;
         }
-
         p {
-          font-size: 1rem;
-          line-height: 1.4;
-          padding-left: 2rem;
+          font-size: 0.95rem;
+          padding-left: 1.5rem;
         }
       }
 
       .right-section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        max-width: 350px;
+        margin-top: 1rem;
+        max-width: 100%;
 
         .screenshot {
           width: 100%;
+          margin-top: 0;
           img {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            display: block;
-            margin-top: 104px;
+            margin-top: 0;
+            border-radius: 12px;
           }
         }
 
         .buttons {
-          display: flex;
-          gap: 1rem;
+          justify-content: center;
 
-          button {
-            padding: 0.5rem 1rem;
-            font-size: 1rem;
-            border-radius: 30px;
-            cursor: pointer;
-            border: none;
-            font-family: inherit;
+          .btn-secondary,
+          button.btn-secondary,
+          a.btn-secondary {
+            font-size: 0.9rem;
           }
-          .btn-secondary {
-            background: transparent;
-            border: 1px solid #B5E93B;
-            color: #B5E93B;
-          }
-          .btn-primary {
-            background: #B5E93B;
-            color: #252525;
+          .btn-primary,
+          button.btn-primary,
+          a.btn-primary {
+            font-size: 0.9rem;
           }
         }
       }
     }
 
-    /* Pfeil nach rechts – nur Desktop, im Mobile ggf. ausgeblendet */
     .arrow-right {
-      position: absolute;
-      top: 85%;
-      right: 260px;
-      transform: translateY(-50%);
-      width: 113px;
-      height: 38px;
-      cursor: pointer;
-    }
-
-    /* =========================================
-       "Show me more" – Button (außerhalb der Karte)
-       ========================================= */
-    .show-more {
-      /* Standard: im Desktop ausblenden */
       display: none;
-      margin-top: 1rem;
-      color: #B5E93B;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 400;
-      font-family: 'Quantico', sans-serif;
-
-      svg {
-        width: 15px;
-        height: 13px;
-        fill: #B5E93B;
-      }
     }
 
-    /* =========================================
-       expanded-content: Desktop vs Mobile
-       -----------------------------------------
-       Desktop => immer sichtbar
-       Mobile => nur sichtbar wenn .is-expanded
-    */
-    .expanded-content {
-      display: block; /* Desktop default -> immer an */
-
-      /* Mobile: ausblenden, erst durch .is-expanded sichtbar */
-      @media (max-width: 800px) {
-        display: none;
-
-        &.is-expanded {
-          display: block;
-        }
-      }
+    .show-more {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin: 1rem auto 0 auto;
+      text-decoration: underline;
     }
   }
-
-  /* =========================================
-     RESPONSIVE: ab max-width: 800px
-     Nur hier ändern wir das Layout mobil.
-     Desktop bleibt unverändert.
-     ========================================= */
-  @media (max-width: 800px) {
-    .my-work-section {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 2rem;
-      margin-left: 0;  /* kein extra left-Abstand */
-      padding: 2rem;
-      position: static;
-      width: 100%;
-      min-height: auto;
-
-      /* Optional: falls du im Mobile
-         einen anderen Hintergrund wünschst,
-         kannst du das hier machen.
-         Z.B. transparent lassen:
-      */
-      background: transparent;
-
-      .vertical-title {
-        position: static;
-        font-size: 2.2rem;
-        writing-mode: initial;
-        transform: none;
-        margin-left: -16px;
-        color: transparent;
-        -webkit-text-stroke: 1px #B5E93B;
-      }
-
-      .project-card {
-        position: relative;
-        width: 100%;
-        min-height: auto;
-        margin: 0 auto; /* optional zentrieren */
-        border-radius: 20px;
-        background: transparent;
-
-        .card-bg {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          border-radius: 20px;
-        }
-
-        .card-content {
-          grid-template-columns: 1fr;
-          padding: 1.5rem;
-        }
-
-        .card-header {
-          gap: 0.5rem;
-          margin-bottom: 1rem;
-
-          .project-number {
-            font-size: 2rem;
-            -webkit-text-stroke: 1px #B5E93B;
-          }
-          .project-title {
-            font-size: 2rem;
-          }
-        }
-
-        .info-block {
-          margin-bottom: 1rem;
-
-          h4 {
-            font-size: 1.1rem;
-            padding-left: 1.5rem;
-          }
-          p {
-            font-size: 0.95rem;
-            padding-left: 1.5rem;
-          }
-        }
-
-        .right-section {
-          margin-top: 1rem;
-          max-width: 100%;
-
-          .screenshot {
-            width: 100%;
-            margin-top: 0;
-
-            img {
-              margin-top: 0;
-              border-radius: 12px;
-            }
-          }
-
-          .buttons {
-            justify-content: center;
-            button {
-              font-size: 0.9rem;
-            }
-          }
-        }
-      }
-
-      /* Im Mobile Pfeil ausblenden */
-      .arrow-right {
-        display: none;
-      }
-
-      /* "Show me more" – jetzt anzeigen und zentrieren */
-      .show-more {
-        display: inline-flex;       /* statt none */
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        margin: 1rem auto 0 auto;  /* auto links/rechts => zentriert */
-        text-decoration: underline;
-      }
-    }
-  }
+}
