@@ -21,7 +21,9 @@
   display: none;
 }
 
-/* ========== DESKTOP-STYLES ========== */
+/* =================================
+   DESKTOP-STYLES (unverändert)
+   =================================*/
 .desktop-only {
   /* Volle Höhe, zentriert, etc. */
   min-height: 100vh;
@@ -55,6 +57,7 @@
       gap: 1rem;
     }
 
+    /* Jede einzelne Referenz-Box */
     .reference-box {
       position: relative;
       width: 478px;
@@ -117,7 +120,9 @@
   }
 }
 
-/* ========== MOBILE-STYLES ========== */
+/* =====================================================
+   MOBILE-STYLES (HIER ÄNDERN WIR DEN AUFBAU IM .reference-box-mob)
+   =====================================================*/
 @media (max-width: 800px) {
   .desktop-only {
     display: none !important;
@@ -132,13 +137,10 @@
     min-height: auto;
     padding: 1rem;
 
-    /* Headline & Subtitle per Klassen definieren, wenn nötig
-       .mobile-headline, .mobile-subtitle {
-         ...
-       }
-    */
+    .mobile-headline {
+      color: #B5E93B;
+    }
 
-    /* HORIZONTALES "CAROUSEL" */
     .references-carousel {
       display: flex;
       flex-direction: row;
@@ -150,55 +152,74 @@
       scroll-padding: 1rem;
       margin-bottom: 2rem;
 
+      /* Jede einzelne Referenz-Box im Mobile-Carousel */
       .reference-box-mob {
         flex: 0 0 auto;   /* Kein Flex-Shrink */
-        width: 80vw;      /* Standard: 80% Viewport-Breite */
+        width: 85vw;      /* Standard: 85% Viewport-Breite */
+        height: 180px;    /* Füge Höhe hinzu, damit wir position: absolute sauber nutzen */
         border: 1px solid #D3ED97;
         border-radius: 30px;
         box-sizing: border-box;
-        padding: 1rem;
         margin: 0;
         scroll-snap-align: start;
-        background-color: transparent; /* Falls du keine BG möchtest */
+        background-color: transparent;
 
-        /* "Text, Name, Project" => statisch linksbündig */
-        .quote,
-        .divider-line,
-        .name,
-        .project {
-          position: static !important;
-          margin: 0;
-          text-align: left;
-        }
+        /* WICHTIG: Position relativ,
+           damit .quote, .divider-line, .name, .project
+           absolut darin positioniert werden können
+        */
+        position: relative;
+
+        /*
+          JETZT => ABSOLUTE Positionierungen
+          => So wie gewünscht (60% Zitat left,
+             divider in der Mitte, Name + Projekt linksbündig)
+        */
 
         .quote {
-          font-size: 1rem;
+          position: absolute !important;
+          left: 20px;
+          top: 30px;
+          width: 200px;       /* ~60% von 85vw Box => anpassen nach Geschmack */
+          text-align: left;
+          font-size: 16px;
           line-height: 1.3;
           color: #FFFDFD;
-          margin-bottom: 0.5rem;
+          margin: 0;
         }
         .divider-line {
-          width: 100%;
-          height: 1px;
-          background: #D3ED97;
-          margin: 0.5rem 0;
-          border: none;
+          position: absolute !important;
+          top: 30px;
+          bottom: 30px;
+          left: 240px;       /* Mitte der Box => anpassen nach Geschmack */
+          width: 0;
+          border-left: 1px solid #D3ED97;
         }
         .name {
-          font-size: 1.2rem;
+          position: absolute !important;
+          left: 260px;       /* rechts vom divider */
+          top: 35px;
+          width: 100px;      /* anpassen */
+          text-align: left;
+          font-weight: 400;
+          font-size: 20px;   /* evtl. kleiner im Mobile */
           color: #B5E93B;
-          margin-top: 0.5rem;
         }
         .project {
-          font-size: 0.85rem;
+          position: absolute !important;
+          left: 260px;
+          top: 75px;
+          width: 100px;
+          text-align: left;
+          font-size: 12px;
+          line-height: 120%;
           color: #D3ED97;
-          margin-top: 0.3rem;
         }
       }
 
-      /* Erste Box => 90vw => 10% Teaser */
+      /* Erste Box => 85vw */
       .reference-box-mob:nth-child(1) {
-        width: 80vw;
+        width: 85vw;
       }
 
       /* Letzte Box => snappt am rechten Ende */
@@ -206,9 +227,10 @@
         scroll-snap-align: end;
       }
     }
-       .carousel-indicator {
-        display: flex;
-        justify-content: center;
-       }
+
+    .carousel-indicator {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
