@@ -1,23 +1,35 @@
 /*
    references-me.component.scss
    ----------------------------
-   Desktop: 2 Spalten à 3 Boxen.
-   Mobile: Alle Boxen horizontal in einer Reihe,
-   mit "erster Box = 90vw" => 10% Teaser der nächsten Box.
+   1) Desktop: .desktop-only => 2 Spalten, 3 Boxen pro Spalte
+   2) Mobile: .mobile-only => horizontales "Carousel"
 */
 
-/* ========== Desktop-Styles (Default) ========== */
+/* ========== Gemeinsame Basis ========== */
 .references-section {
+  margin: 0;
+  font-family: 'Quantico', sans-serif;
+  color: #FFFDFD;
+  position: relative;
+}
+
+/* Desktop-Only & Mobile-Only-Helferklassen */
+.desktop-only {
+  display: block;
+}
+.mobile-only {
+  display: none;
+}
+
+/* ========== DESKTOP-STYLES ========== */
+.desktop-only {
+  /* Volle Höhe, zentriert, etc. */
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  margin: 0;
-  font-family: 'Quantico', sans-serif;
-  color: #FFFDFD;
 
-  /* Desktop-Schriftzug */
+  /* Rotiertes "References" an der Seite */
   .vertical-title {
     position: absolute;
     left: 40px;
@@ -31,74 +43,69 @@
     -webkit-text-stroke: 2px #B5E93B;
   }
 
-  /* Container => 2 Spalten nebeneinander (für Desktop) */
+  /* Container => 2 Spalten */
   .references-container {
     display: flex;
     flex-direction: row;
     gap: 2rem;
-  }
 
-  /* Jede Spalte => 3 Boxen untereinander (Desktop) */
-  .references-column {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  /* Einzelne Box (Desktop-Layout: Positionierung) */
-  .reference-box {
-    position: relative;
-    width: 478px;
-    height: 182px;
-    border: 1px solid #D3ED97;
-    border-radius: 30px;
-    box-sizing: border-box;
-
-    .quote {
-      position: absolute;
-      width: 230px;
-      left: 20px;
-      top: 30px;
-      text-align: center;
-      font-size: 18px;
-      line-height: 120%;
-      color: #FFFDFD;
-      margin: 0;
+    .references-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
-    .divider-line {
-      position: absolute;
-      top: 30px;
-      bottom: 30px;
-      left: 260px;
-      width: 0;
-      border-left: 1px solid #D3ED97;
-    }
+    .reference-box {
+      position: relative;
+      width: 478px;
+      height: 182px;
+      border: 1px solid #D3ED97;
+      border-radius: 30px;
+      box-sizing: border-box;
 
-    .name {
-      position: absolute;
-      left: 280px;
-      top: 40px;
-      width: 180px;
-      text-align: center;
-      font-weight: 400;
-      font-size: 24px;
-      color: #B5E93B;
-    }
-
-    .project {
-      position: absolute;
-      left: 280px;
-      top: 80px;
-      width: 180px;
-      text-align: center;
-      font-size: 14px;
-      line-height: 120%;
-      color: #D3ED97;
+      .quote {
+        position: absolute;
+        width: 230px;
+        left: 20px;
+        top: 30px;
+        text-align: center;
+        font-size: 18px;
+        line-height: 120%;
+        color: #FFFDFD;
+        margin: 0;
+      }
+      .divider-line {
+        position: absolute;
+        top: 30px;
+        bottom: 30px;
+        left: 260px;
+        width: 0;
+        border-left: 1px solid #D3ED97;
+      }
+      .name {
+        position: absolute;
+        left: 280px;
+        top: 40px;
+        width: 180px;
+        text-align: center;
+        font-weight: 400;
+        font-size: 24px;
+        color: #B5E93B;
+      }
+      .project {
+        position: absolute;
+        left: 280px;
+        top: 80px;
+        width: 180px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 120%;
+        color: #D3ED97;
+      }
     }
   }
 
-  /* Desktop-Pfeil (Klick => scrollNext) */
+  /* Desktop-Pfeil */
   .arrow-right {
     position: absolute;
     top: 20%;
@@ -110,12 +117,7 @@
   }
 }
 
-/* Für Desktop: sichtbar, Mobile: ausgeblendet */
-.desktop-only { display: block; }
-/* Für Mobile: sichtbar, Desktop: ausgeblendet */
-.mobile-only  { display: none; }
-
-/* ========== MOBILE-STYLING ========== */
+/* ========== MOBILE-STYLES ========== */
 @media (max-width: 800px) {
   .desktop-only {
     display: none !important;
@@ -124,16 +126,22 @@
     display: block !important;
   }
 
-  .references-section {
-    flex-direction: column;
-    justify-content: flex-start;
+  /* Mobile Container => flex-col,
+     aber hier packen wir das Carousel separat */
+  .mobile-only {
     min-height: auto;
     padding: 1rem;
 
-    .references-container {
+    /* Headline & Subtitle per Klassen definieren, wenn nötig
+       .mobile-headline, .mobile-subtitle {
+         ...
+       }
+    */
+
+    /* HORIZONTALES "CAROUSEL" */
+    .references-carousel {
       display: flex;
       flex-direction: row;
-      /* HORIZONTALES SCROLLEN */
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       overscroll-behavior-x: contain; /* Minimiert Rubber-Banding */
@@ -141,84 +149,69 @@
       scroll-snap-type: x mandatory;
       scroll-padding: 1rem;
       margin-bottom: 2rem;
-    }
 
-    /* Jede "Spalte" => row => Boxen alle in einer Reihe */
-    .references-column {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      gap: 1rem;
-    }
-
-    /*
-       Jede Box ~80vw (Standard).
-       => 6 Boxen nacheinander, horizontal scrollbar.
-     */
-    .reference-box {
-      position: relative;
-      flex: 0 0 auto;   /* verhindert flex-Skalierung */
-      width: 80vw;      /* 80% des Viewports */
-      height: auto;
-      border-radius: 20px;
-      scroll-snap-align: start;
-      padding: 1rem;
-      margin: 0;
-
-      /* Absolute Pos. ausschalten => statische Anordnung */
-      .quote,
-      .divider-line,
-      .name,
-      .project {
-        position: static !important;
+      .reference-box-mob {
+        flex: 0 0 auto;   /* Kein Flex-Shrink */
+        width: 80vw;      /* Standard: 80% Viewport-Breite */
+        border: 1px solid #D3ED97;
+        border-radius: 30px;
+        box-sizing: border-box;
+        padding: 1rem;
         margin: 0;
-        text-align: left;
+        scroll-snap-align: start;
+        background-color: transparent; /* Falls du keine BG möchtest */
+
+        /* "Text, Name, Project" => statisch linksbündig */
+        .quote,
+        .divider-line,
+        .name,
+        .project {
+          position: static !important;
+          margin: 0;
+          text-align: left;
+        }
+
+        .quote {
+          font-size: 1rem;
+          line-height: 1.3;
+          color: #FFFDFD;
+          margin-bottom: 0.5rem;
+        }
+        .divider-line {
+          width: 100%;
+          height: 1px;
+          background: #D3ED97;
+          margin: 0.5rem 0;
+          border: none;
+        }
+        .name {
+          font-size: 1.2rem;
+          color: #B5E93B;
+          margin-top: 0.5rem;
+        }
+        .project {
+          font-size: 0.85rem;
+          color: #D3ED97;
+          margin-top: 0.3rem;
+        }
       }
 
-      /* Mobile-Schriftgrößen */
-      .quote {
-        font-size: 1rem;
-        line-height: 1.3;
-        margin-bottom: 0.5rem;
+      /* Erste Box => 90vw => 10% Teaser */
+      .reference-box-mob:nth-child(1) {
+        width: 90vw;
       }
-      .divider-line {
-        width: 100%;
-        height: 1px;
-        background: #D3ED97;
-        margin: 0.5rem 0;
-        border: none; /* kein vertikaler Strich */
-      }
-      .name {
-        font-size: 1.2rem;
-        color: #B5E93B;
-        margin-top: 0.5rem;
-      }
-      .project {
-        font-size: 0.85rem;
-        color: #D3ED97;
-        margin-top: 0.3rem;
+
+      /* Letzte Box => snappt am rechten Ende */
+      .reference-box-mob:last-child {
+        scroll-snap-align: end;
       }
     }
 
-    /*
-       Erste Box => 90vw =>
-       => So sieht man 10% der nächsten Box => "Wisch-Hinweis".
-     */
-    .reference-box:nth-child(1) {
-      flex: 0 0 90vw;
-    }
-
-    /*
-       Letzte Box => snappt an der rechten Kante =>
-       => Kein Weiterwischen ins Leere
-     */
-    .reference-box:last-child {
-      scroll-snap-align: end;
-    }
-
-    /* Pfeil in Mobile ausblenden */
-    .arrow-right {
-      display: none;
-    }
-}
+    /* Carousel-Indicator optional
+       .carousel-indicator {
+         text-align: center;
+         ...
+       }
+    */
+  }
 }
