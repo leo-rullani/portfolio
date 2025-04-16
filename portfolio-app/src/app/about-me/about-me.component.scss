@@ -8,6 +8,7 @@
   color: #fff;
   background: transparent;
 
+  /* ------------ VERTIKALER TITEL ------------ */
   .vertical-title {
     position: absolute;
     top: 140px;
@@ -23,6 +24,7 @@
     -webkit-text-stroke: 1px #B5E93B;
   }
 
+  /* ------------ INTRO TEXT ------------ */
   .intro {
     position: absolute;
     top: 120px;
@@ -36,6 +38,7 @@
     }
   }
 
+  /* ------------ I AM-TITEL ------------ */
   .iam-title {
     position: absolute;
     top: 450px;
@@ -46,6 +49,7 @@
     color: #B5E93B;
   }
 
+  /* ------------ ICON-ROW ------------ */
   .icon-row {
     position: absolute;
     top: 560px;
@@ -71,6 +75,7 @@
     }
   }
 
+  /* ------------ BUTTON ------------ */
   .btn-primary {
     position: absolute;
     left: 1100px;
@@ -95,6 +100,7 @@
     }
   }
 
+  /* ------------ PFEIL RECHTS ------------ */
   .arrow-right {
     position: absolute;
     top: 50%;
@@ -106,6 +112,75 @@
   }
 }
 
+/* ======================================
+   TABLET-BEREICH: 1300px bis 801px
+====================================== */
+@media (max-width: 1300px) and (min-width: 801px) {
+  .about-me {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+  }
+
+  /* Vertikaler Titel: left auf 40px */
+  .about-me .vertical-title {
+    left: 40px;
+    top: 0px;
+  }
+
+  /* Intro unten, damit es den Titel nicht überlappt */
+  .about-me .intro {
+    position: static;
+    max-width: 100%;
+    /* 200px Abstand von oben, 120px rechts/links, 2rem unten */
+    margin: 200px 120px 2rem 120px;
+    p {
+      font-size: 16px;
+      line-height: 1.5;
+      text-align: justify;
+    }
+  }
+
+  /* I am-Titel ebenfalls weiter unten */
+  .about-me .iam-title {
+    position: static;
+    margin: 4rem 120px 0 120px;
+    font-size: 2rem;
+    text-align: left;
+  }
+
+  /* Icons */
+  .about-me .icon-row {
+    position: static;
+    margin: 3rem 120px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  /* Contact-Button */
+  .about-me .btn-primary {
+    position: static;
+    margin: 3rem 0 0 120px;
+    width: 140px;
+  }
+
+  /* Pfeil weiter nach unten (70%) */
+  .about-me .arrow-right {
+    position: absolute;
+    top: 70%;
+    right: 50px;
+    transform: translateY(-50%);
+    display: block;
+  }
+}
+
+/* ======================================
+   MOBILBEREICH: max-width: 800px
+====================================== */
 @media (max-width: 800px) {
   .about-me {
     position: static;
