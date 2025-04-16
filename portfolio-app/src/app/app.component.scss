@@ -105,3 +105,25 @@
   height: 40px;
   cursor: pointer;
 }
+
+/* =====================================================
+   Tablet-Breakpoint: 801px bis 1200px
+   => Hier kannst du z.B. etwas an der Breite/Höhe ändern
+   ===================================================== */
+@media (min-width: 801px) and (max-width: 1200px) {
+  .container {
+
+  }
+
+  .app-background {
+    left: 120px;
+  }
+
+  .slide {
+
+  }
+
+  .arrow-right {
+
+  }
+}

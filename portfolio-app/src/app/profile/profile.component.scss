@@ -76,7 +76,6 @@
 
 /* ============= Responsive unter 800px => vertikales Layout ============= */
 @media (max-width: 800px) {
-
   /* Bild nur ~70vh, damit darunter Platz für Text */
   .photo {
     position: relative;
@@ -125,5 +124,38 @@
   /* Pfeil ausblenden in Responsiv */
   .arrow-right {
     display: none;
+  }
+}
+
+/* =========================================
+   Tablet: 801px – 1200px
+   => kleinere Schriftgrößen als Desktop,
+      exakte Zentrierung, etc.
+   ========================================= */
+@media (min-width: 801px) and (max-width: 1200px) {
+  /* Hintergrundfoto zentrieren und ggf. Höhe anpassen */
+  .photo {
+
+  }
+
+  /* Role, Name, Location => zentrieren wie am Desktop, aber etwas kleinere Fonts */
+  .name {
+    left: 60%;
+    font-size: 56px;
+  }
+
+  .role {
+    top: 53%;
+    left: 60.5%;
+    font-size: 32px;
+  }
+
+  .location {
+
+  }
+
+  /* Falls der Pfeil in Tablet-Ansicht sichtbar sein soll */
+  .arrow-right {
+
   }
 }
