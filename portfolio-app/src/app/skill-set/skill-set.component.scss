@@ -28,23 +28,20 @@
       font-weight: 700;
       line-height: 120%;
       letter-spacing: 0;
-      color: transparent; /* Text ist transparent */
+      color: transparent;
       font-size: 60px;
       writing-mode: vertical-rl;
       transform: rotate(180deg);
-      -webkit-text-stroke: 1px #B5E93B; /* Grüner Rahmen */
+      -webkit-text-stroke: 1px #B5E93B;
     }
   }
 
-  /* ======================================
-     Challenge-Text-Wrapper (außerhalb vom Grid)
-     ====================================== */
   .challenge-text-wrapper {
     margin-left: 1120px;
     margin-top: -166px;
 
     .challenge-text {
-      max-width: 450px;
+      max-width: 350px;
 
       p {
         font-family: 'Quantico', sans-serif;
@@ -55,9 +52,8 @@
       }
     }
 
-    /* NEU: Der Button-Container */
     .lets-talk-section {
-      display: none; /* Desktop: unsichtbar */
+      display: none;
 
       .primary-mob {
         position: static;
@@ -75,7 +71,6 @@
         padding: 13px 30px;
       }
     }
-    /* Ende .lets-talk-section */
   }
 
   .content-wrapper {
@@ -87,6 +82,7 @@
 
     .intro-text {
       max-width: 1580px;
+      flex-wrap: wrap;
 
       p {
         font-family: 'Quantico', sans-serif;
@@ -94,13 +90,14 @@
         line-height: 1.4;
         text-align: justify;
         color: #fff;
+        /* NEU: zusätzlicher rechter Rand + automatischer Wortumbruch */
         margin-left: 100px;
+        margin-right: 100px;
+        word-break: break-word;      /* bei sehr langen Wörtern umbrechen */
+        overflow-wrap: break-word;   /* moderne Variante */
       }
     }
 
-    /* ======================================
-       Grid für die Icons
-       ====================================== */
     .skills-container {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -128,9 +125,8 @@
         }
       }
 
-      /* Challenge-Icon-Box nur Icon+Name, kein Text mehr hier */
       .challenge-icon-box {
-        /* Falls du extra Styles möchtest, z.B. margin-left: 20px; */
+        /* Falls benötigt */
       }
     }
   }
@@ -146,7 +142,58 @@
   }
 }
 
-/* ================ Responsive <= 800px ================ */
+/* ================================
+   TABLET/MITTEL-BEREICH:
+   1600px bis 801px
+================================ */
+@media (max-width: 1600px) and (min-width: 801px) {
+  .skillset {
+    top: 250px; /* Layout höher oder tiefer setzen */
+  }
+  .intro-text {
+    margin-right: 320px !important;
+  }
+
+  .skills-container {
+    width: 500px !important;
+  }
+
+  .challenge-text-wrapper {
+    margin-top: -100px; /* Weniger Überlappung */
+  }
+
+  .arrow-right {
+    top: 10%;
+    transform: none;
+  }
+
+  /* Hier die Textboxen */
+  .intro-text p {
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .challenge-text {
+    margin-left: -1020px;
+    margin-top: 176px;
+    max-width: 580px !important;
+
+    p {
+      white-space: normal;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+  }
+
+  .vertical-title {
+    left: 0px !important;
+  }
+}
+
+/* ================================
+   MOBIL-BEREICH: max-width: 800px
+================================ */
 @media (max-width: 800px) {
   .skillset {
     position: static;
@@ -194,43 +241,37 @@
       max-width: 100%;
       p {
         font-size: 1rem;
-        margin: 0;
+        margin: 0;           /* Mobil: kein extra Rand links/rechts */
         text-align: justify;
+        word-break: break-word;
+        overflow-wrap: break-word;
       }
     }
 
     .skills-container {
       width: 100%;
       margin-left: 0;
-      /* 3 Icons pro Zeile statt 6 */
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
-
-      /* Challenge-Icon-Box: kann z.B. grid-column: span 3; wenn es allein stehen soll */
-      .challenge-icon-box {
-        /* grid-column: span 3; */
-      }
     }
   }
 
-  /* Hier das Wrapper-Layout fürs Handy */
   .challenge-text-wrapper {
-    margin-left: 0 !important; /* überschreibt Desktop */
+    margin-left: 0 !important;
     margin-top: 0 !important;
 
     .challenge-text {
       max-width: 100% !important;
+
       p {
-        /* Falls du magst */
         margin-top: 0.5rem;
       }
     }
 
-    /* Button nur in Mobile sichtbar */
     .lets-talk-section {
-      display: flex !important; /* ab <= 800px erscheint */
+      display: flex !important;
       justify-content: center;
-      margin-top: 1rem; /* kleiner Abstand über dem Button */
+      margin-top: 1rem;
     }
   }
 
