@@ -136,7 +136,6 @@
         display: flex;
         gap: 1rem;
 
-        /* Secondary Button/Link */
         .btn-secondary,
         button.btn-secondary,
         a.btn-secondary {
@@ -152,7 +151,6 @@
           display: inline-block;
         }
 
-        /* Primary Button/Link */
         .btn-primary,
         button.btn-primary,
         a.btn-primary {
@@ -317,6 +315,30 @@
       gap: 0.5rem;
       margin: 1rem auto 0 auto;
       text-decoration: underline;
+    }
+  }
+}
+
+/* 801px–1800px => flex-direction column, scale(0.7), smaller gap, arrow further right */
+@media (min-width: 801px) and (max-width: 1800px) {
+  .my-work-section {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+
+    .project-card {
+      transform: scale(0.7);
+      transform-origin: top center;
+      margin: 0 auto;
+    }
+
+    .arrow-right {
+      right: 72px; /* weiter rechts als project-cards */
+      top: 87%;
+    }
+    .vertical-title {
+      top: 32%;
     }
   }
 }
