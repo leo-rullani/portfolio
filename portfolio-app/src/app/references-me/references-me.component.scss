@@ -1,10 +1,12 @@
 /*
    references-me.component.scss
    1) Desktop: .desktop-only => 2 Spalten, 3 Boxen
-   2) Mobile: .mobile-only => horizontales Carousel
+   2) Tablet: 801–1300px => scale(0.6)
+   3) Mobile: <=800px => horizontales Carousel + .inner-centered
+   4) Extra: <=360px => Schriftanpassungen, etc.
 */
 
-/* Basis */
+/* ====== Basis ====== */
 .references-section {
   margin: 0;
   font-family: 'Quantico', sans-serif;
@@ -19,9 +21,7 @@
   display: none;
 }
 
-/* =================================
-   DESKTOP-STYLES: >1300px (unverändert)
-   =================================*/
+/* ====== Desktop (>1300px) ====== */
 .desktop-only {
   min-height: 100vh;
   display: flex;
@@ -113,29 +113,16 @@
   }
 }
 
-/* ================================
-   TABLET: 801px - 1300px
-   => Gleiche 2-Spalten, 3-Boxen-Struktur,
-      aber scale(0.6)
-=============================== */
+/* ====== Tablet (801–1300px) => scale(0.6) ====== */
 @media (min-width: 801px) and (max-width: 1300px) {
   .desktop-only {
-    /* Vertikaler Titel bleibt an derselben Stelle,
-       wir skalieren nur den Container selbst
-       => so verschiebt sich alles nach links,
-          wir gleichen das ggf. mit margin-left aus.
-    */
     .references-container {
       transform: scale(0.6);
       transform-origin: center;
-      /* passe -100px an, bis es optisch passt */
     }
 
     .arrow-right {
       right: 200px;
-      /* Pfeil noch weiter rechts als
-         das gescalte Container-Ende
-      */
     }
     .vertical-title {
       top: 49%;
@@ -143,19 +130,13 @@
   }
 }
 
-/* =================================
-   MOBILE-STYLES: bis 800px
-   =================================*/
+/* ========== Mobile (≤800px) => horizontales Carousel + .inner-centered ========== */
 @media (max-width: 800px) {
   .desktop-only {
     display: none !important;
   }
   .mobile-only {
     display: block !important;
-  }
-
-  .mobile-only {
-    min-height: auto;
     padding: 1rem;
 
     .mobile-headline {
@@ -180,12 +161,24 @@
         border: 1px solid #D3ED97;
         border-radius: 30px;
         box-sizing: border-box;
-        margin: 0;
-        scroll-snap-align: start;
         background-color: transparent;
         position: relative;
+        scroll-snap-align: start;
 
-        .quote {
+        /*
+          Innerer Container => zentriert horizontal,
+          enthält Quote/Divider/Name/Project
+        */
+        .inner-centered {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 320px;
+          height: 140px;
+        }
+
+        .inner-centered .quote {
           position: absolute !important;
           left: 20px;
           top: 30px;
@@ -196,25 +189,25 @@
           color: #FFFDFD;
           margin: 0;
         }
-        .divider-line {
+        .inner-centered .divider-line {
           position: absolute !important;
           top: 30px;
           bottom: 30px;
-          left: 220px;
+          left: 227px; /* geändert */
           width: 0;
           border-left: 1px solid #D3ED97;
         }
-        .name {
+        .inner-centered .name {
           position: absolute !important;
           left: 240px;
           top: 35px;
-          width: 100px;
+          width: 60px;
           text-align: left;
           font-weight: 400;
           font-size: 18px;
           color: #B5E93B;
         }
-        .project {
+        .inner-centered .project {
           position: absolute !important;
           left: 240px;
           top: 95px;
@@ -226,9 +219,12 @@
         }
       }
 
-      .reference-box-mob:nth-child(1) {
-        width: 85vw;
-      }
+      /* Falls du bei der ersten Box 10% Teaser willst:
+         .reference-box-mob:nth-child(1) {
+           width: 90vw;
+         }
+      */
+
       .reference-box-mob:last-child {
         scroll-snap-align: end;
       }
@@ -238,5 +234,26 @@
       display: flex;
       justify-content: center;
     }
+  }
+}
+
+/* =======================
+   Extra: (≤360px)
+   ======================= */
+@media (max-width: 360px) {
+  .quote {
+    font-size: 12px !important;
+    width: 140px !important;
+    left: 50px !important;
+  }
+  .divider-line {
+    left: 195px !important;
+  }
+  .name, .project {
+    font-size: 12px !important;
+    left: 210px !important;
+  }
+  .references-carousel {
+    gap: 0.8rem !important;
   }
 }
