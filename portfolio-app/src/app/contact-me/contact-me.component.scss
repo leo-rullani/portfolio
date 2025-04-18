@@ -148,11 +148,13 @@
       line-height: 1.4;
       color: #fff;
       margin-bottom: 1rem;
+      text-align: justify;
     }
   }
 
   .contact-data {
     text-align: left;
+    margin-left: -20px;
 
     p {
       display: flex;
@@ -164,9 +166,10 @@
       a {
         text-decoration: none;
         color: #fff;
+        cursor: pointer; /* Damit Tel-Link ebenfalls Hand-Cursor hat */
 
         &:hover {
-          text-decoration: underline;
+          color: #B5E93B; /* Grüner Hover-Effekt */
         }
       }
     }
@@ -254,6 +257,7 @@
     .contact-data p {
       justify-content: flex-end;
     }
+
     .contact-form-area {
       width: 30%;
       margin-left: 80px !important;
@@ -284,20 +288,19 @@
       z-index: 1;
     }
 
-    /* ============= RELEVANTE ÄNDERUNG FÜR DEINE FOOTER-LINKS ============= */
+    /* Footer-Links untereinander, rechtsbündig */
     .footer-info {
-      text-align: right;        /* statt center */
-      align-items: flex-end;    /* statt center */
+      text-align: right;
+      align-items: flex-end;
 
       .footer-links {
         display: flex;
-        flex-direction: column; /* untereinander */
-        align-items: flex-end;  /* rechtsbündig */
-        gap: 0.3rem;            /* engerer Abstand der Links */
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.3rem;
         margin-top: 400px;
       }
     }
-    /* ==================================================================== */
   }
 
   @media (max-width: 800px) {
@@ -312,7 +315,7 @@
     }
 
     h3 {
-      margin-left:-20px;
+      margin-left: -20px;
     }
 
     img {
@@ -325,6 +328,11 @@
 
     .contact-details-area {
       order: 1;
+      /* Ab hier volle Breite & linksbündig */
+      max-width: 100% !important;
+      align-items: flex-start;
+      text-align: left;
+      margin-right: 0 !important;
     }
 
     .contact-form-area {
@@ -379,7 +387,7 @@
       text-align: center;
       z-index: 999;
 
-      .copyright {
+      copyright {
         color: #4A4A4A !important;
         margin: 0.3rem 0;
         font-size: 23px;
