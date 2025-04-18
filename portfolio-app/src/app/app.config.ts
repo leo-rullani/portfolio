@@ -1,5 +1,10 @@
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
+
+// Neu importieren:
+import { importProvidersFrom } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 /**
  * Dieses Objekt wird in main.ts importiert und an
@@ -10,7 +15,10 @@ import { routes } from './app.routes';
  */
 export const appConfig = {
   providers: [
-    provideRouter(routes)
-    // z. B. provideHttpClient() etc.
+    provideRouter(routes),
+    provideHttpClient(),
+
+    // Anstelle von provideForms() => importProvidersFrom(FormsModule)
+    importProvidersFrom(FormsModule)
   ]
 };

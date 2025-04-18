@@ -7,35 +7,79 @@
 
     <!-- Linke Spalte: Formular -->
     <div class="contact-form-area">
-      <div class="contact-form">
-        <!-- Input-Feld Name -->
-        <div class="input-box name-field">
-          <span class="placeholder">Your name</span>
-        </div>
 
-        <!-- Input-Feld E-Mail -->
-        <div class="input-box email-field">
-          <span class="placeholder">Your e-mail</span>
-        </div>
+      <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+        <div class="contact-form">
 
-        <!-- Großes Textfeld Nachricht -->
-        <div class="input-box message-field">
-          <span class="placeholder">Your message</span>
-        </div>
+          <!-- Input-Feld Name -->
+          <div class="input-box name-field">
+            <span
+              class="placeholder"
+              [class.placeholder-hidden]="(contactData.name || '').length > 0"
+            >
+              Your name
+            </span>
+            <input
+              type="text"
+              name="name"
+              required
+              [(ngModel)]="contactData.name"
+            >
+          </div>
 
-        <!-- Checkbox + Text -->
-        <div class="privacy-area">
-          <input type="checkbox" id="privacy-check" />
-          <label for="privacy-check">
-            I've read the
-            <span routerLink="/privacy" class="privacy-policy-link">privacy policy</span>
-            and agree to the processing of my data as outlined.
-          </label>
-        </div>
+          <!-- Input-Feld E-Mail -->
+          <div class="input-box email-field">
+            <span
+              class="placeholder"
+              [class.placeholder-hidden]="(contactData.email || '').length > 0"
+            >
+              Your e-mail
+            </span>
+            <input
+              type="email"
+              name="email"
+              required
+              [pattern]="emailPattern"
+              [(ngModel)]="contactData.email"
+              autocomplete="email"
+            >
+          </div>
 
-        <!-- Button -->
-        <button class="send-button">Send</button>
-      </div>
+          <!-- Großes Textfeld Nachricht -->
+          <div class="input-box message-field">
+            <span
+              class="placeholder"
+              [class.placeholder-hidden]="(contactData.message || '').length > 0"
+            >
+              Your message
+            </span>
+            <textarea
+              name="message"
+              required
+              [(ngModel)]="contactData.message"
+              rows="1"
+            ></textarea>
+          </div>
+
+          <!-- Checkbox + Text -->
+          <div class="privacy-area">
+            <input
+              type="checkbox"
+              id="privacy-check"
+              name="privacy"
+              required
+              [(ngModel)]="contactData.privacy"
+            >
+            <label for="privacy-check">
+              I've read the
+              <span routerLink="/privacy" class="privacy-policy-link">privacy policy</span>
+              and agree to the processing of my data as outlined.
+            </label>
+          </div>
+
+          <button class="send-button" type="submit">Send</button>
+        </div>
+      </form>
 
       <!-- Pfeil nach oben (für Mobile). Im Desktop ausgeblendet. -->
       <div class="arrow-up" (click)="scrollToTop()">
@@ -53,7 +97,7 @@
         </svg>
       </div>
 
-      <!-- Social Media-Bereich (identische SVGs wie in deinem Header) -->
+      <!-- Social Media-Bereich -->
       <div class="social-media-placeholder">
         <div class="social-icons">
           <!-- GitHub -->
@@ -72,7 +116,7 @@
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M15 0C6.7125 0 2.18932e-06 6.7125 2.18932e-06 15C-0.00169914 18.1489 0.988222 21.2184 2.82933 23.773C4.67043 26.3276 7.26922 28.2376 10.257 29.232C11.007 29.3625 11.2875 28.9125 11.2875 28.518C11.2875 28.1625 11.268 26.982 11.268 25.725C7.5 26.4195 6.525 24.807 6.225 23.9625C6.0555 23.5305 5.325 22.2 4.6875 21.843C4.1625 21.5625 3.4125 20.868 4.668 20.85C5.85 20.8305 6.693 21.9375 6.975 22.3875C8.325 24.6555 10.482 24.018 11.343 23.625C11.475 22.65 11.868 21.9945 12.3 21.6195C8.9625 21.2445 5.475 19.95 5.475 14.2125C5.475 12.5805 6.0555 11.232 7.0125 10.1805C6.8625 9.8055 6.3375 8.268 7.1625 6.2055C7.1625 6.2055 8.418 5.8125 11.2875 7.7445C12.5086 7.40559 13.7703 7.23501 15.0375 7.2375C16.3125 7.2375 17.5875 7.4055 18.7875 7.743C21.6555 5.793 22.9125 6.207 22.9125 6.207C23.7375 8.2695 23.2125 9.807 23.0625 10.182C24.018 11.232 24.6 12.5625 24.6 14.2125C24.6 19.9695 21.0945 21.2445 17.757 21.6195C18.3 22.0875 18.7695 22.9875 18.7695 24.3945C18.7695 26.4 18.75 28.0125 18.75 28.5195C18.75 28.9125 19.032 29.3805 19.782 29.2305C22.7595 28.2252 25.3469 26.3115 27.1799 23.7587C29.0128 21.206 29.9991 18.1427 30 15C30 6.7125 23.2875 0 15 0Z"
+                d="M15 0C6.7125 0 0 6.7125 0 15C0 23.3 6.7125 30 15 30C23.3 30 30 23.3 30 15C30 6.7 23.3 0 15 0ZM19.782 29.2305C19.032 29.3805 18.75 28.9125 18.75 28.5195C18.75 28.0125 18.7695 26.4 18.7695 24.3945C18.7695 22.9875 18.3 22.0875 17.757 21.6195C21.0945 21.2445 24.6 19.9695 24.6 14.2125C24.6 12.5625 24.018 11.232 23.0625 10.182C23.2125 9.807 23.7375 8.2695 22.9125 6.207C22.9125 6.207 21.6555 5.793 18.7875 7.743C17.5875 7.4055 16.3125 7.2375 15.0375 7.2375C13.7703 7.23501 12.5086 7.40559 11.2875 7.7445C8.418 5.8125 7.1625 6.2055 7.1625 6.2055C6.3375 8.268 6.8625 9.8055 7.0125 10.1805C6.0555 11.232 5.475 12.5805 5.475 14.2125C5.475 19.95 8.9625 21.2445 12.3 21.6195C11.868 21.9945 11.475 22.65 11.343 23.625C10.482 24.018 8.325 24.6555 6.975 22.3875C6.693 21.9375 5.85 20.8305 4.668 20.85C3.4125 20.868 4.1625 21.5625 4.6875 21.843C5.325 22.2 6.0555 23.5305 6.225 23.9625C6.525 24.807 7.5 26.4195 11.268 25.725C11.268 26.982 11.2875 28.1625 11.2875 28.518C11.2875 28.9125 11.007 29.3625 10.257 29.232C7.26922 28.2376 4.67043 26.3276 2.82933 23.773C0.988222 21.2184 -0.00169914 18.1489 2.18932e-06 15C2.18932e-06 6.7125 6.7125 0 15 0C23.2875 0 30 6.7125 30 15C29.9991 18.1427 29.0128 21.206 27.1799 23.7587C25.3469 26.3115 22.7595 28.2252 19.782 29.2305Z"
                 fill="currentColor"
               />
             </svg>
@@ -133,7 +177,6 @@
 
     <!-- Rechte Spalte: Infos + Pfeil + Footer -->
     <div class="contact-details-area">
-      <!-- Überschrift / Einleitung -->
       <div class="intro-text">
         <h3>Let us work together.</h3>
         <p>
@@ -160,7 +203,13 @@
           <p>
             <span class="icon">
               <!-- Telefon SVG -->
-              <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg
+                width="20"
+                height="22"
+                viewBox="0 0 20 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   d="M5.29197 11.5079C6.44299 14.0016 8.29742 16.0371 10.5595 17.3148L12.318 15.3763C12.5338 15.1383 12.8535 15.059 13.1333 15.1648C14.0285 15.4908 14.9957 15.667 15.9869 15.667C16.4265 15.667 16.7862 16.0636 16.7862 16.5482V19.6235C16.7862 20.1082 16.4265 20.5047 15.9869 20.5047C8.48126 20.5047 2.39844 13.799 2.39844 5.52473C2.39844 5.04008 2.75813 4.64355 3.19776 4.64355H5.99538C6.435 4.64355 6.7947 5.04008 6.7947 5.52473C6.7947 6.6262 6.95456 7.68361 7.25031 8.67052C7.33823 8.97893 7.27429 9.32259 7.05048 9.56932L5.29197 11.5079Z"
                   fill="#FFFDFD"
@@ -191,18 +240,15 @@
 
       <!-- Footer-Bereich -->
       <div class="footer-info">
-        <!-- Logo für Mobile (zentriert) -->
         <img
           class="footer-logo"
           src="/assets/img/profil.png"
           alt="Profile Logo"
         />
-        <!-- Links: Legal & Privacy (nebeneinander, zentriert) -->
         <div class="footer-links">
           <a routerLink="/legal" class="legal-notice-link">Legal notice</a>
           <a routerLink="/privacy" class="privacy-policy-link">Privacy policy</a>
         </div>
-        <!-- Copyright -->
         <div class="copyright">
           © Leo Rullani 2025
         </div>
