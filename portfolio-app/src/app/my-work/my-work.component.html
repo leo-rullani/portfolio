@@ -1,9 +1,9 @@
 <div class="my-work-section">
-  <div class="vertical-title">My Work</div>
+  <div class="vertical-title">
+    {{ text[activeLang].verticalTitle }}
+  </div>
 
-  <!-- ========================================
-       PROJEKT 1: JOIN
-       ======================================== -->
+  <!-- =============== PROJEKT 1: JOIN =============== -->
   <div class="project-card">
     <div class="card-bg"></div>
     <div class="card-content">
@@ -11,37 +11,36 @@
       <div class="left-column">
         <div class="card-header">
           <div class="project-number">1</div>
-          <div class="project-title">Join</div>
+          <div class="project-title">
+            {{ text[activeLang].project1Title }}
+          </div>
         </div>
 
         <!-- Always visible Info-Block -->
         <div class="info-block">
-          <h4>About the project</h4>
+          <h4>{{ text[activeLang].project1About }}</h4>
           <p>
-            Task manager inspired by the Kanban System.
-            Create and organize tasks using drag & drop, assign categories.
+            {{ text[activeLang].project1AboutText }}
           </p>
         </div>
 
-        <!-- Alle weiteren Info-Blöcke in expanded-content (nur Mobile einklappbar) -->
+        <!-- Additional Info in expanded-content -->
         <div class="expanded-content" [class.is-expanded]="isProject1Expanded">
           <div class="info-block">
-            <h4>Technologies I have used</h4>
-            <p>JavaScript, HTML, CSS, Firebase</p>
+            <h4>{{ text[activeLang].project1Tech }}</h4>
+            <p>{{ text[activeLang].project1TechList }}</p>
           </div>
 
           <div class="info-block">
-            <h4>What I have learned</h4>
+            <h4>{{ text[activeLang].project1Learned }}</h4>
             <p>
-              I improved my knowledge of JSDoc, wrote cleaner code,
-              and successfully collaborated with a small team
-              on a shared codebase.
+              {{ text[activeLang].project1LearnedText }}
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Dieser right-section ebenfalls nur im Mobile ein-/ausblendbar -->
+      <!-- Right section, also in expanded-content -->
       <div class="expanded-content" [class.is-expanded]="isProject1Expanded">
         <div class="right-section">
           <div class="screenshot">
@@ -55,9 +54,11 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub
+              {{ text[activeLang].github }}
             </a>
-            <button class="btn-primary">Live Test</button>
+            <button class="btn-primary">
+              {{ text[activeLang].liveTest }}
+            </button>
           </div>
         </div>
       </div>
@@ -66,9 +67,8 @@
 
   <!-- Show More / Show Less Button für Projekt 1 -->
   <div class="show-more" (click)="toggleExpandCard1()">
-    <!-- Nur der Text + Pfeil wechseln (Show me more vs. Show me less) -->
     <ng-container *ngIf="!isProject1Expanded; else showLess1">
-      Show me more
+      {{ text[activeLang].project1ShowMore }}
       <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
         <!-- Pfeil nach unten -->
         <path
@@ -79,7 +79,7 @@
     </ng-container>
 
     <ng-template #showLess1>
-      Show me less
+      {{ text[activeLang].project1ShowLess }}
       <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
         <!-- Pfeil nach oben -->
         <path
@@ -90,10 +90,7 @@
     </ng-template>
   </div>
 
-
-  <!-- ========================================
-       PROJEKT 2: EL POLLO LOCO
-       ======================================== -->
+  <!-- =============== PROJEKT 2: EL POLLO LOCO =============== -->
   <div class="project-card">
     <div class="card-bg"></div>
     <div class="card-content">
@@ -101,31 +98,29 @@
       <div class="left-column">
         <div class="card-header">
           <div class="project-number">2</div>
-          <div class="project-title">El Pollo Loco</div>
+          <div class="project-title">
+            {{ text[activeLang].project2Title }}
+          </div>
         </div>
 
         <!-- Always visible Info-Block -->
         <div class="info-block">
-          <h4>About the project</h4>
+          <h4>{{ text[activeLang].project2About }}</h4>
           <p>
-            A 2D jump-and-run game with fun animations, tricky levels,
-            and interactive enemies. Built with JavaScript and canvas.
+            {{ text[activeLang].project2AboutText }}
           </p>
         </div>
 
-        <!-- Alle weiteren Info-Blöcke in expanded-content -->
         <div class="expanded-content" [class.is-expanded]="isProject2Expanded">
           <div class="info-block">
-            <h4>Technologies I have used</h4>
-            <p>JavaScript, OOP, HTML, CSS</p>
+            <h4>{{ text[activeLang].project2Tech }}</h4>
+            <p>{{ text[activeLang].project2TechList }}</p>
           </div>
 
           <div class="info-block">
-            <h4>What I have learned</h4>
+            <h4>{{ text[activeLang].project2Learned }}</h4>
             <p>
-              I deepened my skills in OOP and game loops while
-              adding features like player movement, enemy logic,
-              collisions and more.
+              {{ text[activeLang].project2LearnedText }}
             </p>
           </div>
         </div>
@@ -134,7 +129,10 @@
       <div class="expanded-content" [class.is-expanded]="isProject2Expanded">
         <div class="right-section">
           <div class="screenshot">
-            <img src="assets/img/screenshot-pollo.png" alt="Pollo Loco Screenshot" />
+            <img
+              src="assets/img/screenshot-pollo.png"
+              alt="Pollo Loco Screenshot"
+            />
           </div>
           <div class="buttons">
             <!-- GITHUB-BUTTON: Link zu deinem Repo -->
@@ -144,9 +142,11 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub
+              {{ text[activeLang].github }}
             </a>
-            <button class="btn-primary">Live Test</button>
+            <button class="btn-primary">
+              {{ text[activeLang].liveTest }}
+            </button>
           </div>
         </div>
       </div>
@@ -156,7 +156,7 @@
   <!-- Show More / Show Less Button für Projekt 2 -->
   <div class="show-more" (click)="toggleExpandCard2()">
     <ng-container *ngIf="!isProject2Expanded; else showLess2">
-      Show me more
+      {{ text[activeLang].project2ShowMore }}
       <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
         <path
           d="M0.660203 0.828544L14.8316 0.811831L8.49194 12.6392L0.660203 0.828544Z"
@@ -166,7 +166,7 @@
     </ng-container>
 
     <ng-template #showLess2>
-      Show me less
+      {{ text[activeLang].project2ShowLess }}
       <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
         <path
           d="M0.629035 12.6314L8.55688 0.885022L14.7998 12.7638L0.629035 12.6314Z"
@@ -176,7 +176,7 @@
     </ng-template>
   </div>
 
-  <!-- Desktop-Pfeil rechts (bleibt unverändert) -->
+  <!-- Desktop-Pfeil rechts -->
   <div class="arrow-right" (click)="scrollNext()">
     <svg
       width="113"
