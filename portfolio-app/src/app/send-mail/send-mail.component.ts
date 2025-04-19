@@ -68,8 +68,15 @@ export class SendMailComponent {
         ).subscribe({
           next: (response) => {
             console.log('Mail erfolgreich gesendet:', response);
+
             this.feedbackMessage = 'E-Mail wurde erfolgreich versendet!';
             this.feedbackError = false;
+
+            // Erfolgsmeldung nach 3s wieder ausblenden
+            setTimeout(() => {
+              this.feedbackMessage = '';
+            }, 3000);
+
             myForm.resetForm();
           },
           error: (error) => {
@@ -83,8 +90,15 @@ export class SendMailComponent {
       } else {
         // Testmodus => keine echte Mail
         console.log('mailTest = true => Keine echte Mail', this.contactData);
+
         this.feedbackMessage = 'Testmodus aktiv. Es wurde keine Mail verschickt.';
         this.feedbackError = false;
+
+        // Auch Test-Erfolgsmeldung nach 3s ausblenden
+        setTimeout(() => {
+          this.feedbackMessage = '';
+        }, 3000);
+
         myForm.resetForm();
       }
 
