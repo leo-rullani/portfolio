@@ -1,20 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-social-media',
   standalone: true,
-  imports: [],
   templateUrl: './social-media.component.html',
-  styleUrls: ['./social-media.component.scss']
+  styleUrls: ['./social-media.component.scss'],
+  imports: []
 })
 export class SocialMediaComponent {
-  activeLang: 'DE' | 'EN' = 'EN';
+
+  // Aktuelle Sprache kommt vom Parent
+  @Input() activeLang: 'DE' | 'EN' = 'EN';
+
+  // Wenn sich die Sprache ändert, geben wir ein Event raus
+  @Output() langChange = new EventEmitter<'DE'|'EN'>();
 
   changeLang(lang: 'DE' | 'EN'): void {
+    // Optional: local anpassen, damit Buttons / CSS sich anpassen
     this.activeLang = lang;
-    // Hier kannst du zusätzlich deinen i18n-Service aufrufen,
-    // z.B. this.translateService.use(lang);
-    // oder weitere Aktionen durchführen
+
+    // Jetzt sagt SocialMedia dem Parent Bescheid:
+    this.langChange.emit(lang);
+
     console.log(`Sprache gewechselt zu: ${lang}`);
   }
 }

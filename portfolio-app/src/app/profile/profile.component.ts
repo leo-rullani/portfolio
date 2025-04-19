@@ -8,9 +8,29 @@ import { Component, Input, ElementRef } from '@angular/core';
 })
 export class ProfileComponent {
 
+  // Vom Parent (z. B. app.component) übergebene Sprache
+  @Input() activeLang: 'DE' | 'EN' = 'EN';
+
   // 3) Wir erwarten, dass der Parent (AppComponent)
   // uns einen ElementRef<HTMLDivElement> übergibt
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
+
+  /**
+   * Einfaches Übersetzungs-Objekt
+   * role, name, location => auf Deutsch und Englisch.
+   */
+  text = {
+    EN: {
+      role: 'Software Engineer',
+      name: 'Leo Rullani',
+      location: 'Wohlen'
+    },
+    DE: {
+      role: 'Software-Ingenieur',
+      name: 'Leo Rullani',
+      location: 'Wohlen'
+    }
+  };
 
   scrollNext() {
     // Prüfen, ob wir tatsächlich den Container haben

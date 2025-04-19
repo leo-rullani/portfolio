@@ -1,10 +1,15 @@
 <div class="photo"></div>
 
-<!-- In Responsive: zuerst Rolle, dann Name, dann Ort (Wohlen) -->
-<h2 class="role">Software Engineer</h2>
-<h1 class="name">Leo Rullani</h1>
-<h3 class="location">Wohlen</h3>
+<!-- Rollentitel -->
+<h2 class="role">{{ text[activeLang].role }}</h2>
 
+<!-- Name -->
+<h1 class="name">{{ text[activeLang].name }}</h1>
+
+<!-- Ort -->
+<h3 class="location">{{ text[activeLang].location }}</h3>
+
+<!-- Pfeil-Button -->
 <div class="arrow-right" (click)="scrollNext()">
   <svg
     width="113"

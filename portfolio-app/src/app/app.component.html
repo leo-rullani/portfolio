@@ -9,42 +9,47 @@
   <app-profile
     class="slide"
     id="profile-slide"
-    [scrollEl]="scrollContainerRef">
-  </app-profile>
+    [scrollEl]="scrollContainerRef"
+    [activeLang]="activeLang"
+  ></app-profile>
 
   <!-- Social Media ist kein "Slide", braucht keine ID -->
-  <app-social-media [class.hidden]="!showSocialMedia"></app-social-media>
+  <app-social-media
+    [class.hidden]="!showSocialMedia"
+    [activeLang]="activeLang"
+    (langChange)="changeLang($event)"
+  ></app-social-media>
 
   <about-me
     class="slide"
     id="about-me-slide"
-    [scrollEl]="scrollContainerRef">
-  </about-me>
+    [scrollEl]="scrollContainerRef"
+  ></about-me>
 
   <skill-set
     class="slide"
     id="skill-set-slide"
-    [scrollEl]="scrollContainerRef">
-  </skill-set>
+    [scrollEl]="scrollContainerRef"
+  ></skill-set>
 
   <my-work
     class="slide"
     id="my-work-slide"
-    [scrollEl]="scrollContainerRef">
-  </my-work>
+    [scrollEl]="scrollContainerRef"
+  ></my-work>
 
   <references-me
     class="slide"
     id="references-slide"
-    [scrollEl]="scrollContainerRef">
-  </references-me>
+    [scrollEl]="scrollContainerRef"
+  ></references-me>
 
   <!-- Kontaktformular -->
   <app-send-mail
     class="slide"
     id="send-mail-slide"
-    [scrollEl]="scrollContainerRef">
-  </app-send-mail>
+    [scrollEl]="scrollContainerRef"
+  ></app-send-mail>
 
   <!-- Haupt-Router-Outet (für deine Haupt-Routen, falls nötig) -->
   <router-outlet></router-outlet>
