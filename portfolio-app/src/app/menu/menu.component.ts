@@ -58,7 +58,7 @@ export class MenuComponent {
     }
   }
 
-  // =========== Menü-Klick-Methoden ===========
+  // =========== Menü-Klick-Methoden (Desktop) ===========
 
   // 1) Why me -> about-me => Desktop(Index=1), Mobile(ID="about-me-slide")
   scrollToAboutMe(): void {
@@ -75,9 +75,10 @@ export class MenuComponent {
     this.handleScroll(3, 'my-work-slide');
   }
 
-  // 4) Contact => contact-me => Desktop(Index=5), Mobile(ID="contact-slide")
+  // 4) Contact => send-mail => Desktop(Index=5), Mobile(ID="send-mail-slide")
   scrollToContact(): void {
-    this.handleScroll(5, 'contact-slide');
+    // WICHTIG: statt 'contact-slide' jetzt 'send-mail-slide'
+    this.handleScroll(5, 'send-mail-slide');
   }
 
   // =========================================================

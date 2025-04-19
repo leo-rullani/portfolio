@@ -4,7 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0,0,0,0.8); /* dunkler Overlay-Hintergrund */
+  background: rgba(0, 0, 0, 0.8); /* dunkler Overlay-Hintergrund */
   z-index: 9999; /* Liegt über allem */
 
   display: flex;
@@ -61,12 +61,14 @@
     color: #B5E93B;
     margin-bottom: 1rem;
   }
+
   h3 {
     font-size: 1.4rem;
     color: #B5E93B;
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
   }
+
   p {
     font-size: 1rem;
     line-height: 1.5;

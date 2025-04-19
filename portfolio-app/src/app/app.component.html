@@ -6,7 +6,6 @@
 
   <app-menu></app-menu>
 
-  <!-- Wir fügen id-Attribute für scrollIntoView hinzu -->
   <app-profile
     class="slide"
     id="profile-slide"
@@ -40,11 +39,16 @@
     [scrollEl]="scrollContainerRef">
   </references-me>
 
-  <contact-me
+  <!-- Kontaktformular -->
+  <app-send-mail
     class="slide"
-    id="contact-slide"
+    id="send-mail-slide"
     [scrollEl]="scrollContainerRef">
-  </contact-me>
+  </app-send-mail>
 
+  <!-- Haupt-Router-Outet (für deine Haupt-Routen, falls nötig) -->
   <router-outlet></router-outlet>
 </div>
+
+<!-- WICHTIG: Named outlet="overlay" -->
+<router-outlet name="overlay"></router-outlet>

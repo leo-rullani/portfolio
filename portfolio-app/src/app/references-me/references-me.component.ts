@@ -35,10 +35,11 @@ export class ReferencesMeComponent {
    *    oder den lokalen Container.
    */
   scrollNext(): void {
+    const distance = window.innerWidth;
     // 1) Falls du den vom Eltern übergebenen Container scrollen willst:
     if (this.scrollEl?.nativeElement) {
       this.scrollEl.nativeElement.scrollBy({
-        left: 300,
+        left: distance,
         behavior: 'smooth'
       });
     }
@@ -46,7 +47,7 @@ export class ReferencesMeComponent {
       // 2) Ansonsten versuche den lokalen Container zu scrollen:
       if (this.localScrollEl?.nativeElement) {
         this.localScrollEl.nativeElement.scrollBy({
-          left: 300,
+          left: distance,
           behavior: 'smooth'
         });
       } else {

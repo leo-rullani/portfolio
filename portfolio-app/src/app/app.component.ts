@@ -21,12 +21,17 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 
+// **Neu**: Deine neue SendMailComponent
+import { SendMailComponent } from './send-mail/send-mail.component';
+
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     CommonModule,
     RouterOutlet,        // Für <router-outlet> in app.component.html
+
+    // Deine bisherigen Komponenten
     MenuComponent,
     SocialMediaComponent,
     ProfileComponent,
@@ -35,10 +40,11 @@ import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
     MyWorkComponent,
     ReferencesMeComponent,
     ContactMeComponent,
-
-    // Optional, falls du Privacy/Legal direkt einbinden willst:
     PrivacyPolicyComponent,
-    LegalNoticeComponent
+    LegalNoticeComponent,
+
+    // Neu registriert
+    SendMailComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
@@ -105,6 +111,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   changeLang(lang: 'DE' | 'EN') {
     this.activeLang = lang;
     console.log(`Sprache gewechselt zu: ${lang}`);
-    // Hier könntest du ggf. einen I18n-Service aufrufen oder andere globale Aktionen
+    // Hier könntest du z. B. einen I18n-Service aufrufen oder globale Aktionen durchführen
   }
 }
