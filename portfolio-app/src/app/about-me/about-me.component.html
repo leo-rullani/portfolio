@@ -1,26 +1,21 @@
 <div class="about-me">
   <!-- Vertikal gedrehter Titel an der linken Seite -->
-  <div class="vertical-title">Why me</div>
+  <div class="vertical-title">{{ text[activeLang].verticalTitle }}</div>
 
   <!-- Beschreibungstext oben -->
   <div class="intro">
-    <p>
-      My passion for development started on the sidelines of football stadiums – not with the ball, but with code. Designing and programming real-time TV graphics for live football broadcasts sparked my fascination for frontend engineering. Today, I combine my experience in graphics, data, and UI to build clean, scalable, and visually striking digital products.
-    </p>
-    <p>
-      Armed with a Master’s in Data Science and a Bachelor’s in Business Economics Major Sportmanagement, I thrive at the intersection of creativity and analytics. As the Team Lead Graphics and Software Engineer at BBM Productions, I’m driven by bridging bold ideas with rock-solid code—bringing data-driven visuals to life for audiences around the globe. From advanced 3D animations to interactive dashboards, I believe in shaping solutions that not only perform seamlessly, but also captivate and inspire.
-    </p>
-    <p>
-      For me, innovation is more than just adopting the latest technology—it’s about challenging the status quo and pushing boundaries. Every new project is an opportunity to learn, grow, and craft experiences that resonate with users, whether they’re on the pitch or in the boardroom. That relentless curiosity is what keeps me passionate about engineering every single day.
-    </p>
+    <!-- Wir geben die 3 Absätze aus dem Array paragraphs[] aus -->
+    <p>{{ text[activeLang].paragraphs[0] }}</p>
+    <p>{{ text[activeLang].paragraphs[1] }}</p>
+    <p>{{ text[activeLang].paragraphs[2] }}</p>
   </div>
 
   <!-- "I am" in Grün -->
-  <h2 class="iam-title">I am</h2>
+  <h2 class="iam-title">{{ text[activeLang].iAmTitle }}</h2>
 
   <!-- Icons und Texte darunter -->
   <div class="icon-row">
-    <!-- Location (33x40, unverändert) -->
+    <!-- Location -->
     <div class="icon-box">
       <svg
         width="33"
@@ -38,10 +33,10 @@
           fill="#4A4A4A"
         />
       </svg>
-      <p>Wohlen, Switzerland</p>
+      <p>{{ text[activeLang].location }}</p>
     </div>
 
-    <!-- Remote Work (jetzt ebenfalls 33x40) -->
+    <!-- Remote Work -->
     <div class="icon-box">
       <svg
         width="33"
@@ -81,10 +76,10 @@
           stroke-linecap="round"
         />
       </svg>
-      <p>open to work remote</p>
+      <p>{{ text[activeLang].remote }}</p>
     </div>
 
-    <!-- Relocate (neues Icon, auf 33x40 skaliert) -->
+    <!-- Relocate -->
     <div class="icon-box">
       <svg
         width="33"
@@ -126,14 +121,16 @@
           fill="#B5E93B"
         />
       </svg>
-      <p>open to relocate</p>
+      <p>{{ text[activeLang].relocate }}</p>
     </div>
   </div>
 
   <!-- Button -->
-  <button class="btn-primary">Contact me</button>
+  <button class="btn-primary">
+    {{ text[activeLang].contactButton }}
+  </button>
 
-  <!-- Großer Pfeil rechts (wie auf der Startseite) -->
+  <!-- Großer Pfeil rechts -->
   <div class="arrow-right" (click)="scrollNext()">
     <svg
       width="113"
