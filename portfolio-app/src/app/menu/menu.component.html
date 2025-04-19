@@ -9,10 +9,18 @@
 
   <!-- Desktop-Menü-Punkte (nur >= 800px sichtbar) -->
   <div class="menu-items">
-    <span (click)="scrollToAboutMe()">Why me</span>
-    <span (click)="scrollToSkills()">Skills</span>
-    <span (click)="scrollToMyWork()">My Work</span>
-    <span (click)="scrollToContact()">Contact</span>
+    <span (click)="scrollToAboutMe()">
+      {{ text[activeLang].navWhyMe }}
+    </span>
+    <span (click)="scrollToSkills()">
+      {{ text[activeLang].navSkills }}
+    </span>
+    <span (click)="scrollToMyWork()">
+      {{ text[activeLang].navMyWork }}
+    </span>
+    <span (click)="scrollToContact()">
+      {{ text[activeLang].navContact }}
+    </span>
   </div>
 
   <!-- Burger-Menü für Mobile (< 800px) -->
@@ -37,16 +45,36 @@
   <!-- Menü-Items in einer Spalte -->
   <div class="menu-items-column">
     <!-- Mobile-Links rufen interne Methoden auf -->
-    <span (click)="onWhyMe()">Why me</span>
-    <span (click)="onSkillSet()">My Skill Set</span>
-    <span (click)="onMyWork()">My Work</span>
-    <span (click)="onContact()">Contact me</span>
+    <span (click)="onWhyMe()">
+      {{ text[activeLang].navWhyMe }}
+    </span>
+    <span (click)="onSkillSet()">
+      {{ text[activeLang].mobileSkillSet }}
+    </span>
+    <span (click)="onMyWork()">
+      {{ text[activeLang].navMyWork }}
+    </span>
+    <span (click)="onContact()">
+      {{ text[activeLang].mobileContact }}
+    </span>
 
     <!-- Sprache umschalten (DE | EN) -->
     <div class="change-language">
-      <span>DE</span>
+      <!-- DE -->
+      <span
+        [class.active]="activeLang === 'DE'"
+        (click)="changeLang('DE')"
+      >
+        DE
+      </span>
       <span>|</span>
-      <span>EN</span>
+      <!-- EN -->
+      <span
+        [class.active]="activeLang === 'EN'"
+        (click)="changeLang('EN')"
+      >
+        EN
+      </span>
     </div>
   </div>
 </div>

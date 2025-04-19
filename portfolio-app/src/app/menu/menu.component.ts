@@ -1,22 +1,66 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  // Wichtig: CommonModule importieren, damit [ngClass], *ngIf etc. funktionieren
+  // Wichtig: CommonModule importieren, damit [ngClass], *ngIf usw. funktionieren
   imports: [CommonModule],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
 
-  // Steuert das Overlay (Mobile)
+  /**
+   * Globale Sprache vom Parent (z. B. AppComponent)
+   *
+   * @example
+   *   <app-menu [activeLang]="activeLang" (activeLangChange)="activeLang=$event"></app-menu>
+   */
+  @Input() activeLang: 'DE' | 'EN' = 'EN';
+
+  /**
+   * Emitter, damit wir im Menu die Sprache umschalten können,
+   * welche dann im Parent ankommt.
+   */
+  @Output() activeLangChange = new EventEmitter<'DE' | 'EN'>();
+
+  // Steuert das Overlay (Mobile Burger-Menü)
   isOverlayOpen = false;
 
-  // Burger klick => Overlay an/aus
+  // Mehrsprachige Texte
+  text = {
+    EN: {
+      navWhyMe: 'Why me',
+      navSkills: 'Skills',
+      navMyWork: 'My Work',
+      navContact: 'Contact',
+      mobileSkillSet: 'My Skill Set',
+      mobileContact: 'Contact me'
+    },
+    DE: {
+      navWhyMe: 'Warum ich',
+      navSkills: 'Skills',
+      navMyWork: 'Projekte',
+      navContact: 'Kontakt',
+      mobileSkillSet: 'Meine Skills',
+      mobileContact: 'Kontaktiere mich'
+    }
+  };
+
+  /**
+   * Burger klick => Overlay an/aus
+   */
   toggleMenu(): void {
     this.isOverlayOpen = !this.isOverlayOpen;
+  }
+
+  /**
+   * Sprache umschalten => Emitter
+   */
+  changeLang(lang: 'DE' | 'EN'): void {
+    this.activeLang = lang;
+    this.activeLangChange.emit(lang);
   }
 
   /**
@@ -77,7 +121,6 @@ export class MenuComponent {
 
   // 4) Contact => send-mail => Desktop(Index=5), Mobile(ID="send-mail-slide")
   scrollToContact(): void {
-    // WICHTIG: statt 'contact-slide' jetzt 'send-mail-slide'
     this.handleScroll(5, 'send-mail-slide');
   }
 
