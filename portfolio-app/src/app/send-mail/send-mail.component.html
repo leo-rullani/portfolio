@@ -1,6 +1,8 @@
 <div class="contact-section">
   <!-- Vertikaler Titel links (Desktop) -->
-  <div class="vertical-title">Contact me</div>
+  <div class="vertical-title">
+    {{ text[activeLang].verticalTitle }}
+  </div>
 
   <!-- Haupt-Container (zwei Spalten) -->
   <div class="contact-container">
@@ -16,7 +18,7 @@
               class="placeholder"
               [class.placeholder-hidden]="(contactData.name || '').length > 0"
             >
-              Your name
+              {{ text[activeLang].placeholderName }}
             </span>
             <input
               type="text"
@@ -29,7 +31,7 @@
               class="error-text"
               *ngIf="myForm.submitted && myForm.controls['name']?.invalid"
             >
-              Bitte geben Sie Ihren Namen ein.
+              {{ text[activeLang].errorName }}
             </div>
           </div>
 
@@ -39,7 +41,7 @@
               class="placeholder"
               [class.placeholder-hidden]="(contactData.email || '').length > 0"
             >
-              Your e-mail
+              {{ text[activeLang].placeholderEmail }}
             </span>
             <input
               type="email"
@@ -54,7 +56,7 @@
               class="error-text"
               *ngIf="myForm.submitted && myForm.controls['email']?.invalid"
             >
-              Bitte geben Sie eine gültige E-Mail-Adresse ein.
+              {{ text[activeLang].errorEmail }}
             </div>
           </div>
 
@@ -64,7 +66,7 @@
               class="placeholder"
               [class.placeholder-hidden]="(contactData.message || '').length > 0"
             >
-              Your message
+              {{ text[activeLang].placeholderMessage }}
             </span>
             <textarea
               name="message"
@@ -76,7 +78,7 @@
               class="error-text"
               *ngIf="myForm.submitted && myForm.controls['message']?.invalid"
             >
-              Bitte geben Sie eine Nachricht ein.
+              {{ text[activeLang].errorMessage }}
             </div>
           </div>
 
@@ -90,27 +92,27 @@
               [(ngModel)]="contactData.privacy"
             />
             <label for="privacy-check">
-              I've read the
+              {{ text[activeLang].privacyLabelPart1 }}
               <span
                 [routerLink]="[{ outlets: { overlay: ['privacy'] } }]"
                 class="privacy-policy-link"
               >
-                privacy policy
+                {{ text[activeLang].privacyLabelPart2 }}
               </span>
-              and agree to the processing of my data as outlined.
+              {{ text[activeLang].privacyLabelPart3 }}
             </label>
 
             <div
               class="error-text"
               *ngIf="myForm.submitted && myForm.controls['privacy']?.invalid"
             >
-              Bitte bestätigen Sie die Datenschutzbestimmungen.
+              {{ text[activeLang].errorPrivacy }}
             </div>
           </div>
 
           <!-- Absenden-Button -->
           <button class="send-button" type="submit">
-            Send
+            {{ text[activeLang].btnSend }}
           </button>
         </div>
       </form>
@@ -158,7 +160,7 @@
             >
               <path
                 d="M15 0C6.7125 0 2.18932e-06 6.7125 2.18932e-06 15C-0.00169914 18.1489 0.988222 21.2184 2.82933 23.773C4.67043 26.3276 7.26922 28.2376 10.257 29.232C11.007 29.3625 11.2875 28.9125 11.2875 28.518C11.2875 28.1625 11.268 26.982 11.268 25.725C7.5 26.4195 6.525 24.807 6.225 23.9625C6.0555 23.5305 5.325 22.2 4.6875 21.843C4.1625 21.5625 3.4125 20.868 4.668 20.85C5.85 20.8305 6.693 21.9375 6.975 22.3875C8.325 24.6555 10.482 24.018 11.343 23.625C11.475 22.65 11.868 21.9945 12.3 21.6195C8.9625 21.2445 5.475 19.95 5.475 14.2125C5.475 12.5805 6.0555 11.232 7.0125 10.1805C6.8625 9.8055 6.3375 8.268 7.1625 6.2055C7.1625 6.2055 8.418 5.8125 11.2875 7.7445C12.5086 7.40559 13.7703 7.23501 15.0375 7.2375C16.3125 7.2375 17.5875 7.4055 18.7875 7.743C21.6555 5.793 22.9125 6.207 22.9125 6.207C23.7375 8.2695 23.2125 9.807 23.0625 10.182C24.018 11.232 24.6 12.5625 24.6 14.2125C24.6 19.9695 21.0945 21.2445 17.757 21.6195C18.3 22.0875 18.7695 22.9875 18.7695 24.3945C18.7695 26.4 18.75 28.0125 18.75 28.5195C18.75 28.9125 19.032 29.3805 19.782 29.2305C22.7595 28.2252 25.3469 26.3115 27.1799 23.7587C29.0128 21.206 29.9991 18.1427 30 15C30 6.7125 23.2875 0 15 0Z"
-          fill="currentColor"
+                fill="currentColor"
               />
             </svg>
           </a>
@@ -213,34 +215,40 @@
           </a>
         </div>
       </div>
-      <!-- Ende Social Media -->
+      <!-- Ende social-media-placeholder -->
     </div>
 
     <!-- Rechte Spalte: Infos + Pfeil + Footer -->
     <div class="contact-details-area">
       <div class="intro-text">
-        <h3>Let us work together.</h3>
+        <h3>{{ text[activeLang].introTitle }}</h3>
         <p>
-          I invite teams to reach out as I'm pursuing a front-end developer role.
-          I trust my strengths, enjoy team-based projects, and eagerly seek to
-          advance my skills for meaningful impact. I remain confident in growth daily.
+          {{ text[activeLang].introText }}
         </p>
 
         <div class="contact-data">
           <p>
             <span class="icon">
-              <svg width="23" height="30" viewBox="0 0 23 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- E-Mail SVG -->
+              <svg
+                width="23"
+                height="30"
+                viewBox="0 0 23 30"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
                 <path
                   d="M20.6041 5H9.0272C8.23128 5 7.58731 5.99831 7.58731 7.21846L7.58008 20.5292C7.58008 21.7494 8.23128 22.7477 9.0272 22.7477H20.6041C21.4001 22.7477 22.0513 21.7494 22.0513 20.5292V7.21846C22.0513 5.99831 21.4001 5 20.6041 5ZM20.3147 9.71423L15.1992 14.617C14.9676 14.8389 14.6637 14.8389 14.4322 14.617L9.31662 9.71423C9.13573 9.53675 9.0272 9.23726 9.0272 8.91559C9.0272 8.1724 9.55539 7.72871 9.96782 8.11694L14.8157 12.7646L19.6635 8.11694C20.0759 7.72871 20.6041 8.1724 20.6041 8.91559C20.6041 9.23726 20.4956 9.53675 20.3147 9.71423Z"
                   fill="#FFFDFD"
                 />
               </svg>
             </span>
-            E-mail:
+            {{ text[activeLang].labelEmail }}
             <a href="mailto:leugzimrullani.&#64;outlook.com">leugzimrullani.&#64;outlook.com</a>
           </p>
           <p>
             <span class="icon">
+              <!-- Telefon SVG -->
               <svg
                 width="20"
                 height="22"
@@ -254,7 +262,7 @@
                 />
               </svg>
             </span>
-            Tel:
+            {{ text[activeLang].labelPhone }}
             <a href="tel:+41764885610">+41 76 488 56 10</a>
           </p>
         </div>

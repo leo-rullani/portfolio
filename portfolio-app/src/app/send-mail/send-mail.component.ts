@@ -18,6 +18,9 @@ import { RouterLink } from '@angular/router';
 })
 export class SendMailComponent {
 
+  // Globale Sprache vom Parent
+  @Input() activeLang: 'DE' | 'EN' = 'EN';
+
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
 
   // Formulardaten
@@ -37,6 +40,71 @@ export class SendMailComponent {
   // Variablen für Erfolg/Fehler-Meldungen
   feedbackMessage = '';
   feedbackError = false;
+
+  // **Mehrsprachige Texte**: placeholders, labels, Fehlermeldungen, Erfolge, etc.
+  text = {
+    EN: {
+      verticalTitle: 'Contact me',
+      placeholderName: 'Your name',
+      placeholderEmail: 'Your e-mail',
+      placeholderMessage: 'Your message',
+
+      errorName: 'Please enter your name.',
+      errorEmail: 'Please enter a valid e-mail address.',
+      errorMessage: 'Please enter a message.',
+      errorPrivacy: 'Please confirm the privacy policy.',
+
+      privacyLabelPart1: `I've read the`,
+      privacyLabelPart2: `privacy policy`,
+      privacyLabelPart3: `and agree to the processing of my data as outlined.`,
+
+      btnSend: 'Send',
+
+      feedbackFillAll: 'Please fill out all fields correctly.',
+      feedbackSent: 'Your message has been sent successfully!',
+      feedbackTest: 'Test mode active. No mail was actually sent.',
+      feedbackErrorSend: 'Unfortunately, there was a problem sending your message.',
+
+      introTitle: 'Let us work together.',
+      introText: `I invite teams to reach out as I'm pursuing a front-end developer role.
+                  I trust my strengths, enjoy team-based projects, and eagerly seek to
+                  advance my skills for meaningful impact. I remain confident in growth daily.`,
+
+      labelEmail: 'E-mail:',
+      labelPhone: 'Tel:'
+    },
+
+    DE: {
+      verticalTitle: 'Kontaktiere mich',
+      placeholderName: 'Ihr Name',
+      placeholderEmail: 'Ihre E-Mail',
+      placeholderMessage: 'Ihre Nachricht',
+
+      errorName: 'Bitte geben Sie Ihren Namen ein.',
+      errorEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+      errorMessage: 'Bitte geben Sie eine Nachricht ein.',
+      errorPrivacy: 'Bitte bestätigen Sie die Datenschutzbestimmungen.',
+
+      privacyLabelPart1: `Ich habe die`,
+      privacyLabelPart2: `Datenschutzerklärung`,
+      privacyLabelPart3: `gelesen und stimme der Verarbeitung meiner Daten zu.`,
+
+      btnSend: 'Senden',
+
+      feedbackFillAll: 'Bitte füllen Sie alle Felder korrekt aus.',
+      feedbackSent: 'E-Mail wurde erfolgreich versendet!',
+      feedbackTest: 'Testmodus aktiv. Es wurde keine Mail verschickt.',
+      feedbackErrorSend: 'Leider gab es ein Problem beim Versand.',
+
+      introTitle: 'Lass uns zusammenarbeiten.',
+      introText: `Ich lade Teams ein, sich zu melden, da ich eine Frontend-Developer-Rolle anstrebe.
+                  Ich vertraue auf meine Stärken, arbeite gern im Team und möchte meine Fähigkeiten
+                  weiter ausbauen. Ich bin überzeugt, mich jeden Tag weiterentwickeln zu können.`,
+
+      labelEmail: 'E-Mail:',
+      labelPhone: 'Tel:'
+    }
+  };
 
   // POST-Konfiguration
   post = {
@@ -69,7 +137,8 @@ export class SendMailComponent {
           next: (response) => {
             console.log('Mail erfolgreich gesendet:', response);
 
-            this.feedbackMessage = 'E-Mail wurde erfolgreich versendet!';
+            // Erfolg in Deutsch oder Englisch:
+            this.feedbackMessage = this.text[this.activeLang].feedbackSent;
             this.feedbackError = false;
 
             // Erfolgsmeldung nach 3s wieder ausblenden
@@ -81,7 +150,7 @@ export class SendMailComponent {
           },
           error: (error) => {
             console.error('Fehler beim Senden:', error);
-            this.feedbackMessage = 'Leider gab es ein Problem beim Versand.';
+            this.feedbackMessage = this.text[this.activeLang].feedbackErrorSend;
             this.feedbackError = true;
           },
           complete: () => console.info('Mail-Request komplett')
@@ -91,7 +160,7 @@ export class SendMailComponent {
         // Testmodus => keine echte Mail
         console.log('mailTest = true => Keine echte Mail', this.contactData);
 
-        this.feedbackMessage = 'Testmodus aktiv. Es wurde keine Mail verschickt.';
+        this.feedbackMessage = this.text[this.activeLang].feedbackTest;
         this.feedbackError = false;
 
         // Auch Test-Erfolgsmeldung nach 3s ausblenden
@@ -104,7 +173,7 @@ export class SendMailComponent {
 
     } else {
       // Formular ist ungültig
-      this.feedbackMessage = 'Bitte füllen Sie alle Felder korrekt aus.';
+      this.feedbackMessage = this.text[this.activeLang].feedbackFillAll;
       this.feedbackError = true;
     }
   }
