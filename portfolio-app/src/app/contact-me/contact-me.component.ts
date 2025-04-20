@@ -28,16 +28,19 @@ export class ContactMeComponent {
   emailPattern = '[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}';
 
   // Testmodus
-  mailTest = true;
+  mailTest = false;
 
   post = {
-    endPoint: 'https://deineDomain.de/sendMail.php',
+    // Deine Domain + Pfad
+    endPoint: 'https://leorullani.com/sendMail.php',
     body: (payload: any) => JSON.stringify(payload),
     options: {
+      // Angepasst: 'application/json'
       headers: {
-        'Content-Type': 'text/plain',
-        responseType: 'text',
+        'Content-Type': 'application/json'
       },
+      // responseType gehört direkt hierhin, nicht in headers:
+      responseType: 'text' as const
     },
   };
 
@@ -46,8 +49,11 @@ export class ContactMeComponent {
   onSubmit(ngForm: NgForm) {
     if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
       // Echte Mail wird gesendet
-      this.http.post(this.post.endPoint, this.post.body(this.contactData))
-        .subscribe({
+      this.http.post(
+        this.post.endPoint,
+        this.post.body(this.contactData),
+        this.post.options  // <-- Jetzt wird header + responseType wirklich verwendet
+      ).subscribe({
           next: (response) => {
             console.log('Mail sent', response);
             ngForm.resetForm();

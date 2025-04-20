@@ -34,8 +34,8 @@ export class SendMailComponent {
   // E-Mail-Pattern
   emailPattern = '[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}';
 
-  // Schalter: Testmodus an/aus
-  mailTest = true;
+  // Schalter: Testmodus an/aus -> jetzt auf false, damit echte Mails gesendet werden
+  mailTest = false;
 
   // Variablen für Erfolg/Fehler-Meldungen
   feedbackMessage = '';
@@ -108,13 +108,17 @@ export class SendMailComponent {
 
   // POST-Konfiguration
   post = {
-    endPoint: 'https://www.DEINE-DOMAIN.de/sendMail.php',
+    // Hier deine tatsächliche Domain + Pfad angeben:
+    endPoint: 'https://leorullani.com/sendMail.php',
     body: (payload: any) => JSON.stringify(payload),
     options: {
+      // Hier haben wir 'text/plain' auf 'application/json' geändert
       headers: {
-        'Content-Type': 'text/plain',
-        responseType: 'text',
+        'Content-Type': 'application/json',
       },
+      // 'responseType' gehört auf dieselbe Ebene wie 'headers', nicht in 'headers'.
+      // Typische Angular-Schreibweise:
+      responseType: 'text' as const
     },
   };
 
