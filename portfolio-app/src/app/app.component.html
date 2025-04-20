@@ -5,8 +5,9 @@
   <div class="app-background"></div>
 
   <app-menu
-    [activeLang]="activeLang"
-    ></app-menu>
+  [activeLang]="activeLang"
+  (activeLangChange)="activeLang = $event"
+></app-menu>
 
   <app-profile
     class="slide"
