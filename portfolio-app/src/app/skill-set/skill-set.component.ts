@@ -29,7 +29,7 @@ export class SkillSetComponent {
       intro:
         `Over the years, I’ve leveraged a broad spectrum of front-end frameworks and libraries, consistently seeking out new methods to refine both design and functionality. By working on a range of projects—from real-time dashboards to interactive single-page applications—I’ve cultivated a mindset that values adaptability, performance, and visual polish. My ability to quickly absorb emerging tools and seamlessly integrate them into evolving codebases not only demonstrates my technical proficiency but also highlights my commitment to delivering modern, user-focused solutions.`,
 
-      iconAngular: '', // Keine Beschriftung laut Original (leeres <div class="icon-name"></div>)
+      iconAngular: '',
       iconTypeScript: 'TypeScript',
       iconJavaScript: 'JavaScript',
       iconHtml: 'HTML',
@@ -78,5 +78,25 @@ export class SkillSetComponent {
       left: window.innerWidth,
       behavior: 'smooth'
     });
+  }
+
+  /**
+   * Neu: Scroll zum Kontakt-Slide (NUR in Mobile/Responsive sinnvoll)
+   */
+  scrollToContact() {
+    if (!this.scrollEl?.nativeElement) {
+      console.warn('No nativeElement on scrollEl');
+      return;
+    }
+    // Kontakt-Element:
+    const contactSlide = document.getElementById('send-mail-slide');
+    if (!contactSlide) {
+      console.warn('No contact slide with ID="send-mail-slide" found');
+      return;
+    }
+    // Nur Mobile => scrollen wir nach unten
+    if (window.innerWidth < 800) {
+      contactSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }

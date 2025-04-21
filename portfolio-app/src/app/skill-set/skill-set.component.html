@@ -274,7 +274,6 @@
           </svg>
         </div>
         <div class="icon-name">
-          <!-- Zeilenumbruch -->
           {{ text[activeLang].iconMaterial }}
         </div>
       </div>
@@ -318,7 +317,8 @@
 
       <!-- Neuer Button-Bereich, nur für Mobile -->
       <div class="lets-talk-section">
-        <button class="primary-mob">
+        <!-- Hier nur das (click)="scrollToContact()" ergänzt -->
+        <button class="primary-mob" (click)="scrollToContact()">
           <span>{{ text[activeLang].letsTalk }}</span>
         </button>
       </div>
