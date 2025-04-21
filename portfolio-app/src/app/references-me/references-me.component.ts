@@ -37,8 +37,7 @@ export class ReferencesMeComponent {
       ref2Project: 'Project SFL',
 
       ref3Quote: `“Leo had to develop, format and deliver content
-                  in collaboration with the team members.
-                  He is a reliable and friendly person.”`,
+                  in collaboration with the team members.”`,
       ref3Name: 'Abbas M.',
       ref3Project: 'Project Join',
 
@@ -74,7 +73,7 @@ export class ReferencesMeComponent {
       ref2Project: 'Projekt SFL',
 
       ref3Quote: `„Leo musste Inhalte entwickeln, formatieren und im
-                  Team abliefern. Er ist zuverlässig und freundlich.“`,
+                  Team abliefern.“`,
       ref3Name: 'Abbas M.',
       ref3Project: 'Projekt Join',
 

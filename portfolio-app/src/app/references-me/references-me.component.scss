@@ -36,6 +36,10 @@
     flex-direction: row;
     gap: 2rem;
 
+    /* >>> NEU: Nur diese beiden Zeilen hinzugefügt <<< */
+    overflow-x: auto;
+    overflow-y: hidden;
+
     .references-column {
       display: flex;
       flex-direction: column;
