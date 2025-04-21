@@ -4,36 +4,22 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'my-work',
   standalone: true,
-  // Hier fügst du CommonModule zu den imports hinzu:
   imports: [
     CommonModule
   ],
   templateUrl: './my-work.component.html',
-  styleUrl: './my-work.component.scss' // Belassen wie im Original
+  styleUrl: './my-work.component.scss'
 })
 export class MyWorkComponent {
 
-  // Parent (AppComponent) übergibt uns die Sprache
   @Input() activeLang: 'DE' | 'EN' = 'EN';
-
-  // Parent übergibt Scroll-Container
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
 
-  // Booleans für Show/Hide
   isProject1Expanded = false;
   isProject2Expanded = false;
-
-  /**
-   * Übersetzungs-Objekt
-   * - verticalTitle => "My Work"
-   * - Projekt 1 / Projekt 2 => "Join", "El Pollo Loco", ...
-   * - aboutTheProject, technologies, learned, showMore, showLess, etc.
-   */
   text = {
     EN: {
       verticalTitle: 'My Work',
-
-      // PROJECT 1: JOIN
       project1Title: 'Join',
       project1About: 'About the project',
       project1AboutText:
@@ -50,8 +36,6 @@ export class MyWorkComponent {
       project1ShowLess: 'Show me less',
       github: 'GitHub',
       liveTest: 'Live Test',
-
-      // PROJECT 2: EL POLLO LOCO
       project2Title: 'El Pollo Loco',
       project2About: 'About the project',
       project2AboutText:
@@ -67,13 +51,10 @@ export class MyWorkComponent {
       project2ShowMore: 'Show me more',
       project2ShowLess: 'Show me less',
 
-      // Arrow Right => unchanged, just the label if needed
     },
 
     DE: {
       verticalTitle: 'Meine Arbeiten',
-
-      // PROJECT 1: JOIN
       project1Title: 'Join',
       project1About: 'Über das Projekt',
       project1AboutText:

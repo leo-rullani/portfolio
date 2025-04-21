@@ -3,7 +3,6 @@
     {{ text[activeLang].verticalTitle }}
   </div>
 
-  <!-- =============== PROJEKT 1: JOIN =============== -->
   <div class="project-card">
     <div class="card-bg"></div>
     <div class="card-content">
@@ -16,7 +15,6 @@
           </div>
         </div>
 
-        <!-- Always visible Info-Block -->
         <div class="info-block">
           <h4>{{ text[activeLang].project1About }}</h4>
           <p>
@@ -24,7 +22,6 @@
           </p>
         </div>
 
-        <!-- Additional Info in expanded-content -->
         <div class="expanded-content" [class.is-expanded]="isProject1Expanded">
           <div class="info-block">
             <h4>{{ text[activeLang].project1Tech }}</h4>
@@ -40,14 +37,12 @@
         </div>
       </div>
 
-      <!-- Right section, also in expanded-content -->
       <div class="expanded-content" [class.is-expanded]="isProject1Expanded">
         <div class="right-section">
           <div class="screenshot">
             <img src="assets/img/screenshot-join.png" alt="Join Screenshot" />
           </div>
           <div class="buttons">
-            <!-- GITHUB-BUTTON: Link zu deinem Repo -->
             <a
               class="btn-secondary"
               href="https://github.com/leo-rullani/join"
@@ -56,7 +51,7 @@
             >
               {{ text[activeLang].github }}
             </a>
-            <!-- Live-Test: Jetzt direkt zu /join/html/login.html -->
+
             <a
               class="btn-primary"
               href="https://leorullani.com/join/html/login.html"
@@ -71,12 +66,12 @@
     </div>
   </div>
 
-  <!-- Show More / Show Less Button für Projekt 1 -->
+
   <div class="show-more" (click)="toggleExpandCard1()">
     <ng-container *ngIf="!isProject1Expanded; else showLess1">
       {{ text[activeLang].project1ShowMore }}
       <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
-        <!-- Pfeil nach unten -->
+
         <path
           d="M0.660203 0.828544L14.8316 0.811831L8.49194 12.6392L0.660203 0.828544Z"
           fill="#B5E93B"
@@ -87,7 +82,7 @@
     <ng-template #showLess1>
       {{ text[activeLang].project1ShowLess }}
       <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
-        <!-- Pfeil nach oben -->
+
         <path
           d="M0.629035 12.6314L8.55688 0.885022L14.7998 12.7638L0.629035 12.6314Z"
           fill="#B5E93B"
@@ -96,7 +91,7 @@
     </ng-template>
   </div>
 
-  <!-- =============== PROJEKT 2: EL POLLO LOCO =============== -->
+
   <div class="project-card">
     <div class="card-bg"></div>
     <div class="card-content">
@@ -109,7 +104,7 @@
           </div>
         </div>
 
-        <!-- Always visible Info-Block -->
+
         <div class="info-block">
           <h4>{{ text[activeLang].project2About }}</h4>
           <p>
@@ -141,7 +136,7 @@
             />
           </div>
           <div class="buttons">
-            <!-- GITHUB-BUTTON: Link zu deinem Repo -->
+
             <a
               class="btn-secondary"
               href="https://github.com/leo-rullani/el_pollo_loco"
@@ -150,7 +145,7 @@
             >
               {{ text[activeLang].github }}
             </a>
-            <!-- Live-Test: Button zu Link -->
+
             <a
               class="btn-primary"
               href="https://leorullani.com/el_pollo_loco/"
@@ -165,7 +160,7 @@
     </div>
   </div>
 
-  <!-- Show More / Show Less Button für Projekt 2 -->
+
   <div class="show-more" (click)="toggleExpandCard2()">
     <ng-container *ngIf="!isProject2Expanded; else showLess2">
       {{ text[activeLang].project2ShowMore }}
@@ -188,7 +183,7 @@
     </ng-template>
   </div>
 
-  <!-- Desktop-Pfeil rechts -->
+
   <div class="arrow-right" (click)="scrollNext()">
     <svg
       width="113"

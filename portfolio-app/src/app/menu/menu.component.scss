@@ -75,12 +75,8 @@
     }
   }
 
-  /*
-    BURGER-MENÜ: Zunächst im Desktop-Layout ausgeblendet.
-    Später im Mobile-Layout (unter 800px) sichtbar.
-  */
   .burger-menu {
-    display: none; /* Standard: unsichtbar (für Desktop) */
+    display: none;
     position: absolute;
     width: 30px;
     height: 30px;
@@ -88,7 +84,6 @@
     right: 20px;
     cursor: pointer;
 
-    /* Drei Linien übereinander */
     .line {
       width: 30px;
       height: 2px;
@@ -98,20 +93,17 @@
   }
 }
 
-/* ================== Breakpoint: <= 800px => horizontales Top-Bar ================== */
 @media (max-width: 800px) {
   .menu-system {
-    position: fixed;        /* bleibt oben sichtbar */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px;           /* Höhe des Top-Bars */
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    z-index: 999;           /* über dem Inhalt */
-
-    /* Grüner Verlauf fürs Menü oben (statt .menu-bg/.shadow-menu) */
+    z-index: 999;
     background: linear-gradient(
       160.33deg,
       #B5E93B 50.78%,
@@ -119,7 +111,6 @@
     );
   }
 
-  /* Wir blenden .menu-bg & .shadow-menu aus */
   .menu-system .menu-bg,
   .menu-system .shadow-menu {
     display: none;
@@ -127,9 +118,9 @@
 
   .menu-system .logo {
     position: static;
-    width: 64px;    /* verkleinert */
+    width: 64px;
     height: auto;
-    margin-left: 16px; /* etwas Abstand vom linken Rand */
+    margin-left: 16px;
     top: auto;
     left: auto;
   }
@@ -144,12 +135,12 @@
     height: auto;
     flex-direction: row;
     align-items: center;
-    gap: 1.5rem; /* weniger Abstand statt 136px */
+    gap: 1.5rem;
     transform: none;
     display: none;
 
     span {
-      transform: none;  /* kein rotate(-90deg) */
+      transform: none;
       font-size: 1.2rem;
       line-height: normal;
       min-width: auto;
@@ -166,7 +157,6 @@
     }
   }
 
-  /*  BURGER-MENÜ => nun sichtbar im Mobile */
   .menu-system .burger-menu {
     display: flex;
     flex-direction: column;
@@ -178,35 +168,24 @@
   }
 }
 
-/* =========================
-   MOBILE OVERLAY (unter 800px)
-   ========================= */
 
 .mobile-overlay {
-  /* standardmäßig unsichtbar,
-     per .show wird es sichtbar */
   display: none;
-
-  /* Wichtig: fixiert an den Viewport
-     (wie der Header) */
   position: fixed;
   left: 0;
   width: 100%;
-  height: 350px;      /* oder so hoch, wie du brauchst */
+  height: 350px;
   z-index: 999;
-
-  /* Abgerundete Ecken unten */
   border-radius: 0 0 30px 30px;
 
   &.show {
-    display: block;   /* => Overlay sichtbar */
+    display: block;
   }
 
-  /* Grüner Hintergrund */
   .overlay-bg {
     position: absolute;
     width: 100%;
-    height: 100%;     /* passt sich an .mobile-overlay */
+    height: 100%;
     left: 0;
     top: 0;
 
@@ -218,7 +197,6 @@
     border-radius: 0 0 30px 30px;
   }
 
-  /* Das "X" zum Schließen */
   .close-btn {
     position: absolute;
     width: 35px;
@@ -228,7 +206,6 @@
     background: none;
     cursor: pointer;
 
-    /* Zwei schräg gekreuzte Linien: */
     .line1,
     .line2 {
       position: absolute;
@@ -246,10 +223,9 @@
     }
   }
 
-  /* Menü-Spalte (Why me, My skill set …) */
   .menu-items-column {
     position: absolute;
-    top: 80px; /* oder 40px, je nach Geschmack */
+    top: 80px;
     left: 0;
     width: 100%;
     height: 238px;
@@ -272,7 +248,6 @@
       }
     }
 
-    /* Language Switch am unteren Ende */
     .change-language {
       display: flex;
       flex-direction: row;

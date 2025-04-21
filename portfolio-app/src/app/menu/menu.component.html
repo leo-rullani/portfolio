@@ -1,4 +1,4 @@
-<!-- NAV: Desktop-Menü links + Burger (für Mobile) -->
+
 <nav class="menu-system">
   <div class="menu-bg"></div>
   <div class="shadow-menu"></div>
@@ -7,7 +7,6 @@
     <img src="/assets/img/profil.png" alt="Profil" />
   </div>
 
-  <!-- Desktop-Menü-Punkte (nur >= 800px sichtbar) -->
   <div class="menu-items">
     <span (click)="scrollToAboutMe()">
       {{ text[activeLang].navWhyMe }}
@@ -23,7 +22,6 @@
     </span>
   </div>
 
-  <!-- Burger-Menü für Mobile (< 800px) -->
   <div class="burger-menu" (click)="toggleMenu()">
     <div class="line"></div>
     <div class="line"></div>
@@ -31,20 +29,15 @@
   </div>
 </nav>
 
-<!-- MOBILE OVERLAY (nur < 800px sichtbar) -->
 <div class="mobile-overlay" [ngClass]="{'show': isOverlayOpen}">
-  <!-- Grüne BG -->
   <div class="overlay-bg"></div>
 
-  <!-- Close-Button (X) -->
   <div class="close-btn" (click)="toggleMenu()">
     <div class="line1"></div>
     <div class="line2"></div>
   </div>
 
-  <!-- Menü-Items in einer Spalte -->
   <div class="menu-items-column">
-    <!-- Mobile-Links rufen interne Methoden auf -->
     <span (click)="onWhyMe()">
       {{ text[activeLang].navWhyMe }}
     </span>
@@ -58,9 +51,7 @@
       {{ text[activeLang].mobileContact }}
     </span>
 
-    <!-- Sprache umschalten (DE | EN) -->
     <div class="change-language">
-      <!-- DE -->
       <span
         [class.active]="activeLang === 'DE'"
         (click)="changeLang('DE')"
@@ -68,7 +59,6 @@
         DE
       </span>
       <span>|</span>
-      <!-- EN -->
       <span
         [class.active]="activeLang === 'EN'"
         (click)="changeLang('EN')"

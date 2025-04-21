@@ -319,7 +319,6 @@
   }
 }
 
-/* 801px–1800px => flex-direction column, scale(0.7), smaller gap, arrow further right */
 @media (min-width: 801px) and (max-width: 1800px) {
   .my-work-section {
     flex-direction: column;
@@ -334,7 +333,7 @@
     }
 
     .arrow-right {
-      right: 72px; /* weiter rechts als project-cards */
+      right: 72px;
       top: 87%;
     }
     .vertical-title {

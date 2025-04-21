@@ -1,17 +1,13 @@
 <div class="contact-section">
-  <!-- Vertikaler Titel links (Desktop) -->
   <div class="vertical-title">Contact me</div>
 
-  <!-- Haupt-Container (zwei Spalten) -->
   <div class="contact-container">
 
-    <!-- Linke Spalte: Formular -->
     <div class="contact-form-area">
 
       <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
         <div class="contact-form">
 
-          <!-- Input-Feld Name -->
           <div class="input-box name-field">
             <span
               class="placeholder"
@@ -27,7 +23,6 @@
             >
           </div>
 
-          <!-- Input-Feld E-Mail -->
           <div class="input-box email-field">
             <span
               class="placeholder"
@@ -45,7 +40,6 @@
             >
           </div>
 
-          <!-- Großes Textfeld Nachricht -->
           <div class="input-box message-field">
             <span
               class="placeholder"
@@ -61,7 +55,6 @@
             ></textarea>
           </div>
 
-          <!-- Checkbox + Text -->
           <div class="privacy-area">
             <input
               type="checkbox"
@@ -81,7 +74,6 @@
         </div>
       </form>
 
-      <!-- Pfeil nach oben (für Mobile). Im Desktop ausgeblendet. -->
       <div class="arrow-up" (click)="scrollToTop()">
         <svg
           width="16"
@@ -97,10 +89,8 @@
         </svg>
       </div>
 
-      <!-- Social Media-Bereich -->
       <div class="social-media-placeholder">
         <div class="social-icons">
-          <!-- GitHub -->
           <a
             href="https://github.com/leo-rullani"
             target="_blank"
@@ -122,7 +112,6 @@
             </svg>
           </a>
 
-          <!-- LinkedIn -->
           <a
             href="https://www.linkedin.com/in/leo-rullani-5b17a5274/"
             target="_blank"
@@ -151,7 +140,6 @@
             </svg>
           </a>
 
-          <!-- Email -->
           <a
             href="mailto:coding&#64;leorullani.com"
             aria-label="Email"
@@ -172,10 +160,8 @@
           </a>
         </div>
       </div>
-      <!-- Ende social-media-placeholder -->
     </div>
 
-    <!-- Rechte Spalte: Infos + Pfeil + Footer -->
     <div class="contact-details-area">
       <div class="intro-text">
         <h3>Let us work together.</h3>
@@ -185,11 +171,9 @@
           advance my skills for meaningful impact. I remain confident in growth daily.
         </p>
 
-        <!-- Kontakt-Daten (Mail, Tel) mit Icons -->
         <div class="contact-data">
           <p>
             <span class="icon">
-              <!-- E-Mail SVG -->
               <svg width="23" height="30" viewBox="0 0 23 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M20.6041 5H9.0272C8.23128 5 7.58731 5.99831 7.58731 7.21846L7.58008 20.5292C7.58008 21.7494 8.23128 22.7477 9.0272 22.7477H20.6041C21.4001 22.7477 22.0513 21.7494 22.0513 20.5292V7.21846C22.0513 5.99831 21.4001 5 20.6041 5ZM20.3147 9.71423L15.1992 14.617C14.9676 14.8389 14.6637 14.8389 14.4322 14.617L9.31662 9.71423C9.13573 9.53675 9.0272 9.23726 9.0272 8.91559C9.0272 8.1724 9.55539 7.72871 9.96782 8.11694L14.8157 12.7646L19.6635 8.11694C20.0759 7.72871 20.6041 8.1724 20.6041 8.91559C20.6041 9.23726 20.4956 9.53675 20.3147 9.71423Z"
@@ -202,7 +186,6 @@
           </p>
           <p>
             <span class="icon">
-              <!-- Telefon SVG -->
               <svg
                 width="20"
                 height="22"
@@ -222,7 +205,6 @@
         </div>
       </div>
 
-      <!-- Pfeil nach links (Desktop) -->
       <div class="arrow-left" (click)="scrollPrev()">
         <svg
           width="113"
@@ -238,7 +220,6 @@
         </svg>
       </div>
 
-      <!-- Footer-Bereich -->
       <div class="footer-info">
         <img
           class="footer-logo"
@@ -256,6 +237,5 @@
     </div>
   </div>
 
-  <!-- Rechter Gradient (100px breit) -->
   <div class="right-gradient"></div>
 </div>

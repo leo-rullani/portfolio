@@ -1,18 +1,14 @@
 <div class="contact-section">
-  <!-- Vertikaler Titel links (Desktop) -->
   <div class="vertical-title">
     {{ text[activeLang].verticalTitle }}
   </div>
 
-  <!-- Haupt-Container (zwei Spalten) -->
   <div class="contact-container">
 
-    <!-- Linke Spalte: Formular -->
     <div class="contact-form-area">
       <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
         <div class="contact-form">
 
-          <!-- Name -->
           <div class="input-box name-field">
             <span
               class="placeholder"
@@ -26,7 +22,7 @@
               required
               [(ngModel)]="contactData.name"
             />
-            <!-- Ungültig => Fehlermeldung -->
+
             <div
               class="error-text"
               *ngIf="myForm.submitted && myForm.controls['name']?.invalid"
@@ -35,7 +31,6 @@
             </div>
           </div>
 
-          <!-- E-Mail -->
           <div class="input-box email-field">
             <span
               class="placeholder"
@@ -51,7 +46,6 @@
               [(ngModel)]="contactData.email"
               autocomplete="email"
             />
-            <!-- Fehlerhinweis bei ungültiger E-Mail -->
             <div
               class="error-text"
               *ngIf="myForm.submitted && myForm.controls['email']?.invalid"
@@ -60,7 +54,6 @@
             </div>
           </div>
 
-          <!-- Nachricht -->
           <div class="input-box message-field">
             <span
               class="placeholder"
@@ -82,7 +75,6 @@
             </div>
           </div>
 
-          <!-- Checkbox -->
           <div class="privacy-area">
             <input
               type="checkbox"
@@ -110,21 +102,18 @@
             </div>
           </div>
 
-          <!-- Absenden-Button -->
           <button class="send-button" type="submit">
             {{ text[activeLang].btnSend }}
           </button>
         </div>
       </form>
 
-      <!-- FEEDBACK (Erfolg / Fehler) -->
       <div class="feedback" *ngIf="feedbackMessage">
         <p [ngClass]="{'error': feedbackError, 'success': !feedbackError}">
           {{ feedbackMessage }}
         </p>
       </div>
 
-      <!-- Pfeil nach oben (für Mobile). Im Desktop ausgeblendet. -->
       <div class="arrow-up" (click)="scrollToTop()">
         <svg
           width="16"
@@ -140,10 +129,9 @@
         </svg>
       </div>
 
-      <!-- Social Media-Bereich -->
       <div class="social-media-placeholder">
         <div class="social-icons">
-          <!-- GitHub -->
+
           <a
             href="https://github.com/leo-rullani"
             target="_blank"
@@ -165,7 +153,6 @@
             </svg>
           </a>
 
-          <!-- LinkedIn -->
           <a
             href="https://www.linkedin.com/in/leo-rullani-5b17a5274/"
             target="_blank"
@@ -194,7 +181,6 @@
             </svg>
           </a>
 
-          <!-- Email -->
           <a
             href="mailto:coding&#64;leorullani.com"
             aria-label="Email"
@@ -215,10 +201,9 @@
           </a>
         </div>
       </div>
-      <!-- Ende social-media-placeholder -->
+
     </div>
 
-    <!-- Rechte Spalte: Infos + Pfeil + Footer -->
     <div class="contact-details-area">
       <div class="intro-text">
         <h3>{{ text[activeLang].introTitle }}</h3>
@@ -229,7 +214,7 @@
         <div class="contact-data">
           <p>
             <span class="icon">
-              <!-- E-Mail SVG -->
+
               <svg
                 width="23"
                 height="30"
@@ -248,7 +233,7 @@
           </p>
           <p>
             <span class="icon">
-              <!-- Telefon SVG -->
+
               <svg
                 width="20"
                 height="22"
@@ -268,7 +253,7 @@
         </div>
       </div>
 
-      <!-- Pfeil nach links (Desktop) -->
+
       <div class="arrow-left" (click)="scrollPrev()">
         <svg
           width="113"
@@ -284,7 +269,7 @@
         </svg>
       </div>
 
-      <!-- Footer-Bereich -->
+
       <div class="footer-info">
         <img
           class="footer-logo"
@@ -312,6 +297,5 @@
     </div>
   </div>
 
-  <!-- Rechter Gradient -->
   <div class="right-gradient"></div>
 </div>

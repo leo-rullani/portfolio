@@ -62,7 +62,6 @@
           pointer-events: none;
         }
 
-        /* Placeholder ausblenden, wenn Klasse placeholder-hidden */
         & .placeholder-hidden {
           display: none;
         }
@@ -188,10 +187,9 @@
       a {
         text-decoration: none;
         color: #fff;
-        cursor: pointer; /* Damit Tel-Link ebenfalls Hand-Cursor hat */
-
+        cursor: pointer;
         &:hover {
-          color: #B5E93B; /* Grüner Hover-Effekt */
+          color: #B5E93B;
         }
       }
     }
@@ -224,7 +222,6 @@
     gap: 0.3rem;
     margin-top: 2rem;
 
-    /* Unverändert */
     copyright {
       font-size: 16px;
       color: #FFFDFD;
@@ -311,7 +308,6 @@
       z-index: 1;
     }
 
-    /* Footer-Links untereinander, rechtsbündig */
     .footer-info {
       text-align: right;
       align-items: flex-end;
@@ -351,7 +347,6 @@
 
     .contact-details-area {
       order: 1;
-      /* Ab hier volle Breite & linksbündig */
       max-width: 100% !important;
       align-items: flex-start;
       text-align: left;
@@ -433,7 +428,6 @@
   }
 }
 
-/* bereits vorhanden? Erweitern/Anpassen: */
 input:-webkit-autofill,
 textarea:-webkit-autofill {
   box-shadow: 0 0 0 1000px transparent inset !important;

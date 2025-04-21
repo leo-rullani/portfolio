@@ -24,22 +24,17 @@ export class ContactMeComponent {
     privacy: false
   };
 
-  // E-Mail-Pattern wie gehabt
   emailPattern = '[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}';
 
-  // Testmodus
   mailTest = false;
 
   post = {
-    // Deine Domain + Pfad
     endPoint: 'https://leorullani.com/sendMail.php',
     body: (payload: any) => JSON.stringify(payload),
     options: {
-      // Angepasst: 'application/json'
       headers: {
         'Content-Type': 'application/json'
       },
-      // responseType gehört direkt hierhin, nicht in headers:
       responseType: 'text' as const
     },
   };
@@ -48,11 +43,10 @@ export class ContactMeComponent {
 
   onSubmit(ngForm: NgForm) {
     if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
-      // Echte Mail wird gesendet
       this.http.post(
         this.post.endPoint,
         this.post.body(this.contactData),
-        this.post.options  // <-- Jetzt wird header + responseType wirklich verwendet
+        this.post.options
       ).subscribe({
           next: (response) => {
             console.log('Mail sent', response);
@@ -64,7 +58,6 @@ export class ContactMeComponent {
           complete: () => console.info('send post complete'),
         });
     } else if (ngForm.submitted && ngForm.form.valid && this.mailTest) {
-      // Nur Test: Keine echte Mail
       console.log('mailTest active => no real post');
       ngForm.resetForm();
     }

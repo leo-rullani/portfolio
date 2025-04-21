@@ -10,7 +10,6 @@ import { RouterLink } from '@angular/router';
   imports: [
     FormsModule,
     CommonModule,
-    // WICHTIG: Damit Angular [routerLink] erkennt
     RouterLink
   ],
   templateUrl: './send-mail.component.html',
@@ -18,12 +17,10 @@ import { RouterLink } from '@angular/router';
 })
 export class SendMailComponent {
 
-  // Globale Sprache vom Parent
   @Input() activeLang: 'DE' | 'EN' = 'EN';
 
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
 
-  // Formulardaten
   contactData = {
     name: '',
     email: '',
@@ -31,17 +28,13 @@ export class SendMailComponent {
     privacy: false
   };
 
-  // E-Mail-Pattern
   emailPattern = '[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}';
 
-  // Schalter: Testmodus an/aus -> jetzt auf false, damit echte Mails gesendet werden
   mailTest = false;
 
-  // Variablen für Erfolg/Fehler-Meldungen
   feedbackMessage = '';
   feedbackError = false;
 
-  // **Mehrsprachige Texte**: placeholders, labels, Fehlermeldungen, Erfolge, etc.
   text = {
     EN: {
       verticalTitle: 'Contact me',
@@ -106,33 +99,23 @@ export class SendMailComponent {
     }
   };
 
-  // POST-Konfiguration
   post = {
-    // Hier deine tatsächliche Domain + Pfad angeben:
     endPoint: 'https://leorullani.com/sendMail.php',
     body: (payload: any) => JSON.stringify(payload),
     options: {
-      // Hier haben wir 'text/plain' auf 'application/json' geändert
       headers: {
         'Content-Type': 'application/json',
       },
-      // 'responseType' gehört auf dieselbe Ebene wie 'headers', nicht in 'headers'.
-      // Typische Angular-Schreibweise:
       responseType: 'text' as const
     },
   };
 
   constructor(private http: HttpClient) {}
 
-  /**
-   * Wird beim Abschicken des Formulars (ngSubmit) aufgerufen
-   */
   onSubmit(myForm: NgForm) {
-    // Prüfen, ob Formular abgesendet und gültig
     if (myForm.submitted && myForm.form.valid) {
 
       if (!this.mailTest) {
-        // Echte Mail senden
         this.http.post(
           this.post.endPoint,
           this.post.body(this.contactData),
@@ -140,12 +123,8 @@ export class SendMailComponent {
         ).subscribe({
           next: (response) => {
             console.log('Mail erfolgreich gesendet:', response);
-
-            // Erfolg in Deutsch oder Englisch:
             this.feedbackMessage = this.text[this.activeLang].feedbackSent;
             this.feedbackError = false;
-
-            // Erfolgsmeldung nach 3s wieder ausblenden
             setTimeout(() => {
               this.feedbackMessage = '';
             }, 3000);
@@ -161,13 +140,11 @@ export class SendMailComponent {
         });
 
       } else {
-        // Testmodus => keine echte Mail
         console.log('mailTest = true => Keine echte Mail', this.contactData);
 
         this.feedbackMessage = this.text[this.activeLang].feedbackTest;
         this.feedbackError = false;
 
-        // Auch Test-Erfolgsmeldung nach 3s ausblenden
         setTimeout(() => {
           this.feedbackMessage = '';
         }, 3000);
@@ -176,7 +153,6 @@ export class SendMailComponent {
       }
 
     } else {
-      // Formular ist ungültig
       this.feedbackMessage = this.text[this.activeLang].feedbackFillAll;
       this.feedbackError = true;
     }

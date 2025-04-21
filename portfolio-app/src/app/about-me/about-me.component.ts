@@ -53,22 +53,15 @@ export class AboutMeComponent {
     if (!this.scrollEl?.nativeElement) return;
     const contactSlide = document.getElementById('send-mail-slide');
     if (!contactSlide) return;
-
-    // Mobile => vertikales Scrollen
     if (window.innerWidth < 800) {
       contactSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
       return;
     }
 
-    // Desktop => horizontal (genaue Position berechnen)
     const container = this.scrollEl.nativeElement;
     const containerRect = container.getBoundingClientRect();
     const contactRect = contactSlide.getBoundingClientRect();
-
-    // Aktuell gescrollter Left-Wert (weil wir evtl. schon in Slide 2 oder 3 stehen)
     const alreadyScrolled = container.scrollLeft;
-
-    // Distanz, die wir vom linken Rand des Containers bis zum Contact-Slide haben
     const offset = (contactRect.left - containerRect.left) + alreadyScrolled;
 
     container.scrollTo({

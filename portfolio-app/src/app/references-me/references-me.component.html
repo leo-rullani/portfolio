@@ -1,17 +1,11 @@
-<!-- ======================
-     DESKTOP-BEREICH
-     ====================== -->
+
      <div class="references-section desktop-only" #localScrollEl>
-      <!-- Vertikaler Titel links, rotiert -->
       <div class="vertical-title">
         {{ text[activeLang].desktopHeadline }}
       </div>
 
-      <!-- Scrollbarer Container für Referenzen (Desktop) -->
       <div class="references-container">
-        <!-- Spalte 1 mit 3 Boxen -->
         <div class="references-column">
-          <!-- Ref 1 -->
           <div class="reference-box">
             <p class="quote">{{ text[activeLang].ref1Quote }}</p>
             <div class="divider-line"></div>
@@ -19,7 +13,6 @@
             <div class="project">{{ text[activeLang].ref1Project }}</div>
           </div>
 
-          <!-- Ref 2 -->
           <div class="reference-box">
             <p class="quote">{{ text[activeLang].ref2Quote }}</p>
             <div class="divider-line"></div>
@@ -27,7 +20,6 @@
             <div class="project">{{ text[activeLang].ref2Project }}</div>
           </div>
 
-          <!-- Ref 3 -->
           <div class="reference-box">
             <p class="quote">{{ text[activeLang].ref3Quote }}</p>
             <div class="divider-line"></div>
@@ -36,9 +28,7 @@
           </div>
         </div>
 
-        <!-- Spalte 2 mit 3 Boxen -->
         <div class="references-column">
-          <!-- Ref 4 -->
           <div class="reference-box">
             <p class="quote">{{ text[activeLang].ref4Quote }}</p>
             <div class="divider-line"></div>
@@ -46,7 +36,6 @@
             <div class="project">{{ text[activeLang].ref4Project }}</div>
           </div>
 
-          <!-- Ref 5 -->
           <div class="reference-box">
             <p class="quote">{{ text[activeLang].ref5Quote }}</p>
             <div class="divider-line"></div>
@@ -54,7 +43,6 @@
             <div class="project">{{ text[activeLang].ref5Project }}</div>
           </div>
 
-          <!-- Ref 6 -->
           <div class="reference-box">
             <p class="quote">{{ text[activeLang].ref6Quote }}</p>
             <div class="divider-line"></div>
@@ -64,7 +52,6 @@
         </div>
       </div>
 
-      <!-- Pfeil rechts (Desktop) -->
       <div class="arrow-right" (click)="scrollNext()">
         <svg
           width="113"
@@ -81,11 +68,7 @@
       </div>
     </div>
 
-    <!-- ======================
-         MOBILE-BEREICH
-         ====================== -->
     <div class="references-section mobile-only">
-      <!-- Neuer Titel nur in Mobile -->
       <h2 class="mobile-headline">
         {{ text[activeLang].mobileHeadline }}
       </h2>
@@ -93,9 +76,8 @@
         {{ text[activeLang].mobileSubtitle }}
       </p>
 
-      <!-- Horizontales Carousel -->
       <div class="references-carousel">
-        <!-- Box 1 -->
+
         <div class="reference-box-mob">
           <div class="inner-centered">
             <p class="quote">{{ text[activeLang].ref1Quote }}</p>
@@ -105,7 +87,6 @@
           </div>
         </div>
 
-        <!-- Box 2 -->
         <div class="reference-box-mob">
           <div class="inner-centered">
             <p class="quote">{{ text[activeLang].ref2Quote }}</p>
@@ -115,7 +96,6 @@
           </div>
         </div>
 
-        <!-- Box 3 -->
         <div class="reference-box-mob">
           <div class="inner-centered">
             <p class="quote">{{ text[activeLang].ref3Quote }}</p>
@@ -125,7 +105,6 @@
           </div>
         </div>
 
-        <!-- Box 4 -->
         <div class="reference-box-mob">
           <div class="inner-centered">
             <p class="quote">{{ text[activeLang].ref4Quote }}</p>
@@ -135,7 +114,6 @@
           </div>
         </div>
 
-        <!-- Box 5 -->
         <div class="reference-box-mob">
           <div class="inner-centered">
             <p class="quote">{{ text[activeLang].ref5Quote }}</p>
@@ -145,7 +123,6 @@
           </div>
         </div>
 
-        <!-- Box 6 -->
         <div class="reference-box-mob">
           <div class="inner-centered">
             <p class="quote">{{ text[activeLang].ref6Quote }}</p>
@@ -156,7 +133,6 @@
         </div>
       </div>
 
-      <!-- Carousel-Indikatoren (SVG) -->
       <div class="carousel-indicator">
         <svg
           width="48"

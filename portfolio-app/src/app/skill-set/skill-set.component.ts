@@ -9,20 +9,10 @@ import { Component, Input, ElementRef } from '@angular/core';
 })
 export class SkillSetComponent {
 
-  // Parent (AppComponent) übergibt uns die Sprache:
   @Input() activeLang: 'DE' | 'EN' = 'EN';
 
-  // Parent übergibt Scroll-Container
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
 
-  /**
-   * Übersetzungs-Objekt
-   * - verticalTitle: My Skill Set
-   * - intro: großer Absatz
-   * - icon-Namen: TypeScript, JavaScript, HTML, CSS, REST-Api, Firebase, Git, Scrum, Material Design, Challenge Me
-   * - challengeText: "Lately, I've immersed myself ..."
-   * - letsTalk: "Let's talk"
-   */
   text = {
     EN: {
       verticalTitle: 'My Skill Set',
@@ -80,21 +70,16 @@ export class SkillSetComponent {
     });
   }
 
-  /**
-   * Neu: Scroll zum Kontakt-Slide (NUR in Mobile/Responsive sinnvoll)
-   */
   scrollToContact() {
     if (!this.scrollEl?.nativeElement) {
       console.warn('No nativeElement on scrollEl');
       return;
     }
-    // Kontakt-Element:
     const contactSlide = document.getElementById('send-mail-slide');
     if (!contactSlide) {
       console.warn('No contact slide with ID="send-mail-slide" found');
       return;
     }
-    // Nur Mobile => scrollen wir nach unten
     if (window.innerWidth < 800) {
       contactSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }

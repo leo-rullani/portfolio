@@ -1,4 +1,4 @@
-/* Global Reset / Grund-Styles */
+
 * {
   box-sizing: border-box;
 }
@@ -8,13 +8,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Quantico', sans-serif;
-
-  /* Für Desktop: horizontales Scrollen erlaubt */
-  overflow-y: hidden; /* Kein vert. Scroll */
-  overflow-x: auto;  /* horizontales Scrollen, falls breiter Inhalt */
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 
-/* Schriftarten einbinden */
 @font-face {
   font-family: 'Quantico';
   src: url('assets/fonts/Quantico-Regular.ttf') format('truetype');
@@ -40,21 +37,16 @@ body {
   font-style: italic;
 }
 
-/* Bilder auf volle Breite begrenzen */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/*
-  Responsive-Anpassung unter 800px:
-  Jetzt wollen wir vertikal scrollen, KEIN horizontales
-*/
 @media (max-width: 800px) {
   html,
   body {
-    overflow-y: auto;   /* Erlaube vertikales Scrollen */
-    overflow-x: hidden; /* Unterbinde horizontales Scrollen */
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 }

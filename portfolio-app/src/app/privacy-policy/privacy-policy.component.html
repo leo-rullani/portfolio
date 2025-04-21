@@ -1,9 +1,6 @@
 <div class="overlay" (click)="closeOverlay($event)">
   <div class="overlay-content" (click)="$event.stopPropagation()">
     <div class="close-button">
-      <!-- Klick auf “X” => wir rufen closeOnX()
-           und/oder navigieren zu '/',
-           je nachdem, was du bevorzugst -->
       <a
         routerLink="/"
         class="close-link"

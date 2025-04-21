@@ -1,7 +1,7 @@
 .skillset {
   position: absolute;
   top: 480px;
-  left: 200vw; /* Slide 3 */
+  left: 200vw;
   width: 100vw;
   height: 100vh;
   background: transparent;
@@ -38,7 +38,7 @@
 
   .challenge-text-wrapper {
     margin-left: 1120px;
-    margin-top: -166px;
+    margin-top: -145px;
 
     .challenge-text {
       max-width: 350px;
@@ -90,11 +90,10 @@
         line-height: 1.4;
         text-align: justify;
         color: #fff;
-        /* NEU: zusätzlicher rechter Rand + automatischer Wortumbruch */
         margin-left: 100px;
         margin-right: 100px;
-        word-break: break-word;      /* bei sehr langen Wörtern umbrechen */
-        overflow-wrap: break-word;   /* moderne Variante */
+        word-break: break-word;
+        overflow-wrap: break-word;
       }
     }
 
@@ -126,7 +125,6 @@
       }
 
       .challenge-icon-box {
-        /* Falls benötigt */
       }
     }
   }
@@ -142,13 +140,9 @@
   }
 }
 
-/* ================================
-   TABLET/MITTEL-BEREICH:
-   1600px bis 801px
-================================ */
 @media (max-width: 1600px) and (min-width: 801px) {
   .skillset {
-    top: 250px; /* Layout höher oder tiefer setzen */
+    top: 250px;
   }
   .intro-text {
     margin-right: 320px !important;
@@ -159,7 +153,7 @@
   }
 
   .challenge-text-wrapper {
-    margin-top: -100px; /* Weniger Überlappung */
+    margin-top: -100px;
   }
 
   .arrow-right {
@@ -167,7 +161,6 @@
     transform: none;
   }
 
-  /* Hier die Textboxen */
   .intro-text p {
     white-space: normal;
     word-break: break-word;
@@ -191,9 +184,7 @@
   }
 }
 
-/* ================================
-   MOBIL-BEREICH: max-width: 800px
-================================ */
+
 @media (max-width: 800px) {
   .skillset {
     position: static;
@@ -241,7 +232,7 @@
       max-width: 100%;
       p {
         font-size: 1rem;
-        margin: 0;           /* Mobil: kein extra Rand links/rechts */
+        margin: 0;
         text-align: justify;
         word-break: break-word;
         overflow-wrap: break-word;

@@ -4,7 +4,6 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  /* Bild verkleinern in Responsive */
   background-size: cover;
   z-index: 0;
 
@@ -19,7 +18,6 @@
   }
 }
 
-/* Desktop: Name, Role, Location */
 .role {
   position: absolute;
   top: 59%;
@@ -74,9 +72,7 @@
   cursor: pointer;
 }
 
-/* ============= Responsive unter 800px => vertikales Layout ============= */
 @media (max-width: 800px) {
-  /* Bild nur ~70vh, damit darunter Platz für Text */
   .photo {
     position: relative;
     width: 100%;
@@ -91,9 +87,6 @@
     }
   }
 
-  /* Zuerst Role, dann Name, dann Location =>
-     wir machen sie "static" in DOM-Reihenfolge
-     + margin-top. */
   .role {
     position: static;
     transform: none;
@@ -121,24 +114,17 @@
     margin-top: -1rem;
   }
 
-  /* Pfeil ausblenden in Responsiv */
   .arrow-right {
     display: none;
   }
 }
 
-/* =========================================
-   Tablet: 801px – 1200px
-   => kleinere Schriftgrößen als Desktop,
-      exakte Zentrierung, etc.
-   ========================================= */
+
 @media (min-width: 801px) and (max-width: 1200px) {
-  /* Hintergrundfoto zentrieren und ggf. Höhe anpassen */
   .photo {
 
   }
 
-  /* Role, Name, Location => zentrieren wie am Desktop, aber etwas kleinere Fonts */
   .name {
     left: 60%;
     font-size: 56px;
@@ -154,7 +140,6 @@
 
   }
 
-  /* Falls der Pfeil in Tablet-Ansicht sichtbar sein soll */
   .arrow-right {
 
   }

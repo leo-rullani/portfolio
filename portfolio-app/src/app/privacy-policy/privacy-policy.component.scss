@@ -4,8 +4,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8); /* dunkler Overlay-Hintergrund */
-  z-index: 9999; /* Liegt über allem */
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
 
   display: flex;
   justify-content: center;
@@ -15,7 +15,7 @@
 }
 
 .overlay-content {
-  background: #2b2a2a; /* Dunkles Grau */
+  background: #2b2a2a;
   border: 2px solid #B5E93B;
   border-radius: 16px;
   width: 80%;
@@ -41,8 +41,6 @@
       text-decoration: none;
       font-size: 1.5rem;
       font-weight: 700;
-
-      /* Zentriert das "X" horizontal/vertikal */
       display: flex;
       align-items: center;
       justify-content: center;

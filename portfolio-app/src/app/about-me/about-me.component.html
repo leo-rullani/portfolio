@@ -1,21 +1,19 @@
 <div class="about-me">
-  <!-- Vertikal gedrehter Titel an der linken Seite -->
+
   <div class="vertical-title">{{ text[activeLang].verticalTitle }}</div>
 
-  <!-- Beschreibungstext oben -->
+
   <div class="intro">
-    <!-- Wir geben die 3 Absätze aus dem Array paragraphs[] aus -->
+
     <p>{{ text[activeLang].paragraphs[0] }}</p>
     <p>{{ text[activeLang].paragraphs[1] }}</p>
     <p>{{ text[activeLang].paragraphs[2] }}</p>
   </div>
 
-  <!-- "I am" in Grün -->
   <h2 class="iam-title">{{ text[activeLang].iAmTitle }}</h2>
 
-  <!-- Icons und Texte darunter -->
   <div class="icon-row">
-    <!-- Location -->
+
     <div class="icon-box">
       <svg
         width="33"
@@ -36,7 +34,6 @@
       <p>{{ text[activeLang].location }}</p>
     </div>
 
-    <!-- Remote Work -->
     <div class="icon-box">
       <svg
         width="33"
@@ -79,7 +76,6 @@
       <p>{{ text[activeLang].remote }}</p>
     </div>
 
-    <!-- Relocate -->
     <div class="icon-box">
       <svg
         width="33"
@@ -125,12 +121,10 @@
     </div>
   </div>
 
-  <!-- Button: Kontakt -->
   <button class="btn-primary" (click)="scrollToContact()">
     {{ text[activeLang].contactButton }}
   </button>
 
-  <!-- Großer Pfeil rechts -->
   <div class="arrow-right" (click)="scrollNext()">
     <svg
       width="113"

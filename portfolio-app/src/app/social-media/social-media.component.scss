@@ -47,11 +47,11 @@
     }
 
     .lang.active {
-      color: #B5E93B; /* Aktive Sprache in Grün */
+      color: #B5E93B;
     }
 
     .lang:not(.active):hover {
-      color: #B5E93B; /* Hover-Effekt für nicht aktive Sprache */
+      color: #B5E93B;
     }
   }
 }
@@ -67,11 +67,8 @@
   pointer-events: none;
 }
 
-/* =========================================
-   Beispiel: Ab <= 800px Abstand verringern
-   ========================================= */
    @media (min-width: 801px) and (max-width: 1200px) {
   .social-media-header {
-    right: 20px; /* Statt 120px z.B. nur 20px Abstand */
+    right: 20px;
   }
 }

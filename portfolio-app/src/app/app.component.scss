@@ -1,26 +1,16 @@
-/* app.component.scss */
 
-/*
-   1) Entfernen wir die globalen html,body {...},
-      denn das steuert jetzt styles.scss
-*/
-
-/* .container => horizontales Layout für Desktop,
-   wechselt zu vertikal in Mobile
-*/
 .container {
   position: relative;
   width: 100%;
   height: 100vh;
-  display: flex;           /* Slidenebeneinander am Desktop */
+  display: flex;
   flex-direction: row;
-  overflow-x: auto;        /* horizontales Scrolling (Desktop) */
-  overflow-y: hidden;      /* kein vert. Scroll (Desktop) */
+  overflow-x: auto;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
 
-  /* <= 800px => Kolumnen => vertikaler Scroll */
   @media (max-width: 800px) {
     flex-direction: column;
     height: auto;
@@ -29,14 +19,12 @@
   }
 }
 
-/* Hintergund 600vw => 6 Slides a 100vw
-   -> Im Mobile => width: 100%
-*/
+
 .app-background {
   position: absolute;
   top: 0;
   left: 0;
-  width: 600vw; /* 6 Slides, horizontales Layout */
+  width: 600vw;
   height: 100vh;
   z-index: -1;
   background:
@@ -56,8 +44,6 @@
   background-repeat: no-repeat, no-repeat;
 
   @media (max-width: 800px) {
-    /* Mobil => Breite = 100%,
-       dann kann man vertikal scrollen */
     width: 100%;
     height: auto;
     background-size: cover;
@@ -65,14 +51,14 @@
   }
 }
 
-/* Jede Slide => 100vw (Desktop), 100vh hoch */
+
 .slide {
   flex: 0 0 100vw;
   height: 100vh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 
-  /* Mobile => full width, height: auto oder 100vh */
+
   @media (max-width: 800px) {
     flex: 0 0 auto;
     width: 100%;
@@ -82,7 +68,6 @@
     padding: 0;
     border: none;
 
-    /* Evtl. extra BG-Farbe */
     background: linear-gradient(
       180deg,
       #000000 11.41%,
@@ -95,7 +80,6 @@
   }
 }
 
-/* Falls du den Pfeil brauchst in Desktop */
 .arrow-right {
   position: absolute;
   top: 50%;
@@ -106,10 +90,6 @@
   cursor: pointer;
 }
 
-/* =====================================================
-   Tablet-Breakpoint: 801px bis 1200px
-   => Hier kannst du z.B. etwas an der Breite/Höhe ändern
-   ===================================================== */
 @media (min-width: 801px) and (max-width: 1200px) {
   .container {
 
