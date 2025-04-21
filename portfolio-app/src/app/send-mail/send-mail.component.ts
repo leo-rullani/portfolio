@@ -18,7 +18,6 @@ import { RouterLink } from '@angular/router';
 export class SendMailComponent {
 
   @Input() activeLang: 'DE' | 'EN' = 'EN';
-
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
 
   contactData = {
@@ -29,9 +28,7 @@ export class SendMailComponent {
   };
 
   emailPattern = '[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}';
-
   mailTest = false;
-
   feedbackMessage = '';
   feedbackError = false;
 
@@ -66,7 +63,6 @@ export class SendMailComponent {
       labelEmail: 'E-mail:',
       labelPhone: 'Tel:'
     },
-
     DE: {
       verticalTitle: 'Kontaktiere mich',
       placeholderName: 'Ihr Name',
@@ -103,9 +99,7 @@ export class SendMailComponent {
     endPoint: 'https://leorullani.com/sendMail.php',
     body: (payload: any) => JSON.stringify(payload),
     options: {
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       responseType: 'text' as const
     },
   };
@@ -113,56 +107,62 @@ export class SendMailComponent {
   constructor(private http: HttpClient) {}
 
   onSubmit(myForm: NgForm) {
-    if (myForm.submitted && myForm.form.valid) {
-
-      if (!this.mailTest) {
-        this.http.post(
-          this.post.endPoint,
-          this.post.body(this.contactData),
-          this.post.options
-        ).subscribe({
-          next: (response) => {
-            console.log('Mail erfolgreich gesendet:', response);
-            this.feedbackMessage = this.text[this.activeLang].feedbackSent;
-            this.feedbackError = false;
-            setTimeout(() => {
-              this.feedbackMessage = '';
-            }, 3000);
-
-            myForm.resetForm();
-          },
-          error: (error) => {
-            console.error('Fehler beim Senden:', error);
-            this.feedbackMessage = this.text[this.activeLang].feedbackErrorSend;
-            this.feedbackError = true;
-          },
-          complete: () => console.info('Mail-Request komplett')
-        });
-
-      } else {
-        console.log('mailTest = true => Keine echte Mail', this.contactData);
-
-        this.feedbackMessage = this.text[this.activeLang].feedbackTest;
-        this.feedbackError = false;
-
-        setTimeout(() => {
-          this.feedbackMessage = '';
-        }, 3000);
-
-        myForm.resetForm();
-      }
-
+    if (!myForm.submitted || !myForm.form.valid) {
+      this.handleInvalidForm();
+      return;
+    }
+    if (!this.mailTest) {
+      this.handleRealMail(myForm);
     } else {
-      this.feedbackMessage = this.text[this.activeLang].feedbackFillAll;
-      this.feedbackError = true;
+      this.handleTestMail(myForm);
     }
   }
 
-  scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+  private handleInvalidForm() {
+    this.feedbackMessage = this.text[this.activeLang].feedbackFillAll;
+    this.feedbackError = true;
+  }
+
+  private handleRealMail(myForm: NgForm) {
+    this.http.post(
+      this.post.endPoint,
+      this.post.body(this.contactData),
+      this.post.options
+    ).subscribe({
+      next: (response) => this.onMailSuccess(response, myForm),
+      error: (error) => this.onMailError(error),
+      complete: () => console.info('Mail-Request komplett')
     });
+  }
+
+  private onMailSuccess(response: any, myForm: NgForm) {
+    console.log('Mail erfolgreich gesendet:', response);
+    this.feedbackMessage = this.text[this.activeLang].feedbackSent;
+    this.feedbackError = false;
+    setTimeout(() => {
+      this.feedbackMessage = '';
+    }, 3000);
+    myForm.resetForm();
+  }
+
+  private onMailError(error: any) {
+    console.error('Fehler beim Senden:', error);
+    this.feedbackMessage = this.text[this.activeLang].feedbackErrorSend;
+    this.feedbackError = true;
+  }
+
+  private handleTestMail(myForm: NgForm) {
+    console.log('mailTest = true => Keine echte Mail', this.contactData);
+    this.feedbackMessage = this.text[this.activeLang].feedbackTest;
+    this.feedbackError = false;
+    setTimeout(() => {
+      this.feedbackMessage = '';
+    }, 3000);
+    myForm.resetForm();
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   scrollPrev() {

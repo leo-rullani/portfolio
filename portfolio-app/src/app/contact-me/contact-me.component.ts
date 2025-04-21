@@ -41,26 +41,44 @@ export class ContactMeComponent {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Kürzere onSubmit-Methode, ruft je nach Zustand
+   * sendMail() oder testMail() auf
+   */
   onSubmit(ngForm: NgForm) {
     if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
-      this.http.post(
-        this.post.endPoint,
-        this.post.body(this.contactData),
-        this.post.options
-      ).subscribe({
-          next: (response) => {
-            console.log('Mail sent', response);
-            ngForm.resetForm();
-          },
-          error: (error) => {
-            console.error(error);
-          },
-          complete: () => console.info('send post complete'),
-        });
+      this.sendMail(ngForm);
     } else if (ngForm.submitted && ngForm.form.valid && this.mailTest) {
-      console.log('mailTest active => no real post');
-      ngForm.resetForm();
+      this.testMail(ngForm);
     }
+  }
+
+  /**
+   * Echte Mail per HTTP abschicken
+   */
+  private sendMail(ngForm: NgForm) {
+    this.http.post(
+      this.post.endPoint,
+      this.post.body(this.contactData),
+      this.post.options
+    ).subscribe({
+      next: (response) => {
+        console.log('Mail sent', response);
+        ngForm.resetForm();
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => console.info('send post complete'),
+    });
+  }
+
+  /**
+   * Nur Testausgabe (wenn mailTest == true)
+   */
+  private testMail(ngForm: NgForm) {
+    console.log('mailTest active => no real post');
+    ngForm.resetForm();
   }
 
   scrollPrev() {
