@@ -4,6 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  background: url("/assets/img/portfoliorullani-0.png") center center no-repeat;
   background-size: cover;
   z-index: 0;
 
@@ -37,7 +38,7 @@
 .name {
   position: absolute;
   top: 45.15%;
-  left: 44%;
+  left: 45.4%;
   transform: translateX(-50%);
   z-index: 0;
   font-family: 'Quantico', sans-serif;
@@ -77,9 +78,10 @@
     position: relative;
     width: 100%;
     height: 70vh;
+    margin-top: 80px;
+
     background: url("/assets/img/portfoliorullani-0.png") center center no-repeat;
     background-size: cover;
-    margin-top: 80px;
 
     &::after {
       width: 100%;
@@ -119,14 +121,20 @@
   }
 }
 
-
-@media (min-width: 801px) and (max-width: 1200px) {
+@media (min-width: 801px) {
   .photo {
+    background-position: center 10%;
+  }
+}
 
+@media (min-width: 801px) and (max-width: 1400px) {
+  .photo {
+    transform-origin: bottom center;
+    left: 80px;
   }
 
   .name {
-    left: 60%;
+    left: 61.5%;
     font-size: 56px;
   }
 
@@ -134,13 +142,5 @@
     top: 53%;
     left: 60.5%;
     font-size: 32px;
-  }
-
-  .location {
-
-  }
-
-  .arrow-right {
-
   }
 }

@@ -1,4 +1,3 @@
-
 .container {
   position: relative;
   width: 100%;
@@ -19,7 +18,6 @@
   }
 }
 
-
 .app-background {
   position: absolute;
   top: 0;
@@ -27,21 +25,18 @@
   width: 600vw;
   height: 100vh;
   z-index: -1;
-  background:
-    url("/assets/img/portfoliorullani-0.png") no-repeat,
-    linear-gradient(
-      88.66deg,
-      #000000 11.41%,
-      #2C2B2B 22.29%,
-      #0B0A0A 37.32%,
-      #323232 58.54%,
-      #0B0A0A 70.03%
-    );
-  background-size:
-    100vw 100vh,
-    600vw 100vh;
-  background-position: left top, left;
-  background-repeat: no-repeat, no-repeat;
+  background: linear-gradient(
+    88.66deg,
+    #000000 11.41%,
+    #2C2B2B 22.29%,
+    #0B0A0A 37.32%,
+    #323232 58.54%,
+    #0B0A0A 70.03%
+  );
+
+  background-size: 600vw 100vh;
+  background-position: left;
+  background-repeat: no-repeat;
 
   @media (max-width: 800px) {
     width: 100%;
@@ -51,19 +46,16 @@
   }
 }
 
-
 .slide {
   flex: 0 0 100vw;
   height: 100vh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 
-
   @media (max-width: 800px) {
     flex: 0 0 auto;
     width: 100%;
     height: auto;
-
     margin: 0;
     padding: 0;
     border: none;
@@ -92,7 +84,6 @@
 
 @media (min-width: 801px) and (max-width: 1200px) {
   .container {
-
   }
 
   .app-background {
@@ -100,10 +91,8 @@
   }
 
   .slide {
-
   }
 
   .arrow-right {
-
   }
 }
