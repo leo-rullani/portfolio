@@ -17,11 +17,8 @@ export class ReferencesMeComponent {
   @ViewChild('localScrollEl', { static: true })
   localScrollEl!: ElementRef<HTMLDivElement>;
 
-  // Mobile Carousel-Container
   @ViewChild('carouselEl', { static: false })
   carouselEl?: ElementRef<HTMLDivElement>;
-
-  // Merkt sich die aktuell sichtbare Box (0-5)
   private currentIndexMobile = 0;
 
   text = {
@@ -35,8 +32,7 @@ export class ReferencesMeComponent {
       ref1Name: 'Yannis Meyer',
       ref1Project: 'Project Join',
 
-      ref2Quote: `“He is a trustworthy teamplayer and can cope with the stress of deadlines.
-                  Structured work and clear code.”`,
+      ref2Quote: `“He is a trustworthy teamplayer and can cope with the stress of deadlines.”`,
       ref2Name: 'Marco Meister',
       ref2Project: 'Project SFL',
 
@@ -48,7 +44,7 @@ export class ReferencesMeComponent {
       ref4Quote: `“He demonstrated good problem-solving skills and
                   delivered features on time. Great code clarity!”`,
       ref4Name: 'Marcel Göhn',
-      ref4Project: 'Project Kochwelt',
+      ref4Project: 'Kochwelt',
 
       ref5Quote: `“We worked together on multiple sprints.
                   His friendly approach and structured manner helped the team a lot.”`,
@@ -72,7 +68,7 @@ export class ReferencesMeComponent {
       ref1Project: 'Projekt Join',
 
       ref2Quote: `„Er ist ein vertrauenswürdiger Teamplayer und kann
-                  dem Stress von Deadlines standhalten. Strukturiertes Arbeiten und klarer Code.“`,
+                  dem Stress von Deadlines standhalten.“`,
       ref2Name: 'Marco Meister',
       ref2Project: 'Projekt SFL',
 
@@ -84,7 +80,7 @@ export class ReferencesMeComponent {
       ref4Quote: `„Er zeigte gute Problemlösungskompetenz und
                   lieferte Features termingerecht. Toller, übersichtlicher Code!“`,
       ref4Name: 'Marcel Göhn',
-      ref4Project: 'Projekt Kochwelt',
+      ref4Project: 'Kochwelt',
 
       ref5Quote: `„Wir haben in mehreren Sprints zusammengearbeitet.
                   Sein freundlicher Umgang und strukturierte Art halfen dem Team sehr.“`,
@@ -98,10 +94,6 @@ export class ReferencesMeComponent {
     }
   };
 
-  /**
-   * Desktop: Scrollt in der references-container nach rechts,
-   * wenn man auf den Pfeil klickt.
-   */
   scrollNext(): void {
     const distance = window.innerWidth;
     if (this.scrollEl?.nativeElement) {
@@ -121,26 +113,18 @@ export class ReferencesMeComponent {
     }
   }
 
-  /**
-   * Mobile: Klick auf das Indicator-SVG => immer genau EINE Referenzbox weiterscrollen.
-   * Wenn wir beim letzten (5) sind, geht's zurück zu Index 0.
-   */
   scrollToNextBox(): void {
     if (!this.carouselEl) {
       return;
     }
 
-    // Aktuellen Index erhöhen
     this.currentIndexMobile++;
-    // Bei 6 Elementen => reset auf 0
     if (this.currentIndexMobile >= 6) {
       this.currentIndexMobile = 0;
     }
 
-    // Breite einer Box (geschätzt): 85% vom Viewport + ~16px gap
     const boxWidth = 0.85 * window.innerWidth;
     const gapPx = 16;
-    // Neuer Scroll-Left-Wert
     const scrollLeft = (boxWidth + gapPx) * this.currentIndexMobile;
 
     this.carouselEl.nativeElement.scrollTo({

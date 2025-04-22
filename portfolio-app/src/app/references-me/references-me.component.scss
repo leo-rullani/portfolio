@@ -12,7 +12,6 @@
   display: none;
 }
 
-/* -- Desktop-Ansicht -- */
 .desktop-only {
   min-height: 100vh;
   display: flex;
@@ -36,8 +35,6 @@
     display: flex;
     flex-direction: row;
     gap: 2rem;
-
-    /* Horizontales Scrollen am Desktop */
     overflow-x: auto;
     overflow-y: hidden;
 
@@ -60,7 +57,7 @@
         width: 230px;
         left: 20px;
         top: 30px;
-        text-align: center;
+        text-align: justify;
         font-size: 18px;
         line-height: 120%;
         color: #FFFDFD;
@@ -108,7 +105,6 @@
   }
 }
 
-/* Desktop-Skalierung zwischen 801px und 1300px */
 @media (min-width: 801px) and (max-width: 1300px) {
   .desktop-only {
     .references-container {
@@ -224,7 +220,6 @@
       }
     }
 
-    /* Hinweis unter den Ref-Boxen, Farbe #B5E93B (hellgrün) */
     .swipe-hint {
       font-size: 14px;
       text-align: center;
@@ -237,13 +232,12 @@
       justify-content: center;
 
       .indicator-svg {
-        cursor: pointer; /* Gesamtes SVG anklickbar */
+        cursor: pointer;
       }
     }
   }
 }
 
-/* Zusätzliche Anpassungen für sehr kleine Bildschirme */
 @media (max-width: 360px) {
   .quote {
     font-size: 12px !important;

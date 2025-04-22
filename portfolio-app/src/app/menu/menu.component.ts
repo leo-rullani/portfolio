@@ -10,12 +10,6 @@ import { CommonModule } from '@angular/common';
 })
 export class MenuComponent {
 
-  /**
-   * Globale Sprache vom Parent (z. B. AppComponent)
-   *
-   * @example
-   *   <app-menu [activeLang]="activeLang" (activeLangChange)="activeLang=$event"></app-menu>
-   */
   @Input() activeLang: 'DE' | 'EN' = 'EN';
   @Output() activeLangChange = new EventEmitter<'DE' | 'EN'>();
 
@@ -61,10 +55,11 @@ export class MenuComponent {
   private scrollMobile(slideId: string): void {
     const el = document.getElementById(slideId);
     if (!el) return;
-
-    el.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+    const offsetY = -50;
+    const elementTop = el.getBoundingClientRect().top + window.scrollY + offsetY;
+    window.scrollTo({
+      top: elementTop,
+      behavior: 'smooth'
     });
   }
 

@@ -75,7 +75,6 @@
     {{ text[activeLang].mobileSubtitle }}
   </p>
 
-  <!-- Carousel Container (mobil) -->
   <div class="references-carousel" #carouselEl>
     <div class="reference-box-mob">
       <div class="inner-centered">
@@ -132,17 +131,15 @@
     </div>
   </div>
 
-  <!-- Hinweis unter den Referenzboxen -->
   <p class="swipe-hint">
     <ng-container *ngIf="activeLang === 'DE'">
-      Wische nach rechts, um mehr zu sehen
+      Wische rechts – klicke Symbol, um mehr zu sehen
     </ng-container>
     <ng-container *ngIf="activeLang === 'EN'">
-      Swipe right to see more
+      Swipe right – click the symbol below to see more
     </ng-container>
   </p>
 
-  <!-- Indikator-SVG, jetzt nur EIN Klick-Event fürs ganze SVG -->
   <div class="carousel-indicator">
     <svg
       width="48"
@@ -153,7 +150,6 @@
       class="indicator-svg"
       (click)="scrollToNextBox()"
     >
-      <!-- Die drei "Punkte" sind nur Deko, kein eigenes Klick-Event mehr -->
       <rect
         class="dot dot1"
         width="18"

@@ -51,6 +51,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   scrollContainerRef!: ElementRef<HTMLDivElement>;
 
   ngOnInit(): void {
+
     const storedLang = localStorage.getItem('preferredLanguage');
     if (storedLang === 'DE' || storedLang === 'EN') {
       this.activeLang = storedLang;
@@ -80,7 +81,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   };
 
-  changeLang(lang: 'DE' | 'EN') {
+  changeLang(lang: 'DE' | 'EN'): void {
     this.activeLang = lang;
     localStorage.setItem('preferredLanguage', lang);
     console.log(`Sprache gewechselt zu: ${lang}`);
