@@ -43,8 +43,8 @@ export class ReferencesMeComponent {
 
       ref4Quote: `“He demonstrated good problem-solving skills and
                   delivered features on time. Great code clarity!”`,
-      ref4Name: 'Kevin Wissmer',
-      ref4Project: 'Project Pollo Loco',
+      ref4Name: 'Marcel Göhn',
+      ref4Project: 'Project Kochwelt',
 
       ref5Quote: `“We worked together on multiple sprints.
                   His friendly approach and structured manner helped the team a lot.”`,
@@ -79,8 +79,8 @@ export class ReferencesMeComponent {
 
       ref4Quote: `„Er zeigte gute Problemlösungskompetenz und
                   lieferte Features termingerecht. Toller, übersichtlicher Code!“`,
-      ref4Name: 'Kevin Wissmer',
-      ref4Project: 'Projekt Pollo Loco',
+      ref4Name: 'Marcel Göhn',
+      ref4Project: 'Projekt Kochwelt',
 
       ref5Quote: `„Wir haben in mehreren Sprints zusammengearbeitet.
                   Sein freundlicher Umgang und strukturierte Art halfen dem Team sehr.“`,

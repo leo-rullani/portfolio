@@ -149,22 +149,42 @@
           font-family: inherit;
           text-decoration: none;
           display: inline-block;
+          &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px 2px rgba(181, 233, 59, 0.5);
+          }
+
+          &:active {
+            transform: scale(0.97);
+          }
         }
 
+
         .btn-primary,
-        button.btn-primary,
-        a.btn-primary {
-          padding: 0.5rem 1rem;
-          font-size: 1rem;
-          border-radius: 30px;
-          cursor: pointer;
-          border: none;
-          background: #B5E93B;
-          color: #252525;
-          font-family: inherit;
-          text-decoration: none;
-          display: inline-block;
-        }
+button.btn-primary,
+a.btn-primary {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  border: none;
+  background: #B5E93B;
+  color: #252525;
+  font-family: inherit;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 120ms ease-in-out, box-shadow 120ms ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px 2px rgba(181, 233, 59, 0.5);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
       }
     }
   }

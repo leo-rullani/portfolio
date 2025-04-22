@@ -68,6 +68,14 @@
         color: #000;
         align-items: center;
         padding: 13px 30px;
+        &:hover {
+          transform: scale(1.05);
+          box-shadow: 0 0 10px 2px rgba(181, 233, 59, 0.5);
+        }
+
+        &:active {
+          transform: scale(0.97);
+        }
       }
     }
   }

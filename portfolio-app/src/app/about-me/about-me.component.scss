@@ -91,7 +91,12 @@
     color: #000;
 
     &:hover {
-      opacity: 0.9;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px 2px rgba(181, 233, 59, 0.5);
+    }
+
+    &:active {
+      transform: scale(0.97);
     }
   }
 
@@ -229,6 +234,15 @@
     width: 140px;
     height: auto;
     margin-bottom: 1rem;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px 2px rgba(181, 233, 59, 0.5);
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
   }
 
   .about-me .arrow-right {

@@ -130,9 +130,15 @@
         color: #4A4A4A;
         cursor: pointer;
         font-size: 14px;
+        transition: transform 100ms ease-in-out, box-shadow 100ms ease-in-out;
 
         &:hover {
-          opacity: 0.85;
+          transform: scale(1.05);
+          box-shadow: 0 0 10px 2px rgba(158, 157, 157, 0.5);
+        }
+
+        &:active {
+          transform: scale(0.97);
         }
       }
     }
