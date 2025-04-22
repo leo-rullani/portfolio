@@ -106,6 +106,10 @@ export class SendMailComponent {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Trigger beim Klick auf "Send".
+   * Zeigt Fehler erst an, wenn man den Button klickt, falls Form invalid.
+   */
   onSubmit(myForm: NgForm) {
     if (!myForm.submitted || !myForm.form.valid) {
       this.handleInvalidForm();
@@ -116,6 +120,49 @@ export class SendMailComponent {
     } else {
       this.handleTestMail(myForm);
     }
+  }
+
+  /**
+   * NEU:
+   * Wird nach jeder Eingabe aufgerufen (z. B. (ngModelChange)="onFormChange(myForm)").
+   * Falls schon getippt (dirty) und ungültig -> Fehlermeldung sofort anzeigen.
+   */
+  onFormChange(myForm: NgForm) {
+    // Name-Feld prüfen
+    const nameCtrl = myForm.controls['name'];
+    if (nameCtrl?.dirty && nameCtrl.invalid) {
+      this.feedbackMessage = this.text[this.activeLang].errorName;
+      this.feedbackError = true;
+      return;
+    }
+
+    // E-Mail-Feld prüfen
+    const emailCtrl = myForm.controls['email'];
+    if (emailCtrl?.dirty && emailCtrl.invalid) {
+      this.feedbackMessage = this.text[this.activeLang].errorEmail;
+      this.feedbackError = true;
+      return;
+    }
+
+    // Message-Feld prüfen
+    const messageCtrl = myForm.controls['message'];
+    if (messageCtrl?.dirty && messageCtrl.invalid) {
+      this.feedbackMessage = this.text[this.activeLang].errorMessage;
+      this.feedbackError = true;
+      return;
+    }
+
+    // Privacy-Feld prüfen
+    const privacyCtrl = myForm.controls['privacy'];
+    if (privacyCtrl?.dirty && privacyCtrl.invalid) {
+      this.feedbackMessage = this.text[this.activeLang].errorPrivacy;
+      this.feedbackError = true;
+      return;
+    }
+
+    // Falls kein Feld invalid + dirty ist -> Feedback zurücksetzen
+    this.feedbackMessage = '';
+    this.feedbackError = false;
   }
 
   private handleInvalidForm() {
