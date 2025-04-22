@@ -7,59 +7,40 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-send-mail',
   standalone: true,
-  imports: [
-    FormsModule,
-    CommonModule,
-    RouterLink
-  ],
+  imports: [FormsModule, CommonModule, RouterLink],
   templateUrl: './send-mail.component.html',
   styleUrls: ['./send-mail.component.scss']
 })
 export class SendMailComponent {
-
   @Input() activeLang: 'DE' | 'EN' = 'EN';
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
-
-  contactData = {
-    name: '',
-    email: '',
-    message: '',
-    privacy: false
-  };
-
+  contactData = { name: '', email: '', message: '', privacy: false };
   emailPattern = '[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}';
   mailTest = false;
   feedbackMessage = '';
   feedbackError = false;
-
   text = {
     EN: {
       verticalTitle: 'Contact me',
       placeholderName: 'Your name',
       placeholderEmail: 'Your e-mail',
       placeholderMessage: 'Your message',
-
       errorName: 'Please enter your name.',
       errorEmail: 'Please enter a valid e-mail address.',
       errorMessage: 'Please enter a message.',
       errorPrivacy: 'Please confirm the privacy policy.',
-
       privacyLabelPart1: `I've read the`,
       privacyLabelPart2: `privacy policy`,
       privacyLabelPart3: `and agree to the processing of my data as outlined.`,
-
       btnSend: 'Send',
-
       feedbackFillAll: 'Please fill out all fields correctly.',
       feedbackSent: 'Your message has been sent successfully!',
       feedbackTest: 'Test mode active. No mail was actually sent.',
       feedbackErrorSend: 'Unfortunately, there was a problem sending your message.',
-
       introTitle: 'Let us work together.',
       introText: `I invite teams to reach out as I'm pursuing a front-end developer role.
                   I trust my strengths, enjoy team-based projects, and eagerly seek to
                   advance my skills for meaningful impact. I remain confident in growth daily.`,
-
       labelEmail: 'E-mail:',
       labelPhone: 'Tel:'
     },
@@ -68,158 +49,72 @@ export class SendMailComponent {
       placeholderName: 'Ihr Name',
       placeholderEmail: 'Ihre E-Mail',
       placeholderMessage: 'Ihre Nachricht',
-
       errorName: 'Bitte geben Sie Ihren Namen ein.',
       errorEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
       errorMessage: 'Bitte geben Sie eine Nachricht ein.',
       errorPrivacy: 'Bitte bestätigen Sie die Datenschutzbestimmungen.',
-
       privacyLabelPart1: `Ich habe die`,
       privacyLabelPart2: `Datenschutzerklärung`,
       privacyLabelPart3: `gelesen und stimme der Verarbeitung meiner Daten zu.`,
-
       btnSend: 'Senden',
-
       feedbackFillAll: 'Bitte füllen Sie alle Felder korrekt aus.',
       feedbackSent: 'E-Mail wurde erfolgreich versendet!',
       feedbackTest: 'Testmodus aktiv. Es wurde keine Mail verschickt.',
       feedbackErrorSend: 'Leider gab es ein Problem beim Versand.',
-
       introTitle: 'Lass uns zusammenarbeiten.',
       introText: `Ich lade Teams ein, sich zu melden, da ich eine Frontend-Developer-Rolle anstrebe.
                   Ich vertraue auf meine Stärken, arbeite gern im Team und möchte meine Fähigkeiten
                   weiter ausbauen. Ich bin überzeugt, mich jeden Tag weiterentwickeln zu können.`,
-
       labelEmail: 'E-Mail:',
       labelPhone: 'Tel:'
     }
   };
-
   post = {
     endPoint: 'https://leorullani.com/sendMail.php',
-    body: (payload: any) => JSON.stringify(payload),
-    options: {
-      headers: { 'Content-Type': 'application/json' },
-      responseType: 'text' as const
-    },
+    body: (p: any) => JSON.stringify(p),
+    options: { headers: { 'Content-Type': 'application/json' }, responseType: 'text' as const }
   };
-
   constructor(private http: HttpClient) {}
-
-  /**
-   * Trigger beim Klick auf "Send".
-   * Zeigt Fehler erst an, wenn man den Button klickt, falls Form invalid.
-   */
-  onSubmit(myForm: NgForm) {
-    if (!myForm.submitted || !myForm.form.valid) {
-      this.handleInvalidForm();
-      return;
-    }
-    if (!this.mailTest) {
-      this.handleRealMail(myForm);
-    } else {
-      this.handleTestMail(myForm);
-    }
+  onSubmit(f: NgForm) {
+    if (!f.submitted || !f.form.valid) { this.handleInvalidForm(); return; }
+    if (!this.mailTest) { this.handleRealMail(f); } else { this.handleTestMail(f); }
   }
-
-  /**
-   * NEU:
-   * Wird nach jeder Eingabe aufgerufen (z. B. (ngModelChange)="onFormChange(myForm)").
-   * Falls schon getippt (dirty) und ungültig -> Fehlermeldung sofort anzeigen.
-   */
-  onFormChange(myForm: NgForm) {
-    // Name-Feld prüfen
-    const nameCtrl = myForm.controls['name'];
-    if (nameCtrl?.dirty && nameCtrl.invalid) {
-      this.feedbackMessage = this.text[this.activeLang].errorName;
-      this.feedbackError = true;
-      return;
-    }
-
-    // E-Mail-Feld prüfen
-    const emailCtrl = myForm.controls['email'];
-    if (emailCtrl?.dirty && emailCtrl.invalid) {
-      this.feedbackMessage = this.text[this.activeLang].errorEmail;
-      this.feedbackError = true;
-      return;
-    }
-
-    // Message-Feld prüfen
-    const messageCtrl = myForm.controls['message'];
-    if (messageCtrl?.dirty && messageCtrl.invalid) {
-      this.feedbackMessage = this.text[this.activeLang].errorMessage;
-      this.feedbackError = true;
-      return;
-    }
-
-    // Privacy-Feld prüfen
-    const privacyCtrl = myForm.controls['privacy'];
-    if (privacyCtrl?.dirty && privacyCtrl.invalid) {
-      this.feedbackMessage = this.text[this.activeLang].errorPrivacy;
-      this.feedbackError = true;
-      return;
-    }
-
-    // Falls kein Feld invalid + dirty ist -> Feedback zurücksetzen
-    this.feedbackMessage = '';
-    this.feedbackError = false;
+  onFormChange(f: NgForm) {
+    const n = f.controls['name']; if (n?.dirty && n.invalid) { this.feedbackMessage = this.text[this.activeLang].errorName; this.feedbackError = true; return; }
+    const e = f.controls['email']; if (e?.dirty && e.invalid) { this.feedbackMessage = this.text[this.activeLang].errorEmail; this.feedbackError = true; return; }
+    const m = f.controls['message']; if (m?.dirty && m.invalid) { this.feedbackMessage = this.text[this.activeLang].errorMessage; this.feedbackError = true; return; }
+    const p = f.controls['privacy']; if (p?.dirty && p.invalid) { this.feedbackMessage = this.text[this.activeLang].errorPrivacy; this.feedbackError = true; return; }
+    this.feedbackMessage = ''; this.feedbackError = false;
   }
-
   private handleInvalidForm() {
-    this.feedbackMessage = this.text[this.activeLang].feedbackFillAll;
-    this.feedbackError = true;
+    this.feedbackMessage = this.text[this.activeLang].feedbackFillAll; this.feedbackError = true;
   }
-
-  private handleRealMail(myForm: NgForm) {
-    this.http.post(
-      this.post.endPoint,
-      this.post.body(this.contactData),
-      this.post.options
-    ).subscribe({
-      next: (response) => this.onMailSuccess(response, myForm),
-      error: (error) => this.onMailError(error),
+  private handleRealMail(f: NgForm) {
+    this.http.post(this.post.endPoint, this.post.body(this.contactData), this.post.options).subscribe({
+      next: r => this.onMailSuccess(r, f),
+      error: e => this.onMailError(e),
       complete: () => console.info('Mail-Request komplett')
     });
   }
-
-  private onMailSuccess(response: any, myForm: NgForm) {
-    console.log('Mail erfolgreich gesendet:', response);
-    this.feedbackMessage = this.text[this.activeLang].feedbackSent;
-    this.feedbackError = false;
-    setTimeout(() => {
-      this.feedbackMessage = '';
-    }, 3000);
-    myForm.resetForm();
+  private onMailSuccess(r: any, f: NgForm) {
+    console.log('Mail erfolgreich gesendet:', r);
+    this.feedbackMessage = this.text[this.activeLang].feedbackSent; this.feedbackError = false;
+    setTimeout(() => { this.feedbackMessage = ''; }, 3000);
+    f.resetForm();
   }
-
-  private onMailError(error: any) {
-    console.error('Fehler beim Senden:', error);
-    this.feedbackMessage = this.text[this.activeLang].feedbackErrorSend;
-    this.feedbackError = true;
+  private onMailError(e: any) {
+    console.error('Fehler beim Senden:', e);
+    this.feedbackMessage = this.text[this.activeLang].feedbackErrorSend; this.feedbackError = true;
   }
-
-  private handleTestMail(myForm: NgForm) {
+  private handleTestMail(f: NgForm) {
     console.log('mailTest = true => Keine echte Mail', this.contactData);
-    this.feedbackMessage = this.text[this.activeLang].feedbackTest;
-    this.feedbackError = false;
-    setTimeout(() => {
-      this.feedbackMessage = '';
-    }, 3000);
-    myForm.resetForm();
+    this.feedbackMessage = this.text[this.activeLang].feedbackTest; this.feedbackError = false;
+    setTimeout(() => { this.feedbackMessage = ''; }, 3000);
+    f.resetForm();
   }
-
-  scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
+  scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
   scrollPrev() {
-    if (!this.scrollEl?.nativeElement) {
-      console.warn('No nativeElement on scrollEl');
-      return;
-    }
-    this.scrollEl.nativeElement.scrollTo({
-      left: 0,
-      behavior: 'smooth'
-    });
+    if (!this.scrollEl?.nativeElement) { console.warn('No nativeElement on scrollEl'); return; }
+    this.scrollEl.nativeElement.scrollTo({ left: 0, behavior: 'smooth' });
   }
 }

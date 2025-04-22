@@ -22,8 +22,6 @@
               required
               [(ngModel)]="contactData.name"
             />
-
-            <!-- Angepasst: *ngIf prüft nun auch, ob Feld bereits dirty ist -->
             <div
               class="error-text"
               *ngIf="
@@ -50,7 +48,6 @@
               [(ngModel)]="contactData.email"
               autocomplete="email"
             />
-            <!-- Angepasst: *ngIf prüft nun auch, ob Feld bereits dirty ist -->
             <div
               class="error-text"
               *ngIf="
