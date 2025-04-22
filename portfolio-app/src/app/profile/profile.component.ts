@@ -19,7 +19,7 @@ export class ProfileComponent {
       location: 'Wohlen'
     },
     DE: {
-      role: 'Software-Ingenieur',
+      role: 'Software-Entwickler',
       name: 'Leo Rullani',
       location: 'Wohlen'
     }

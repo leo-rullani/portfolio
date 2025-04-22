@@ -42,7 +42,6 @@ import { SendMailComponent } from './send-mail/send-mail.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
-
   title = 'portfolio-app';
   showSocialMedia = true;
   private readonly thresholdFactor = 0.1;
@@ -52,7 +51,10 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   scrollContainerRef!: ElementRef<HTMLDivElement>;
 
   ngOnInit(): void {
-    // ...
+    const storedLang = localStorage.getItem('preferredLanguage');
+    if (storedLang === 'DE' || storedLang === 'EN') {
+      this.activeLang = storedLang;
+    }
   }
 
   ngAfterViewInit(): void {
@@ -78,9 +80,9 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   };
 
-
   changeLang(lang: 'DE' | 'EN') {
     this.activeLang = lang;
+    localStorage.setItem('preferredLanguage', lang);
     console.log(`Sprache gewechselt zu: ${lang}`);
   }
 }
