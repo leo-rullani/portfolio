@@ -1,181 +1,197 @@
+<div class="references-section desktop-only" #localScrollEl>
+  <div class="vertical-title">
+    {{ text[activeLang].desktopHeadline }}
+  </div>
 
-     <div class="references-section desktop-only" #localScrollEl>
-      <div class="vertical-title">
-        {{ text[activeLang].desktopHeadline }}
+  <div class="references-container">
+    <div class="references-column">
+      <div class="reference-box">
+        <p class="quote">{{ text[activeLang].ref1Quote }}</p>
+        <div class="divider-line"></div>
+        <div class="name">{{ text[activeLang].ref1Name }}</div>
+        <div class="project">{{ text[activeLang].ref1Project }}</div>
       </div>
 
-      <div class="references-container">
-        <div class="references-column">
-          <div class="reference-box">
-            <p class="quote">{{ text[activeLang].ref1Quote }}</p>
-            <div class="divider-line"></div>
-            <div class="name">{{ text[activeLang].ref1Name }}</div>
-            <div class="project">{{ text[activeLang].ref1Project }}</div>
-          </div>
-
-          <div class="reference-box">
-            <p class="quote">{{ text[activeLang].ref2Quote }}</p>
-            <div class="divider-line"></div>
-            <div class="name">{{ text[activeLang].ref2Name }}</div>
-            <div class="project">{{ text[activeLang].ref2Project }}</div>
-          </div>
-
-          <div class="reference-box">
-            <p class="quote">{{ text[activeLang].ref3Quote }}</p>
-            <div class="divider-line"></div>
-            <div class="name">{{ text[activeLang].ref3Name }}</div>
-            <div class="project">{{ text[activeLang].ref3Project }}</div>
-          </div>
-        </div>
-
-        <div class="references-column">
-          <div class="reference-box">
-            <p class="quote">{{ text[activeLang].ref4Quote }}</p>
-            <div class="divider-line"></div>
-            <div class="name">{{ text[activeLang].ref4Name }}</div>
-            <div class="project">{{ text[activeLang].ref4Project }}</div>
-          </div>
-
-          <div class="reference-box">
-            <p class="quote">{{ text[activeLang].ref5Quote }}</p>
-            <div class="divider-line"></div>
-            <div class="name">{{ text[activeLang].ref5Name }}</div>
-            <div class="project">{{ text[activeLang].ref5Project }}</div>
-          </div>
-
-          <div class="reference-box">
-            <p class="quote">{{ text[activeLang].ref6Quote }}</p>
-            <div class="divider-line"></div>
-            <div class="name">{{ text[activeLang].ref6Name }}</div>
-            <div class="project">{{ text[activeLang].ref6Project }}</div>
-          </div>
-        </div>
+      <div class="reference-box">
+        <p class="quote">{{ text[activeLang].ref2Quote }}</p>
+        <div class="divider-line"></div>
+        <div class="name">{{ text[activeLang].ref2Name }}</div>
+        <div class="project">{{ text[activeLang].ref2Project }}</div>
       </div>
 
-      <div class="arrow-right" (click)="scrollNext()">
-        <svg
-          width="113"
-          height="38"
-          viewBox="0 0 113 38"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M3 16.5C1.61929 16.5 0.5 17.6193 0.5 19C0.5 20.3807 1.61929 21.5 3 21.5L3 16.5ZM111.768 20.7678C112.744 19.7914 112.744 18.2085 111.768 17.2322L95.8579 1.32232C94.8816 0.346012 93.2986 0.346012 92.3223 1.32232C91.346 2.29863 91.346 3.88155 92.3223 4.85786L106.464 19L92.3223 33.1421C91.346 34.1184 91.346 35.7014 92.3223 36.6777C93.2986 37.654 94.8816 37.654 95.8579 36.6777L111.768 20.7678ZM3 21.5L110 21.5L110 16.5L3 16.5L3 21.5Z"
-            fill="#B5E93B"
-          />
-        </svg>
+      <div class="reference-box">
+        <p class="quote">{{ text[activeLang].ref3Quote }}</p>
+        <div class="divider-line"></div>
+        <div class="name">{{ text[activeLang].ref3Name }}</div>
+        <div class="project">{{ text[activeLang].ref3Project }}</div>
       </div>
     </div>
 
-    <div class="references-section mobile-only">
-      <h2 class="mobile-headline">
-        {{ text[activeLang].mobileHeadline }}
-      </h2>
-      <p class="mobile-subtitle">
-        {{ text[activeLang].mobileSubtitle }}
-      </p>
-
-      <div class="references-carousel">
-
-        <div class="reference-box-mob">
-          <div class="inner-centered">
-            <p class="quote">{{ text[activeLang].ref1Quote }}</p>
-            <div class="divider-line"></div>
-            <div class="name">{{ text[activeLang].ref1Name }}</div>
-            <div class="project">{{ text[activeLang].ref1Project }}</div>
-          </div>
-        </div>
-
-        <div class="reference-box-mob">
-          <div class="inner-centered">
-            <p class="quote">{{ text[activeLang].ref2Quote }}</p>
-            <div class="divider-line"></div>
-            <div class="name">{{ text[activeLang].ref2Name }}</div>
-            <div class="project">{{ text[activeLang].ref2Project }}</div>
-          </div>
-        </div>
-
-        <div class="reference-box-mob">
-          <div class="inner-centered">
-            <p class="quote">{{ text[activeLang].ref3Quote }}</p>
-            <div class="divider-line"></div>
-            <div class="name">{{ text[activeLang].ref3Name }}</div>
-            <div class="project">{{ text[activeLang].ref3Project }}</div>
-          </div>
-        </div>
-
-        <div class="reference-box-mob">
-          <div class="inner-centered">
-            <p class="quote">{{ text[activeLang].ref4Quote }}</p>
-            <div class="divider-line"></div>
-            <div class="name">{{ text[activeLang].ref4Name }}</div>
-            <div class="project">{{ text[activeLang].ref4Project }}</div>
-          </div>
-        </div>
-
-        <div class="reference-box-mob">
-          <div class="inner-centered">
-            <p class="quote">{{ text[activeLang].ref5Quote }}</p>
-            <div class="divider-line"></div>
-            <div class="name">{{ text[activeLang].ref5Name }}</div>
-            <div class="project">{{ text[activeLang].ref5Project }}</div>
-          </div>
-        </div>
-
-        <div class="reference-box-mob">
-          <div class="inner-centered">
-            <p class="quote">{{ text[activeLang].ref6Quote }}</p>
-            <div class="divider-line"></div>
-            <div class="name">{{ text[activeLang].ref6Name }}</div>
-            <div class="project">{{ text[activeLang].ref6Project }}</div>
-          </div>
-        </div>
+    <div class="references-column">
+      <div class="reference-box">
+        <p class="quote">{{ text[activeLang].ref4Quote }}</p>
+        <div class="divider-line"></div>
+        <div class="name">{{ text[activeLang].ref4Name }}</div>
+        <div class="project">{{ text[activeLang].ref4Project }}</div>
       </div>
 
-      <div class="carousel-indicator">
-        <svg
-          width="48"
-          height="6"
-          viewBox="0 0 48 6"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            width="18"
-            height="6"
-            rx="3"
-            fill="url(#paint0_linear_3129_3519)"
-          />
-          <rect
-            x="24.5"
-            y="0.5"
-            width="8"
-            height="5"
-            rx="2.5"
-            stroke="#B5E93B"
-          />
-          <rect
-            x="39.5"
-            y="0.5"
-            width="8"
-            height="5"
-            rx="2.5"
-            stroke="#B5E93B"
-          />
-          <defs>
-            <linearGradient
-              id="paint0_linear_3129_3519"
-              x1="5.88462"
-              y1="0.154286"
-              x2="7.06172"
-              y2="10.0345"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0.327344" stop-color="#B5E93B" />
-              <stop offset="1" stop-color="#547800" />
-            </linearGradient>
-          </defs>
-        </svg>
+      <div class="reference-box">
+        <p class="quote">{{ text[activeLang].ref5Quote }}</p>
+        <div class="divider-line"></div>
+        <div class="name">{{ text[activeLang].ref5Name }}</div>
+        <div class="project">{{ text[activeLang].ref5Project }}</div>
+      </div>
+
+      <div class="reference-box">
+        <p class="quote">{{ text[activeLang].ref6Quote }}</p>
+        <div class="divider-line"></div>
+        <div class="name">{{ text[activeLang].ref6Name }}</div>
+        <div class="project">{{ text[activeLang].ref6Project }}</div>
       </div>
     </div>
+  </div>
+
+  <div class="arrow-right" (click)="scrollNext()">
+    <svg
+      width="113"
+      height="38"
+      viewBox="0 0 113 38"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3 16.5C1.61929 16.5 0.5 17.6193 0.5 19C0.5 20.3807 1.61929 21.5 3 21.5L3 16.5ZM111.768 20.7678C112.744 19.7914 112.744 18.2085 111.768 17.2322L95.8579 1.32232C94.8816 0.346012 93.2986 0.346012 92.3223 1.32232C91.346 2.29863 91.346 3.88155 92.3223 4.85786L106.464 19L92.3223 33.1421C91.346 34.1184 91.346 35.7014 92.3223 36.6777C93.2986 37.654 94.8816 37.654 95.8579 36.6777L111.768 20.7678ZM3 21.5L110 21.5L110 16.5L3 16.5L3 21.5Z"
+        fill="#B5E93B"
+      />
+    </svg>
+  </div>
+</div>
+
+<div class="references-section mobile-only">
+  <h2 class="mobile-headline">
+    {{ text[activeLang].mobileHeadline }}
+  </h2>
+  <p class="mobile-subtitle">
+    {{ text[activeLang].mobileSubtitle }}
+  </p>
+
+  <!-- Carousel Container (mobil) -->
+  <div class="references-carousel" #carouselEl>
+    <div class="reference-box-mob">
+      <div class="inner-centered">
+        <p class="quote">{{ text[activeLang].ref1Quote }}</p>
+        <div class="divider-line"></div>
+        <div class="name">{{ text[activeLang].ref1Name }}</div>
+        <div class="project">{{ text[activeLang].ref1Project }}</div>
+      </div>
+    </div>
+
+    <div class="reference-box-mob">
+      <div class="inner-centered">
+        <p class="quote">{{ text[activeLang].ref2Quote }}</p>
+        <div class="divider-line"></div>
+        <div class="name">{{ text[activeLang].ref2Name }}</div>
+        <div class="project">{{ text[activeLang].ref2Project }}</div>
+      </div>
+    </div>
+
+    <div class="reference-box-mob">
+      <div class="inner-centered">
+        <p class="quote">{{ text[activeLang].ref3Quote }}</p>
+        <div class="divider-line"></div>
+        <div class="name">{{ text[activeLang].ref3Name }}</div>
+        <div class="project">{{ text[activeLang].ref3Project }}</div>
+      </div>
+    </div>
+
+    <div class="reference-box-mob">
+      <div class="inner-centered">
+        <p class="quote">{{ text[activeLang].ref4Quote }}</p>
+        <div class="divider-line"></div>
+        <div class="name">{{ text[activeLang].ref4Name }}</div>
+        <div class="project">{{ text[activeLang].ref4Project }}</div>
+      </div>
+    </div>
+
+    <div class="reference-box-mob">
+      <div class="inner-centered">
+        <p class="quote">{{ text[activeLang].ref5Quote }}</p>
+        <div class="divider-line"></div>
+        <div class="name">{{ text[activeLang].ref5Name }}</div>
+        <div class="project">{{ text[activeLang].ref5Project }}</div>
+      </div>
+    </div>
+
+    <div class="reference-box-mob">
+      <div class="inner-centered">
+        <p class="quote">{{ text[activeLang].ref6Quote }}</p>
+        <div class="divider-line"></div>
+        <div class="name">{{ text[activeLang].ref6Name }}</div>
+        <div class="project">{{ text[activeLang].ref6Project }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hinweis unter den Referenzboxen -->
+  <p class="swipe-hint">
+    <ng-container *ngIf="activeLang === 'DE'">
+      Wische nach rechts, um mehr zu sehen
+    </ng-container>
+    <ng-container *ngIf="activeLang === 'EN'">
+      Swipe right to see more
+    </ng-container>
+  </p>
+
+  <!-- Indikator-SVG, jetzt nur EIN Klick-Event fürs ganze SVG -->
+  <div class="carousel-indicator">
+    <svg
+      width="48"
+      height="6"
+      viewBox="0 0 48 6"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="indicator-svg"
+      (click)="scrollToNextBox()"
+    >
+      <!-- Die drei "Punkte" sind nur Deko, kein eigenes Klick-Event mehr -->
+      <rect
+        class="dot dot1"
+        width="18"
+        height="6"
+        rx="3"
+        fill="url(#paint0_linear_3129_3519)"
+      />
+      <rect
+        class="dot dot2"
+        x="24.5"
+        y="0.5"
+        width="8"
+        height="5"
+        rx="2.5"
+        stroke="#B5E93B"
+      />
+      <rect
+        class="dot dot3"
+        x="39.5"
+        y="0.5"
+        width="8"
+        height="5"
+        rx="2.5"
+        stroke="#B5E93B"
+      />
+      <defs>
+        <linearGradient
+          id="paint0_linear_3129_3519"
+          x1="5.88462"
+          y1="0.154286"
+          x2="7.06172"
+          y2="10.0345"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop offset="0.327344" stop-color="#B5E93B" />
+          <stop offset="1" stop-color="#547800" />
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+</div>

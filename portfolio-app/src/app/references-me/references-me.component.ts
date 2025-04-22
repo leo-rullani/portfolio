@@ -10,15 +10,19 @@ import { CommonModule } from '@angular/common';
 })
 export class ReferencesMeComponent {
 
-
   @Input() activeLang: 'DE' | 'EN' = 'EN';
-
 
   @Input() scrollEl?: ElementRef<HTMLDivElement>;
 
   @ViewChild('localScrollEl', { static: true })
   localScrollEl!: ElementRef<HTMLDivElement>;
 
+  // Mobile Carousel-Container
+  @ViewChild('carouselEl', { static: false })
+  carouselEl?: ElementRef<HTMLDivElement>;
+
+  // Merkt sich die aktuell sichtbare Box (0-5)
+  private currentIndexMobile = 0;
 
   text = {
     EN: {
@@ -94,6 +98,10 @@ export class ReferencesMeComponent {
     }
   };
 
+  /**
+   * Desktop: Scrollt in der references-container nach rechts,
+   * wenn man auf den Pfeil klickt.
+   */
   scrollNext(): void {
     const distance = window.innerWidth;
     if (this.scrollEl?.nativeElement) {
@@ -101,8 +109,7 @@ export class ReferencesMeComponent {
         left: distance,
         behavior: 'smooth'
       });
-    }
-    else {
+    } else {
       if (this.localScrollEl?.nativeElement) {
         this.localScrollEl.nativeElement.scrollBy({
           left: distance,
@@ -112,5 +119,33 @@ export class ReferencesMeComponent {
         console.warn('No localScrollEl or scrollEl found!');
       }
     }
+  }
+
+  /**
+   * Mobile: Klick auf das Indicator-SVG => immer genau EINE Referenzbox weiterscrollen.
+   * Wenn wir beim letzten (5) sind, geht's zurück zu Index 0.
+   */
+  scrollToNextBox(): void {
+    if (!this.carouselEl) {
+      return;
+    }
+
+    // Aktuellen Index erhöhen
+    this.currentIndexMobile++;
+    // Bei 6 Elementen => reset auf 0
+    if (this.currentIndexMobile >= 6) {
+      this.currentIndexMobile = 0;
+    }
+
+    // Breite einer Box (geschätzt): 85% vom Viewport + ~16px gap
+    const boxWidth = 0.85 * window.innerWidth;
+    const gapPx = 16;
+    // Neuer Scroll-Left-Wert
+    const scrollLeft = (boxWidth + gapPx) * this.currentIndexMobile;
+
+    this.carouselEl.nativeElement.scrollTo({
+      left: scrollLeft,
+      behavior: 'smooth'
+    });
   }
 }
