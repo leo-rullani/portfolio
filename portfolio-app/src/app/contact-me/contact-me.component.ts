@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './contact-me.component.html',
   styleUrls: ['./contact-me.component.scss'],
   imports: [
-    CommonModule, // Damit *ngIf, *ngFor funktionieren
+    CommonModule,
     FormsModule,
     RouterLink
   ]
@@ -87,7 +87,6 @@ export class ContactMeComponent {
     }
   };
 
-  // HTTP-Endpoint
   post = {
     endPoint: 'https://leorullani.com/sendMail.php',
     body: (p: any) => JSON.stringify(p),
@@ -111,9 +110,6 @@ export class ContactMeComponent {
     }
   }
 
-  /**
-   * Live-Validierung => sofortige Fehlermeldungen
-   */
   onFormChange(myForm: NgForm) {
     const n = myForm.controls['name'];
     if (n?.dirty && n.invalid) {
@@ -139,7 +135,6 @@ export class ContactMeComponent {
       this.feedbackError = true;
       return;
     }
-    // Nichts invalid => Feedback zurücksetzen
     this.feedbackMessage = '';
     this.feedbackError = false;
   }

@@ -47,42 +47,38 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   showSocialMedia = true;
   private readonly thresholdFactor = 0.1;
   activeLang: 'DE' | 'EN' = 'EN';
-
-  /**
-   * Schaltet Container an/aus => privacy => false =>
-   * Container weg => privacy direkt
-   */
   showContainer = true;
 
-  /**
-   * Das echte #scrollRef => container
-   */
   @ViewChild('scrollRef', { static: false })
   scrollContainerRef?: ElementRef<HTMLDivElement>;
 
-  /**
-   * Wir brauchen IMMER ein Objekt für [scrollEl],
-   * sonst wirft Angular "type mismatch"
-   * => => wir definieren eine Dummy-Ref
-   */
   private dummyEl = document.createElement('div');
   private dummyRef = new ElementRef<HTMLDivElement>(this.dummyEl);
 
-  /**
-   * Diesen Wert binden wir ans Child => [scrollEl]="scrollEl"
-   * => standard = dummyRef => kein ExpressionChangedError
-   * => nach dem Rendern => wir ersetzen es durch scrollContainerRef
-   */
   scrollEl: ElementRef<HTMLDivElement> = this.dummyRef;
 
   constructor(private router: Router) {
     this.router.events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
       .subscribe(nav => {
-        // Standard => container an
         this.showContainer = true;
         if (nav.urlAfterRedirects === '/privacy' || nav.urlAfterRedirects === '/legal') {
           this.showContainer = false;
+        }
+
+        // Sobald der Container ausgeblendet wird, entfernen wir den Listener.
+        if (!this.showContainer && this.scrollEl !== this.dummyRef) {
+          this.scrollEl.nativeElement.removeEventListener('scroll', this.handleScroll);
+          this.scrollEl = this.dummyRef;
+        }
+        // Wenn der Container wieder eingeblendet wird, hängen wir den Event-Listener neu an.
+        else if (this.showContainer) {
+          setTimeout(() => {
+            if (this.scrollContainerRef) {
+              this.scrollEl = this.scrollContainerRef;
+              this.scrollEl.nativeElement.addEventListener('scroll', this.handleScroll);
+            }
+          });
         }
       });
   }
@@ -95,12 +91,11 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // Container gerendert => we haben #scrollRef
-    // => set scrollEl=realRef => in Microtask => => no ExpressionChangedError
+    // Erster Initial-Load: Wenn der Container sichtbar ist,
+    // binden wir den scroll-Listener an
     Promise.resolve().then(() => {
       if (this.showContainer && this.scrollContainerRef) {
         this.scrollEl = this.scrollContainerRef;
-        // attach scroll
         this.scrollContainerRef.nativeElement.addEventListener('scroll', this.handleScroll);
       }
     });

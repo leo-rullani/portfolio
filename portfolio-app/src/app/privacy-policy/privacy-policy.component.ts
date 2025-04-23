@@ -8,22 +8,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./privacy-policy.component.scss']
 })
 export class PrivacyPolicyComponent {
+  constructor(private router: Router){}
 
-  constructor(private router: Router) {}
+  closeOverlay(e:MouseEvent){if(e.target===e.currentTarget)this.goRightOrBottom()}
+  closeOnX(e:MouseEvent){e.preventDefault();this.goRightOrBottom()}
 
-  // Schließt das Overlay, wenn man "hinter" das Modal klickt
-  closeOverlay(event: MouseEvent) {
-    // Check: Klick nur auslösen, wenn man wirklich auf div.overlay geklickt hat,
-    // nicht auf ein Kind-Element:
-    if (event.target === event.currentTarget) {
-      // Zur Startseite oder gewünschten Route navigieren:
-      this.router.navigate(['/']);
+  private goRightOrBottom(){
+   this.router.navigate(['/']).then(()=>{setTimeout(()=>{
+    const c=document.querySelector('.container')as HTMLElement|null;if(!c)return
+    c.style.setProperty('scroll-behavior','auto','important');c.style.visibility='hidden'
+    if(window.innerWidth>=800){
+     c.scrollLeft=c.scrollWidth-c.clientWidth
+    }else{
+     window.scrollTo({top:document.body.scrollHeight,behavior:'auto'})
     }
-  }
-
-  // Schließt per X-Button
-  closeOnX(event: MouseEvent) {
-    event.preventDefault();
-    this.router.navigate(['/']);
+    c.offsetWidth
+    c.style.visibility=''
+    c.style.removeProperty('scroll-behavior')
+   })})
   }
 }

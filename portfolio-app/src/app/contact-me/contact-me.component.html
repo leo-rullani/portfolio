@@ -3,8 +3,6 @@
 
   <div class="contact-container">
     <div class="contact-form-area">
-
-      <!-- Wichtig: (ngModelChange)="onFormChange(myForm)" für Live-Validation -->
       <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" (ngModelChange)="onFormChange(myForm)">
         <div class="contact-form">
 
@@ -117,14 +115,12 @@
         </div>
       </form>
 
-      <!-- Feedback -->
       <div class="feedback" *ngIf="feedbackMessage">
         <p [ngClass]="{'error': feedbackError, 'success': !feedbackError}">
           {{ feedbackMessage }}
         </p>
       </div>
 
-      <!-- Pfeil: nach oben -->
       <div class="arrow-up" (click)="scrollToTop()">
         <svg
           width="16"
@@ -142,7 +138,6 @@
 
       <div class="social-media-placeholder">
         <div class="social-icons">
-          <!-- Social Icons -->
         </div>
       </div>
     </div>
@@ -155,14 +150,14 @@
         <div class="contact-data">
           <p>
             <span class="icon">
-              <!-- Icon -->
+
             </span>
             {{ text[activeLang].labelEmail }}
             <a href="mailto:coding&#64;leorullani.com">coding&#64;leorullani.com</a>
           </p>
           <p>
             <span class="icon">
-              <!-- Icon -->
+
             </span>
             {{ text[activeLang].labelPhone }}
             <a href="tel:+41764885610">+41 76 488 56 10</a>
@@ -170,7 +165,6 @@
         </div>
       </div>
 
-      <!-- Pfeil: zurückscrollen -->
       <div class="arrow-left" (click)="scrollPrev()">
         <svg
           width="113"

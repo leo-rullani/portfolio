@@ -42,10 +42,6 @@ export class MenuComponent {
     this.activeLangChange.emit(lang);
   }
 
-  /**
-   * Desktop: Scroll X => index * window.innerWidth
-   * Mobile: Scroll Y => #elementID
-   */
   private scrollDesktop(index: number): void {
     const container = document.querySelector('.container') as HTMLElement | null;
     if (!container) return;
@@ -78,24 +74,18 @@ export class MenuComponent {
   }
 
   scrollToAboutMe(): void {
-    // Slide #1 => about-me-slide
     this.handleScroll(1, 'about-me-slide');
   }
 
   scrollToSkills(): void {
-    // Slide #2 => skill-set-slide
     this.handleScroll(2, 'skill-set-slide');
   }
 
   scrollToMyWork(): void {
-    // Slide #3 => my-work-slide
     this.handleScroll(3, 'my-work-slide');
   }
 
   scrollToContact(): void {
-    // Slide #5 => send-mail-slide or contact-me?
-    // Du hattest #send-mail-slide in code?
-    // => we keep #5
     this.handleScroll(5, 'contact-me-slide');
   }
 

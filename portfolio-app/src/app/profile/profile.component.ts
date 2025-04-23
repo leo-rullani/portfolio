@@ -10,10 +10,6 @@ export class ProfileComponent {
 
   @Input() activeLang: 'DE' | 'EN' = 'EN';
 
-  /**
-   * Wir gehen davon aus, dass wir IMMER ein Objekt kriegen.
-   * Im schlimmsten Fall => dummyRef
-   */
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
 
   text = {

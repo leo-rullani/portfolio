@@ -7,9 +7,6 @@
       (activeLangChange)="activeLang = $event"
     ></app-menu>
 
-    <!-- Hinweis: wir binden [scrollEl]="scrollEl"
-         und scrollEl ist IMMER ein gültiges Objekt
-         (entweder dummyRef oder der echte ContainerRef). -->
     <app-profile
       class="slide"
       id="profile-slide"
@@ -60,5 +57,4 @@
   </div>
 </ng-container>
 
-<!-- Standard RouterOutlet -->
 <router-outlet></router-outlet>
