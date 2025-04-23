@@ -1,32 +1,50 @@
-<div class="overlay" (click)="closeOverlay($event)">
-  <div class="overlay-content" (click)="$event.stopPropagation()">
-    <div class="close-button">
-      <a href="#" class="close-link" (click)="closeOnX($event)">X</a>
+<div class="privacy-page">
+  <div class="content">
+    <div class="overlay" (click)="closeOverlay($event)">
+      <div class="overlay-content" (click)="$event.stopPropagation()">
+
+        <div class="close-button">
+          <a href="#" class="close-link" (click)="closeOnX($event)">X</a>
+        </div>
+
+        <!-- Vertikaler (bzw. in Mobile horizontaler) Titel -->
+        <h2 class="vertical-title">
+          {{ text[activeLang].title }}
+        </h2>
+
+        <!-- Textblock rechts daneben (bzw. in Mobile darunter) -->
+        <div class="text-block">
+          <h3>{{ text[activeLang].ownerTitle }}</h3>
+          <p [innerHTML]="text[activeLang].ownerParagraph"></p>
+
+          <h3>{{ text[activeLang].disclaimerTitle }}</h3>
+          <p>{{ text[activeLang].disclaimerText }}</p>
+
+          <h3>{{ text[activeLang].externalLinksTitle }}</h3>
+          <p>{{ text[activeLang].externalLinksText }}</p>
+
+          <h3>{{ text[activeLang].copyrightTitle }}</h3>
+          <p>{{ text[activeLang].copyrightText }}</p>
+
+          <h3>{{ text[activeLang].liabilityTitle }}</h3>
+          <p>{{ text[activeLang].liabilityText }}</p>
+
+          <h3>{{ text[activeLang].severabilityTitle }}</h3>
+          <p>{{ text[activeLang].severabilityText }}</p>
+
+          <h3>{{ text[activeLang].noWarrantiesTitle }}</h3>
+          <p>{{ text[activeLang].noWarrantiesText }}</p>
+
+          <h3>{{ text[activeLang].changesTitle }}</h3>
+          <p>{{ text[activeLang].changesText }}</p>
+
+          <h3>{{ text[activeLang].governingLawTitle }}</h3>
+          <p>{{ text[activeLang].governingLawText }}</p>
+
+          <h3>{{ text[activeLang].contactTitle }}</h3>
+          <p [innerHTML]="text[activeLang].contactText"></p>
+        </div>
+      </div>
     </div>
-
-    <h2 class="title">Legal Notice</h2>
-    <p>
-      Owner of this Website: <strong>Leo Rullani</strong><br/>
-      E-mail: coding&#64;leorullani.com<br/>
-      Tel: +41 76 488 56 10
-    </p>
-
-    <h3>Disclaimer</h3>
-    <p>
-      I strive to keep the information on this site up to date but assume no
-      liability for the accuracy or completeness. Access is at your own risk.
-    </p>
-
-    <h3>External Links</h3>
-    <p>
-      This website may contain external links. I have no influence on the content
-      of those sites and assume no liability for them.
-    </p>
-
-    <h3>Copyright</h3>
-    <p>
-      All content on this site is subject to copyright.
-      Unauthorized use, reproduction, or distribution is prohibited without permission.
-    </p>
   </div>
 </div>

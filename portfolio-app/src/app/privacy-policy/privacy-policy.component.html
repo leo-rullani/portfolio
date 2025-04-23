@@ -1,33 +1,67 @@
-<div class="overlay" (click)="closeOverlay($event)">
-  <div class="overlay-content" (click)="$event.stopPropagation()">
-    <div class="close-button">
-      <a href="#" class="close-link" (click)="closeOnX($event)">X</a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap"
+    />
+    <meta charset="UTF-8" />
+    <title>Privacy Policy</title>
+  </head>
+  <body>
+    <div class="privacy-page">
+      <div class="content">
+        <div class="overlay">
+          <div class="overlay-content" (click)="$event.stopPropagation()">
+
+            <div class="close-button">
+              <a href="#" class="close-link" (click)="closeOnX($event)">X</a>
+            </div>
+
+            <!-- Titel -->
+            <h2 class="vertical-title">
+              <!-- Hier geben wir je nach Sprache den Titel aus -->
+              {{ text[activeLang].heading }}
+            </h2>
+
+            <div class="text-block">
+              <!-- Updated -->
+              <p>{{ text[activeLang].updated }}</p>
+
+              <!-- Erster Absatz -->
+              <p>{{ text[activeLang].p1 }}</p>
+              <p>{{ text[activeLang].p2 }}</p>
+
+              <h3>{{ text[activeLang].section1Title }}</h3>
+              <p>{{ text[activeLang].p3 }}</p>
+
+              <h3>{{ text[activeLang].section2Title }}</h3>
+              <p>{{ text[activeLang].p4 }}</p>
+
+              <h3>{{ text[activeLang].section3Title }}</h3>
+              <p>{{ text[activeLang].p5 }}</p>
+
+              <h3>{{ text[activeLang].section4Title }}</h3>
+              <p>
+                {{ text[activeLang].p6 }}
+                <a
+                  class="mail-link"
+                  href="mailto:coding@leorullani.com"
+                >
+                  coding&#64;leorullani.com
+                </a>
+              </p>
+
+              <h3>{{ text[activeLang].section5Title }}</h3>
+              <p>{{ text[activeLang].p7 }}</p>
+
+              <h3>{{ text[activeLang].section6Title }}</h3>
+              <p>{{ text[activeLang].p8 }}</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
-    <h2 class="title">Privacy Policy</h2>
-    <p>Last updated: January 2025</p>
-    <p>
-      I, Leo Rullani, operate this website as my personal portfolio.
-      Protecting your personal data is a priority.
-      In this policy, I explain how data is collected, processed, and used.
-    </p>
-    <h3>1. Data Collection</h3>
-    <p>
-      Any personal data (e.g., name, email) provided via the contact form
-      is used solely to respond to your inquiries.
-    </p>
-    <h3>2. Cookies / Analytics</h3>
-    <p>
-      Currently, no analytics or cookies are used.
-      (Update this if you implement cookies or tracking.)
-    </p>
-    <h3>3. Third-Party Services</h3>
-    <p>
-      If external services are integrated, they follow standard GDPR compliance.
-    </p>
-    <h3>4. Your Rights</h3>
-    <p>
-      You have the right to access, correct, and delete your personal data
-      at any time. Contact me at coding&#64;leorullani.com
-    </p>
-  </div>
-</div>
+  </body>
+</html>

@@ -1,56 +1,164 @@
+/*
+   Falls du die Google-Font lieber hier importieren möchtest,
+   kannst du diese Zeile verwenden, anstatt im <head>:
+*/
+// @import url('https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap');
+
 .privacy-page {
   width: 100%;
   min-height: 100vh;
-  background: #2b2a2a;
-  color: #FFFDFD;
+  background: black; /* Schwarzer Background */
+  color: #FFFDFD; /* Weißer Text */
   font-family: 'Quantico', sans-serif;
   padding: 2rem;
   box-sizing: border-box;
   position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-x: hidden;
 }
 
-.close-button {
-  position: absolute;
-  top: 16px;
-  right: 16px;
+.content {
+  max-width: 1580px;
+  margin: 0 auto;
+  flex: 1;
+  color: #FFFDFD; // Fallback für Texte
+}
 
-  .close-link {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid #B5E93B;
-    color: #B5E93B;
-    text-decoration: none;
-    font-size: 1.5rem;
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Kein schwarzer Extra-Hintergrund */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Starten oben, nicht zentrieren */
+  overflow-y: auto;        /* Damit man scrollen kann, falls zu viel Text */
+}
+
+.overlay-content {
+  position: relative;
+  color: #fff;
+  padding: 2rem;
+  max-width: 1400px; /* Deutlich breiter */
+  width: 90vw;       /* Passt sich an die Viewport-Breite an */
+  font-family: 'Quantico', sans-serif;
+  box-sizing: border-box;
+  background: transparent; /* kein schwarzer Hintergrund */
+
+  /* Wir nutzen nun Flex, um Title links und Text rechts zu haben */
+  display: flex;
+  align-items: flex-start;
+
+  /* Der "X"-Button bleibt per position: absolute */
+  .close-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+
+    .close-link {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #B5E93B;
+      color: #B5E93B;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s, background-color 0.3s;
+
+      &:hover {
+        background-color: #B5E93B;
+        color: #2b2a2a;
+      }
+    }
+  }
+
+  /* Vertikaler Titel links (Desktop) */
+  .vertical-title {
+    writing-mode: vertical-rl;    /* vertikal */
+    transform: rotate(180deg);    /* von unten nach oben */
+    font-size: 60px;
     font-weight: 700;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.3s, background-color 0.3s;
+    font-family: 'Quantico', sans-serif;
+    -webkit-text-stroke: 1px #B5E93B; /* Nur der Rahmen in Grün */
+    color: transparent;               /* Text selbst transparent */
+    margin-right: 2rem;
+    z-index: 111111;
+  }
 
-    &:hover {
-      background-color: #B5E93B;
-      color: #2b2a2a;
+  /* Rechts daneben: Unsere Paragraphen, H3, usw. */
+  .text-block {
+    /* Flex: 1 => füllt den restlichen Platz */
+    flex: 1;
+
+    h3 {
+      font-size: 1.4rem;
+      color: #B5E93B;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      text-align: justify;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      color: #FFFDFD;
+    }
+
+    .mail-link {
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #B5E93B;
+      }
     }
   }
 }
 
-.title {
-  font-size: 2rem;
-  color: #B5E93B;
-  margin-bottom: 1rem;
-}
+/* Responsive-Anpassungen */
+@media (max-width: 800px) {
+  .privacy-page {
+    flex-direction: column;
+    padding: 1rem;
+  }
 
-h3 {
-  font-size: 1.4rem;
-  color: #B5E93B;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-}
+  .content {
+    padding: 0 1rem;
+  }
 
-p {
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 1rem;
+  /* Im mobilen Layout: Titel horizontal machen */
+  .overlay-content {
+    flex-direction: column; /* Stapeln: Titel oben, Text darunter */
+
+    .vertical-title {
+      writing-mode: horizontal-tb !important;
+      transform: none !important;
+      -webkit-text-stroke: 1px #B5E93B !important; /* Nur der Rahmen in Grün */
+      color: transparent !important;
+      font-size: 2rem !important;
+      margin-bottom: 1rem;
+      margin-right: 0 !important;
+    }
+
+    .close-button {
+      position: static;
+      margin-left: auto;
+      display: block;
+    }
+  }
 }
