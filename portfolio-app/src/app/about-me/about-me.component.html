@@ -2,9 +2,7 @@
 
   <div class="vertical-title">{{ text[activeLang].verticalTitle }}</div>
 
-
   <div class="intro">
-
     <p>{{ text[activeLang].paragraphs[0] }}</p>
     <p>{{ text[activeLang].paragraphs[1] }}</p>
     <p>{{ text[activeLang].paragraphs[2] }}</p>
@@ -13,8 +11,8 @@
   <h2 class="iam-title">{{ text[activeLang].iAmTitle }}</h2>
 
   <div class="icon-row">
-
     <div class="icon-box">
+      <!-- Icon + Location -->
       <svg
         width="33"
         height="40"
@@ -35,6 +33,7 @@
     </div>
 
     <div class="icon-box">
+      <!-- Icon + Remote -->
       <svg
         width="33"
         height="40"
@@ -77,6 +76,7 @@
     </div>
 
     <div class="icon-box">
+      <!-- Icon + Relocate -->
       <svg
         width="33"
         height="40"
@@ -121,10 +121,12 @@
     </div>
   </div>
 
+  <!-- Button "Contact me" -->
   <button class="btn-primary" (click)="scrollToContact()">
     {{ text[activeLang].contactButton }}
   </button>
 
+  <!-- Pfeil (optional) -->
   <div class="arrow-right" (click)="scrollNext()">
     <svg
       width="113"

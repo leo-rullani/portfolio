@@ -43,6 +43,7 @@
       align-items: flex-end;
       box-sizing: border-box;
       position: relative;
+      cursor: pointer;
 
       .input-box {
         align-self: stretch;
@@ -368,6 +369,7 @@
         justify-content: center;
         margin: 3rem 0;
         order: 3;
+        cursor: pointer;
       }
 
       .social-media-placeholder {

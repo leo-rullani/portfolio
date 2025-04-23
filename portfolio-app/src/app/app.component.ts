@@ -65,13 +65,10 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
         if (nav.urlAfterRedirects === '/privacy' || nav.urlAfterRedirects === '/legal') {
           this.showContainer = false;
         }
-
-        // Sobald der Container ausgeblendet wird, entfernen wir den Listener.
         if (!this.showContainer && this.scrollEl !== this.dummyRef) {
           this.scrollEl.nativeElement.removeEventListener('scroll', this.handleScroll);
           this.scrollEl = this.dummyRef;
         }
-        // Wenn der Container wieder eingeblendet wird, hängen wir den Event-Listener neu an.
         else if (this.showContainer) {
           setTimeout(() => {
             if (this.scrollContainerRef) {
@@ -91,8 +88,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // Erster Initial-Load: Wenn der Container sichtbar ist,
-    // binden wir den scroll-Listener an
     Promise.resolve().then(() => {
       if (this.showContainer && this.scrollContainerRef) {
         this.scrollEl = this.scrollContainerRef;
@@ -102,7 +97,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    // remove event listener
     if (this.scrollEl !== this.dummyRef) {
       this.scrollEl.nativeElement.removeEventListener('scroll', this.handleScroll);
     }

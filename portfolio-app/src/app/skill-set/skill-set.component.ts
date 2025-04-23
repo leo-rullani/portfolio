@@ -68,9 +68,8 @@ export class SkillSetComponent {
       console.warn('No nativeElement on scrollEl');
       return;
     }
-    const contactSlide = document.getElementById('send-mail-slide');
+    const contactSlide = document.getElementById('contact-me-slide');
     if (!contactSlide) {
-      console.warn('No contact slide with ID="send-mail-slide" found');
       return;
     }
     if (window.innerWidth < 800) {

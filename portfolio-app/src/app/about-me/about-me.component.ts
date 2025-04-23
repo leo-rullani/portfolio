@@ -51,22 +51,28 @@ export class AboutMeComponent {
 
   scrollToContact() {
     if (!this.scrollEl?.nativeElement) return;
-    const contactSlide = document.getElementById('send-mail-slide');
-    if (!contactSlide) return;
-    if (window.innerWidth < 800) {
-      contactSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    const contactSlide = document.getElementById('contact-me-slide');
+    if (!contactSlide) {
+      console.warn('No element with ID="contact-me-slide" found.');
       return;
     }
 
-    const container = this.scrollEl.nativeElement;
-    const containerRect = container.getBoundingClientRect();
-    const contactRect = contactSlide.getBoundingClientRect();
-    const alreadyScrolled = container.scrollLeft;
-    const offset = (contactRect.left - containerRect.left) + alreadyScrolled;
+    // Mobil (< 800px): Via scrollIntoView() (vertikal)
+    if (window.innerWidth < 800) {
+      contactSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Desktop (≥ 800px): Horizontal Scrolling in scrollEl
+    else {
+      const containerRect = this.scrollEl.nativeElement.getBoundingClientRect();
+      const contactRect = contactSlide.getBoundingClientRect();
+      const alreadyScrolled = this.scrollEl.nativeElement.scrollLeft;
+      const offset = (contactRect.left - containerRect.left) + alreadyScrolled;
 
-    container.scrollTo({
-      left: offset,
-      behavior: 'smooth'
-    });
+      this.scrollEl.nativeElement.scrollTo({
+        left: offset,
+        behavior: 'smooth'
+      });
+    }
   }
 }
