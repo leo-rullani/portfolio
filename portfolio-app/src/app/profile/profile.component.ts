@@ -10,6 +10,10 @@ export class ProfileComponent {
 
   @Input() activeLang: 'DE' | 'EN' = 'EN';
 
+  /**
+   * Wir gehen davon aus, dass wir IMMER ein Objekt kriegen.
+   * Im schlimmsten Fall => dummyRef
+   */
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
 
   text = {
@@ -27,12 +31,14 @@ export class ProfileComponent {
 
   scrollNext() {
     if (!this.scrollEl?.nativeElement) {
-      console.warn('No nativeElement on scrollEl');
+      console.warn('No nativeElement on scrollEl => skipping scroll.');
       return;
     }
+    console.log('Profile: scrollNext triggered');
 
+    const distance = this.scrollEl.nativeElement.offsetWidth;
     this.scrollEl.nativeElement.scrollBy({
-      left: window.innerWidth,
+      left: distance,
       behavior: 'smooth'
     });
   }

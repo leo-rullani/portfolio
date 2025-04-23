@@ -7,7 +7,9 @@ import {
   ElementRef
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+
 import { MenuComponent } from './menu/menu.component';
 import { SocialMediaComponent } from './social-media/social-media.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -18,7 +20,6 @@ import { ReferencesMeComponent } from './references-me/references-me.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
-import { SendMailComponent } from './send-mail/send-mail.component';
 
 @Component({
   selector: 'app-root',
@@ -35,23 +36,58 @@ import { SendMailComponent } from './send-mail/send-mail.component';
     ReferencesMeComponent,
     ContactMeComponent,
     PrivacyPolicyComponent,
-    LegalNoticeComponent,
-    SendMailComponent
+    LegalNoticeComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   title = 'portfolio-app';
+
   showSocialMedia = true;
   private readonly thresholdFactor = 0.1;
   activeLang: 'DE' | 'EN' = 'EN';
 
-  @ViewChild('scrollRef', { static: true })
-  scrollContainerRef!: ElementRef<HTMLDivElement>;
+  /**
+   * Schaltet Container an/aus => privacy => false =>
+   * Container weg => privacy direkt
+   */
+  showContainer = true;
+
+  /**
+   * Das echte #scrollRef => container
+   */
+  @ViewChild('scrollRef', { static: false })
+  scrollContainerRef?: ElementRef<HTMLDivElement>;
+
+  /**
+   * Wir brauchen IMMER ein Objekt für [scrollEl],
+   * sonst wirft Angular "type mismatch"
+   * => => wir definieren eine Dummy-Ref
+   */
+  private dummyEl = document.createElement('div');
+  private dummyRef = new ElementRef<HTMLDivElement>(this.dummyEl);
+
+  /**
+   * Diesen Wert binden wir ans Child => [scrollEl]="scrollEl"
+   * => standard = dummyRef => kein ExpressionChangedError
+   * => nach dem Rendern => wir ersetzen es durch scrollContainerRef
+   */
+  scrollEl: ElementRef<HTMLDivElement> = this.dummyRef;
+
+  constructor(private router: Router) {
+    this.router.events
+      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe(nav => {
+        // Standard => container an
+        this.showContainer = true;
+        if (nav.urlAfterRedirects === '/privacy' || nav.urlAfterRedirects === '/legal') {
+          this.showContainer = false;
+        }
+      });
+  }
 
   ngOnInit(): void {
-
     const storedLang = localStorage.getItem('preferredLanguage');
     if (storedLang === 'DE' || storedLang === 'EN') {
       this.activeLang = storedLang;
@@ -59,26 +95,29 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (!this.scrollContainerRef) {
-      console.warn('No scroll container found.');
-    } else {
-      this.scrollContainerRef.nativeElement.addEventListener('scroll', this.handleScroll);
-    }
+    // Container gerendert => we haben #scrollRef
+    // => set scrollEl=realRef => in Microtask => => no ExpressionChangedError
+    Promise.resolve().then(() => {
+      if (this.showContainer && this.scrollContainerRef) {
+        this.scrollEl = this.scrollContainerRef;
+        // attach scroll
+        this.scrollContainerRef.nativeElement.addEventListener('scroll', this.handleScroll);
+      }
+    });
   }
 
   ngOnDestroy(): void {
-    this.scrollContainerRef.nativeElement.removeEventListener('scroll', this.handleScroll);
+    // remove event listener
+    if (this.scrollEl !== this.dummyRef) {
+      this.scrollEl.nativeElement.removeEventListener('scroll', this.handleScroll);
+    }
   }
 
   handleScroll = (): void => {
-    const threshold = this.scrollContainerRef.nativeElement.clientWidth * this.thresholdFactor;
-    const currentScroll = this.scrollContainerRef.nativeElement.scrollLeft;
-
-    if (currentScroll >= threshold) {
-      this.showSocialMedia = false;
-    } else {
-      this.showSocialMedia = true;
-    }
+    if (this.scrollEl === this.dummyRef) return;
+    const w = this.scrollEl.nativeElement.clientWidth;
+    const currentScroll = this.scrollEl.nativeElement.scrollLeft;
+    this.showSocialMedia = !(currentScroll >= w * this.thresholdFactor);
   };
 
   changeLang(lang: 'DE' | 'EN'): void {

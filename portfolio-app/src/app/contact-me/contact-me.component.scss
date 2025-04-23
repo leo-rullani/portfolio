@@ -455,3 +455,27 @@ textarea:-webkit-autofill:active {
   background-color: transparent !important;
   transition: background-color 9999s ease-in-out 0s;
 }
+
+.error-text {
+  font-size: 0.85rem;
+  color: #dc3545;
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
+.feedback p {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.feedback p.error {
+  background-color: #dc3545;
+  color: white;
+}
+
+.feedback p.success {
+  background-color: #1a8755;
+  color: white;
+}

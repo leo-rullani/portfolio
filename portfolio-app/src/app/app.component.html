@@ -1,61 +1,64 @@
+<ng-container *ngIf="showContainer">
+  <div class="container" #scrollRef>
+    <div class="app-background"></div>
 
-<div class="container" #scrollRef>
-  <div class="app-background"></div>
+    <app-menu
+      [activeLang]="activeLang"
+      (activeLangChange)="activeLang = $event"
+    ></app-menu>
 
-  <app-menu
-    [activeLang]="activeLang"
-    (activeLangChange)="activeLang = $event"
-  ></app-menu>
+    <!-- Hinweis: wir binden [scrollEl]="scrollEl"
+         und scrollEl ist IMMER ein gültiges Objekt
+         (entweder dummyRef oder der echte ContainerRef). -->
+    <app-profile
+      class="slide"
+      id="profile-slide"
+      [scrollEl]="scrollEl"
+      [activeLang]="activeLang"
+    ></app-profile>
 
-  <app-profile
-    class="slide"
-    id="profile-slide"
-    [scrollEl]="scrollContainerRef"
-    [activeLang]="activeLang"
-  ></app-profile>
+    <app-social-media
+      [class.hidden]="!showSocialMedia"
+      [activeLang]="activeLang"
+      (langChange)="changeLang($event)"
+    ></app-social-media>
 
-  <app-social-media
-    [class.hidden]="!showSocialMedia"
-    [activeLang]="activeLang"
-    (langChange)="changeLang($event)"
-  ></app-social-media>
+    <about-me
+      class="slide"
+      id="about-me-slide"
+      [scrollEl]="scrollEl"
+      [activeLang]="activeLang"
+    ></about-me>
 
-  <about-me
-    class="slide"
-    id="about-me-slide"
-    [scrollEl]="scrollContainerRef"
-    [activeLang]="activeLang"
-  ></about-me>
+    <skill-set
+      class="slide"
+      id="skill-set-slide"
+      [scrollEl]="scrollEl"
+      [activeLang]="activeLang"
+    ></skill-set>
 
-  <skill-set
-    class="slide"
-    id="skill-set-slide"
-    [scrollEl]="scrollContainerRef"
-    [activeLang]="activeLang"
-  ></skill-set>
+    <my-work
+      class="slide"
+      id="my-work-slide"
+      [scrollEl]="scrollEl"
+      [activeLang]="activeLang"
+    ></my-work>
 
-  <my-work
-    class="slide"
-    id="my-work-slide"
-    [scrollEl]="scrollContainerRef"
-    [activeLang]="activeLang"
-  ></my-work>
+    <references-me
+      class="slide"
+      id="references-slide"
+      [scrollEl]="scrollEl"
+      [activeLang]="activeLang"
+    ></references-me>
 
-  <references-me
-    class="slide"
-    id="references-slide"
-    [scrollEl]="scrollContainerRef"
-    [activeLang]="activeLang"
-  ></references-me>
+    <contact-me
+      class="slide"
+      id="contact-me-slide"
+      [scrollEl]="scrollEl"
+      [activeLang]="activeLang"
+    ></contact-me>
+  </div>
+</ng-container>
 
-  <app-send-mail
-    class="slide"
-    id="send-mail-slide"
-    [scrollEl]="scrollContainerRef"
-    [activeLang]="activeLang"
-  ></app-send-mail>
-
-  <router-outlet></router-outlet>
-</div>
-
-<router-outlet name="overlay"></router-outlet>
+<!-- Standard RouterOutlet -->
+<router-outlet></router-outlet>
