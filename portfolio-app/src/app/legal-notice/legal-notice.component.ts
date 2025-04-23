@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LegalNoticeComponent implements OnInit {
   @Input() activeLang: 'DE' | 'EN' = 'EN';
+
   text = {
     EN: {
       title: 'LEGAL NOTICE',
@@ -151,30 +152,40 @@ export class LegalNoticeComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit(){
-    const s=localStorage.getItem('preferredLanguage');
-    if(s==='DE'||s==='EN') this.activeLang=s;
+  ngOnInit() {
+    const s = localStorage.getItem('preferredLanguage');
+    if (s === 'DE' || s === 'EN') {
+      this.activeLang = s;
+    }
   }
 
-  closeOverlay(e:MouseEvent){
-    if(e.target===e.currentTarget) this.goRightOrBottom();
-  }
-
-  closeOnX(e:MouseEvent){
+  closeOnX(e: MouseEvent) {
     e.preventDefault();
     this.goRightOrBottom();
   }
 
-  private goRightOrBottom(){
-    this.router.navigate(['/']).then(()=>{
-      const c=document.querySelector('.container')as HTMLElement|null;
-      if(!c)return;
-      c.style.setProperty('scroll-behavior','auto','important');
-      c.style.visibility='hidden';
-      if(window.innerWidth>=800)c.scrollLeft=c.scrollWidth-c.clientWidth;
-      else window.scrollTo({top:document.body.scrollHeight,behavior:'auto'});
+  closeOverlay(e: MouseEvent) {
+    if (e.target === e.currentTarget) {
+      this.goRightOrBottom();
+    }
+  }
+
+  private goRightOrBottom() {
+    this.router.navigate(['/']).then(() => {
+      const c = document.querySelector('.container') as HTMLElement | null;
+      if (!c) return;
+      c.style.setProperty('scroll-behavior', 'auto', 'important');
+      c.style.visibility = 'hidden';
+
+      if (window.innerWidth >= 800) {
+        c.scrollLeft = c.scrollWidth - c.clientWidth;
+      } else {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'auto' });
+      }
+
+      // Force reflow
       c.offsetWidth;
-      c.style.visibility='';
+      c.style.visibility = '';
       c.style.removeProperty('scroll-behavior');
     });
   }

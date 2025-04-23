@@ -33,29 +33,25 @@
   left: 0;
   width: 100%;
   height: 100%;
-  /* Kein schwarzer Extra-Hintergrund */
   z-index: 9999;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Starten oben, nicht zentrieren */
-  overflow-y: auto;        /* Damit man scrollen kann, falls zu viel Text */
+  align-items: flex-start;
+  overflow-y: auto;
 }
 
 .overlay-content {
   position: relative;
   color: #fff;
   padding: 2rem;
-  max-width: 1400px; /* Deutlich breiter */
-  width: 90vw;       /* Passt sich an die Viewport-Breite an */
+  max-width: 1400px;
+  width: 90vw;
   font-family: 'Quantico', sans-serif;
   box-sizing: border-box;
-  background: transparent; /* kein schwarzer Hintergrund */
-
-  /* Wir nutzen nun Flex, um Title links und Text rechts zu haben */
+  background: transparent;
   display: flex;
   align-items: flex-start;
 
-  /* Der "X"-Button bleibt per position: absolute */
   .close-button {
     position: absolute;
     top: 16px;
@@ -118,9 +114,6 @@
       color: #FFFDFD;
     }
 
-    /* -----------------------------
-       WICHTIGER TEIL FÜR DIE LINKS
-       ----------------------------- */
        .mail-link {
         ::ng-deep a,
         ::ng-deep a:link,
@@ -138,7 +131,6 @@
   }
 }
 
-/* Responsive-Anpassungen */
 @media (max-width: 800px) {
   .privacy-page {
     flex-direction: column;
@@ -149,14 +141,13 @@
     padding: 0 1rem;
   }
 
-  /* Im mobilen Layout: Titel horizontal machen */
   .overlay-content {
-    flex-direction: column; /* Stapeln: Titel oben, Text darunter */
+    flex-direction: column;
 
     .vertical-title {
       writing-mode: horizontal-tb !important;
       transform: none !important;
-      -webkit-text-stroke: 1px #B5E93B !important; /* Nur der Rahmen in Grün */
+      -webkit-text-stroke: 1px #B5E93B !important;
       color: transparent !important;
       font-size: 2rem !important;
       margin-bottom: 1rem;
