@@ -423,10 +423,10 @@
         gap: 1rem;
 
         a {
-          color: #4A4A4A;
+          color: #4A4A4A !important;
 
           &:hover {
-            text-decoration: underline;
+            text-decoration: underline !important;
           }
         }
       }

@@ -118,13 +118,21 @@
       color: #FFFDFD;
     }
 
-    .mail-link {
-      color: #fff;
-      text-decoration: none;
-      transition: color 0.3s;
+    /* -----------------------------
+       WICHTIGER TEIL FÜR DIE LINKS
+       ----------------------------- */
+       .mail-link {
+        ::ng-deep a,
+        ::ng-deep a:link,
+        ::ng-deep a:visited,
+        ::ng-deep a:active {
+          color: #FFFDFD !important;
+          text-decoration: none !important;
+        }
 
-      &:hover {
-        color: #B5E93B;
+        ::ng-deep a:hover {
+          color: #B5E93B !important;
+          text-decoration: none !important;
       }
     }
   }
