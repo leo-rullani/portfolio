@@ -9,11 +9,10 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-
   @Input() activeLang: 'DE' | 'EN' = 'EN';
   @Output() activeLangChange = new EventEmitter<'DE' | 'EN'>();
-
   isOverlayOpen = false;
+  activeLink = '';
   text = {
     EN: {
       navWhyMe: 'Why me',
@@ -45,7 +44,6 @@ export class MenuComponent {
   private scrollDesktop(index: number): void {
     const container = document.querySelector('.container') as HTMLElement | null;
     if (!container) return;
-
     container.scrollTo({
       left: index * window.innerWidth,
       behavior: 'smooth'
@@ -55,8 +53,6 @@ export class MenuComponent {
   private scrollMobile(slideId: string): void {
     const el = document.getElementById(slideId);
     if (!el) return;
-
-    // offsetY => um z.B. 50px nach oben
     const offsetY = -50;
     const elementTop = el.getBoundingClientRect().top + window.scrollY + offsetY;
     window.scrollTo({
@@ -74,22 +70,25 @@ export class MenuComponent {
   }
 
   scrollToAboutMe(): void {
+    this.activeLink = 'aboutMe';
     this.handleScroll(1, 'about-me-slide');
   }
 
   scrollToSkills(): void {
+    this.activeLink = 'skills';
     this.handleScroll(2, 'skill-set-slide');
   }
 
   scrollToMyWork(): void {
+    this.activeLink = 'myWork';
     this.handleScroll(3, 'my-work-slide');
   }
 
   scrollToContact(): void {
+    this.activeLink = 'contact';
     this.handleScroll(5, 'contact-me-slide');
   }
 
-  // Mobile-Overlay version
   onWhyMe(): void {
     this.scrollToAboutMe();
     this.isOverlayOpen = false;

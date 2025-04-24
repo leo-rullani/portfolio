@@ -1,15 +1,8 @@
-/*
-   Falls du die Google-Font lieber hier importieren möchtest,
-   kannst du diese Zeile verwenden, anstatt im <head>:
-*/
-// @import url('https://fonts.googleapis.com/css2?family=Quantico:wght@400;700&display=swap');
-
 .privacy-page {
   width: 100%;
   min-height: 100vh;
-  background: black; /* Schwarzer Background */
-  color: #FFFDFD; /* Weißer Text */
   font-family: 'Quantico', sans-serif;
+  color: #FFFDFD;
   padding: 2rem;
   box-sizing: border-box;
   position: relative;
@@ -18,13 +11,20 @@
   align-items: flex-start;
   justify-content: flex-start;
   overflow-x: hidden;
+  background: linear-gradient(
+    90deg,
+    #0B0A0A 0%,
+    #2C2B2B 100%
+  );
+  background-size: 200% auto;
+  background-repeat: no-repeat;
 }
 
 .content {
   max-width: 1580px;
   margin: 0 auto;
   flex: 1;
-  color: #FFFDFD; // Fallback für Texte
+  color: #FFFDFD;
 }
 
 .overlay {
@@ -79,22 +79,19 @@
     }
   }
 
-  /* Vertikaler Titel links (Desktop) */
   .vertical-title {
-    writing-mode: vertical-rl;    /* vertikal */
-    transform: rotate(180deg);    /* von unten nach oben */
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
     font-size: 60px;
     font-weight: 700;
     font-family: 'Quantico', sans-serif;
-    -webkit-text-stroke: 1px #B5E93B; /* Nur der Rahmen in Grün */
-    color: transparent;               /* Text selbst transparent */
+    -webkit-text-stroke: 1px #B5E93B;
+    color: transparent;
     margin-right: 2rem;
     z-index: 111111;
   }
 
-  /* Rechts daneben: Unsere Paragraphen, H3, usw. */
   .text-block {
-    /* Flex: 1 => füllt den restlichen Platz */
     flex: 1;
 
     h3 {

@@ -7,10 +7,8 @@ import { Component, Input, ElementRef } from '@angular/core';
   styleUrls: ['./about-me.component.scss']
 })
 export class AboutMeComponent {
-
   @Input() activeLang: 'DE' | 'EN' = 'EN';
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
-
   text = {
     EN: {
       verticalTitle: 'Why me',
@@ -25,7 +23,6 @@ export class AboutMeComponent {
       relocate: 'open to relocate',
       contactButton: 'Contact me'
     },
-
     DE: {
       verticalTitle: 'Warum ich',
       paragraphs: [
@@ -43,36 +40,20 @@ export class AboutMeComponent {
 
   scrollNext() {
     if (!this.scrollEl?.nativeElement) return;
-    this.scrollEl.nativeElement.scrollBy({
-      left: window.innerWidth,
-      behavior: 'smooth'
-    });
+    this.scrollEl.nativeElement.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
   }
 
   scrollToContact() {
     if (!this.scrollEl?.nativeElement) return;
-
-    const contactSlide = document.getElementById('contact-me-slide');
-    if (!contactSlide) {
-      console.warn('No element with ID="contact-me-slide" found.');
-      return;
-    }
-
-    // Mobil (< 800px): Via scrollIntoView() (vertikal)
-    if (window.innerWidth < 800) {
-      contactSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-    // Desktop (≥ 800px): Horizontal Scrolling in scrollEl
-    else {
-      const containerRect = this.scrollEl.nativeElement.getBoundingClientRect();
-      const contactRect = contactSlide.getBoundingClientRect();
-      const alreadyScrolled = this.scrollEl.nativeElement.scrollLeft;
-      const offset = (contactRect.left - containerRect.left) + alreadyScrolled;
-
-      this.scrollEl.nativeElement.scrollTo({
-        left: offset,
-        behavior: 'smooth'
-      });
+    const cSlide=document.getElementById('contact-me-slide');
+    if(!cSlide){console.warn('No element with ID="contact-me-slide" found.');return;}
+    if(window.innerWidth<800){
+      cSlide.scrollIntoView({behavior:'smooth',block:'start'});
+    }else{
+      const cRect=this.scrollEl.nativeElement.getBoundingClientRect();
+      const tRect=cSlide.getBoundingClientRect();
+      const s=this.scrollEl.nativeElement.scrollLeft;
+      this.scrollEl.nativeElement.scrollTo({left:(tRect.left-cRect.left)+s,behavior:'smooth'});
     }
   }
 }

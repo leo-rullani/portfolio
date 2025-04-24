@@ -1,9 +1,8 @@
 .privacy-page {
   width: 100%;
   min-height: 100vh;
-  background: black;
-  color: #FFFDFD;
   font-family: 'Quantico', sans-serif;
+  color: #FFFDFD;
   padding: 2rem;
   box-sizing: border-box;
   position: relative;
@@ -12,6 +11,13 @@
   align-items: flex-start;
   justify-content: flex-start;
   overflow-x: hidden;
+  background: linear-gradient(
+    90deg,
+    #0B0A0A 0%,
+    #2C2B2B 100%
+  );
+  background-size: 200% auto;
+  background-repeat: no-repeat;
 }
 
 .content {

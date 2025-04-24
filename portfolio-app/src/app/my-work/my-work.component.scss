@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  min-height: 100vh; /* Deine ursprüngliche Vorgabe */
+  min-height: 100vh;
   position: relative;
   width: 100%;
   margin-left: 0;
@@ -341,12 +341,13 @@
 @media (min-width: 801px) and (max-width: 1800px) {
   .my-work-section {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0rem;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-bottom: 3rem;
 
     .project-card {
-      transform: scale(0.7);
+      transform: scale(0.6);
       transform-origin: top center;
       margin: 0 auto;
     }
@@ -355,6 +356,7 @@
       right: 72px;
       top: 43%;
     }
+
     .vertical-title {
       top: 32%;
     }

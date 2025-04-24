@@ -117,12 +117,10 @@ export class ReferencesMeComponent {
     if (!this.carouselEl) {
       return;
     }
-
     this.currentIndexMobile++;
     if (this.currentIndexMobile >= 6) {
       this.currentIndexMobile = 0;
     }
-
     const boxWidth = 0.85 * window.innerWidth;
     const gapPx = 16;
     const scrollLeft = (boxWidth + gapPx) * this.currentIndexMobile;

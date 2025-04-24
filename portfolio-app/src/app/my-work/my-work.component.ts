@@ -70,8 +70,6 @@ export class MyWorkComponent {
       project1ShowLess: 'Weniger anzeigen',
       github: 'GitHub',
       liveTest: 'Live-Demo',
-
-      // PROJECT 2: EL POLLO LOCO
       project2Title: 'El Pollo Loco',
       project2About: 'Über das Projekt',
       project2AboutText:

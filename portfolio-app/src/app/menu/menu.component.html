@@ -7,16 +7,16 @@
   </div>
 
   <div class="menu-items">
-    <span (click)="scrollToAboutMe()">
+    <span [class.active]="activeLink === 'aboutMe'" (click)="scrollToAboutMe()">
       {{ text[activeLang].navWhyMe }}
     </span>
-    <span (click)="scrollToSkills()">
+    <span [class.active]="activeLink === 'skills'" (click)="scrollToSkills()">
       {{ text[activeLang].navSkills }}
     </span>
-    <span (click)="scrollToMyWork()">
+    <span [class.active]="activeLink === 'myWork'" (click)="scrollToMyWork()">
       {{ text[activeLang].navMyWork }}
     </span>
-    <span (click)="scrollToContact()">
+    <span [class.active]="activeLink === 'contact'" (click)="scrollToContact()">
       {{ text[activeLang].navContact }}
     </span>
   </div>
@@ -37,16 +37,16 @@
   </div>
 
   <div class="menu-items-column">
-    <span (click)="onWhyMe()">
+    <span [class.active]="activeLink === 'aboutMe'" (click)="onWhyMe()">
       {{ text[activeLang].navWhyMe }}
     </span>
-    <span (click)="onSkillSet()">
+    <span [class.active]="activeLink === 'skills'" (click)="onSkillSet()">
       {{ text[activeLang].mobileSkillSet }}
     </span>
-    <span (click)="onMyWork()">
+    <span [class.active]="activeLink === 'myWork'" (click)="onMyWork()">
       {{ text[activeLang].navMyWork }}
     </span>
-    <span (click)="onContact()">
+    <span [class.active]="activeLink === 'contact'" (click)="onContact()">
       {{ text[activeLang].mobileContact }}
     </span>
 

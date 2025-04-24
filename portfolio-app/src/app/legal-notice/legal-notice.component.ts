@@ -176,14 +176,11 @@ export class LegalNoticeComponent implements OnInit {
       if (!c) return;
       c.style.setProperty('scroll-behavior', 'auto', 'important');
       c.style.visibility = 'hidden';
-
       if (window.innerWidth >= 800) {
         c.scrollLeft = c.scrollWidth - c.clientWidth;
       } else {
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'auto' });
       }
-
-      // Force reflow
       c.offsetWidth;
       c.style.visibility = '';
       c.style.removeProperty('scroll-behavior');
