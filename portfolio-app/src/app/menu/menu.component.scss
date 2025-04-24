@@ -90,7 +90,6 @@
   }
 }
 
-/* OVERRIDE für Desktop (ab 801px) statt absolute => fixed */
 @media (min-width: 801px) {
   .menu-system {
     position: fixed;
@@ -98,7 +97,7 @@
     left: 0;
     width: 172px;
     height: 100vh;
-    z-index: 2;
+    z-index: 200000000000000000;
   }
 }
 

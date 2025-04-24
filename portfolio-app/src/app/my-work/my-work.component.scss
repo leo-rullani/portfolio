@@ -15,7 +15,7 @@
   .vertical-title {
     position: absolute;
     top: 26%;
-    left: 60px;
+    left: 200px;
     font-family: 'Quantico', sans-serif;
     font-weight: 700;
     line-height: 120%;
@@ -34,6 +34,7 @@
     border-radius: 30px;
     overflow: hidden;
     background: transparent;
+    left: 120px;
 
     .card-bg {
       position: absolute;
@@ -151,12 +152,13 @@
           text-decoration: none;
           display: inline-block;
           &:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 10px 2px rgba(181, 233, 59, 0.5);
+            box-shadow: inset 6px -10px 20px rgba(0, 0, 0, 0.45);
+            transform: scale(1.02);
           }
 
           &:active {
-            transform: scale(0.97);
+            transform: scale(0.98);
+            box-shadow: none;
           }
         }
 
@@ -176,12 +178,13 @@
           transition: transform 120ms ease-in-out, box-shadow 120ms ease-in-out;
 
           &:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 10px 2px rgba(181, 233, 59, 0.5);
+            box-shadow: inset 6px -10px 20px rgba(0, 0, 0, 0.45);
+            transform: scale(1.02);
           }
 
           &:active {
-            transform: scale(0.97);
+            transform: scale(0.98);
+            box-shadow: none;
           }
         }
       }
@@ -254,6 +257,7 @@
       margin: 0 auto;
       border-radius: 20px;
       background: transparent;
+      left: 0 !important;
 
       .card-bg {
         position: absolute;
@@ -347,18 +351,27 @@
     padding-bottom: 3rem;
 
     .project-card {
-      transform: scale(0.6);
-      transform-origin: top center;
+      transform: scale(0.5);
+      transform-origin: center;
       margin: 0 auto;
+      left: 140px;
     }
 
     .arrow-right {
       right: 72px;
-      top: 43%;
+      top: 48%;
     }
 
     .vertical-title {
-      top: 32%;
+      top: 38%;
+      left: 250px;
     }
+  }
+}
+
+@media (min-width: 1920px) {
+  .skillset{
+    width: 1700px !important;
+    left: calc(200vw + ((100vw - 1440px) / 2)) !important;
   }
 }

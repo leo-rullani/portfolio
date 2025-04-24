@@ -293,8 +293,8 @@
 }
 
 @media (min-width: 1920px) {
-  .skillset{                    // ersetze durch deinen echten Container-Selektor
-    width: 1700px !important;           // fixe Content-Breite
+  .skillset{
+    width: 1700px !important;
     left: calc(200vw + ((100vw - 1440px) / 2)) !important;
   }
 }
