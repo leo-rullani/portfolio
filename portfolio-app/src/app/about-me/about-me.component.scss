@@ -11,7 +11,7 @@
   .vertical-title {
     position: absolute;
     top: 140px;
-    left: 100px;
+    left: 10px;
     font-family: 'Quantico', sans-serif;
     font-weight: 700;
     line-height: 120%;
@@ -49,9 +49,19 @@
   .icon-row {
     position: absolute;
     top: 560px;
-    left: 320px;
+    left: 420px;
     display: flex;
     gap: 80px;
+    animation: iconImpulse 1.5s ease-in-out 0.2s infinite alternate;
+
+    @keyframes iconImpulse {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-4px);
+      }
+    }
 
     .icon-box {
       display: flex;
@@ -63,10 +73,22 @@
         width: 33px;
         height: 40px;
         margin-bottom: 5px;
+        transition: transform 0.3s ease;
       }
+
       p {
         font-size: 16px;
         color: #fff;
+        transition: color 0.3s ease;
+      }
+
+      &:hover {
+        p {
+          color: #B5E93B;
+        }
+        svg {
+          transform: translateY(-5px);
+        }
       }
     }
   }
@@ -89,21 +111,23 @@
     cursor: pointer;
     font-weight: bold;
     color: #000;
+    transition: all 0.3s ease;
 
     &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px 2px rgba(181, 233, 59, 0.5);
+      box-shadow: inset 6px -10px 20px rgba(0, 0, 0, 0.45);
+      transform: scale(1.02);
     }
 
     &:active {
-      transform: scale(0.97);
+      transform: scale(0.98);
+      box-shadow: none;
     }
   }
 
   .arrow-right {
     position: absolute;
     top: 50%;
-    right: 50px;
+    right: 10px;
     transform: translateY(-50%);
     width: 113px;
     height: 40px;
@@ -111,7 +135,7 @@
   }
 }
 
-@media (max-width: 1300px) and (min-width: 801px) {
+@media (max-width: 1800px) and (min-width: 801px) {
   .about-me {
     position: relative;
     top: 0;
@@ -122,14 +146,15 @@
   }
 
   .about-me .vertical-title {
-    left: 40px;
+    left: 200px;
     top: 0px;
   }
 
   .about-me .intro {
     position: static;
     max-width: 100%;
-    margin: 200px 120px 2rem 120px;
+    margin: 140px 30px 2rem 280px;
+
     p {
       font-size: 16px;
       line-height: 1.5;
@@ -139,28 +164,57 @@
 
   .about-me .iam-title {
     position: static;
-    margin: 4rem 120px 0 120px;
+    margin: 0rem 120px -20px 300px;
     font-size: 2rem;
     text-align: left;
   }
 
   .about-me .icon-row {
     position: static;
-    margin: 3rem 120px;
+    margin: 3rem 0px;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1rem;
+    margin-left: 300px;
+    animation: iconImpulse 1.5s ease-in-out 0.2s infinite alternate;
+
+    .icon-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      svg {
+        width: 33px;
+        height: 40px;
+        transition: transform 0.3s ease;
+      }
+
+      p {
+        font-size: 1rem;
+        transition: color 0.3s ease;
+      }
+
+      &:hover {
+        p {
+          color: #B5E93B;
+        }
+        svg {
+          transform: translateY(-5px);
+        }
+      }
+    }
   }
 
   .about-me .btn-primary {
     position: static;
-    margin: 3rem 0 0 120px;
+    margin: 3rem 0 0 300px;
     width: 140px;
   }
 
   .about-me .arrow-right {
     position: absolute;
-    top: 70%;
+    top: 100%;
     right: 50px;
     transform: translateY(-50%);
     display: block;
@@ -215,14 +269,32 @@
     justify-content: center;
     gap: 1.5rem;
     margin-top: 1.5rem;
+    animation: iconImpulse 1.5s ease-in-out 0.2s infinite alternate;
 
     .icon-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
       svg {
         width: 33px;
         height: 40px;
+        transition: transform 0.3s ease;
       }
+
       p {
         font-size: 1rem;
+        transition: color 0.3s ease;
+      }
+
+      &:hover {
+        p {
+          color: #B5E93B !important;
+        }
+        svg {
+          transform: translateY(-5px);
+        }
       }
     }
   }
@@ -237,7 +309,7 @@
 
     &:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 10px 2px rgba(181, 233, 59, 0.5);
+      box-shadow: inset 6px -10px 20px rgba(0, 0, 0, 0.35);
     }
 
     &:active {
@@ -250,5 +322,27 @@
     margin: 2rem auto 0;
     display: none;
     transform: none;
+  }
+}
+
+@keyframes iconImpulse {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-4px);
+  }
+}
+
+.about-me-wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (min-width: 1920px) {
+  .about-me {
+    width: 1700px !important;
+    left: calc(100vw + ((100vw - 1440px) / 2)) !important;
   }
 }

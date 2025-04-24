@@ -4,7 +4,7 @@
   height: 100vh;
   left: 0;
   top: 0;
-  z-index: 2;
+  z-index: 200000000000000000;
   .menu-bg {
     position: absolute;
     width: 172px;
@@ -90,6 +90,18 @@
   }
 }
 
+/* OVERRIDE für Desktop (ab 801px) statt absolute => fixed */
+@media (min-width: 801px) {
+  .menu-system {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 172px;
+    height: 100vh;
+    z-index: 2;
+  }
+}
+
 @media (max-width: 800px) {
   .menu-system {
     position: fixed;
@@ -150,7 +162,7 @@
         transform: scale(1.1);
       }
       &.active {
-        -webkit-text-stroke: 0.5px #4A4A4A;
+        -webkit-text-stroke: 0.5px black;
         color: #fff;
         transform: scale(1.1);
       }

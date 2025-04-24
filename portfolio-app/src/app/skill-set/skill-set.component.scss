@@ -21,8 +21,8 @@
 
     .vertical-title {
       position: absolute;
+      margin-left: 10px;
       top: 55px;
-      left: 60px;
       font-family: 'Quantico', sans-serif;
       font-weight: 700;
       line-height: 120%;
@@ -40,7 +40,7 @@
     margin-top: -145px;
 
     .challenge-text {
-      max-width: 350px;
+      max-width: 300px;
 
       p {
         font-family: 'Quantico', sans-serif;
@@ -109,7 +109,7 @@
       grid-template-columns: repeat(6, 1fr);
       gap: 2rem;
       width: 1260px;
-      margin-left: 100px;
+      margin-left: 50px;
 
       .icon-box {
         display: flex;
@@ -152,16 +152,18 @@
     top: 50px;
   }
   .intro-text {
-    margin-right: 320px !important;
+    margin-right: 108px !important;
+    margin-left: 230px;
   }
   .skills-container {
     width: 500px !important;
+    margin-left: 320px !important;
   }
   .challenge-text-wrapper {
     margin-top: -100px;
   }
   .arrow-right {
-    top: 10%;
+    top: 60% !important;
     transform: none;
   }
   .intro-text p {
@@ -170,7 +172,7 @@
     overflow-wrap: break-word;
   }
   .challenge-text {
-    margin-left: -1020px;
+    margin-left: -800px !important;
     margin-top: 176px;
     max-width: 580px !important;
     p {
@@ -180,7 +182,7 @@
     }
   }
   .vertical-title {
-    left: 0px !important;
+    left: 200px !important;
   }
 }
 
@@ -256,5 +258,12 @@
   }
   .skillset .arrow-right {
     display: none;
+  }
+}
+
+@media (min-width: 1920px) {
+  .skillset{                    // ersetze durch deinen echten Container-Selektor
+    width: 1700px !important;           // fixe Content-Breite
+    left: calc(200vw + ((100vw - 1440px) / 2)) !important;
   }
 }
