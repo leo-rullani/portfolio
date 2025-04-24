@@ -20,7 +20,7 @@
 
   .vertical-title {
     position: absolute;
-    left: 40px;
+    left: 340px;
     top: 63%;
     transform: translateY(-50%) rotate(180deg);
     writing-mode: vertical-rl;
@@ -105,14 +105,30 @@
   }
 }
 
-@media (min-width: 801px) and (max-width: 1300px) {
+@media (min-width: 801px) and (max-width: 1800px) {
   .desktop-only {
+    /* Falls dein Header/Menü oben Platz wegnimmt,
+       kannst du hier z. B. margin-top oder padding-top ergänzen: */
+    margin-top: 80px; /* oder padding-top: 80px; */
+
+    /* Beibehaltung der vorhandenen Styles */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    /* References skalieren und zentrieren */
     .references-container {
-      transform: scale(0.6);
-      transform-origin: center;
+      transform: scale(0.5);
+      transform-origin: center center; /* skaliert von der Mitte */
+      margin: 0 auto;                 /* horizontales Zentrieren */
     }
+
+    /* Pfeil etwas weiter rechts */
     .arrow-right {
       right: 200px;
+      /* bei Bedarf top verändern, um Überschneidungen zu vermeiden */
+      /* top: 20%; oder z.B. top: 150px; */
     }
     .vertical-title {
       top: 49%;
@@ -254,5 +270,12 @@
   }
   .references-carousel {
     gap: 0.8rem !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .skillset{
+    width: 1700px !important;
+    left: calc(200vw + ((100vw - 1440px) / 2)) !important;
   }
 }
