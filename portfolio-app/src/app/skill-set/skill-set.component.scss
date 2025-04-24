@@ -12,6 +12,14 @@
   box-sizing: border-box;
   padding: 2rem;
 
+  // NEU: Einheitliche SVG-Größe + kein Rahmen / outline
+  .skills-container .icon-box .icon svg {
+    width: 60px;
+    height: 60px;
+    border: none;
+    outline: none;
+  }
+
   .headline {
     display: flex;
     justify-content: center;
@@ -68,6 +76,7 @@
         color: #000;
         align-items: center;
         padding: 13px 30px;
+
         &:hover {
           transform: scale(1.05);
           box-shadow: 0 0 10px 2px rgba(181, 233, 59, 0.5);
@@ -118,9 +127,10 @@
         justify-content: flex-start;
 
         .icon svg {
-          height: auto;
+          // Hier könnte man optional die Größe nochmals erzwingen:
+          // width: 60px;
+          // height: 60px;
         }
-
         .icon-name {
           font-family: 'Quantico', sans-serif;
           font-size: 16px;
@@ -130,8 +140,8 @@
           margin-top: 8px;
         }
       }
-
       .challenge-icon-box {
+        // eigene styles falls nötig
       }
     }
   }
@@ -140,7 +150,7 @@
     position: absolute;
     top: 0%;
     right: 50px;
-    transform: translateY(-50%);
+    transform: translateY(-200%);
     width: 113px;
     height: 40px;
     cursor: pointer;
@@ -151,36 +161,57 @@
   .skillset {
     top: 50px;
   }
+
+  .arrow-right {
+    right: 500px;
+    transform: translateY(-1656%);
+  }
+
   .intro-text {
     margin-right: 108px !important;
-    margin-left: 230px;
+    margin-left: 180px;
+    max-width: 640px !important;
+    font-size: 16px !important;
+
+
+    p {
+      white-space: normal;
+      word-break: break-word;
+      overflow-wrap: break-word;
+      font-size: 16px !important;
+    }
   }
+
   .skills-container {
-    width: 500px !important;
-    margin-left: 320px !important;
+    max-width: 380px !important;
+    margin-left: 270px !important;
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1rem;
   }
+
   .challenge-text-wrapper {
     margin-top: -100px;
   }
+
   .arrow-right {
     top: 60% !important;
     transform: none;
   }
-  .intro-text p {
-    white-space: normal;
-    word-break: break-word;
-    overflow-wrap: break-word;
-  }
+
   .challenge-text {
-    margin-left: -800px !important;
-    margin-top: 176px;
-    max-width: 580px !important;
+    margin-left: -585px !important;
+    margin-top: -21px;
+    max-width: 180px !important;
+
     p {
       white-space: normal;
       word-break: break-word;
       overflow-wrap: break-word;
     }
   }
+
   .vertical-title {
     left: 200px !important;
   }
