@@ -32,7 +32,7 @@ html, body {
   .vertical-title {
     position: absolute;
     top: 13%;
-    left: 40px;
+    left: 240px !important;
     font-weight: 700;
     font-size: 60px;
     color: transparent;
@@ -288,17 +288,11 @@ html, body {
       width: 35%;
       flex: none;
     }
-
-    .vertical-title {
-      top: 11%;
-      left: 0px !important;
-    }
-
     .contact-details-area {
       align-items: flex-end;
       text-align: right;
       margin-right: 80px !important;
-      max-width: 320px !important;
+      max-width: 252px !important;
     }
 
     .intro-text {
@@ -310,8 +304,8 @@ html, body {
     }
 
     .contact-form-area {
-      width: 30%;
-      margin-left: 80px !important;
+      width: 26%;
+      margin-left: 170px !important;
     }
 
     .arrow-left {
@@ -361,7 +355,7 @@ html, body {
       color: transparent;
       font-size: 32px;
       top: 10px;
-      left: 10px;
+      left: 10px !important;
     }
 
     h3 {
@@ -504,4 +498,14 @@ textarea:-webkit-autofill:active {
 .feedback p.success {
   background-color: #1a8755;
   color: white;
+}
+
+@media (min-width: 801px) and (max-width: 1800px) {
+  .contact-section {
+    overflow-x: hidden;
+    background-color: #0B0A0A;
+  }
+  .vertical-title {
+    margin-top: 540px;
+  }
 }

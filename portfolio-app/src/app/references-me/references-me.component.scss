@@ -107,28 +107,21 @@
 
 @media (min-width: 801px) and (max-width: 1800px) {
   .desktop-only {
-    /* Falls dein Header/Menü oben Platz wegnimmt,
-       kannst du hier z. B. margin-top oder padding-top ergänzen: */
-    margin-top: 80px; /* oder padding-top: 80px; */
-
-    /* Beibehaltung der vorhandenen Styles */
+    margin-top: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
 
-    /* References skalieren und zentrieren */
     .references-container {
       transform: scale(0.5);
-      transform-origin: center center; /* skaliert von der Mitte */
+      transform-origin: center center;
       margin-left: 50px;
     }
 
-    /* Pfeil etwas weiter rechts */
     .arrow-right {
       right: 250px;
-      /* bei Bedarf top verändern, um Überschneidungen zu vermeiden */
-      /* top: 20%; oder z.B. top: 150px; */
+
     }
     .vertical-title {
       top: 49%;
@@ -137,7 +130,6 @@
   }
 }
 
-/* -- Mobile-Ansicht -- */
 @media (max-width: 800px) {
   .desktop-only {
     display: none !important;
@@ -166,7 +158,6 @@
       margin-bottom: 1rem;
       scrollbar-width: none;
 
-      /* Scrollbalken in WebKit ausblenden */
       &::-webkit-scrollbar {
         display: none;
       }
@@ -277,6 +268,6 @@
 @media (min-width: 1920px) {
   .skillset{
     width: 1700px !important;
-    left: calc(200vw + ((100vw - 1440px) / 2)) !important;
+    left: calc(300vw + ((100vw - 1440px) / 2)) !important;
   }
 }
