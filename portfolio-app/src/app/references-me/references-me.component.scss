@@ -121,17 +121,18 @@
     .references-container {
       transform: scale(0.5);
       transform-origin: center center; /* skaliert von der Mitte */
-      margin: 0 auto;                 /* horizontales Zentrieren */
+      margin-left: 50px;
     }
 
     /* Pfeil etwas weiter rechts */
     .arrow-right {
-      right: 200px;
+      right: 250px;
       /* bei Bedarf top verändern, um Überschneidungen zu vermeiden */
       /* top: 20%; oder z.B. top: 150px; */
     }
     .vertical-title {
       top: 49%;
+      left: 200px !important;
     }
   }
 }
