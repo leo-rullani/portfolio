@@ -88,11 +88,34 @@ export class PrivacyPolicyComponent implements OnInit {
     }
   };
 
-  constructor(private router: Router){}
+  constructor(private router: Router) {}
 
-  ngOnInit(){const s=localStorage.getItem('preferredLanguage');if(s==='DE'||s==='EN')this.activeLang=s}
+  ngOnInit() {
+    const s = localStorage.getItem('preferredLanguage');
+    if (s === 'DE' || s === 'EN') {
+      this.activeLang = s;
+    }
+  }
 
-  closeOnX(e:MouseEvent){e.preventDefault();this.goRightOrBottom()}
+  closeOnX(e: MouseEvent) {
+    e.preventDefault();
+    this.goRightOrBottom();
+  }
 
-  private goRightOrBottom(){this.router.navigate(['/']).then(()=>{const c=document.querySelector('.container')as HTMLElement|null;if(!c)return;c.style.setProperty('scroll-behavior','auto','important');c.style.visibility='hidden';if(window.innerWidth>=800)c.scrollLeft=c.scrollWidth-c.clientWidth;else window.scrollTo({top:document.body.scrollHeight,behavior:'auto'});c.offsetWidth;c.style.visibility='';c.style.removeProperty('scroll-behavior');})}
+  private goRightOrBottom() {
+    this.router.navigate(['/']).then(() => {
+      const c = document.querySelector('.container') as HTMLElement | null;
+      if (!c) return;
+      c.style.setProperty('scroll-behavior', 'auto', 'important');
+      c.style.visibility = 'hidden';
+      if (window.innerWidth >= 800) {
+        c.scrollLeft = c.scrollWidth - c.clientWidth;
+      } else {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'auto' });
+      }
+      c.offsetWidth; // reflow
+      c.style.visibility = '';
+      c.style.removeProperty('scroll-behavior');
+    });
+  }
 }

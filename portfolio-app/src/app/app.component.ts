@@ -112,6 +112,5 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   changeLang(lang: 'DE' | 'EN'): void {
     this.activeLang = lang;
     localStorage.setItem('preferredLanguage', lang);
-    console.log(`Sprache gewechselt zu: ${lang}`);
   }
 }
