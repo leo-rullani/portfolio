@@ -18,6 +18,11 @@
   );
   background-size: 200% auto;
   background-repeat: no-repeat;
+
+  .footer-info {
+    display: none;
+    z-index: 99999;
+  }
 }
 
 .content {
@@ -58,41 +63,44 @@
     right: 16px;
 
     .close-link {
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      border: 2px solid #B5E93B;
-      color: #B5E93B;
-      text-decoration: none;
-      font-size: 1.5rem;
-      font-weight: 700;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
+      width: auto;
+      height: auto;
+      border: none;
+      background: transparent;
+      text-decoration: none;
+      font-weight: 700;
       transition: color 0.3s, background-color 0.3s;
+      cursor: pointer;
+
+      /* Gleiche Größe wie in profile.html */
+      svg {
+        width: 113px;
+        height: 38px;
+      }
 
       &:hover {
-        background-color: #B5E93B;
-        color: #2b2a2a;
+        opacity: 0.85;
       }
     }
   }
 
   .vertical-title {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
+    margin-right: 2rem;
+    margin-left: -50px;
     font-size: 60px;
     font-weight: 700;
     font-family: 'Quantico', sans-serif;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
     -webkit-text-stroke: 1px #B5E93B;
     color: transparent;
-    margin-right: 2rem;
-    z-index: 111111;
   }
 
   .text-block {
-    flex: 1;
+    flex: 0.9;
 
     h3 {
       font-size: 1.4rem;
@@ -111,19 +119,33 @@
       color: #FFFDFD;
     }
 
-       .mail-link {
-        ::ng-deep a,
-        ::ng-deep a:link,
-        ::ng-deep a:visited,
-        ::ng-deep a:active {
-          color: #FFFDFD !important;
-          text-decoration: none !important;
-        }
-
-        ::ng-deep a:hover {
-          color: #B5E93B !important;
-          text-decoration: none !important;
+    .mail-link {
+      ::ng-deep a,
+      ::ng-deep a:link,
+      ::ng-deep a:visited,
+      ::ng-deep a:active {
+        color: #FFFDFD !important;
+        text-decoration: none !important;
       }
+
+      ::ng-deep a:hover {
+        color: #B5E93B !important;
+        text-decoration: none !important;
+      }
+    }
+  }
+}
+
+@media (min-width: 801px) {
+  .privacy-page {
+    .footer-info {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100px;
+      height: 100vh;
+      background: linear-gradient(160.33deg, #B5E93B 50.78%, #547800 133.54%);
     }
   }
 }
@@ -132,6 +154,18 @@
   .privacy-page {
     flex-direction: column;
     padding: 1rem;
+
+    .footer-info {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(160.33deg, #B5E93B 50.78%, #547800 133.54%);
+      text-align: center;
+      z-index: 99999;
+    }
   }
 
   .content {
@@ -149,12 +183,22 @@
       font-size: 2rem !important;
       margin-bottom: 1rem;
       margin-right: 0 !important;
+      margin-left: 0 !important;
     }
 
     .close-button {
       position: static;
       margin-left: auto;
       display: block;
+
+      .close-link svg {
+        width: 113px;
+        height: 38px;
+      }
+    }
+
+    .text-block {
+      flex: 1;
     }
   }
 }

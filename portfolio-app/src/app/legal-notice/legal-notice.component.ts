@@ -16,8 +16,8 @@ export class LegalNoticeComponent implements OnInit {
       ownerTitle: 'Owner of the Website',
       ownerParagraph: `
         Name: <strong>Leo Rullani</strong><br/>
-        E-mail: coding@leorullani.com<br/>
-        Tel: +41 76 488 56 10<br/><br/>
+        E-mail: <a href="mailto:coding@leorullani.com" class="mail-link">coding@leorullani.com</a><br/>
+        Tel: <a href="tel:+41764885610" class="mail-link">+41 76 488 56 10</a><br/><br/>
         Based in Wohlen, Switzerland. Responsible for all published content.
       `,
       disclaimerTitle: 'Disclaimer',
@@ -84,8 +84,8 @@ export class LegalNoticeComponent implements OnInit {
       ownerTitle: 'Inhaber der Website',
       ownerParagraph: `
         Name: <strong>Leo Rullani</strong><br/>
-        E-Mail: coding@leorullani.com<br/>
-        Tel: +41 76 488 56 10<br/><br/>
+        E-Mail: <a href="mailto:coding@leorullani.com" class="mail-link">coding@leorullani.com</a><br/>
+        Tel: <a href="tel:+41764885610" class="mail-link">+41 76 488 56 10</a><br/><br/>
         Sitz in Wohlen, Schweiz. Verantwortlich für alle veröffentlichten Inhalte.
       `,
       disclaimerTitle: 'Haftungsausschluss',
@@ -162,12 +162,6 @@ export class LegalNoticeComponent implements OnInit {
   closeOnX(e: MouseEvent) {
     e.preventDefault();
     this.goRightOrBottom();
-  }
-
-  closeOverlay(e: MouseEvent) {
-    if (e.target === e.currentTarget) {
-      this.goRightOrBottom();
-    }
   }
 
   private goRightOrBottom() {
