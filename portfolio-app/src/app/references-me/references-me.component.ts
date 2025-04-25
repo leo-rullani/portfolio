@@ -108,10 +108,9 @@ export class ReferencesMeComponent {
           behavior: 'smooth'
         });
       } else {
-        console.warn('No localScrollEl or scrollEl found!');
       }
     }
-  }
+}
 
   scrollToNextBox(): void {
     if (!this.carouselEl) {

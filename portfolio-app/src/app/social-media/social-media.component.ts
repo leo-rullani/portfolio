@@ -16,7 +16,5 @@ export class SocialMediaComponent {
   changeLang(lang: 'DE' | 'EN'): void {
     this.activeLang = lang;
     this.langChange.emit(lang);
-
-    console.log(`Sprache gewechselt zu: ${lang}`);
   }
 }

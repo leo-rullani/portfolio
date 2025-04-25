@@ -53,10 +53,9 @@ export class SkillSetComponent {
   };
 
   scrollNext() {
-    if (!this.scrollEl?.nativeElement) {
-      console.warn('No nativeElement on scrollEl');
+    if (!this.scrollEl?.nativeElement)
       return;
-    }
+
     this.scrollEl.nativeElement.scrollBy({
       left: window.innerWidth,
       behavior: 'smooth'
@@ -64,10 +63,8 @@ export class SkillSetComponent {
   }
 
   scrollToContact() {
-    if (!this.scrollEl?.nativeElement) {
-      console.warn('No nativeElement on scrollEl');
+    if (!this.scrollEl?.nativeElement)
       return;
-    }
     const contactSlide = document.getElementById('contact-me-slide');
     if (!contactSlide) {
       return;

@@ -27,10 +27,8 @@ export class ProfileComponent {
 
   scrollNext() {
     if (!this.scrollEl?.nativeElement) {
-      console.warn('No nativeElement on scrollEl => skipping scroll.');
       return;
     }
-    console.log('Profile: scrollNext triggered');
 
     const distance = this.scrollEl.nativeElement.offsetWidth;
     this.scrollEl.nativeElement.scrollBy({

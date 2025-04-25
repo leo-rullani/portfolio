@@ -93,28 +93,25 @@ export class SendMailComponent {
     this.http.post(this.post.endPoint, this.post.body(this.contactData), this.post.options).subscribe({
       next: r => this.onMailSuccess(r, f),
       error: e => this.onMailError(e),
-      complete: () => console.info('Mail-Request komplett')
+      complete: () => {}
     });
   }
   private onMailSuccess(r: any, f: NgForm) {
-    console.log('Mail erfolgreich gesendet:', r);
     this.feedbackMessage = this.text[this.activeLang].feedbackSent; this.feedbackError = false;
     setTimeout(() => { this.feedbackMessage = ''; }, 3000);
     f.resetForm();
   }
   private onMailError(e: any) {
-    console.error('Fehler beim Senden:', e);
     this.feedbackMessage = this.text[this.activeLang].feedbackErrorSend; this.feedbackError = true;
   }
   private handleTestMail(f: NgForm) {
-    console.log('mailTest = true => Keine echte Mail', this.contactData);
     this.feedbackMessage = this.text[this.activeLang].feedbackTest; this.feedbackError = false;
     setTimeout(() => { this.feedbackMessage = ''; }, 3000);
     f.resetForm();
   }
   scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
   scrollPrev() {
-    if (!this.scrollEl?.nativeElement) { console.warn('No nativeElement on scrollEl'); return; }
+    if (!this.scrollEl?.nativeElement) { return; }
     this.scrollEl.nativeElement.scrollTo({ left: 0, behavior: 'smooth' });
   }
 }

@@ -87,10 +87,9 @@ export class MyWorkComponent {
   };
 
   scrollNext() {
-    if (!this.scrollEl?.nativeElement) {
-      console.warn('No nativeElement on scrollEl');
+    if (!this.scrollEl?.nativeElement)
       return;
-    }
+
     this.scrollEl.nativeElement.scrollBy({
       left: window.innerWidth,
       behavior: 'smooth'
