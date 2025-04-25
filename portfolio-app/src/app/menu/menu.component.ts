@@ -35,7 +35,6 @@ export class MenuComponent implements OnInit {
   };
 
   ngOnInit() {
-    // Beim Laden: localStorage auslesen
     const s = localStorage.getItem('preferredLanguage');
     if (s === 'DE' || s === 'EN') {
       this.activeLang = s;
@@ -47,11 +46,8 @@ export class MenuComponent implements OnInit {
   }
 
   changeLang(lang: 'DE' | 'EN'): void {
-    // 1) intern aktualisieren
     this.activeLang = lang;
-    // 2) localStorage schreiben
     localStorage.setItem('preferredLanguage', lang);
-    // 3) Event an Elternkomponente feuern
     this.activeLangChange.emit(lang);
   }
 

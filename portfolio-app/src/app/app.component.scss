@@ -6,9 +6,9 @@
   flex-direction: row;
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   scrollbar-width: none;
+  overscroll-behavior: none;
 
   @media (max-width: 800px) {
     flex-direction: column;
@@ -28,12 +28,11 @@
   background: linear-gradient(
     88.66deg,
     #000000 11.41%,
-    #2C2B2B 22.29%,
-    #0B0A0A 37.32%,
+    #2c2b2b 22.29%,
+    #0b0a0a 37.32%,
     #323232 58.54%,
-    #0B0A0A 70.03%
+    #0b0a0a 70.03%
   );
-
   background-size: 600vw 100vh;
   background-position: left;
   background-repeat: no-repeat;
@@ -50,7 +49,7 @@
   flex: 0 0 100vw;
   height: 100vh;
   scroll-snap-align: start;
-  scroll-snap-stop: always;
+
 
   @media (max-width: 800px) {
     flex: 0 0 auto;
@@ -63,10 +62,10 @@
     background: linear-gradient(
       180deg,
       #000000 11.41%,
-      #2C2B2B 22.29%,
-      #0B0A0A 37.32%,
+      #2c2b2b 22.29%,
+      #0b0a0a 37.32%,
       #323232 58.54%,
-      #0B0A0A 70.03%,
+      #0b0a0a 70.03%,
       #000000 100%
     );
   }
