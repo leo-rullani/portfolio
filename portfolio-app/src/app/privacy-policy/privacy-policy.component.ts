@@ -91,10 +91,17 @@ export class PrivacyPolicyComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
+
     const s = localStorage.getItem('preferredLanguage');
     if (s === 'DE' || s === 'EN') {
       this.activeLang = s;
     }
+  }
+
+
+  changeLang(lang: 'DE' | 'EN') {
+    this.activeLang = lang;
+    localStorage.setItem('preferredLanguage', lang);
   }
 
   closeOnX(e: MouseEvent) {

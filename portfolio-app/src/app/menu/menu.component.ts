@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,11 +8,13 @@ import { CommonModule } from '@angular/common';
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit {
   @Input() activeLang: 'DE' | 'EN' = 'EN';
   @Output() activeLangChange = new EventEmitter<'DE' | 'EN'>();
+
   isOverlayOpen = false;
   activeLink = '';
+
   text = {
     EN: {
       navWhyMe: 'Why me',
@@ -32,12 +34,24 @@ export class MenuComponent {
     }
   };
 
+  ngOnInit() {
+    // Beim Laden: localStorage auslesen
+    const s = localStorage.getItem('preferredLanguage');
+    if (s === 'DE' || s === 'EN') {
+      this.activeLang = s;
+    }
+  }
+
   toggleMenu(): void {
     this.isOverlayOpen = !this.isOverlayOpen;
   }
 
   changeLang(lang: 'DE' | 'EN'): void {
+    // 1) intern aktualisieren
     this.activeLang = lang;
+    // 2) localStorage schreiben
+    localStorage.setItem('preferredLanguage', lang);
+    // 3) Event an Elternkomponente feuern
     this.activeLangChange.emit(lang);
   }
 
