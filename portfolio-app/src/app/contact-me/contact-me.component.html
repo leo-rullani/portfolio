@@ -109,8 +109,16 @@
             </div>
           </div>
 
-          <button class="send-button" type="submit">
-            {{ text[activeLang].btnSend }}
+          <button
+  class="send-button"
+  type="submit"
+  [disabled]="!myForm.form.valid"
+  [ngClass]="{
+    'send-button-enabled': myForm.form.valid,
+    'send-button-disabled': !myForm.form.valid
+  }"
+>
+  {{ text[activeLang].btnSend }}
           </button>
         </div>
       </form>
