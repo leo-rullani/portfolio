@@ -99,6 +99,16 @@ export class MenuComponent implements OnInit {
     this.handleScroll(5, 'contact-me-slide');
   }
 
+  // Neue Methode, um beim Klick auf das Profil-Logo zur "Startseite" zu gelangen
+  scrollToProfile(): void {
+    // Damit die Markierung ggf. zurückgesetzt wird
+    this.activeLink = '';
+
+    // Hier gehen wir davon aus, dass die Startseite der "erste Slide" (Index 0) ist
+    // und in der HTML-Struktur ein Element mit id="profile-slide" existiert
+    this.handleScroll(0, 'profile-slide');
+  }
+
   onWhyMe(): void {
     this.scrollToAboutMe();
     this.isOverlayOpen = false;
