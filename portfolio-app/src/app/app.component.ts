@@ -43,7 +43,6 @@ import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 })
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   title = 'portfolio-app';
-
   showSocialMedia = true;
   private readonly thresholdFactor = 0.1;
   activeLang: 'DE' | 'EN' = 'EN';
@@ -54,26 +53,30 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private dummyEl = document.createElement('div');
   private dummyRef = new ElementRef<HTMLDivElement>(this.dummyEl);
-
   scrollEl: ElementRef<HTMLDivElement> = this.dummyRef;
+
+  private wheelTimeout: any = null;
+  private accumulatedDelta = 0;
+  private debounceTime = 40;
 
   constructor(private router: Router) {
     this.router.events
-      .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
-      .subscribe(nav => {
+      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+      .subscribe(n => {
         this.showContainer = true;
-        if (nav.urlAfterRedirects === '/privacy' || nav.urlAfterRedirects === '/legal') {
+        if (n.urlAfterRedirects === '/privacy' || n.urlAfterRedirects === '/legal') {
           this.showContainer = false;
         }
         if (!this.showContainer && this.scrollEl !== this.dummyRef) {
           this.scrollEl.nativeElement.removeEventListener('scroll', this.handleScroll);
+          this.scrollEl.nativeElement.removeEventListener('wheel', this.onWheel);
           this.scrollEl = this.dummyRef;
-        }
-        else if (this.showContainer) {
+        } else if (this.showContainer) {
           setTimeout(() => {
             if (this.scrollContainerRef) {
               this.scrollEl = this.scrollContainerRef;
               this.scrollEl.nativeElement.addEventListener('scroll', this.handleScroll);
+              this.scrollEl.nativeElement.addEventListener('wheel', this.onWheel, { passive: false });
             }
           });
         }
@@ -81,9 +84,9 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
-    const storedLang = localStorage.getItem('preferredLanguage');
-    if (storedLang === 'DE' || storedLang === 'EN') {
-      this.activeLang = storedLang;
+    const s = localStorage.getItem('preferredLanguage');
+    if (s === 'DE' || s === 'EN') {
+      this.activeLang = s;
     }
   }
 
@@ -91,7 +94,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     Promise.resolve().then(() => {
       if (this.showContainer && this.scrollContainerRef) {
         this.scrollEl = this.scrollContainerRef;
-        this.scrollContainerRef.nativeElement.addEventListener('scroll', this.handleScroll);
+        this.scrollEl.nativeElement.addEventListener('scroll', this.handleScroll);
+        this.scrollEl.nativeElement.addEventListener('wheel', this.onWheel, { passive: false });
       }
     });
   }
@@ -99,14 +103,27 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy(): void {
     if (this.scrollEl !== this.dummyRef) {
       this.scrollEl.nativeElement.removeEventListener('scroll', this.handleScroll);
+      this.scrollEl.nativeElement.removeEventListener('wheel', this.onWheel);
     }
   }
 
   handleScroll = (): void => {
     if (this.scrollEl === this.dummyRef) return;
     const w = this.scrollEl.nativeElement.clientWidth;
-    const currentScroll = this.scrollEl.nativeElement.scrollLeft;
-    this.showSocialMedia = !(currentScroll >= w * this.thresholdFactor);
+    const c = this.scrollEl.nativeElement.scrollLeft;
+    this.showSocialMedia = !(c >= w * this.thresholdFactor);
+  };
+
+  onWheel = (e: WheelEvent): void => {
+    if (window.innerWidth<800) return;
+    e.preventDefault();
+    this.accumulatedDelta+=e.deltaX+e.deltaY;
+    if(this.wheelTimeout)clearTimeout(this.wheelTimeout);
+    this.wheelTimeout=setTimeout(()=>{
+      let d=this.accumulatedDelta;this.accumulatedDelta=0;this.wheelTimeout=null;
+      if(d>0)this.scrollEl.nativeElement.scrollTo({left:this.scrollEl.nativeElement.scrollLeft+window.innerWidth,behavior:'smooth'});
+      else if(d<0)this.scrollEl.nativeElement.scrollTo({left:this.scrollEl.nativeElement.scrollLeft-window.innerWidth,behavior:'smooth'});
+    },this.debounceTime);
   };
 
   changeLang(lang: 'DE' | 'EN'): void {
