@@ -159,7 +159,6 @@ export class LegalNoticeComponent implements OnInit {
     }
   }
 
-  // Falls man in der LegalNotice selbst DE/EN umstellen will:
   changeLang(lang: 'DE' | 'EN') {
     this.activeLang = lang;
     localStorage.setItem('preferredLanguage', lang);

@@ -146,6 +146,8 @@ html, body {
         }
       }
 
+      /* Ursprüngliche "send-button" - default-Style,
+         plus wir haben unten .send-button-enabled / .send-button-disabled */
       .send-button {
         width: 100px;
         height: 43px;
@@ -510,6 +512,7 @@ textarea:-webkit-autofill:active {
   }
 }
 
+/* Disabled (grau) */
 .send-button-disabled {
   background: #9E9D9D;
   color: #4A4A4A;
@@ -531,6 +534,7 @@ textarea:-webkit-autofill:active {
   }
 }
 
+/* Enabled (grün) */
 .send-button-enabled {
   background: #B5E93B;
   color: #000;

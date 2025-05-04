@@ -1,11 +1,12 @@
+
+<app-menu
+  [activeLang]="activeLang"
+  (activeLangChange)="activeLang = $event"
+></app-menu>
+
 <ng-container *ngIf="showContainer">
   <div class="container" #scrollRef>
     <div class="app-background"></div>
-
-    <app-menu
-      [activeLang]="activeLang"
-      (activeLangChange)="activeLang = $event"
-    ></app-menu>
 
     <app-profile
       class="slide"
@@ -56,5 +57,4 @@
   </div>
 </ng-container>
 
-<router-outlet>
-</router-outlet>
+<router-outlet></router-outlet>

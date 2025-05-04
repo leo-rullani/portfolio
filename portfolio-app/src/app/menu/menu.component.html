@@ -6,7 +6,7 @@
     <img src="/assets/img/profil.png" alt="Profil" />
   </div>
 
-  <div class="menu-items">
+  <div class="menu-items" *ngIf="!hideLinks()">
     <span [class.active]="activeLink === 'aboutMe'" (click)="scrollToAboutMe()">
       {{ text[activeLang].navWhyMe }}
     </span>
@@ -21,14 +21,14 @@
     </span>
   </div>
 
-  <div class="burger-menu" (click)="toggleMenu()">
+  <div class="burger-menu" *ngIf="!hideLinks()" (click)="toggleMenu()">
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
   </div>
 </nav>
 
-<div class="mobile-overlay" [ngClass]="{'show': isOverlayOpen}">
+<div class="mobile-overlay" [ngClass]="{'show': isOverlayOpen}" *ngIf="isOverlayOpen">
   <div class="overlay-bg"></div>
 
   <div class="close-btn" (click)="toggleMenu()">
@@ -37,18 +37,20 @@
   </div>
 
   <div class="menu-items-column">
-    <span [class.active]="activeLink === 'aboutMe'" (click)="onWhyMe()">
-      {{ text[activeLang].navWhyMe }}
-    </span>
-    <span [class.active]="activeLink === 'skills'" (click)="onSkillSet()">
-      {{ text[activeLang].mobileSkillSet }}
-    </span>
-    <span [class.active]="activeLink === 'myWork'" (click)="onMyWork()">
-      {{ text[activeLang].navMyWork }}
-    </span>
-    <span [class.active]="activeLink === 'contact'" (click)="onContact()">
-      {{ text[activeLang].mobileContact }}
-    </span>
+    <ng-container *ngIf="!hideLinks()">
+      <span [class.active]="activeLink === 'aboutMe'" (click)="onWhyMe()">
+        {{ text[activeLang].navWhyMe }}
+      </span>
+      <span [class.active]="activeLink === 'skills'" (click)="onSkillSet()">
+        {{ text[activeLang].mobileSkillSet }}
+      </span>
+      <span [class.active]="activeLink === 'myWork'" (click)="onMyWork()">
+        {{ text[activeLang].navMyWork }}
+      </span>
+      <span [class.active]="activeLink === 'contact'" (click)="onContact()">
+        {{ text[activeLang].mobileContact }}
+      </span>
+    </ng-container>
 
     <div class="change-language">
       <span

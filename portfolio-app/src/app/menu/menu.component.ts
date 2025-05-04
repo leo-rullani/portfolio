@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -34,11 +35,18 @@ export class MenuComponent implements OnInit {
     }
   };
 
+  constructor(private router: Router) {}
+
   ngOnInit() {
     const s = localStorage.getItem('preferredLanguage');
     if (s === 'DE' || s === 'EN') {
       this.activeLang = s;
     }
+  }
+
+  hideLinks(): boolean {
+    const currentUrl = this.router.url;
+    return currentUrl === '/legal' || currentUrl === '/privacy';
   }
 
   toggleMenu(): void {
@@ -49,6 +57,18 @@ export class MenuComponent implements OnInit {
     this.activeLang = lang;
     localStorage.setItem('preferredLanguage', lang);
     this.activeLangChange.emit(lang);
+  }
+
+  scrollToProfile(): void {
+    this.activeLink = '';
+
+    if (this.hideLinks()) {
+      this.router.navigate(['']).then(() => {
+        this.handleScroll(0, 'profile-slide');
+      });
+    } else {
+      this.handleScroll(0, 'profile-slide');
+    }
   }
 
   private scrollDesktop(index: number): void {
@@ -97,16 +117,6 @@ export class MenuComponent implements OnInit {
   scrollToContact(): void {
     this.activeLink = 'contact';
     this.handleScroll(5, 'contact-me-slide');
-  }
-
-  // Neue Methode, um beim Klick auf das Profil-Logo zur "Startseite" zu gelangen
-  scrollToProfile(): void {
-    // Damit die Markierung ggf. zurückgesetzt wird
-    this.activeLink = '';
-
-    // Hier gehen wir davon aus, dass die Startseite der "erste Slide" (Index 0) ist
-    // und in der HTML-Struktur ein Element mit id="profile-slide" existiert
-    this.handleScroll(0, 'profile-slide');
   }
 
   onWhyMe(): void {

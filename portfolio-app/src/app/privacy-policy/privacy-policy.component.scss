@@ -19,7 +19,6 @@
   background-size: 200% auto;
   background-repeat: no-repeat;
 
-  /* FOOTER: z-index über dem Text */
   .footer-info {
     display: none;
     z-index: 99999;
@@ -34,13 +33,12 @@
 }
 
 .overlay {
-  /* Kein Klick auf Overlay => Nur Pfeil schließt */
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 9999;
+  z-index: 50;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -75,8 +73,8 @@
       text-decoration: none;
       font-weight: 700;
       cursor: pointer;
+      margin-top: 60px;
 
-      /* Gleiche Pfeilgröße wie in legal/profile (113x38) */
       svg {
         width: 113px;
         height: 38px;
@@ -90,7 +88,7 @@
 
   .vertical-title {
     margin-right: 2rem;
-    margin-left: -50px; /* Weiter nach links, wie legal notice */
+    margin-left: -50px;
     font-size: 60px;
     font-weight: 700;
     font-family: 'Quantico', sans-serif;
@@ -101,7 +99,7 @@
   }
 
   .text-block {
-    flex: 0.9;  /* wie legal notice */
+    flex: 0.9;
 
     h3 {
       font-size: 1.4rem;
@@ -132,7 +130,6 @@
   }
 }
 
-/* Desktop => grüner Balken rechts */
 @media (min-width: 801px) {
   .privacy-page {
     .footer-info {
@@ -147,7 +144,6 @@
   }
 }
 
-/* Mobile => Balken unten */
 @media (max-width: 800px) {
   .privacy-page {
     flex-direction: column;
