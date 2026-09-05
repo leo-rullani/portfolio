@@ -1,66 +1,67 @@
 <?php
-// Da wir nur "OK" oder eine Fehlermeldung zurückgeben,
-// kann das Response-Header ruhig "text/plain" bleiben.
-// Wichtig ist, dass dein Angular-Request als "application/json" gesendet wird!
-header("Content-Type: text/plain; charset=UTF-8");
+declare(strict_types=1);
 
-// JSON aus Angular auslesen
-$json = file_get_contents("php://input");
-$data = json_decode($json, true);
+header('Content-Type: text/plain; charset=UTF-8');
+header('X-Content-Type-Options: nosniff');
+header('Cache-Control: no-store');
 
-// Fallback bei fehlerhaftem JSON
-if (!$data) {
-    echo "Keine gültigen JSON-Daten empfangen.";
-    exit;
+if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+    http_response_code(405);
+    exit('Method not allowed.');
 }
 
-// Formulardaten auslesen
-$name = $data['name'] ?? '';
-$email = $data['email'] ?? '';
-$message = $data['message'] ?? '';
-$privacy = $data['privacy'] ?? false;
-
-// Empfänger deiner E-Mail
-$to = "coding@leorullani.com";
-
-// UTF-8-kodierter Betreff
-$subjectRaw = "Neue Kontaktanfrage von $name";
-$subject = "=?UTF-8?B?" . base64_encode($subjectRaw) . "?=";
-
-// Mail-Header
-$headers = "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-$headers .= "From: \"Website-Kontakt\" <no-reply@leorullani.com>\r\n";
-
-// Falls eine Mailadresse vom Nutzer kam, Reply-To hinzufügen
-if (!empty($email)) {
-    $headers .= "Reply-To: <$email>\r\n";
+$raw = file_get_contents('php://input', false, null, 0, 12001);
+if ($raw === false || strlen($raw) > 12000) {
+    http_response_code(413);
+    exit('Request too large.');
 }
 
-// HTML nach Belieben formatieren
-$formattedMessage = nl2br(htmlspecialchars($message));
-
-// Mail-Inhalt
-$emailBody = "
-<html>
-  <head>
-    <meta charset='UTF-8'>
-  </head>
-  <body>
-    <h3>Neue Kontaktanfrage</h3>
-    <p><strong>Name:</strong> $name</p>
-    <p><strong>E-Mail:</strong> $email</p>
-    <p><strong>Nachricht:</strong><br>$formattedMessage</p>
-    <p>Datenschutz bestätigt: " . ($privacy ? "Ja" : "Nein") . "</p>
-  </body>
-</html>
-";
-
-// Mail versenden
-$success = mail($to, $subject, $emailBody, $headers);
-
-if ($success) {
-    echo "OK";
-} else {
-    echo "Mail konnte nicht gesendet werden.";
+$data = json_decode($raw, true);
+if (!is_array($data)) {
+    http_response_code(400);
+    exit('Invalid request.');
 }
+
+// Hidden honeypot: legitimate visitors never fill this field.
+if (!empty($data['website'])) {
+    exit('OK');
+}
+
+$name = trim((string) ($data['name'] ?? ''));
+$email = trim((string) ($data['email'] ?? ''));
+$message = trim((string) ($data['message'] ?? ''));
+$privacy = ($data['privacy'] ?? false) === true;
+
+if (
+    !$privacy ||
+    $name === '' || mb_strlen($name) > 100 ||
+    !filter_var($email, FILTER_VALIDATE_EMAIL) || mb_strlen($email) > 254 ||
+    $message === '' || mb_strlen($message) > 5000 ||
+    preg_match('/[\r\n]/', $email)
+) {
+    http_response_code(422);
+    exit('Please check your input.');
+}
+
+$safeName = htmlspecialchars($name, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+$safeEmail = htmlspecialchars($email, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+$safeMessage = nl2br(htmlspecialchars($message, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'));
+$subject = '=?UTF-8?B?' . base64_encode('Neue Kontaktanfrage von ' . $name) . '?=';
+$headers = implode("\r\n", [
+    'MIME-Version: 1.0',
+    'Content-Type: text/html; charset=UTF-8',
+    'From: Website-Kontakt <no-reply@leorullani.com>',
+    'Reply-To: ' . $email
+]);
+$body = '<html><body><h3>Neue Kontaktanfrage</h3>'
+    . '<p><strong>Name:</strong> ' . $safeName . '</p>'
+    . '<p><strong>E-Mail:</strong> ' . $safeEmail . '</p>'
+    . '<p><strong>Nachricht:</strong><br>' . $safeMessage . '</p>'
+    . '<p>Datenschutz bestätigt: Ja</p></body></html>';
+
+if (!mail('coding@leorullani.com', $subject, $body, $headers)) {
+    http_response_code(500);
+    exit('Mail could not be sent.');
+}
+
+echo 'OK';

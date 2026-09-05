@@ -1,201 +1,25 @@
-<div class="my-work-section">
-  <div class="vertical-title">
-    {{ text[activeLang].verticalTitle }}
-  </div>
-
-  <div class="project-card">
-    <div class="card-bg"></div>
-    <div class="card-content">
-
-      <div class="left-column">
-        <div class="card-header">
-          <div class="project-number">1</div>
-          <div class="project-title">
-            {{ text[activeLang].project1Title }}
-          </div>
-        </div>
-
-        <div class="info-block">
-          <h4>{{ text[activeLang].project1About }}</h4>
-          <p>
-            {{ text[activeLang].project1AboutText }}
-          </p>
-        </div>
-
-        <div class="expanded-content" [class.is-expanded]="isProject1Expanded">
-          <div class="info-block">
-            <h4>{{ text[activeLang].project1Tech }}</h4>
-            <p>{{ text[activeLang].project1TechList }}</p>
-          </div>
-
-          <div class="info-block">
-            <h4>{{ text[activeLang].project1Learned }}</h4>
-            <p>
-              {{ text[activeLang].project1LearnedText }}
-            </p>
-          </div>
-        </div>
+<section class="work-shell" aria-labelledby="work-heading">
+  <header class="section-heading">
+    <span class="eyebrow">{{ copy[activeLang].eyebrow }}</span>
+    <h2 id="work-heading">{{ copy[activeLang].verticalTitle }}</h2>
+    <p>{{ copy[activeLang].intro }}</p>
+  </header>
+  <div class="project-grid">
+    <article class="project-card" *ngFor="let project of projects" [class.is-expanded]="expandedProject === project.name">
+      <button class="card-summary" type="button" (click)="toggleProject(project.name)" [attr.aria-expanded]="expandedProject === project.name">
+        <span class="project-number">{{ project.number }}</span>
+        <span class="project-mark" aria-hidden="true">{{ project.mark }}</span>
+        <span class="summary-copy"><span class="project-type">{{ project.category[activeLang] }}</span><strong>{{ project.name }}</strong><span class="tech-preview">{{ project.technologies.slice(0, 4).join(' · ') }}</span></span>
+        <span class="toggle-icon" aria-hidden="true">+</span>
+      </button>
+      <div class="project-details" *ngIf="expandedProject === project.name">
+        <div class="detail-column"><h3>{{ copy[activeLang].about }}</h3><p>{{ project.description[activeLang] }}</p></div>
+        <div class="detail-column"><h3>{{ copy[activeLang].learned }}</h3><p>{{ project.learning[activeLang] }}</p></div>
+        <div class="technology-list"><span *ngFor="let technology of project.technologies">{{ technology }}</span></div>
+        <div class="project-actions"><a *ngFor="let repository of project.repositories" [href]="repository.url" target="_blank" rel="noopener noreferrer">{{ repository.label }}</a><a *ngIf="project.liveUrl" class="primary" [href]="project.liveUrl" target="_blank" rel="noopener noreferrer">{{ copy[activeLang].live }}</a></div>
+        <small *ngIf="!project.liveUrl" class="privacy-note">● {{ copy[activeLang].staticNote }}</small>
       </div>
-
-      <div class="expanded-content" [class.is-expanded]="isProject1Expanded">
-        <div class="right-section">
-          <div class="screenshot">
-            <img src="assets/img/screenshot-join.png" alt="Join Screenshot" />
-          </div>
-          <div class="buttons">
-            <a
-              class="btn-secondary"
-              href="https://github.com/leo-rullani/join"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {{ text[activeLang].github }}
-            </a>
-
-            <a
-              class="btn-primary"
-              href="https://leorullani.com/join/html/login.html"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {{ text[activeLang].liveTest }}
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+    </article>
   </div>
-
-
-  <div class="show-more" (click)="toggleExpandCard1()">
-    <ng-container *ngIf="!isProject1Expanded; else showLess1">
-      {{ text[activeLang].project1ShowMore }}
-      <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
-
-        <path
-          d="M0.660203 0.828544L14.8316 0.811831L8.49194 12.6392L0.660203 0.828544Z"
-          fill="#B5E93B"
-        />
-      </svg>
-    </ng-container>
-
-    <ng-template #showLess1>
-      {{ text[activeLang].project1ShowLess }}
-      <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
-
-        <path
-          d="M0.629035 12.6314L8.55688 0.885022L14.7998 12.7638L0.629035 12.6314Z"
-          fill="#B5E93B"
-        />
-      </svg>
-    </ng-template>
-  </div>
-
-
-  <div class="project-card">
-    <div class="card-bg"></div>
-    <div class="card-content">
-
-      <div class="left-column">
-        <div class="card-header">
-          <div class="project-number">2</div>
-          <div class="project-title">
-            {{ text[activeLang].project2Title }}
-          </div>
-        </div>
-
-
-        <div class="info-block">
-          <h4>{{ text[activeLang].project2About }}</h4>
-          <p>
-            {{ text[activeLang].project2AboutText }}
-          </p>
-        </div>
-
-        <div class="expanded-content" [class.is-expanded]="isProject2Expanded">
-          <div class="info-block">
-            <h4>{{ text[activeLang].project2Tech }}</h4>
-            <p>{{ text[activeLang].project2TechList }}</p>
-          </div>
-
-          <div class="info-block">
-            <h4>{{ text[activeLang].project2Learned }}</h4>
-            <p>
-              {{ text[activeLang].project2LearnedText }}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="expanded-content" [class.is-expanded]="isProject2Expanded">
-        <div class="right-section">
-          <div class="screenshot">
-            <img
-              src="assets/img/screenshot-pollo.png"
-              alt="Pollo Loco Screenshot"
-            />
-          </div>
-          <div class="buttons">
-
-            <a
-              class="btn-secondary"
-              href="https://github.com/leo-rullani/el_pollo_loco"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {{ text[activeLang].github }}
-            </a>
-
-            <a
-              class="btn-primary"
-              href="https://leorullani.com/el_pollo_loco/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {{ text[activeLang].liveTest }}
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="show-more" (click)="toggleExpandCard2()">
-    <ng-container *ngIf="!isProject2Expanded; else showLess2">
-      {{ text[activeLang].project2ShowMore }}
-      <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
-        <path
-          d="M0.660203 0.828544L14.8316 0.811831L8.49194 12.6392L0.660203 0.828544Z"
-          fill="#B5E93B"
-        />
-      </svg>
-    </ng-container>
-
-    <ng-template #showLess2>
-      {{ text[activeLang].project2ShowLess }}
-      <svg width="15" height="13" viewBox="0 0 15 13" fill="none">
-        <path
-          d="M0.629035 12.6314L8.55688 0.885022L14.7998 12.7638L0.629035 12.6314Z"
-          fill="#B5E93B"
-        />
-      </svg>
-    </ng-template>
-  </div>
-
-
-  <div class="arrow-right" (click)="scrollNext()">
-    <svg
-      width="113"
-      height="38"
-      viewBox="0 0 113 38"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M3 16.5C1.61929 16.5 0.5 17.6193 0.5 19C0.5 20.3807 1.61929 21.5 3 21.5L3 16.5ZM111.768 20.7678C112.744 19.7914 112.744 18.2085 111.768 17.2322L95.8579 1.32232C94.8816 0.346012 93.2986 0.346012 92.3223 1.32232C91.346 2.29863 91.346 3.88155 92.3223 4.85786L106.464 19L92.3223 33.1421C91.346 34.1184 91.346 35.7014 92.3223 36.6777C93.2986 37.654 94.8816 37.654 95.8579 36.6777L111.768 20.7678ZM3 21.5L110 21.5L110 16.5L3 16.5L3 21.5Z"
-        fill="#B5E93B"
-      />
-    </svg>
-  </div>
-</div>
+  <button class="next-section" type="button" (click)="scrollNext()" aria-label="Next section"><span></span></button>
+</section>

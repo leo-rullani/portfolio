@@ -1,10 +1,11 @@
 <div class="contact-section">
-  <div class="vertical-title">Contact me</div>
+  <div class="vertical-title">{{ activeLang === 'DE' ? 'Kontakt' : 'Contact me' }}</div>
 
   <div class="contact-container">
     <div class="contact-form-area">
       <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" (ngModelChange)="onFormChange(myForm)">
-        <div class="contact-form">
+          <div class="contact-form">
+          <input class="website-field" type="text" name="website" [(ngModel)]="contactData.website" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <div class="input-box name-field">
             <span
@@ -308,7 +309,7 @@
           <a routerLink="/privacy" class="privacy-policy-link">Privacy policy</a>
         </div>
         <div class="copyright">
-          © Leo Rullani 2025
+          © Leo Rullani 2026
         </div>
       </div>
     </div>

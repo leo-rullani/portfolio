@@ -18,8 +18,6 @@ import { SkillSetComponent } from './skill-set/skill-set.component';
 import { MyWorkComponent } from './my-work/my-work.component';
 import { ReferencesMeComponent } from './references-me/references-me.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
-import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
-import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 
 @Component({
   selector: 'app-root',
@@ -34,9 +32,7 @@ import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
     SkillSetComponent,
     MyWorkComponent,
     ReferencesMeComponent,
-    ContactMeComponent,
-    PrivacyPolicyComponent,
-    LegalNoticeComponent
+    ContactMeComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']

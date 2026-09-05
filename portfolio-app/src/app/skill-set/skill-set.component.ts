@@ -1,76 +1,35 @@
-import { Component, Input, ElementRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, ElementRef, Input } from '@angular/core';
 
-@Component({
-  selector: 'skill-set',
-  standalone: true,
-  imports: [],
-  templateUrl: './skill-set.component.html',
-  styleUrls: ['./skill-set.component.scss']
-})
+type Language = 'DE' | 'EN';
+interface Skill { name: string; icon?: string; symbol?: string; }
+interface SkillGroup { title: Record<Language, string>; skills: Skill[]; }
+
+@Component({ selector: 'skill-set', standalone: true, imports: [CommonModule], templateUrl: './skill-set.component.html', styleUrls: ['./skill-set.component.scss'] })
 export class SkillSetComponent {
-  @Input() activeLang: 'DE' | 'EN' = 'EN';
+  @Input() activeLang: Language = 'EN';
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
 
-  text = {
-    EN: {
-      verticalTitle: 'My Skill Set',
-      intro:
-        `Over the years, I’ve leveraged a broad spectrum of front-end frameworks and libraries, consistently seeking out new methods to refine both design and functionality. By working on a range of projects—from real-time dashboards to interactive single-page applications—I’ve cultivated a mindset that values adaptability, performance, and visual polish. My ability to quickly absorb emerging tools and seamlessly integrate them into evolving codebases not only demonstrates my technical proficiency but also highlights my commitment to delivering modern, user-focused solutions.`,
-      iconAngular: 'Angular',
-      iconTypeScript: 'TypeScript',
-      iconJavaScript: 'JavaScript',
-      iconHtml: 'HTML',
-      iconCss: 'CSS',
-      iconRestApi: 'Rest-Api',
-      iconFirebase: 'Firebase',
-      iconGit: 'GIT',
-      iconScrum: 'Scrum',
-      iconMaterial: 'Material\nDesign',
-      iconChallengeMe: 'Challenge\nMe',
-      challengeText:
-        `Lately, I’ve immersed myself in more specialized areas, such as fine-tuning large-scale component systems and orchestrating advanced state management for complex web applications.`,
-      letsTalk: `Let's talk`
-    },
-    DE: {
-      verticalTitle: 'Meine Fähigkeiten',
-      intro:
-        `Im Laufe der Jahre habe ich ein breites Spektrum an Frontend-Frameworks und Bibliotheken genutzt, stets auf der Suche nach neuen Methoden, um Design und Funktionalität zu verfeinern. Von Echtzeit-Dashboards bis hin zu interaktiven Single-Page-Anwendungen habe ich eine Denkweise entwickelt, die Anpassungsfähigkeit, Performance und optischen Feinschliff schätzt. Meine Fähigkeit, neue Tools schnell zu verinnerlichen und nahtlos in bestehende Codebasen zu integrieren, demonstriert nicht nur mein technisches Können, sondern auch mein Engagement, moderne, nutzerzentrierte Lösungen zu liefern.`,
-      iconAngular: 'Angular',
-      iconTypeScript: 'TypeScript',
-      iconJavaScript: 'JavaScript',
-      iconHtml: 'HTML',
-      iconCss: 'CSS',
-      iconRestApi: 'REST-API',
-      iconFirebase: 'Firebase',
-      iconGit: 'GIT',
-      iconScrum: 'Scrum',
-      iconMaterial: 'Material\nDesign',
-      iconChallengeMe: 'Challenge\nMe',
-      challengeText:
-        `In letzter Zeit habe ich mich auf spezialisierte Bereiche konzentriert, z. B. die Feinabstimmung groß angelegter Komponenten-Systeme und das Orchestrieren anspruchsvoller State-Management-Lösungen für komplexe Webanwendungen.`,
-      letsTalk: `Lass uns reden`
-    }
+  readonly copy = {
+    EN: { eyebrow: 'Technology stack', title: 'My Skill Set', intro: 'I build complete web experiences — from accessible, responsive interfaces to secure REST APIs and data-driven backend services. My toolkit combines frontend craft with a growing focus on Python, Django and reliable infrastructure.', talk: `Let's talk` },
+    DE: { eyebrow: 'Technologie-Stack', title: 'Meine Fähigkeiten', intro: 'Ich entwickle vollständige Web-Erlebnisse — von zugänglichen, responsiven Interfaces bis zu sicheren REST-APIs und datengetriebenen Backend-Services. Mein Werkzeugkasten verbindet Frontend-Handwerk mit einem wachsenden Fokus auf Python, Django und zuverlässige Infrastruktur.', talk: 'Lass uns reden' }
   };
 
-  scrollNext() {
-    if (!this.scrollEl?.nativeElement)
-      return;
+  readonly groups: SkillGroup[] = [
+    { title: { EN: 'Frontend', DE: 'Frontend' }, skills: [
+      { name: 'Angular', icon: 'angular' }, { name: 'TypeScript', icon: 'typescript' }, { name: 'JavaScript', icon: 'javascript' },
+      { name: 'HTML', icon: 'html5' }, { name: 'CSS / SCSS', icon: 'css' }, { name: 'Material Design', symbol: 'M' }
+    ]},
+    { title: { EN: 'Backend & Data', DE: 'Backend & Daten' }, skills: [
+      { name: 'Python', icon: 'python' }, { name: 'Django', icon: 'django' }, { name: 'REST API', symbol: 'API' },
+      { name: 'SQL', symbol: 'DB' }, { name: 'PostgreSQL', icon: 'postgresql' }, { name: 'Redis', icon: 'redis' }
+    ]},
+    { title: { EN: 'Tools & Infrastructure', DE: 'Tools & Infrastruktur' }, skills: [
+      { name: 'Docker', icon: 'docker' }, { name: 'Linux', icon: 'linux' }, { name: 'Git', icon: 'git' },
+      { name: 'Firebase', icon: 'firebase' }, { name: 'Cloud Fundamentals', symbol: '☁' }, { name: 'Scrum', symbol: '↻' }
+    ]}
+  ];
 
-    this.scrollEl.nativeElement.scrollBy({
-      left: window.innerWidth,
-      behavior: 'smooth'
-    });
-  }
-
-  scrollToContact() {
-    if (!this.scrollEl?.nativeElement)
-      return;
-    const contactSlide = document.getElementById('contact-me-slide');
-    if (!contactSlide) {
-      return;
-    }
-    if (window.innerWidth < 800) {
-      contactSlide.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  scrollNext(): void { this.scrollEl?.nativeElement?.scrollBy({ left: window.innerWidth, behavior: 'smooth' }); }
+  scrollToContact(): void { document.getElementById('contact-me-slide')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 }

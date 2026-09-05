@@ -43,10 +43,35 @@ img {
   display: block;
 }
 
+.website-field {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 @media (max-width: 800px) {
   html,
   body {
     overflow-y: auto;
     overflow-x: hidden;
+  }
+}
+
+@media (min-width: 801px) {
+  .work-shell,
+  .skills-shell {
+    margin-left: 190px !important;
+    width: calc(100vw - 230px) !important;
+  }
+
+  .contact-section > .vertical-title {
+    left: 210px !important;
+    top: 28px !important;
+    transform: none !important;
+    writing-mode: initial !important;
+    font-size: 32px !important;
   }
 }
