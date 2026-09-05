@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A privacy-safe, frontend-only collection discovery demo with synthetic content."
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'"
+    />
+    <title>Collectrra — Interactive Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#collection">Skip to collection</a>
+
+    <header class="site-header">
+      <a class="back-link" href="../../../" aria-label="Back to Leo Rullani's portfolio">
+        <span aria-hidden="true">←</span>
+        Portfolio
+      </a>
+
+      <a class="wordmark" href="#top" aria-label="Collectrra demo home">
+        <span class="wordmark-mark" aria-hidden="true">C</span>
+        <span>collectrra</span>
+      </a>
+
+      <span class="demo-badge">Frontend demo</span>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">A calmer way to keep what matters</p>
+          <h1 id="hero-title">Your things.<br /><span>Your story.</span></h1>
+          <p class="hero-intro">
+            Explore a fictional collection, filter it by category and save favorites.
+            Everything stays inside this browser.
+          </p>
+
+          <div class="hero-actions">
+            <a class="primary-action" href="#collection">Explore collection</a>
+            <button class="text-action" id="show-saved-hero" type="button">
+              View saved pieces
+              <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+
+          <ul class="privacy-list" aria-label="Demo properties">
+            <li>No account</li>
+            <li>No network requests</li>
+            <li>Local browser storage</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="feature-object">
+            <span class="feature-number">07</span>
+            <div class="record"></div>
+            <p>Analog frequencies</p>
+          </div>
+          <div class="floating-label label-one">curated</div>
+          <div class="floating-label label-two">remembered</div>
+          <div class="floating-label label-three">rediscovered</div>
+        </div>
+      </section>
+
+      <section class="collection-section" id="collection" aria-labelledby="collection-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Discover</p>
+            <h2 id="collection-title">Collected stories</h2>
+          </div>
+          <p class="result-count" id="result-count" aria-live="polite"></p>
+        </div>
+
+        <div class="toolbar" aria-label="Collection controls">
+          <label class="search-field" for="search">
+            <span class="visually-hidden">Search collection</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="6.5"></circle>
+              <path d="m16 16 4 4"></path>
+            </svg>
+            <input
+              id="search"
+              type="search"
+              autocomplete="off"
+              placeholder="Search pieces, makers or stories"
+            />
+          </label>
+
+          <div class="filter-row" id="category-filters" aria-label="Filter by category"></div>
+
+          <button class="saved-filter" id="saved-filter" type="button" aria-pressed="false">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M12 20.5 4.8 14a4.7 4.7 0 0 1 6.4-6.9l.8.7.8-.7a4.7 4.7 0 0 1 6.4 6.9Z"></path>
+            </svg>
+            Saved
+            <span id="saved-count">0</span>
+          </button>
+        </div>
+
+        <div class="collection-grid" id="collection-grid"></div>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <span aria-hidden="true">◇</span>
+          <h3>No pieces found</h3>
+          <p>Try another search or reset your filters.</p>
+          <button id="reset-filters" type="button">Reset filters</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Collectrra concept demo · All content is fictional.</p>
+      <button id="clear-saved" type="button">Clear saved items</button>
+    </footer>
+
+    <dialog class="story-dialog" id="story-dialog" aria-labelledby="dialog-title">
+      <button class="dialog-close" id="dialog-close" type="button" aria-label="Close story">×</button>
+      <p class="dialog-category" id="dialog-category"></p>
+      <h2 id="dialog-title"></h2>
+      <p class="dialog-meta" id="dialog-meta"></p>
+      <p class="dialog-story" id="dialog-story"></p>
+      <button class="primary-action dialog-save" id="dialog-save" type="button"></button>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  </body>
+</html>

@@ -66,7 +66,6 @@ img {
 }
 
 .project-card[open] {
-  grid-column: 1 / -1;
   border-color: #b5e93b !important;
   background: rgba(181, 233, 59, 0.065) !important;
 }
@@ -76,8 +75,8 @@ img {
 }
 
 .project-card .project-details {
-  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr) !important;
-  padding: 0 34px 30px !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  padding: 0 22px 26px !important;
 }
 
 .project-preview {
@@ -115,14 +114,14 @@ img {
 
 .detail-copy {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 18px 28px;
 }
 
 .detail-copy .technology-list,
 .detail-copy .project-actions,
 .detail-copy .privacy-note {
-  grid-column: 1 / -1;
+  grid-column: 1;
 }
 
 @media (max-width: 800px) {
@@ -130,10 +129,6 @@ img {
   body {
     overflow-y: auto;
     overflow-x: hidden;
-  }
-
-  .project-card[open] {
-    grid-column: auto;
   }
 
   .project-card .project-details {

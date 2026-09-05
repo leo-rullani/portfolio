@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="VideoFlix UI-Demo – eine lokale, datenschutzfreundliche Portfolio-Demonstration.">
+    <meta name="theme-color" content="#090b0f">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'"
+    >
+    <title>VideoFlix — UI Demo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#catalogue">Zum Katalog springen</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="VideoFlix Startseite">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>VIDEO<span>FLIX</span></span>
+        <small>UI DEMO</small>
+      </a>
+      <nav aria-label="Hauptnavigation">
+        <a class="portfolio-link" href="../../../">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6M9 12h10"/></svg>
+          Portfolio
+        </a>
+        <button class="watchlist-nav" id="watchlistToggle" type="button" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v17l-6-4-6 4V4Z"/></svg>
+          Meine Liste <span id="watchlistCount">0</span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="featured-title">
+        <div class="hero-art" aria-hidden="true">
+          <span class="orbit orbit-one"></span>
+          <span class="orbit orbit-two"></span>
+          <span class="planet"></span>
+          <span class="signal"></span>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Neu in der Demo</p>
+          <h1 id="featured-title">Nyx-47<br><em>Signalbruch</em></h1>
+          <div class="meta"><strong>97% Match</strong><span>2026</span><span>12+</span><span>1h 48m</span></div>
+          <p>Eine Crew empfängt ein Signal aus einem Bereich des Weltraums, der auf keiner Karte existiert. Eine vollständig erfundene Geschichte für diese UI-Demo.</p>
+          <div class="hero-actions">
+            <button class="primary-action" type="button" data-open="nyx-47-signalbruch">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z"/></svg>
+              Details ansehen
+            </button>
+            <button class="secondary-action watchlist-action" type="button" data-watchlist="nyx-47-signalbruch" aria-pressed="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              Merken
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalogue" id="catalogue" aria-labelledby="catalogue-title">
+        <div class="catalogue-heading">
+          <div>
+            <p class="eyebrow"><span></span> Entdecken</p>
+            <h2 id="catalogue-title">Was möchtest du sehen?</h2>
+          </div>
+          <label class="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
+            <span class="sr-only">Titel suchen</span>
+            <input id="searchInput" type="search" placeholder="Titel suchen …" autocomplete="off">
+          </label>
+        </div>
+
+        <div class="filters" role="group" aria-label="Nach Genre filtern">
+          <button type="button" class="filter active" data-filter="all" aria-pressed="true">Alle</button>
+          <button type="button" class="filter" data-filter="sci-fi" aria-pressed="false">Sci-Fi</button>
+          <button type="button" class="filter" data-filter="thriller" aria-pressed="false">Thriller</button>
+          <button type="button" class="filter" data-filter="documentary" aria-pressed="false">Dokumentation</button>
+          <button type="button" class="filter" data-filter="animation" aria-pressed="false">Animation</button>
+        </div>
+
+        <p class="results-status" id="resultsStatus" aria-live="polite"></p>
+        <div class="media-grid" id="mediaGrid"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <span aria-hidden="true">⌁</span>
+          <h3>Keine Treffer</h3>
+          <p>Probiere einen anderen Titel oder Filter.</p>
+          <button type="button" id="resetFilters">Filter zurücksetzen</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>VIDEOFLIX UI DEMO</span>
+      <p>Lokale Portfolio-Demo · Keine Konten · Keine externen Daten · Keine echten Filme</p>
+      <a href="../../../">Zurück zu leorullani.com</a>
+    </footer>
+
+    <dialog class="detail-dialog" id="detailDialog" aria-labelledby="dialogTitle">
+      <div class="dialog-art" id="dialogArt" aria-hidden="true"></div>
+      <button class="dialog-close" id="dialogClose" type="button" aria-label="Dialog schließen">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+      <div class="dialog-content">
+        <p class="eyebrow"><span></span> Titel-Details</p>
+        <h2 id="dialogTitle"></h2>
+        <div class="meta" id="dialogMeta"></div>
+        <p id="dialogDescription"></p>
+        <div class="dialog-actions">
+          <button class="primary-action" id="playPreview" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7V5Z"/></svg>
+            Vorschau starten
+          </button>
+          <button class="secondary-action watchlist-action" id="dialogWatchlist" type="button" aria-pressed="false"></button>
+        </div>
+        <div class="preview-player" id="previewPlayer" hidden>
+          <div class="player-visual"><span></span><strong>UI PREVIEW</strong></div>
+          <div class="player-controls"><button type="button" id="pausePreview" aria-label="Wiedergabe pausieren">Ⅱ</button><div><span id="playerProgress"></span></div><time id="playerTime">00:00</time></div>
+        </div>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

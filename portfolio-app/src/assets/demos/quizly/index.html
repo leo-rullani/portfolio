@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Quizly – eine interaktive, lokale Quiz-Demo für das Portfolio von Leo Rullani.">
+    <meta name="theme-color" content="#0c0f0b">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'"
+    >
+    <title>Quizly — Interactive Demo</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#quizApp">Zur Quiz-App springen</a>
+
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#" aria-label="Quizly Startseite">
+          <span class="brand-symbol" aria-hidden="true">Q<span>?</span></span>
+          <span>QUIZLY<small>KNOWLEDGE LAB</small></span>
+        </a>
+        <a class="back-link" href="../../../">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6M9 12h10"/></svg>
+          Zurück zum Portfolio
+        </a>
+      </header>
+
+      <main id="quizApp">
+        <section class="intro-panel" id="startScreen" aria-labelledby="startTitle">
+          <div class="intro-copy">
+            <p class="kicker"><span>01</span> Interaktive UI-Demo</p>
+            <h1 id="startTitle">Wie scharf ist dein <em>Web-Wissen?</em></h1>
+            <p class="lead">Kurze Fragen zu Web, Logik und digitalem Design. Kein Login, keine Cloud – dein Ergebnis bleibt in diesem Browser.</p>
+
+            <div class="quiz-length" role="group" aria-labelledby="lengthLabel">
+              <p id="lengthLabel">Wähle deine Runde</p>
+              <button class="length-option active" type="button" data-length="5" aria-pressed="true">
+                <strong>Quick</strong><span>5 Fragen · ca. 2 Min.</span>
+              </button>
+              <button class="length-option" type="button" data-length="8" aria-pressed="false">
+                <strong>Full Stack</strong><span>8 Fragen · ca. 4 Min.</span>
+              </button>
+            </div>
+
+            <button class="start-button" id="startButton" type="button">
+              Quiz starten
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+
+          <div class="intro-visual" aria-hidden="true">
+            <div class="question-mark">?</div>
+            <div class="orbit orbit-one"><span>HTML</span></div>
+            <div class="orbit orbit-two"><span>UX</span></div>
+            <div class="orbit orbit-three"><span>API</span></div>
+            <div class="score-card"><small>Dein Bestwert</small><strong id="bestScoreIntro">–</strong></div>
+          </div>
+
+          <div class="privacy-note">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 2.8 8.1 7 10 4.2-1.9 7-5.5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+            <span><strong>Privacy by design</strong> Keine Anmeldung, keine externen Requests und keine persönlichen Daten.</span>
+          </div>
+        </section>
+
+        <section class="quiz-panel" id="quizScreen" aria-labelledby="questionText" hidden>
+          <div class="quiz-topbar">
+            <div>
+              <p class="kicker"><span id="questionNumber">01</span> Web & Logik</p>
+              <p class="question-count"><strong id="currentQuestion">1</strong> / <span id="totalQuestions">5</span></p>
+            </div>
+            <div class="live-score"><small>Punkte</small><strong id="liveScore">000</strong></div>
+          </div>
+
+          <div class="progress-track" aria-label="Quizfortschritt"><span id="progressBar"></span></div>
+
+          <div class="question-layout">
+            <aside class="question-side" aria-hidden="true">
+              <div class="side-index" id="sideIndex">01</div>
+              <p id="categoryLabel">WEB</p>
+            </aside>
+            <div class="question-main">
+              <p class="difficulty" id="difficultyLabel">Basis</p>
+              <h2 id="questionText"></h2>
+              <div class="answers" id="answers" role="group" aria-label="Antwortmöglichkeiten"></div>
+              <div class="feedback" id="feedback" role="status" aria-live="polite" hidden>
+                <div class="feedback-icon" id="feedbackIcon" aria-hidden="true"></div>
+                <div><strong id="feedbackTitle"></strong><p id="feedbackText"></p></div>
+                <button type="button" id="nextButton">
+                  Weiter
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 6l6 6-6 6"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="result-panel" id="resultScreen" aria-labelledby="resultTitle" hidden>
+          <div class="result-copy">
+            <p class="kicker"><span>✓</span> Runde abgeschlossen</p>
+            <h2 id="resultTitle">Starke Runde!</h2>
+            <p id="resultMessage"></p>
+            <div class="result-actions">
+              <button class="start-button" id="restartButton" type="button">
+                Noch einmal
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg>
+              </button>
+              <a href="../../../">Portfolio ansehen</a>
+            </div>
+          </div>
+
+          <div class="score-visual">
+            <div class="score-ring" id="scoreRing">
+              <div><strong id="finalPercent">0%</strong><span>richtig</span></div>
+            </div>
+            <dl>
+              <div><dt>Richtige Antworten</dt><dd id="correctAnswers">0 / 5</dd></div>
+              <div><dt>Punkte</dt><dd id="finalScore">000</dd></div>
+              <div><dt>Bestwert lokal</dt><dd id="bestScoreResult">000</dd></div>
+            </dl>
+          </div>
+
+          <div class="answer-review" id="answerReview">
+            <h3>Deine Runde</h3>
+            <ol id="reviewList"></ol>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>QUIZLY INTERACTIVE DEMO</span>
+        <p>Alle Fragen und Inhalte wurden eigens für diese Demo erstellt.</p>
+        <span>Frontend only · Local storage</span>
+      </footer>
+    </div>
+  </body>
+</html>

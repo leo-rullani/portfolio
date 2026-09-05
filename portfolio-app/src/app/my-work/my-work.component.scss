@@ -5,7 +5,7 @@
 .section-heading h2 { margin:8px 0 0; font-size:clamp(42px,5vw,76px); line-height:.95; color:transparent; -webkit-text-stroke:1.5px var(--green); }
 .section-heading p { margin:10px 0 0; max-width:700px; color:#d7d7d7; line-height:1.55; }
 .project-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; max-width:1220px; }
-.project-card { border:1px solid rgba(181,233,59,.28); border-radius:22px; background:rgba(255,255,255,.035); overflow:hidden; transition:border-color .2s,background .2s,transform .2s; }
+.project-card { align-self:start; border:1px solid rgba(181,233,59,.28); border-radius:22px; background:rgba(255,255,255,.035); overflow:hidden; transition:border-color .2s,background .2s,transform .2s; }
 .project-card:hover { border-color:rgba(181,233,59,.75); transform:translateY(-2px); }
 .card-summary { width:100%; min-height:146px; padding:22px; display:grid; grid-template-columns:38px 74px 1fr 28px; align-items:center; gap:16px; border:0; color:inherit; background:transparent; font:inherit; text-align:left; cursor:pointer; }
 .project-number { align-self:start; color:var(--green); font-size:12px; letter-spacing:.12em; }

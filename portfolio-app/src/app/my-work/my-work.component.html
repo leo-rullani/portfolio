@@ -38,11 +38,12 @@
               *ngIf="project.liveUrl"
               class="primary"
               [href]="project.liveUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              [attr.aria-label]="activeLang === 'DE' ? project.name + ' Live-Demo öffnen (neuer Tab)' : 'Open ' + project.name + ' live demo (new tab)'"
+              [attr.target]="project.safeDemo ? null : '_blank'"
+              [attr.rel]="project.safeDemo ? null : 'noopener noreferrer'"
+              [attr.aria-label]="activeLang === 'DE' ? project.name + ' Live-Demo öffnen' + (project.safeDemo ? '' : ' (neuer Tab)') : 'Open ' + project.name + ' live demo' + (project.safeDemo ? '' : ' (new tab)')"
             >{{ copy[activeLang].live }}</a>
           </div>
+          <small *ngIf="project.safeDemo" class="privacy-note">● {{ copy[activeLang].safeDemoNote }}</small>
           <small *ngIf="!project.liveUrl" class="privacy-note">● {{ copy[activeLang].staticNote }}</small>
         </div>
       </div>
