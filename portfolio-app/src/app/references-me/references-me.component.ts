@@ -36,10 +36,10 @@ export class ReferencesMeComponent {
       ref2Name: 'Marco Meister',
       ref2Project: 'Project SFL',
 
-      ref3Quote: `“Leo had to develop, format and deliver content
-                  in collaboration with the team members.”`,
-      ref3Name: 'Abbas M.',
-      ref3Project: 'Project Join',
+      ref3Quote: `“Leo integrated data-driven statistics into the graphics workflow
+                  for SFL live TV broadcasts.”`,
+      ref3Name: 'BBM Productions',
+      ref3Project: 'SFL Live-TV Broadcast',
 
       ref4Quote: `“He demonstrated good problem-solving skills and
                   delivered features on time. Great code clarity!”`,
@@ -48,7 +48,7 @@ export class ReferencesMeComponent {
 
       ref5Quote: `“We worked together on multiple sprints.
                   His friendly approach and structured manner helped the team a lot.”`,
-      ref5Name: 'Moritz Röhrig',
+      ref5Name: 'NEP Switzerland AG',
       ref5Project: 'Project SFL',
 
       ref6Quote: `“He is a reliable and friendly person,
@@ -72,10 +72,10 @@ export class ReferencesMeComponent {
       ref2Name: 'Marco Meister',
       ref2Project: 'Projekt SFL',
 
-      ref3Quote: `„Leo musste Inhalte entwickeln, formatieren und im
-                  Team abliefern.“`,
-      ref3Name: 'Abbas M.',
-      ref3Project: 'Projekt Join',
+      ref3Quote: `„Leo integrierte datengetriebene Statistiken in den Grafik-Workflow
+                  für SFL-Live-TV-Broadcasts.“`,
+      ref3Name: 'BBM Productions',
+      ref3Project: 'SFL Live-TV-Broadcast',
 
       ref4Quote: `„Er zeigte gute Problemlösungskompetenz und
                   lieferte Features termingerecht. Toller, übersichtlicher Code!“`,
@@ -84,7 +84,7 @@ export class ReferencesMeComponent {
 
       ref5Quote: `„Wir haben in mehreren Sprints zusammengearbeitet.
                   Sein freundlicher Umgang und strukturierte Art halfen dem Team sehr.“`,
-      ref5Name: 'Moritz Röhrig',
+      ref5Name: 'NEP Switzerland AG',
       ref5Project: 'Projekt SFL',
 
       ref6Quote: `„Er ist ein zuverlässiger und freundlicher Mensch,

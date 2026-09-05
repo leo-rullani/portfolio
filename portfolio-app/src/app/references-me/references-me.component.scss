@@ -48,15 +48,19 @@
       position: relative;
       width: 478px;
       height: 182px;
+      padding: 30px 20px;
       border: 1px solid #D3ED97;
       border-radius: 30px;
       box-sizing: border-box;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) 1px minmax(0, .9fr);
+      grid-template-rows: 1fr auto;
+      column-gap: 18px;
 
       .quote {
-        position: absolute;
-        width: 230px;
-        left: 20px;
-        top: 30px;
+        grid-column: 1;
+        grid-row: 1 / 3;
+        align-self: center;
         text-align: center;
         font-size: 18px;
         line-height: 120%;
@@ -64,28 +68,26 @@
         margin: 0;
       }
       .divider-line {
-        position: absolute;
-        top: 30px;
-        bottom: 30px;
-        left: 260px;
-        width: 0;
+        grid-column: 2;
+        grid-row: 1 / 3;
+        height: 100%;
         border-left: 1px solid #D3ED97;
       }
       .name {
-        position: absolute;
-        left: 280px;
-        top: 40px;
-        width: 180px;
+        grid-column: 3;
+        grid-row: 1;
+        align-self: end;
         text-align: center;
         font-weight: 400;
         font-size: 24px;
+        line-height: 1.1;
         color: #B5E93B;
       }
       .project {
-        position: absolute;
-        left: 280px;
-        top: 80px;
-        width: 180px;
+        grid-column: 3;
+        grid-row: 2;
+        align-self: start;
+        margin-top: 10px;
         text-align: center;
         font-size: 14px;
         line-height: 120%;
@@ -175,18 +177,18 @@
 
         .inner-centered {
           position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 320px;
-          height: 140px;
+          inset: 20px;
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 1px minmax(84px, .45fr);
+          grid-template-rows: 1fr auto;
+          column-gap: 12px;
         }
 
         .quote {
-          position: absolute !important;
-          left: 20px;
-          top: 30px;
-          width: 200px;
+          position: static !important;
+          grid-column: 1;
+          grid-row: 1 / 3;
+          align-self: center;
           text-align: left;
           font-size: 16px;
           line-height: 1.3;
@@ -194,28 +196,29 @@
           margin: 0;
         }
         .divider-line {
-          position: absolute !important;
-          top: 30px;
-          bottom: 30px;
-          left: 227px;
-          width: 0;
+          position: static !important;
+          grid-column: 2;
+          grid-row: 1 / 3;
+          height: 100%;
           border-left: 1px solid #D3ED97;
         }
         .name {
-          position: absolute !important;
-          left: 240px;
-          top: 35px;
-          width: 60px;
+          position: static !important;
+          grid-column: 3;
+          grid-row: 1;
+          align-self: end;
           text-align: left;
           font-weight: 400;
-          font-size: 18px;
+          font-size: 16px;
+          line-height: 1.15;
           color: #B5E93B;
         }
         .project {
-          position: absolute !important;
-          left: 240px;
-          top: 95px;
-          width: 100px;
+          position: static !important;
+          grid-column: 3;
+          grid-row: 2;
+          align-self: start;
+          margin-top: 8px;
           text-align: left;
           font-size: 12px;
           line-height: 120%;
@@ -248,17 +251,11 @@
 
 @media (max-width: 360px) {
   .quote {
-    font-size: 12px !important;
-    width: 140px !important;
-    left: 50px !important;
-  }
-  .divider-line {
-    left: 195px !important;
+    font-size: 13px !important;
   }
   .name,
   .project {
     font-size: 12px !important;
-    left: 210px !important;
   }
   .references-carousel {
     gap: 0.8rem !important;
