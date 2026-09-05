@@ -1,27 +1,33 @@
-# PortfolioApp
+# Leo Rullani — Portfolio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
+Angular portfolio for [leorullani.com](https://leorullani.com), including full-stack project cases, responsive navigation and a PHP contact endpoint for shared hosting.
 
-## Development server
+## Local development
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Requirements: Node.js 20.19–24 and npm.
 
-## Code scaffolding
+```bash
+npm ci
+npm start
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The development server is available at `http://localhost:4200/`.
 
-## Build
+## Production build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm ci
+npm run build
+```
 
-## Running unit tests
+Upload the **contents** of `dist/portfolio-app/browser/` to the domain's document root. The build copies both `.htaccess` and `sendMail.php` into that folder so Angular routes and the contact form remain functional after a clean deployment.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## All-Inkl deployment checklist
 
-## Running end-to-end tests
+1. Build with the supported Node.js version.
+2. Upload the complete contents of `dist/portfolio-app/browser/` via SFTP/FTP.
+3. Confirm `/`, `/privacy`, `/legal` and `/sendMail.php` are reachable over HTTPS.
+4. Submit one contact-form test and confirm delivery to `coding@leorullani.com`.
+5. Purge any host-side cache after replacing an existing build.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Automatic deployment can be added once the All-Inkl SFTP/FTP host, username and webroot path are known. Store credentials only as GitHub Actions secrets; never commit them to this repository.

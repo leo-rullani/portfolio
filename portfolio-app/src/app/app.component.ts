@@ -84,6 +84,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     if (s === 'DE' || s === 'EN') {
       this.activeLang = s;
     }
+    document.documentElement.lang = this.activeLang.toLowerCase();
   }
 
   ngAfterViewInit(): void {
@@ -111,7 +112,21 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   };
 
   onWheel = (e: WheelEvent): void => {
-    if (window.innerWidth<800) return;
+    if (window.innerWidth < 800) return;
+
+    const target = e.target instanceof HTMLElement ? e.target : null;
+    const verticalScroller = target?.closest<HTMLElement>(
+      '.work-shell, .skills-shell, .contact-section'
+    );
+    if (verticalScroller && Math.abs(e.deltaY) >= Math.abs(e.deltaX)) {
+      const canScrollDown =
+        e.deltaY > 0 &&
+        verticalScroller.scrollTop + verticalScroller.clientHeight <
+          verticalScroller.scrollHeight - 1;
+      const canScrollUp = e.deltaY < 0 && verticalScroller.scrollTop > 0;
+      if (canScrollDown || canScrollUp) return;
+    }
+
     e.preventDefault();
     this.accumulatedDelta+=e.deltaX+e.deltaY;
     if(this.wheelTimeout)clearTimeout(this.wheelTimeout);
@@ -125,5 +140,6 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   changeLang(lang: 'DE' | 'EN'): void {
     this.activeLang = lang;
     localStorage.setItem('preferredLanguage', lang);
+    document.documentElement.lang = lang.toLowerCase();
   }
 }

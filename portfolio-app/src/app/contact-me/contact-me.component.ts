@@ -22,7 +22,7 @@ export class ContactMeComponent {
     DE:{placeholderName:'Ihr Name',placeholderEmail:'Ihre E-Mail',placeholderMessage:'Ihre Nachricht',errorName:'Bitte geben Sie Ihren Namen ein.',errorEmail:'Bitte geben Sie eine gültige E-Mail-Adresse ein.',errorMessage:'Bitte geben Sie eine Nachricht ein.',errorPrivacy:'Bitte bestätigen Sie die Datenschutzbestimmungen.',privacyLabelPart1:`Ich habe die`,privacyLabelPart2:`Datenschutzerklärung`,privacyLabelPart3:`gelesen und stimme der Verarbeitung meiner Daten zu.`,btnSend:'Senden',feedbackFillAll:'Bitte füllen Sie alle Felder korrekt aus.',feedbackSent:'E-Mail wurde erfolgreich versendet!',feedbackTest:'Testmodus aktiv. Es wurde keine Mail verschickt.',feedbackErrorSend:'Leider gab es ein Problem beim Versand.',introTitle:'Lass uns etwas Sinnvolles entwickeln.',introText:`Ich bin offen für Software-Engineering-Aufgaben, bei denen Frontend-Handwerk, Backend-Denken und Daten zusammenkommen. Wenn Sie ein durchdachtes digitales Produkt entwickeln, freue ich mich auf Ihre Nachricht.`,labelEmail:'E-Mail:',labelPhone:'Tel:'}
   };
   post={
-    endPoint:'https://leorullani.com/sendMail.php',
+    endPoint:'/sendMail.php',
     body:(p:any)=>JSON.stringify(p),
     options:{headers:{'Content-Type':'application/json'},responseType:'text' as const}
   };

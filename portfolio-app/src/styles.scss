@@ -52,11 +52,103 @@ img {
   pointer-events: none !important;
 }
 
+.project-card > summary {
+  list-style: none;
+}
+
+.project-card > summary::-webkit-details-marker {
+  display: none;
+}
+
+.project-card > summary:focus-visible {
+  outline: 2px solid #b5e93b;
+  outline-offset: -3px;
+}
+
+.project-card[open] {
+  grid-column: 1 / -1;
+  border-color: #b5e93b !important;
+  background: rgba(181, 233, 59, 0.065) !important;
+}
+
+.project-card[open] .toggle-icon {
+  transform: rotate(45deg);
+}
+
+.project-card .project-details {
+  grid-template-columns: minmax(260px, 0.8fr) minmax(0, 1.2fr) !important;
+  padding: 0 34px 30px !important;
+}
+
+.project-preview {
+  min-height: 250px;
+  overflow: hidden;
+  border: 1px solid rgba(181, 233, 59, 0.24);
+  border-radius: 18px;
+  background: #111;
+}
+
+.project-preview img {
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  object-fit: cover;
+}
+
+.project-mark {
+  overflow: hidden;
+}
+
+.project-mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.private-repository {
+  padding: 9px 18px;
+  border: 1px dashed rgba(181, 233, 59, 0.45);
+  border-radius: 999px;
+  color: #aeb49f;
+  font-size: 13px;
+}
+
+.detail-copy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 28px;
+}
+
+.detail-copy .technology-list,
+.detail-copy .project-actions,
+.detail-copy .privacy-note {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 800px) {
   html,
   body {
     overflow-y: auto;
     overflow-x: hidden;
+  }
+
+  .project-card[open] {
+    grid-column: auto;
+  }
+
+  .project-card .project-details {
+    grid-template-columns: 1fr !important;
+    padding: 0 20px 24px !important;
+  }
+
+  .detail-copy {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-copy .technology-list,
+  .detail-copy .project-actions,
+  .detail-copy .privacy-note {
+    grid-column: 1;
   }
 }
 

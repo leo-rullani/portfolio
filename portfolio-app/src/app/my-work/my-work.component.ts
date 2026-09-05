@@ -16,7 +16,6 @@ interface Project {
 export class MyWorkComponent {
   @Input() activeLang: Language = 'EN';
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
-  expandedProject: string | null = null;
 
   readonly copy = {
     EN: { verticalTitle: 'My Work', eyebrow: 'Selected projects', intro: 'From focused browser experiences to complete REST platforms — built with attention to clean interfaces, reliable APIs and thoughtful data handling.', about: 'About the project', learned: 'Focus & learning', live: 'Live demo', staticNote: 'Portfolio preview without live user data' },
@@ -32,6 +31,16 @@ export class MyWorkComponent {
     { number: '06', name: 'El Pollo Loco', mark: 'PL', category: { EN: '2D browser game', DE: '2D-Browsergame' }, description: { EN: 'A lively jump-and-run game with animated characters, enemies, collectibles and collision logic.', DE: 'Ein lebendiges Jump-and-Run mit animierten Figuren, Gegnern, Sammelobjekten und Kollisionslogik.' }, learning: { EN: 'Object-oriented JavaScript, canvas rendering, game loops and responsive controls.', DE: 'Objektorientiertes JavaScript, Canvas-Rendering, Game-Loops und responsive Steuerung.' }, technologies: ['JavaScript', 'OOP', 'Canvas', 'HTML', 'CSS'], repositories: [{ label: 'Source code', url: 'https://github.com/leo-rullani/el_pollo_loco' }], liveUrl: 'https://leorullani.com/el_pollo_loco/' }
   ];
 
-  toggleProject(name: string): void { this.expandedProject = this.expandedProject === name ? null : name; }
+  previewUrl(mark: string): string {
+    const extension = mark === 'VF' || mark === 'BK' ? 'svg' : 'webp';
+    return `assets/img/projects/${mark.toLowerCase()}.${extension}`;
+  }
+  isPrivateRepository(projectName: string): boolean {
+    return projectName === 'Collectrra' || projectName === 'BBM Kanban';
+  }
+  repositoryLabel(label: string, isPrivate = false): string {
+    if (!isPrivate) return label;
+    return this.activeLang === 'DE' ? `${label} · Privat` : `${label} · Private`;
+  }
   scrollNext(): void { this.scrollEl?.nativeElement?.scrollBy({ left: window.innerWidth, behavior: 'smooth' }); }
 }

@@ -1,71 +1,152 @@
-<nav class="menu-system">
-  <div class="menu-bg"></div>
-  <div class="shadow-menu"></div>
+<nav
+  class="menu-system"
+  [attr.aria-label]="activeLang === 'DE' ? 'Hauptnavigation' : 'Primary navigation'"
+>
+  <div class="menu-bg" aria-hidden="true"></div>
+  <div class="shadow-menu" aria-hidden="true"></div>
 
-  <div class="logo" (click)="scrollToProfile()">
-    <img src="/assets/img/profil.png" alt="Profil" />
-  </div>
+  <button
+    class="logo"
+    type="button"
+    [attr.aria-label]="activeLang === 'DE' ? 'Zur Startseite' : 'Go to home section'"
+    (click)="scrollToProfile()"
+  >
+    <img src="/assets/img/profil.png" alt="" />
+  </button>
 
   <div class="menu-items" *ngIf="!hideLinks()">
-    <span [class.active]="activeLink === 'aboutMe'" (click)="scrollToAboutMe()">
+    <button
+      type="button"
+      aria-controls="about-me-slide"
+      [class.active]="activeLink === 'aboutMe'"
+      (click)="scrollToAboutMe()"
+    >
       {{ text[activeLang].navWhyMe }}
-    </span>
-    <span [class.active]="activeLink === 'skills'" (click)="scrollToSkills()">
+    </button>
+    <button
+      type="button"
+      aria-controls="skill-set-slide"
+      [class.active]="activeLink === 'skills'"
+      (click)="scrollToSkills()"
+    >
       {{ text[activeLang].navSkills }}
-    </span>
-    <span [class.active]="activeLink === 'myWork'" (click)="scrollToMyWork()">
+    </button>
+    <button
+      type="button"
+      aria-controls="my-work-slide"
+      [class.active]="activeLink === 'myWork'"
+      (click)="scrollToMyWork()"
+    >
       {{ text[activeLang].navMyWork }}
-    </span>
-    <span [class.active]="activeLink === 'contact'" (click)="scrollToContact()">
+    </button>
+    <button
+      type="button"
+      aria-controls="contact-me-slide"
+      [class.active]="activeLink === 'contact'"
+      (click)="scrollToContact()"
+    >
       {{ text[activeLang].navContact }}
-    </span>
+    </button>
   </div>
 
-  <div class="burger-menu" *ngIf="!hideLinks()" (click)="toggleMenu()">
+  <button
+    class="burger-menu"
+    type="button"
+    *ngIf="!hideLinks()"
+    aria-controls="mobile-navigation-menu"
+    [attr.aria-expanded]="isOverlayOpen"
+    [attr.aria-label]="activeLang === 'DE' ? (isOverlayOpen ? 'Menü schließen' : 'Menü öffnen') : (isOverlayOpen ? 'Close menu' : 'Open menu')"
+    (click)="toggleMenu()"
+  >
     <div class="line"></div>
     <div class="line"></div>
     <div class="line"></div>
-  </div>
+  </button>
 </nav>
 
-<div class="mobile-overlay" [ngClass]="{'show': isOverlayOpen}" *ngIf="isOverlayOpen">
-  <div class="overlay-bg"></div>
+<nav
+  id="mobile-navigation-menu"
+  class="mobile-overlay"
+  [ngClass]="{'show': isOverlayOpen}"
+  *ngIf="isOverlayOpen"
+  [attr.aria-label]="activeLang === 'DE' ? 'Mobile Navigation' : 'Mobile navigation'"
+>
+  <div class="overlay-bg" aria-hidden="true"></div>
 
-  <div class="close-btn" (click)="toggleMenu()">
+  <button
+    class="close-btn"
+    type="button"
+    [attr.aria-label]="activeLang === 'DE' ? 'Menü schließen' : 'Close menu'"
+    (click)="toggleMenu()"
+  >
     <div class="line1"></div>
     <div class="line2"></div>
-  </div>
+  </button>
 
   <div class="menu-items-column">
     <ng-container *ngIf="!hideLinks()">
-      <span [class.active]="activeLink === 'aboutMe'" (click)="onWhyMe()">
+      <button
+        type="button"
+        aria-controls="about-me-slide"
+        [class.active]="activeLink === 'aboutMe'"
+        (click)="onWhyMe()"
+      >
         {{ text[activeLang].navWhyMe }}
-      </span>
-      <span [class.active]="activeLink === 'skills'" (click)="onSkillSet()">
+      </button>
+      <button
+        type="button"
+        aria-controls="skill-set-slide"
+        [class.active]="activeLink === 'skills'"
+        (click)="onSkillSet()"
+      >
         {{ text[activeLang].mobileSkillSet }}
-      </span>
-      <span [class.active]="activeLink === 'myWork'" (click)="onMyWork()">
+      </button>
+      <button
+        type="button"
+        aria-controls="my-work-slide"
+        [class.active]="activeLink === 'myWork'"
+        (click)="onMyWork()"
+      >
         {{ text[activeLang].navMyWork }}
-      </span>
-      <span [class.active]="activeLink === 'contact'" (click)="onContact()">
+      </button>
+      <button
+        type="button"
+        aria-controls="contact-me-slide"
+        [class.active]="activeLink === 'contact'"
+        (click)="onContact()"
+      >
         {{ text[activeLang].mobileContact }}
-      </span>
+      </button>
     </ng-container>
 
-    <div class="change-language">
-      <span
+    <div
+      class="change-language"
+      role="group"
+      [attr.aria-label]="activeLang === 'DE' ? 'Sprache auswählen' : 'Choose language'"
+    >
+      <button
+        class="lang"
+        type="button"
+        lang="de"
         [class.active]="activeLang === 'DE'"
+        [attr.aria-pressed]="activeLang === 'DE'"
+        aria-label="Deutsch"
         (click)="changeLang('DE')"
       >
         DE
-      </span>
-      <span>|</span>
-      <span
+      </button>
+      <span aria-hidden="true">|</span>
+      <button
+        class="lang"
+        type="button"
+        lang="en"
         [class.active]="activeLang === 'EN'"
+        [attr.aria-pressed]="activeLang === 'EN'"
+        aria-label="English"
         (click)="changeLang('EN')"
       >
         EN
-      </span>
+      </button>
     </div>
   </div>
-</div>
+</nav>

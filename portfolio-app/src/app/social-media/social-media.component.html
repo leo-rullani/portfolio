@@ -69,22 +69,34 @@
     </a>
   </div>
 
-  <nav class="change-language">
-    <span
+  <div
+    class="change-language"
+    role="group"
+    [attr.aria-label]="activeLang === 'DE' ? 'Sprache auswählen' : 'Choose language'"
+  >
+    <button
       class="lang"
+      type="button"
+      lang="de"
       (click)="changeLang('DE')"
       [class.active]="activeLang === 'DE'"
+      [attr.aria-pressed]="activeLang === 'DE'"
+      aria-label="Deutsch"
     >
       DE
-    </span>
+    </button>
 
-    <span class="separator">|</span>
-    <span
+    <span class="separator" aria-hidden="true">|</span>
+    <button
       class="lang"
+      type="button"
+      lang="en"
       (click)="changeLang('EN')"
       [class.active]="activeLang === 'EN'"
+      [attr.aria-pressed]="activeLang === 'EN'"
+      aria-label="English"
     >
       EN
-    </span>
-  </nav>
+    </button>
+  </div>
 </header>

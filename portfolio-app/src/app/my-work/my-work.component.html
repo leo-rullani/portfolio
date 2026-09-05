@@ -5,21 +5,48 @@
     <p>{{ copy[activeLang].intro }}</p>
   </header>
   <div class="project-grid">
-    <article class="project-card" *ngFor="let project of projects" [class.is-expanded]="expandedProject === project.name">
-      <button class="card-summary" type="button" (click)="toggleProject(project.name)" [attr.aria-expanded]="expandedProject === project.name">
+    <details class="project-card" *ngFor="let project of projects">
+      <summary
+        class="card-summary"
+        [attr.aria-label]="activeLang === 'DE' ? project.name + ' Projektdetails ein- oder ausblenden' : 'Toggle ' + project.name + ' project details'"
+      >
         <span class="project-number">{{ project.number }}</span>
-        <span class="project-mark" aria-hidden="true">{{ project.mark }}</span>
+        <span class="project-mark" aria-hidden="true"><img [src]="previewUrl(project.mark)" alt="" loading="lazy" decoding="async"></span>
         <span class="summary-copy"><span class="project-type">{{ project.category[activeLang] }}</span><strong>{{ project.name }}</strong><span class="tech-preview">{{ project.technologies.slice(0, 4).join(' · ') }}</span></span>
         <span class="toggle-icon" aria-hidden="true">+</span>
-      </button>
-      <div class="project-details" *ngIf="expandedProject === project.name">
-        <div class="detail-column"><h3>{{ copy[activeLang].about }}</h3><p>{{ project.description[activeLang] }}</p></div>
-        <div class="detail-column"><h3>{{ copy[activeLang].learned }}</h3><p>{{ project.learning[activeLang] }}</p></div>
-        <div class="technology-list"><span *ngFor="let technology of project.technologies">{{ technology }}</span></div>
-        <div class="project-actions"><a *ngFor="let repository of project.repositories" [href]="repository.url" target="_blank" rel="noopener noreferrer">{{ repository.label }}</a><a *ngIf="project.liveUrl" class="primary" [href]="project.liveUrl" target="_blank" rel="noopener noreferrer">{{ copy[activeLang].live }}</a></div>
-        <small *ngIf="!project.liveUrl" class="privacy-note">● {{ copy[activeLang].staticNote }}</small>
+      </summary>
+      <div class="project-details">
+        <div class="project-preview">
+          <img [src]="previewUrl(project.mark)" [alt]="activeLang === 'DE' ? project.name + ' Interface-Vorschau' : project.name + ' interface preview'" loading="lazy" decoding="async">
+        </div>
+        <div class="detail-copy">
+          <div class="detail-column"><h3>{{ copy[activeLang].about }}</h3><p>{{ project.description[activeLang] }}</p></div>
+          <div class="detail-column"><h3>{{ copy[activeLang].learned }}</h3><p>{{ project.learning[activeLang] }}</p></div>
+          <div class="technology-list"><span *ngFor="let technology of project.technologies">{{ technology }}</span></div>
+          <div class="project-actions">
+            <ng-container *ngFor="let repository of project.repositories">
+              <a
+                *ngIf="!isPrivateRepository(project.name)"
+                [href]="repository.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                [attr.aria-label]="activeLang === 'DE' ? project.name + ' ' + repositoryLabel(repository.label) + ' auf GitHub öffnen (neuer Tab)' : 'Open ' + project.name + ' ' + repositoryLabel(repository.label) + ' on GitHub (new tab)'"
+              >{{ repositoryLabel(repository.label) }}</a>
+              <span *ngIf="isPrivateRepository(project.name)" class="private-repository">{{ repositoryLabel(repository.label, true) }}</span>
+            </ng-container>
+            <a
+              *ngIf="project.liveUrl"
+              class="primary"
+              [href]="project.liveUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="activeLang === 'DE' ? project.name + ' Live-Demo öffnen (neuer Tab)' : 'Open ' + project.name + ' live demo (new tab)'"
+            >{{ copy[activeLang].live }}</a>
+          </div>
+          <small *ngIf="!project.liveUrl" class="privacy-note">● {{ copy[activeLang].staticNote }}</small>
+        </div>
       </div>
-    </article>
+    </details>
   </div>
   <button class="next-section" type="button" (click)="scrollNext()" aria-label="Next section"><span></span></button>
 </section>
