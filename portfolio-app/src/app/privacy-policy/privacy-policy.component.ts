@@ -12,26 +12,31 @@ export class PrivacyPolicyComponent implements OnInit {
   text = {
     EN: {
       heading: 'PRIVACY POLICY',
-      updated: 'Last updated: APRIL 2025',
+      updated: 'Last updated: SEPTEMBER 2026',
       p1: `I, Leo Rullani, operate this website as my personal portfolio.
            Protecting your personal data is a priority.`,
       p2: `My commitment is to handle your information in a transparent and secure way,
            ensuring you have control over what is shared and how it is utilized.
            This Privacy Policy covers various aspects such as cookies, analytics,
            third-party services, and your legal rights regarding personal data protection.`,
-      section1Title: '1. Data Collection',
-      p3: `Any personal data (e.g., name, email) provided via the contact form
-           is used solely to respond to your inquiries. We do not store your data indefinitely,
-           nor do we share it with unauthorized third parties. However, we may keep a record
-           of communication for reference, but only as permitted by law.`,
-      section2Title: '2. Cookies / Analytics',
-      p4: `Currently, no analytics or cookies are used. Should we introduce any
-           form of tracking or analytical tools in the future, you will be promptly
-           informed, and your consent would be requested where necessary.`,
-      section3Title: '3. Third-Party Services',
-      p5: `If external services are integrated, they follow standard GDPR compliance.
-           We ensure that any external provider handles data responsibly and
-           in accordance with relevant regulations.`,
+      section1Title: '1. Contact Form',
+      p3: `When you use the contact form, your name, email address, message and confirmation
+           of the privacy policy are transmitted to the website server and forwarded by email
+           to the portfolio mailbox. This information is used only to process and answer your
+           inquiry. Correspondence is retained only for as long as it is needed for this purpose
+           or as required or permitted by applicable obligations, and is then deleted where possible.`,
+      section2Title: '2. Local Storage / Cookies / Analytics',
+      p4: `This website does not use analytics or advertising cookies. Browser local storage is
+           used to remember the selected language. The four interactive demos store data only on
+           your device: Collectrra favorites, the VideoFlix watchlist, the Quizly best score, and
+           BBM Kanban task titles and descriptions. Demo entries are not transmitted to the server
+           or to third parties. You can remove them completely through your browser's site-data settings.`,
+      section3Title: '3. Hosting, Server Logs and Email Delivery',
+      p5: `The hosting provider may automatically process technical connection data, such as the
+           IP address, date and time, requested page, browser information and referrer, to deliver
+           and secure the website and diagnose faults. Such logs are retained according to operational,
+           security and legal requirements and are not used by me for advertising or profiling.
+           The contact form email is processed by the hosting and email providers as needed for delivery.`,
       section4Title: '4. Your Rights',
       p6: `You have the right to access, correct, and delete your personal data
             at any time. We will comply with your request promptly, provided there are
@@ -49,27 +54,36 @@ export class PrivacyPolicyComponent implements OnInit {
     },
     DE: {
       heading: 'DATENSCHUTZ',
-      updated: 'Zuletzt aktualisiert: APRIL 2025',
+      updated: 'Zuletzt aktualisiert: SEPTEMBER 2026',
       p1: `Ich, Leo Rullani, betreibe diese Website als mein persönliches Portfolio.
            Der Schutz Ihrer persönlichen Daten hat höchste Priorität.`,
       p2: `Ich verpflichte mich, Ihre Informationen transparent und sicher zu behandeln,
            damit Sie die Kontrolle darüber behalten, was geteilt wird und wie es verwendet wird.
            Diese Datenschutzrichtlinie behandelt Themen wie Cookies, Analysen,
            Drittanbieter-Services und Ihre gesetzlichen Rechte in Bezug auf den Datenschutz.`,
-      section1Title: '1. Datenerhebung',
-      p3: `Alle persönlichen Daten (z.B. Name, E-Mail), die über das Kontaktformular
-           bereitgestellt werden, werden ausschließlich genutzt, um auf Ihre Anfragen
-           zu antworten. Wir speichern Ihre Daten nicht unbegrenzt und geben sie nicht
-           an unbefugte Dritte weiter. Wir können jedoch Kommunikation zu Referenzzwecken
-           aufbewahren, sofern dies gesetzlich zulässig ist.`,
-      section2Title: '2. Cookies / Analysen',
-      p4: `Derzeit werden weder Cookies noch Analysen verwendet. Sollten wir in Zukunft
-           irgendwelche Tracking- oder Analysetools einsetzen, werden Sie rechtzeitig
-           informiert und um Zustimmung gebeten.`,
-      section3Title: '3. Drittanbieter-Services',
-      p5: `Sollten externe Dienste integriert werden, entsprechen diese den
-           geltenden DSGVO-Vorgaben. Wir stellen sicher, dass jeder externe Anbieter
-           Daten verantwortungsbewusst und entsprechend der gesetzlichen Vorgaben verarbeitet.`,
+      section1Title: '1. Kontaktformular',
+      p3: `Wenn Sie das Kontaktformular verwenden, werden Ihr Name, Ihre E-Mail-Adresse,
+           Ihre Nachricht und die Bestätigung der Datenschutzerklärung an den Webserver
+           übermittelt und per E-Mail an das Portfolio-Postfach weitergeleitet. Diese Angaben
+           werden ausschließlich zur Bearbeitung und Beantwortung Ihrer Anfrage verwendet.
+           Die Korrespondenz wird nur so lange aufbewahrt, wie dies für diesen Zweck erforderlich
+           oder aufgrund anwendbarer Pflichten erforderlich beziehungsweise zulässig ist, und
+           anschließend soweit möglich gelöscht.`,
+      section2Title: '2. Lokaler Speicher / Cookies / Analysen',
+      p4: `Diese Website verwendet keine Analyse- oder Werbe-Cookies. Der lokale Browserspeicher
+           wird verwendet, um die gewählte Sprache zu speichern. Die vier interaktiven Demos
+           speichern Daten ausschließlich auf Ihrem Gerät: Collectrra-Favoriten, die VideoFlix-
+           Merkliste, den Quizly-Bestwert sowie Titel und Beschreibungen selbst erstellter BBM-
+           Kanban-Aufgaben. Demo-Eingaben werden weder an den Server noch an Dritte übertragen.
+           Sie können diese vollständig über die Website-Daten-Einstellungen Ihres Browsers löschen.`,
+      section3Title: '3. Hosting, Serverprotokolle und E-Mail-Versand',
+      p5: `Der Hosting-Anbieter kann technische Verbindungsdaten wie IP-Adresse, Datum und Uhrzeit,
+           aufgerufene Seite, Browserinformationen und Referrer automatisch verarbeiten, um die
+           Website bereitzustellen und abzusichern sowie Fehler zu untersuchen. Solche Protokolle
+           werden entsprechend betrieblichen, sicherheitsbezogenen und gesetzlichen Erfordernissen
+           aufbewahrt und von mir nicht für Werbung oder Profilbildung genutzt. Die Kontaktformular-
+           E-Mail wird durch die beteiligten Hosting- und E-Mail-Anbieter verarbeitet, soweit dies
+           für die Zustellung erforderlich ist.`,
       section4Title: '4. Ihre Rechte',
       p6: `Sie haben das Recht, jederzeit auf Ihre persönlichen Daten zuzugreifen,
            diese zu korrigieren und löschen zu lassen. Wir werden Ihrem Wunsch umgehend

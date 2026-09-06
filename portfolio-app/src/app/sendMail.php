@@ -3,11 +3,27 @@ declare(strict_types=1);
 
 header('Content-Type: text/plain; charset=UTF-8');
 header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: DENY');
+header('Referrer-Policy: no-referrer');
+header("Content-Security-Policy: default-src 'none'; frame-ancestors 'none'");
 header('Cache-Control: no-store');
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
     http_response_code(405);
     exit('Method not allowed.');
+}
+
+$contentType = strtolower((string) ($_SERVER['CONTENT_TYPE'] ?? ''));
+if (strpos($contentType, 'application/json') !== 0) {
+    http_response_code(415);
+    exit('Unsupported media type.');
+}
+
+// Modern browsers identify cross-site requests through Fetch Metadata.
+$fetchSite = strtolower((string) ($_SERVER['HTTP_SEC_FETCH_SITE'] ?? ''));
+if ($fetchSite !== '' && !in_array($fetchSite, ['same-origin', 'same-site'], true)) {
+    http_response_code(403);
+    exit('Cross-site request blocked.');
 }
 
 $raw = file_get_contents('php://input', false, null, 0, 12001);
@@ -31,12 +47,15 @@ $name = trim((string) ($data['name'] ?? ''));
 $email = trim((string) ($data['email'] ?? ''));
 $message = trim((string) ($data['message'] ?? ''));
 $privacy = ($data['privacy'] ?? false) === true;
+$textLength = static function (string $value): int {
+    return function_exists('mb_strlen') ? mb_strlen($value) : strlen($value);
+};
 
 if (
     !$privacy ||
-    $name === '' || mb_strlen($name) > 100 ||
-    !filter_var($email, FILTER_VALIDATE_EMAIL) || mb_strlen($email) > 254 ||
-    $message === '' || mb_strlen($message) > 5000 ||
+    $name === '' || $textLength($name) > 100 ||
+    !filter_var($email, FILTER_VALIDATE_EMAIL) || $textLength($email) > 254 ||
+    $message === '' || $textLength($message) > 5000 ||
     preg_match('/[\r\n]/', $email)
 ) {
     http_response_code(422);

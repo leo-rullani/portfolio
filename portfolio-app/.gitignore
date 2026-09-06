@@ -11,6 +11,36 @@
 npm-debug.log
 yarn-error.log
 
+# Local environment and hosting credentials
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.template
+!.env.*.template
+
+# Private keys and certificate bundles
+*.key
+*.pem
+*.p12
+*.pfx
+*.ppk
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
+# Local FTP/SFTP deployment configuration
+/.sftp-config.json
+/sftp-config.json
+/.ftpconfig
+/ftp-config.local.*
+/deploy.local.*
+/deployment.local.*
+/.lftp/
+/.rsync-password
+/.netrc
+
 # IDEs and editors
 .idea/
 .project

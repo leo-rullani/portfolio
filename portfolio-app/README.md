@@ -22,10 +22,14 @@ npm run build
 
 Upload the **contents** of `dist/portfolio-app/browser/` to the domain's document root. The build copies both `.htaccess` and `sendMail.php` into that folder so Angular routes and the contact form remain functional after a clean deployment.
 
+The portfolio is configured for the domain root (`/`). Do not deploy it into a subdirectory without changing the Angular base path and the contact endpoint first.
+
 ## All-Inkl deployment checklist
 
 1. Build with the supported Node.js version.
 2. Upload the complete contents of `dist/portfolio-app/browser/` via SFTP/FTP.
+   Do **not** use a blind remote-delete or mirror option: the separately hosted
+   `/join/` and `/el_pollo_loco/` directories must remain untouched.
 3. Confirm `/`, `/privacy`, `/legal` and `/sendMail.php` are reachable over HTTPS.
 4. Submit one contact-form test and confirm delivery to `coding@leorullani.com`.
 5. Purge any host-side cache after replacing an existing build.
