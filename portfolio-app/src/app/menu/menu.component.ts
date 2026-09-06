@@ -92,7 +92,7 @@ export class MenuComponent implements OnInit {
   }
 
   private handleScroll(index: number, slideId: string): void {
-    if (window.innerWidth >= 800) {
+    if (window.innerWidth > 800) {
       this.scrollDesktop(index);
     } else {
       this.scrollMobile(slideId);

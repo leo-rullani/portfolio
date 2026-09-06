@@ -9,6 +9,8 @@
       <summary
         class="card-summary"
         [attr.aria-label]="activeLang === 'DE' ? project.name + ' Projektdetails ein- oder ausblenden' : 'Toggle ' + project.name + ' project details'"
+        (pointerdown)="rememberHorizontalPosition()"
+        (click)="keepHorizontalPosition()"
       >
         <span class="project-number">{{ project.number }}</span>
         <span class="project-mark" aria-hidden="true"><img [src]="previewUrl(project.mark)" alt="" loading="lazy" decoding="async"></span>
@@ -38,9 +40,9 @@
               *ngIf="project.liveUrl"
               class="primary"
               [href]="project.liveUrl"
-              [attr.target]="project.safeDemo ? null : '_blank'"
-              [attr.rel]="project.safeDemo ? null : 'noopener noreferrer'"
-              [attr.aria-label]="activeLang === 'DE' ? project.name + ' Live-Demo öffnen' + (project.safeDemo ? '' : ' (neuer Tab)') : 'Open ' + project.name + ' live demo' + (project.safeDemo ? '' : ' (new tab)')"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="activeLang === 'DE' ? project.name + ' Live-Demo öffnen (neuer Tab)' : 'Open ' + project.name + ' live demo (new tab)'"
             >{{ copy[activeLang].live }}</a>
           </div>
           <small *ngIf="project.safeDemo" class="privacy-note">● {{ copy[activeLang].safeDemoNote }}</small>

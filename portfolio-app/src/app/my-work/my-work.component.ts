@@ -18,6 +18,8 @@ export class MyWorkComponent {
   @Input() activeLang: Language = 'EN';
   @Input() scrollEl!: ElementRef<HTMLDivElement>;
 
+  private horizontalScrollPosition: number | null = null;
+
   readonly copy = {
     EN: { verticalTitle: 'My Work', eyebrow: 'Selected projects', intro: 'From focused browser experiences to complete REST platforms — built with attention to clean interfaces, reliable APIs and thoughtful data handling.', about: 'About the project', learned: 'Focus & learning', live: 'Live demo', staticNote: 'Portfolio preview without live user data', safeDemoNote: 'Interactive browser demo · synthetic data stays on your device' },
     DE: { verticalTitle: 'Meine Arbeiten', eyebrow: 'Ausgewählte Projekte', intro: 'Von fokussierten Browser-Erlebnissen bis zu vollständigen REST-Plattformen — mit Blick auf klare Interfaces, zuverlässige APIs und einen bewussten Umgang mit Daten.', about: 'Über das Projekt', learned: 'Fokus & Erkenntnisse', live: 'Live-Demo', staticNote: 'Portfolio-Vorschau ohne echte Nutzerdaten', safeDemoNote: 'Interaktive Browser-Demo · synthetische Daten bleiben auf Ihrem Gerät' }
@@ -43,5 +45,27 @@ export class MyWorkComponent {
     if (!isPrivate) return label;
     return this.activeLang === 'DE' ? `${label} · Privat` : `${label} · Private`;
   }
+
+  rememberHorizontalPosition(): void {
+    if (window.innerWidth <= 800) return;
+    const container = this.scrollEl?.nativeElement;
+    if (container) this.horizontalScrollPosition = container.scrollLeft;
+  }
+
+  keepHorizontalPosition(): void {
+    const container = this.scrollEl?.nativeElement;
+    const scrollLeft = this.horizontalScrollPosition ?? container?.scrollLeft;
+    this.horizontalScrollPosition = null;
+    if (!container || scrollLeft === undefined || window.innerWidth <= 800) return;
+
+    const previousScrollBehavior = container.style.scrollBehavior;
+    container.style.scrollBehavior = 'auto';
+    container.scrollLeft = scrollLeft;
+    requestAnimationFrame(() => {
+      container.scrollLeft = scrollLeft;
+      container.style.scrollBehavior = previousScrollBehavior;
+    });
+  }
+
   scrollNext(): void { this.scrollEl?.nativeElement?.scrollBy({ left: window.innerWidth, behavior: 'smooth' }); }
 }

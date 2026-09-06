@@ -112,7 +112,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   };
 
   onWheel = (e: WheelEvent): void => {
-    if (window.innerWidth < 800) return;
+    if (window.innerWidth <= 800) return;
 
     const target = e.target instanceof HTMLElement ? e.target : null;
     const verticalScroller = target?.closest<HTMLElement>(
