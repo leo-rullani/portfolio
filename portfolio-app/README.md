@@ -2,6 +2,13 @@
 
 Angular portfolio for [leorullani.com](https://leorullani.com), including full-stack project cases, responsive navigation and a PHP contact endpoint for shared hosting.
 
+## Highlights
+
+- Eight language variants: English, German, Italian, French, Spanish, Albanian, Aargauer Swiss German and European Portuguese.
+- Full-stack case studies with privacy-safe, client-side demos for Collectrra, VideoFlix, Quizly and BBM Kanban.
+- Dedicated career profile with Rullani DataLab, verified company-register link and a privacy-clean public CV.
+- Unified slide navigation, responsive layouts, keyboard-friendly controls and accessible contact fields.
+
 ## Local development
 
 Requirements: Node.js 20.19–24 and npm.

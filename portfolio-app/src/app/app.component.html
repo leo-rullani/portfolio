@@ -1,11 +1,18 @@
 
 <app-menu
   [activeLang]="activeLang"
-  (activeLangChange)="activeLang = $event"
+  (activeLangChange)="changeLang($event)"
 ></app-menu>
 
+<app-social-media
+  *ngIf="!showContainer"
+  class="route-social-media"
+  [activeLang]="activeLang"
+  (langChange)="changeLang($event)"
+></app-social-media>
+
 <ng-container *ngIf="showContainer">
-  <div class="container" #scrollRef>
+  <main class="container" #scrollRef>
     <div class="app-background"></div>
 
     <app-profile
@@ -48,13 +55,20 @@
       [activeLang]="activeLang"
     ></references-me>
 
+    <career-profile
+      class="slide"
+      id="career-profile-slide"
+      [scrollEl]="scrollEl"
+      [activeLang]="activeLang"
+    ></career-profile>
+
     <contact-me
       class="slide"
       id="contact-me-slide"
       [scrollEl]="scrollEl"
       [activeLang]="activeLang"
     ></contact-me>
-  </div>
+  </main>
 </ng-container>
 
 <router-outlet></router-outlet>

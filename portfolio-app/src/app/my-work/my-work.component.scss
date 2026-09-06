@@ -6,6 +6,7 @@
 
 .work-shell {
   --green: #b5e93b;
+  position: relative;
   width: 100%;
   height: 100%;
   margin-left: 0;
@@ -269,34 +270,8 @@
   color: #9fa58f;
 }
 
-.next-section {
-  display: block;
-  width: 112px;
-  height: 42px;
-  margin: 28px max(calc((100% - 1260px) / 2), 0px) 8px auto;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
-
-.next-section span {
-  position: relative;
-  display: block;
-  height: 3px;
-  background: var(--green);
-  border-radius: 3px;
-}
-
-.next-section span::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: -7px;
-  width: 15px;
-  height: 15px;
-  border-top: 3px solid var(--green);
-  border-right: 3px solid var(--green);
-  transform: rotate(45deg);
+.section-arrow {
+  margin-top: 28px;
 }
 
 @keyframes reveal {
@@ -451,7 +426,4 @@
     grid-column: 1;
   }
 
-  .next-section {
-    display: none;
-  }
 }

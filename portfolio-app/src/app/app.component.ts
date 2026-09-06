@@ -17,7 +17,16 @@ import { AboutMeComponent } from './about-me/about-me.component';
 import { SkillSetComponent } from './skill-set/skill-set.component';
 import { MyWorkComponent } from './my-work/my-work.component';
 import { ReferencesMeComponent } from './references-me/references-me.component';
+import { CareerProfileComponent } from './career-profile/career-profile.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
+import {
+  DEFAULT_LANGUAGE,
+  getLanguageOption,
+  isLanguage,
+  Language,
+  LANGUAGE_STORAGE_KEY,
+  PORTFOLIO_LANGUAGE_CHANGE_EVENT
+} from './i18n/language';
 
 @Component({
   selector: 'app-root',
@@ -32,6 +41,7 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
     SkillSetComponent,
     MyWorkComponent,
     ReferencesMeComponent,
+    CareerProfileComponent,
     ContactMeComponent
   ],
   templateUrl: './app.component.html',
@@ -41,7 +51,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   title = 'portfolio-app';
   showSocialMedia = true;
   private readonly thresholdFactor = 0.1;
-  activeLang: 'DE' | 'EN' = 'EN';
+  activeLang: Language = DEFAULT_LANGUAGE;
   showContainer = true;
 
   @ViewChild('scrollRef', { static: false })
@@ -80,11 +90,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
-    const s = localStorage.getItem('preferredLanguage');
-    if (s === 'DE' || s === 'EN') {
-      this.activeLang = s;
-    }
-    document.documentElement.lang = this.activeLang.toLowerCase();
+    this.activeLang = this.readPreferredLanguage();
+    this.updateDocumentLanguage();
   }
 
   ngAfterViewInit(): void {
@@ -116,7 +123,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
     const target = e.target instanceof HTMLElement ? e.target : null;
     const verticalScroller = target?.closest<HTMLElement>(
-      '.work-shell, .skills-shell, .contact-section'
+      '.work-shell, .skills-shell, .career-shell, .contact-section'
     );
     if (verticalScroller && Math.abs(e.deltaY) >= Math.abs(e.deltaX)) {
       const canScrollDown =
@@ -137,9 +144,37 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     },this.debounceTime);
   };
 
-  changeLang(lang: 'DE' | 'EN'): void {
+  changeLang(lang: Language): void {
     this.activeLang = lang;
-    localStorage.setItem('preferredLanguage', lang);
-    document.documentElement.lang = lang.toLowerCase();
+    this.updateDocumentLanguage();
+
+    try {
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+    } catch {
+      // The language still changes when browser storage is unavailable.
+    }
+
+    window.dispatchEvent(
+      new CustomEvent<Language>(PORTFOLIO_LANGUAGE_CHANGE_EVENT, { detail: lang })
+    );
+  }
+
+  private readPreferredLanguage(): Language {
+    try {
+      const storedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+      if (isLanguage(storedLanguage)) return storedLanguage;
+
+      if (storedLanguage !== null) {
+        localStorage.removeItem(LANGUAGE_STORAGE_KEY);
+      }
+    } catch {
+      // Private browsing or browser policies can make localStorage unavailable.
+    }
+
+    return DEFAULT_LANGUAGE;
+  }
+
+  private updateDocumentLanguage(): void {
+    document.documentElement.lang = getLanguageOption(this.activeLang).htmlLang;
   }
 }

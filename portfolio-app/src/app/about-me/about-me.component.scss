@@ -1,8 +1,8 @@
 .about-me {
-  position: absolute;
+  position: relative;
   top: 0;
-  left: 100vw;
-  width: 100vw;
+  left: 0;
+  width: 100%;
   height: 100vh;
   z-index: 0;
   color: #fff;
@@ -11,7 +11,7 @@
   .vertical-title {
     position: absolute;
     top: 140px;
-    left: 10px;
+    left: 210px;
     font-family: 'Quantico', sans-serif;
     font-weight: 700;
     line-height: 120%;
@@ -26,7 +26,7 @@
   .intro {
     position: absolute;
     top: 120px;
-    left: 240px;
+    left: 480px;
     max-width: 1000px;
 
     p {
@@ -39,7 +39,7 @@
   .iam-title {
     position: absolute;
     top: 450px;
-    left: 240px;
+    left: 480px;
     font-family: 'Quantico', sans-serif;
     font-size: 40px;
     font-weight: 700;
@@ -49,7 +49,7 @@
   .icon-row {
     position: absolute;
     top: 560px;
-    left: 420px;
+    left: 660px;
     display: flex;
     gap: 80px;
     animation: iconImpulse 1.5s ease-in-out 0.2s infinite alternate;
@@ -95,7 +95,7 @@
 
   .btn-primary {
     position: absolute;
-    left: 1100px;
+    right: 260px;
     top: 670px;
     display: flex;
     flex-direction: row;
@@ -124,14 +124,10 @@
     }
   }
 
-  .arrow-right {
+  .section-arrow {
     position: absolute;
     top: 50%;
-    right: 10px;
     transform: translateY(-50%);
-    width: 113px;
-    height: 40px;
-    cursor: pointer;
   }
 }
 
@@ -212,10 +208,9 @@
     width: 140px;
   }
 
-  .about-me .arrow-right {
+  .about-me .section-arrow {
     position: absolute;
     top: 100%;
-    right: 50px;
     transform: translateY(-50%);
     display: block;
   }
@@ -317,7 +312,7 @@
     }
   }
 
-  .about-me .arrow-right {
+  .about-me .section-arrow {
     position: static;
     margin: 2rem auto 0;
     display: none;
@@ -338,11 +333,4 @@
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 40px;
-}
-
-@media (min-width: 1920px) {
-  .about-me {
-    width: 1700px !important;
-    left: calc(100vw + ((100vw - 1440px) / 2)) !important;
-  }
 }

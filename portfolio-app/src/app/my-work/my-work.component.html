@@ -8,7 +8,7 @@
     <details class="project-card" *ngFor="let project of projects">
       <summary
         class="card-summary"
-        [attr.aria-label]="activeLang === 'DE' ? project.name + ' Projektdetails ein- oder ausblenden' : 'Toggle ' + project.name + ' project details'"
+        [attr.aria-label]="toggleDetailsLabel(project.name)"
         (pointerdown)="rememberHorizontalPosition()"
         (click)="keepHorizontalPosition()"
       >
@@ -19,7 +19,7 @@
       </summary>
       <div class="project-details">
         <div class="project-preview">
-          <img [src]="previewUrl(project.mark)" [alt]="activeLang === 'DE' ? project.name + ' Interface-Vorschau' : project.name + ' interface preview'" loading="lazy" decoding="async">
+          <img [src]="previewUrl(project.mark)" [alt]="previewAlt(project.name)" loading="lazy" decoding="async">
         </div>
         <div class="detail-copy">
           <div class="detail-column"><h3>{{ copy[activeLang].about }}</h3><p>{{ project.description[activeLang] }}</p></div>
@@ -32,7 +32,7 @@
                 [href]="repository.url"
                 target="_blank"
                 rel="noopener noreferrer"
-                [attr.aria-label]="activeLang === 'DE' ? project.name + ' ' + repositoryLabel(repository.label) + ' auf GitHub öffnen (neuer Tab)' : 'Open ' + project.name + ' ' + repositoryLabel(repository.label) + ' on GitHub (new tab)'"
+                [attr.aria-label]="repositoryAriaLabel(project.name, repository.label)"
               >{{ repositoryLabel(repository.label) }}</a>
               <span *ngIf="isPrivateRepository(project.name)" class="private-repository">{{ repositoryLabel(repository.label, true) }}</span>
             </ng-container>
@@ -42,7 +42,7 @@
               [href]="project.liveUrl"
               target="_blank"
               rel="noopener noreferrer"
-              [attr.aria-label]="activeLang === 'DE' ? project.name + ' Live-Demo öffnen (neuer Tab)' : 'Open ' + project.name + ' live demo (new tab)'"
+              [attr.aria-label]="liveDemoAriaLabel(project.name)"
             >{{ copy[activeLang].live }}</a>
           </div>
           <small *ngIf="project.safeDemo" class="privacy-note">● {{ copy[activeLang].safeDemoNote }}</small>
@@ -51,5 +51,5 @@
       </div>
     </details>
   </div>
-  <button class="next-section" type="button" (click)="scrollNext()" aria-label="Next section"><span></span></button>
+  <button class="section-arrow section-arrow--next section-arrow--edge section-arrow--desktop" type="button" (click)="scrollNext()" [attr.aria-label]="navigationLabels[activeLang].next"></button>
 </section>

@@ -23,7 +23,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 600vw;
+  width: 700vw;
   height: 100vh;
   z-index: -1;
   background: linear-gradient(
@@ -34,7 +34,7 @@
     #323232 58.54%,
     #0b0a0a 70.03%
   );
-  background-size: 600vw 100vh;
+  background-size: 700vw 100vh;
   background-position: left;
   background-repeat: no-repeat;
 
@@ -68,14 +68,4 @@
       #000000 100%
     );
   }
-}
-
-.arrow-right {
-  position: absolute;
-  top: 50%;
-  right: 50px;
-  transform: translateY(-50%);
-  width: 113px;
-  height: 40px;
-  cursor: pointer;
 }

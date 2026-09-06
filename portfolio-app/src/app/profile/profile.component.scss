@@ -1,5 +1,11 @@
 
- html, body {
+:host {
+  position: relative;
+  display: block;
+  height: 100%;
+}
+
+html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -29,18 +35,21 @@
 
 .role {
   position: absolute;
-  top: 62%;
+  top: 63%;
   left: 47.5%;
-  margin-top: 50px;
+  width: min(980px, calc(100vw - 320px));
+  margin: 0;
   transform: translateX(-50%);
   z-index: 2;
   font-family: 'Quantico', sans-serif;
   font-weight: 700;
-  font-size: 48px;
-  line-height: 120%;
+  font-size: clamp(24px, 2.05vw, 36px);
+  line-height: 1.24;
   letter-spacing: 0;
+  text-align: center;
+  text-wrap: balance;
   color: transparent;
-  -webkit-text-stroke: 2px #B5E93B;
+  -webkit-text-stroke: 1.35px #B5E93B;
   text-stroke: 1px #B5E93B;
 }
 
@@ -72,14 +81,10 @@
   display: none;
 }
 
-.arrow-right {
+.section-arrow {
   position: absolute;
   bottom: 25vh;
-  right: 2.5%;
-  width: 113px;
-  height: 38px;
   z-index: 999;
-  cursor: pointer;
 }
 
 
@@ -101,10 +106,12 @@
 
   .role {
     position: static;
+    width: auto;
     transform: none;
-    font-size: 1.6rem;
+    font-size: clamp(1.05rem, 5vw, 1.45rem);
+    line-height: 1.35;
     text-align: center;
-    margin-top: 1rem;
+    margin: 1.25rem 20px 0;
     color: transparent;
     -webkit-text-stroke: 1px #B5E93B;
   }
@@ -114,7 +121,7 @@
     transform: none;
     font-size: 2rem;
     text-align: center;
-    margin-top: -1rem;
+    margin: 0.65rem 0 0;
   }
 
   .location {
@@ -123,10 +130,10 @@
     transform: none;
     font-size: 1.4rem;
     text-align: center;
-    margin-top: -1rem;
+    margin: 0.35rem 0 0;
   }
 
-  .arrow-right {
+  .section-arrow {
     display: none;
   }
 }
@@ -140,7 +147,7 @@
 @media (min-width: 801px) and (max-width: 1400px) {
   .photo {
     transform-origin: bottom center;
-    left: 80px;
+    background-position: calc(50% + 40px) 10%;
   }
 
   .name {
@@ -149,8 +156,9 @@
   }
 
   .role {
-    top: 53%;
+    top: 58%;
     left: 61.5%;
-    font-size: 32px;
+    width: min(760px, calc(100vw - 360px));
+    font-size: clamp(20px, 2.25vw, 30px);
   }
 }

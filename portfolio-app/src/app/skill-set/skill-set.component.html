@@ -18,5 +18,5 @@
       </div>
     </section>
   </div>
-  <div class="skills-footer"><button type="button" (click)="scrollToContact()">{{ copy[activeLang].talk }}</button><button class="arrow" type="button" (click)="scrollNext()" aria-label="Next section"><span></span></button></div>
+  <div class="skills-footer"><button type="button" (click)="scrollToContact()">{{ copy[activeLang].talk }}</button><button class="section-arrow section-arrow--next section-arrow--edge section-arrow--desktop" type="button" (click)="scrollNext()" [attr.aria-label]="navigationLabels[activeLang].next"></button></div>
 </section>

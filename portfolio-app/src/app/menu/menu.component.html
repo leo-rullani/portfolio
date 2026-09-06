@@ -1,6 +1,6 @@
 <nav
   class="menu-system"
-  [attr.aria-label]="activeLang === 'DE' ? 'Hauptnavigation' : 'Primary navigation'"
+  [attr.aria-label]="text[activeLang].primaryNavigation"
 >
   <div class="menu-bg" aria-hidden="true"></div>
   <div class="shadow-menu" aria-hidden="true"></div>
@@ -8,7 +8,7 @@
   <button
     class="logo"
     type="button"
-    [attr.aria-label]="activeLang === 'DE' ? 'Zur Startseite' : 'Go to home section'"
+    [attr.aria-label]="text[activeLang].home"
     (click)="scrollToProfile()"
   >
     <img src="/assets/img/profil.png" alt="" />
@@ -55,7 +55,7 @@
     *ngIf="!hideLinks()"
     aria-controls="mobile-navigation-menu"
     [attr.aria-expanded]="isOverlayOpen"
-    [attr.aria-label]="activeLang === 'DE' ? (isOverlayOpen ? 'Menü schließen' : 'Menü öffnen') : (isOverlayOpen ? 'Close menu' : 'Open menu')"
+    [attr.aria-label]="isOverlayOpen ? text[activeLang].closeMenu : text[activeLang].openMenu"
     (click)="toggleMenu()"
   >
     <div class="line"></div>
@@ -69,14 +69,14 @@
   class="mobile-overlay"
   [ngClass]="{'show': isOverlayOpen}"
   *ngIf="isOverlayOpen"
-  [attr.aria-label]="activeLang === 'DE' ? 'Mobile Navigation' : 'Mobile navigation'"
+  [attr.aria-label]="text[activeLang].mobileNavigation"
 >
   <div class="overlay-bg" aria-hidden="true"></div>
 
   <button
     class="close-btn"
     type="button"
-    [attr.aria-label]="activeLang === 'DE' ? 'Menü schließen' : 'Close menu'"
+    [attr.aria-label]="text[activeLang].closeMenu"
     (click)="toggleMenu()"
   >
     <div class="line1"></div>
@@ -107,7 +107,7 @@
         [class.active]="activeLink === 'myWork'"
         (click)="onMyWork()"
       >
-        {{ text[activeLang].navMyWork }}
+        {{ text[activeLang].mobileMyWork }}
       </button>
       <button
         type="button"
@@ -119,34 +119,25 @@
       </button>
     </ng-container>
 
-    <div
-      class="change-language"
-      role="group"
-      [attr.aria-label]="activeLang === 'DE' ? 'Sprache auswählen' : 'Choose language'"
-    >
-      <button
-        class="lang"
-        type="button"
-        lang="de"
-        [class.active]="activeLang === 'DE'"
-        [attr.aria-pressed]="activeLang === 'DE'"
-        aria-label="Deutsch"
-        (click)="changeLang('DE')"
+    <label class="language-picker">
+      <span class="language-picker__value" aria-hidden="true">
+        <strong>{{ activeLanguageShortCode }}</strong>
+        <span>{{ activeLanguageName }}</span>
+      </span>
+      <svg class="language-picker__chevron" aria-hidden="true" viewBox="0 0 12 8">
+        <path d="m1 1.5 5 5 5-5" />
+      </svg>
+      <select
+        [value]="activeLang"
+        [attr.aria-label]="text[activeLang].chooseLanguage"
+        (change)="onLanguageSelection($event)"
       >
-        DE
-      </button>
-      <span aria-hidden="true">|</span>
-      <button
-        class="lang"
-        type="button"
-        lang="en"
-        [class.active]="activeLang === 'EN'"
-        [attr.aria-pressed]="activeLang === 'EN'"
-        aria-label="English"
-        (click)="changeLang('EN')"
-      >
-        EN
-      </button>
-    </div>
+        @for (language of languageOptions; track language.code) {
+          <option [value]="language.code" [attr.lang]="language.htmlLang">
+            {{ language.name }}
+          </option>
+        }
+      </select>
+    </label>
   </div>
 </nav>
