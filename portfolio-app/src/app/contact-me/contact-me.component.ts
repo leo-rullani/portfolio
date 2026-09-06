@@ -119,10 +119,10 @@ export class ContactMeComponent {
   }
 
   scrollToTop(){window.scrollTo({top:0,behavior:'smooth'});}
-  scrollPrev(){
+  scrollToStart(){
     if(!this.scrollEl?.nativeElement)return;
     this.scrollEl.nativeElement.scrollTo({
-      left:this.scrollEl.nativeElement.scrollLeft-window.innerWidth,
+      left:0,
       top:0,
       behavior:'smooth'
     });
