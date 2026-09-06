@@ -38,7 +38,10 @@ export class SkillSetComponent {
     ]}
   ];
 
-  scrollNext(): void { this.scrollEl?.nativeElement?.scrollBy({ left: window.innerWidth, behavior: 'smooth' }); }
+  scrollNext(): void {
+    const container = this.scrollEl?.nativeElement;
+    container?.scrollTo({ left: container.scrollLeft + window.innerWidth, top: 0, behavior: 'smooth' });
+  }
   scrollToContact(): void {
     const container = this.scrollEl?.nativeElement;
     const contactSlide = document.getElementById('contact-me-slide');
@@ -53,6 +56,7 @@ export class SkillSetComponent {
     const targetRect = contactSlide.getBoundingClientRect();
     container.scrollTo({
       left: container.scrollLeft + targetRect.left - containerRect.left,
+      top: 0,
       behavior: 'smooth'
     });
   }

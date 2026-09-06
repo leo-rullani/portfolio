@@ -33,7 +33,7 @@ export class AboutMeComponent {
       verticalTitle: 'Why me',
       paragraphs: [
         `My passion for development started on the sidelines of football stadiums – not with the ball, but with code. Designing and programming real-time TV graphics for live football broadcasts sparked my fascination for frontend engineering. Today, I combine my experience in graphics, data, and UI to build clean, scalable, and visually striking digital products.`,
-        `Armed with a Master’s in Data Science and a Bachelor’s in Business Economics Major Sportmanagement, I thrive at the intersection of creativity and analytics. As the Team Lead Graphics and Software Engineer at BBM Productions, I’m driven by bridging bold ideas with rock-solid code—bringing data-driven visuals to life for audiences around the globe. From advanced 3D animations to interactive dashboards, I believe in shaping solutions that not only perform seamlessly, but also captivate and inspire.`,
+        `Armed with a Master’s in Data Science and a Bachelor’s in Business Economics Major Sportmanagement, I thrive at the intersection of creativity and analytics. From May 2025 to April 2026, I worked as Team Lead Graphics and Software Engineer at BBM Productions, where I connected bold ideas with rock-solid code and brought data-driven visuals to life for audiences around the globe. From advanced 3D animations to interactive dashboards, I shaped solutions designed to perform seamlessly while captivating and inspiring.`,
         `For me, innovation is more than just adopting the latest technology—it’s about challenging the status quo and pushing boundaries. Every new project is an opportunity to learn, grow, and craft experiences that resonate with users, whether they’re on the pitch or in the boardroom. That relentless curiosity is what keeps me passionate about engineering every single day.`
       ],
       iAmTitle: 'I am',
@@ -52,7 +52,7 @@ export class AboutMeComponent {
       verticalTitle: 'Warum ich',
       paragraphs: [
         `Meine Leidenschaft für Software begann am Rand von Fußballstadien – nicht mit dem Ball, sondern mit Code. Das Entwickeln von Echtzeit-TV-Grafiken für Live-Fußballübertragungen entfachte meine Begeisterung für Frontend-Engineering. Heute verbinde ich Erfahrung in Grafik, Daten und UI, um schlanke, skalierbare und optisch ansprechende digitale Produkte zu bauen.`,
-        `Mit einem Master in Data Science und einem Bachelor in Business Economics (Sportmanagement) liebe ich die Schnittstelle von Kreativität und Analytik. Als Team Lead Graphics und Software Engineer bei BBM Productions setze ich mutige Ideen mit solidem Code um und erwecke datengesteuerte Visuals weltweit zum Leben. Von 3D-Animationen bis zu interaktiven Dashboards – ich glaube an Lösungen, die reibungslos funktionieren und gleichzeitig inspirieren.`,
+        `Mit einem Master in Data Science und einem Bachelor in Business Economics (Sportmanagement) liebe ich die Schnittstelle von Kreativität und Analytik. Von Mai 2025 bis April 2026 war ich Team Lead Graphics und Software Engineer bei BBM Productions. Dort verband ich mutige Ideen mit solidem Code und erweckte datengesteuerte Visuals für ein weltweites Publikum zum Leben – von 3D-Animationen bis zu interaktiven Dashboards.`,
         `Für mich bedeutet Innovation mehr als nur den Einsatz neuer Technologien – es geht darum, bestehende Grenzen zu hinterfragen und zu verschieben. Jedes neue Projekt bietet die Chance, zu lernen, zu wachsen und Erlebnisse zu schaffen, die bei den Nutzern Anklang finden, ob auf dem Spielfeld oder im Konferenzraum. Diese Neugier treibt mich täglich im Engineering voran.`
       ],
       iAmTitle: 'Ich bin',
@@ -71,7 +71,7 @@ export class AboutMeComponent {
       verticalTitle: 'Perché io',
       paragraphs: [
         `La mia passione per lo sviluppo è nata a bordo campo negli stadi di calcio – non con il pallone, ma con il codice. Progettare e programmare grafiche TV in tempo reale per le dirette calcistiche ha acceso il mio interesse per il frontend engineering. Oggi unisco la mia esperienza in grafica, dati e UI per creare prodotti digitali puliti, scalabili e di forte impatto visivo.`,
-        `Con un Master in Data Science e un Bachelor in Business Economics con specializzazione in Sport Management, lavoro con entusiasmo all’incrocio tra creatività e analisi. Come Team Lead Graphics e Software Engineer presso BBM Productions, trasformo idee audaci in codice solido, dando vita a visualizzazioni basate sui dati per un pubblico globale. Dalle animazioni 3D avanzate alle dashboard interattive, credo in soluzioni che non solo funzionano in modo impeccabile, ma sanno anche coinvolgere e ispirare.`,
+        `Con un Master in Data Science e un Bachelor in Business Economics con specializzazione in Sport Management, lavoro con entusiasmo all’incrocio tra creatività e analisi. Da maggio 2025 ad aprile 2026 ho lavorato come Team Lead Graphics e Software Engineer presso BBM Productions, trasformando idee audaci in codice solido e dando vita a visualizzazioni basate sui dati per un pubblico globale, dalle animazioni 3D avanzate alle dashboard interattive.`,
         `Per me, innovare significa più che adottare le ultime tecnologie: significa mettere in discussione lo status quo e superare i limiti. Ogni nuovo progetto è un’occasione per imparare, crescere e creare esperienze che parlino agli utenti, sul campo come in sala riunioni. È questa curiosità instancabile che alimenta ogni giorno la mia passione per l’ingegneria.`
       ],
       iAmTitle: 'Sono',
@@ -90,7 +90,7 @@ export class AboutMeComponent {
       verticalTitle: 'Pourquoi moi',
       paragraphs: [
         `Ma passion pour le développement est née au bord des terrains de football – non pas avec le ballon, mais avec le code. La conception et la programmation de graphiques TV en temps réel pour les retransmissions en direct ont éveillé mon intérêt pour l’ingénierie frontend. Aujourd’hui, je combine mon expérience du graphisme, des données et de l’UI pour créer des produits numériques épurés, évolutifs et visuellement marquants.`,
-        `Titulaire d’un Master en Data Science et d’un Bachelor en Business Economics, spécialisation Sport Management, je m’épanouis à la croisée de la créativité et de l’analyse. En tant que Team Lead Graphics et Software Engineer chez BBM Productions, je transforme des idées ambitieuses en code robuste et donne vie à des visuels pilotés par les données pour un public international. Des animations 3D avancées aux tableaux de bord interactifs, je conçois des solutions à la fois fluides, captivantes et inspirantes.`,
+        `Titulaire d’un Master en Data Science et d’un Bachelor en Business Economics, spécialisation Sport Management, je m’épanouis à la croisée de la créativité et de l’analyse. De mai 2025 à avril 2026, j’ai travaillé comme Team Lead Graphics et Software Engineer chez BBM Productions, où j’ai transformé des idées ambitieuses en code robuste et donné vie à des visuels pilotés par les données pour un public international, des animations 3D avancées aux tableaux de bord interactifs.`,
         `Pour moi, innover ne consiste pas seulement à adopter les dernières technologies : il s’agit de remettre en question le statu quo et de repousser les limites. Chaque projet est une occasion d’apprendre, de progresser et de créer des expériences qui parlent aux utilisateurs, sur le terrain comme en salle de réunion. Cette curiosité constante nourrit chaque jour ma passion pour l’ingénierie.`
       ],
       iAmTitle: 'Je suis',
@@ -109,7 +109,7 @@ export class AboutMeComponent {
       verticalTitle: 'Por qué yo',
       paragraphs: [
         `Mi pasión por el desarrollo nació al borde de los campos de fútbol, no con el balón, sino con el código. Diseñar y programar gráficos de televisión en tiempo real para retransmisiones deportivas despertó mi interés por la ingeniería frontend. Hoy combino mi experiencia en gráficos, datos y UI para crear productos digitales limpios, escalables y visualmente impactantes.`,
-        `Con un Máster en Data Science y un Bachelor en Business Economics especializado en Sport Management, disfruto trabajando en la intersección entre creatividad y análisis. Como Team Lead Graphics y Software Engineer en BBM Productions, convierto ideas ambiciosas en código sólido y doy vida a visualizaciones basadas en datos para audiencias de todo el mundo. Desde animaciones 3D avanzadas hasta dashboards interactivos, creo soluciones que funcionan con fluidez y, al mismo tiempo, cautivan e inspiran.`,
+        `Con un Máster en Data Science y un Bachelor en Business Economics especializado en Sport Management, disfruto trabajando en la intersección entre creatividad y análisis. De mayo de 2025 a abril de 2026 trabajé como Team Lead Graphics y Software Engineer en BBM Productions, donde convertí ideas ambiciosas en código sólido y di vida a visualizaciones basadas en datos para audiencias de todo el mundo, desde animaciones 3D avanzadas hasta dashboards interactivos.`,
         `Para mí, innovar es mucho más que adoptar la última tecnología: significa cuestionar el statu quo y ampliar los límites. Cada proyecto es una oportunidad para aprender, crecer y crear experiencias que conecten con las personas, tanto en el terreno de juego como en la sala de reuniones. Esa curiosidad constante alimenta cada día mi pasión por la ingeniería.`
       ],
       iAmTitle: 'Soy',
@@ -128,7 +128,7 @@ export class AboutMeComponent {
       verticalTitle: 'Pse unë',
       paragraphs: [
         `Pasioni im për zhvillimin nisi në anët e fushave të stadiumeve të futbollit – jo me topin, por me kodin. Projektimi dhe programimi i grafikave televizive në kohë reale për transmetime të drejtpërdrejta të futbollit ndezi interesin tim për inxhinierinë frontend. Sot ndërthur përvojën time në grafikë, të dhëna dhe UI për të ndërtuar produkte digjitale të pastra, të shkallëzueshme dhe vizualisht mbresëlënëse.`,
-        `Me një Master në Data Science dhe një Bachelor në Business Economics me fokus në Sport Management, ndihem në elementin tim aty ku takohen krijimtaria dhe analiza. Si Team Lead Graphics dhe Software Engineer në BBM Productions, më motivon të lidh idetë e guximshme me kod të qëndrueshëm — duke sjellë në jetë vizualizime të bazuara në të dhëna për audienca në mbarë botën. Nga animacionet e avancuara 3D deri te dashboard-et interaktive, besoj në zgjidhje që jo vetëm funksionojnë pa probleme, por edhe tërheqin dhe frymëzojnë.`,
+        `Me një Master në Data Science dhe një Bachelor në Business Economics me fokus në Sport Management, ndihem në elementin tim aty ku takohen krijimtaria dhe analiza. Nga maji 2025 deri në prill 2026 punova si Team Lead Graphics dhe Software Engineer në BBM Productions, ku lidha idetë e guximshme me kod të qëndrueshëm dhe solla në jetë vizualizime të bazuara në të dhëna për audienca në mbarë botën, nga animacionet e avancuara 3D deri te dashboard-et interaktive.`,
         `Për mua, inovacioni është më shumë sesa përdorimi i teknologjive më të fundit — do të thotë të sfidosh status quo-në dhe të shtysh kufijtë. Çdo projekt i ri është një mundësi për të mësuar, për t’u rritur dhe për të krijuar përvoja që lidhen me përdoruesit, qoftë në fushë apo në sallën e mbledhjeve. Kjo kureshtje e pandalshme e ushqen çdo ditë pasionin tim për inxhinierinë.`
       ],
       iAmTitle: 'Unë jam',
@@ -147,7 +147,7 @@ export class AboutMeComponent {
       verticalTitle: 'Wieso ich',
       paragraphs: [
         `Mini Liideschaft fürs Entwickle het a de Siitelinie vo Fuessballstadie agfange – nöd mit em Ball, sondern mit Code. S Design und Programmiere vo Echtziit-TV-Grafike für Live-Fuessballübertragige het mini Begeisterig fürs Frontend Engineering gweckt. Hüt verbind ich mini Erfahrig in Grafik, Date und UI, zum sauberi, skalierbari und visuell starchi digitali Produkt z baue.`,
-        `Mit eme Master in Data Science und eme Bachelor in Business Economics mit Vertüüfig Sportmanagement fühl ich mich det dehei, wo Kreativität und Analytik zämechömed. Als Team Lead Graphics und Software Engineer bi BBM Productions bring ich muetigi Idee mit stabilem Code zäme und mach datebasierte Visuals für es weltwiits Publikum erlebbar. Vo fortgschrittne 3D-Animatione bis zu interaktive Dashboards entwickle ich Lösige, wo reibungslos funktioniered, fessled und inspiriered.`,
+        `Mit eme Master in Data Science und eme Bachelor in Business Economics mit Vertüüfig Sportmanagement fühl ich mich det dehei, wo Kreativität und Analytik zämechömed. Vo Mai 2025 bis April 2026 bin ich als Team Lead Graphics und Software Engineer bi BBM Productions tätig gsi. Det han ich muetigi Idee mit stabilem Code zämebracht und datebasierte Visuals für es weltwiits Publikum erlebbar gmacht – vo fortgschrittne 3D-Animatione bis zu interaktive Dashboards.`,
         `Für mich isch Innovation meh als nume die nöischti Technologie iizsetze – es heisst, s Bestehende z hinterfrage und Grenze z verschiebe. Jedes Projekt isch e Chance zum lerne, wachse und Erlebnis z schaffe, wo d Lüüt würkli abholed – uf em Spielfeld genauso wie im Sitzigsruum. Genau die Neugier treibt mich jede Tag im Engineering aa.`
       ],
       iAmTitle: 'Ich bi',
@@ -166,7 +166,7 @@ export class AboutMeComponent {
       verticalTitle: 'Porquê eu',
       paragraphs: [
         `A minha paixão pelo desenvolvimento nasceu junto às linhas laterais dos estádios de futebol — não com a bola, mas com código. Conceber e programar gráficos televisivos em tempo real para transmissões de futebol despertou o meu fascínio pela engenharia frontend. Hoje, combino experiência em grafismo, dados e UI para criar produtos digitais limpos, escaláveis e visualmente marcantes.`,
-        `Com um Mestrado em Data Science e uma licenciatura em Business Economics, com especialização em Sport Management, trabalho na interseção entre criatividade e análise. Como Team Lead Graphics e Software Engineer na BBM Productions, transformo ideias ambiciosas em código robusto e dou vida a visuais orientados por dados para públicos de todo o mundo. De animações 3D avançadas a dashboards interativos, desenvolvo soluções que funcionam de forma fluida, envolvem e inspiram.`,
+        `Com um Mestrado em Data Science e uma licenciatura em Business Economics, com especialização em Sport Management, trabalho na interseção entre criatividade e análise. De maio de 2025 a abril de 2026, trabalhei como Team Lead Graphics e Software Engineer na BBM Productions, onde transformei ideias ambiciosas em código robusto e dei vida a visuais orientados por dados para públicos de todo o mundo, de animações 3D avançadas a dashboards interativos.`,
         `Para mim, inovar é muito mais do que adotar a tecnologia mais recente: é questionar o status quo e ultrapassar limites. Cada projeto é uma oportunidade para aprender, crescer e criar experiências relevantes para as pessoas, dentro do campo ou na sala de reuniões. É esta curiosidade constante que alimenta diariamente a minha paixão pela engenharia.`
       ],
       iAmTitle: 'Sou',
@@ -185,7 +185,11 @@ export class AboutMeComponent {
 
   scrollNext() {
     if (!this.scrollEl?.nativeElement) return;
-    this.scrollEl.nativeElement.scrollBy({ left: window.innerWidth, behavior: 'smooth' });
+    this.scrollEl.nativeElement.scrollTo({
+      left: this.scrollEl.nativeElement.scrollLeft + window.innerWidth,
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   scrollToContact() {
@@ -198,7 +202,7 @@ export class AboutMeComponent {
       const cRect=this.scrollEl.nativeElement.getBoundingClientRect();
       const tRect=cSlide.getBoundingClientRect();
       const s=this.scrollEl.nativeElement.scrollLeft;
-      this.scrollEl.nativeElement.scrollTo({left:(tRect.left-cRect.left)+s,behavior:'smooth'});
+      this.scrollEl.nativeElement.scrollTo({left:(tRect.left-cRect.left)+s,top:0,behavior:'smooth'});
     }
   }
 }

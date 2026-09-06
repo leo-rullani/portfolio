@@ -271,7 +271,9 @@
 }
 
 .section-arrow {
-  margin-top: 28px;
+  top: 50%;
+  margin-top: 0;
+  transform: translateY(-50%);
 }
 
 @keyframes reveal {
@@ -343,6 +345,18 @@
   .detail-copy .project-actions,
   .detail-copy .privacy-note {
     grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1781px) {
+  .work-shell {
+    padding-right: 176px;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 1100px) {
+  .work-shell {
+    padding-left: 46px;
   }
 }
 

@@ -17,42 +17,42 @@ export class ProfileComponent {
 
   readonly text: Record<Language, { role: string; name: string; location: string }> = {
     EN: {
-      role: 'Data Scientist · Software Engineer · Certified Full-Stack Developer',
+      role: 'Data Scientist · Full-Stack Engineer',
       name: 'Leo Rullani',
       location: 'Wohlen'
     },
     DE: {
-      role: 'Data Scientist · Softwareentwickler · Zertifizierter Full-Stack Developer',
+      role: 'Data Scientist · Full-Stack Engineer',
       name: 'Leo Rullani',
       location: 'Wohlen'
     },
     IT: {
-      role: 'Data Scientist · Software Engineer · Full-Stack Developer certificato',
+      role: 'Data Scientist · Full-Stack Engineer',
       name: 'Leo Rullani',
       location: 'Wohlen'
     },
     FR: {
-      role: 'Data Scientist · Ingénieur logiciel · Développeur Full-Stack certifié',
+      role: 'Data Scientist · Full-Stack Engineer',
       name: 'Leo Rullani',
       location: 'Wohlen'
     },
     ES: {
-      role: 'Data Scientist · Ingeniero de software · Desarrollador Full-Stack certificado',
+      role: 'Data Scientist · Full-Stack Engineer',
       name: 'Leo Rullani',
       location: 'Wohlen'
     },
     SQ: {
-      role: 'Data Scientist · Inxhinier softueri · Full-Stack Developer i certifikuar',
+      role: 'Data Scientist · Full-Stack Engineer',
       name: 'Leo Rullani',
       location: 'Wohlen'
     },
     GSW: {
-      role: 'Data Scientist · Software Engineer · Zertifizierte Full-Stack Developer',
+      role: 'Data Scientist · Full-Stack Engineer',
       name: 'Leo Rullani',
       location: 'Wohle AG'
     },
     PT: {
-      role: 'Data Scientist · Engenheiro de software · Full-Stack Developer certificado',
+      role: 'Data Scientist · Full-Stack Engineer',
       name: 'Leo Rullani',
       location: 'Wohlen'
     }
@@ -64,8 +64,9 @@ export class ProfileComponent {
     }
 
     const distance = this.scrollEl.nativeElement.offsetWidth;
-    this.scrollEl.nativeElement.scrollBy({
-      left: distance,
+    this.scrollEl.nativeElement.scrollTo({
+      left: this.scrollEl.nativeElement.scrollLeft + distance,
+      top: 0,
       behavior: 'smooth'
     });
   }

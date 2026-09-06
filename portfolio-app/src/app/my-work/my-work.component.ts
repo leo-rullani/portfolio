@@ -281,5 +281,8 @@ export class MyWorkComponent {
     });
   }
 
-  scrollNext(): void { this.scrollEl?.nativeElement?.scrollBy({ left: window.innerWidth, behavior: 'smooth' }); }
+  scrollNext(): void {
+    const container = this.scrollEl?.nativeElement;
+    container?.scrollTo({ left: container.scrollLeft + window.innerWidth, top: 0, behavior: 'smooth' });
+  }
 }

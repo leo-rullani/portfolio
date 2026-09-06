@@ -6,7 +6,7 @@ Angular portfolio for [leorullani.com](https://leorullani.com), including full-s
 
 - Eight language variants: English, German, Italian, French, Spanish, Albanian, Aargauer Swiss German and European Portuguese.
 - Full-stack case studies with privacy-safe, client-side demos for Collectrra, VideoFlix, Quizly and BBM Kanban.
-- Dedicated career profile with Rullani DataLab, verified company-register link and a privacy-clean public CV.
+- Dedicated CV section with accessible work, projects, education and certificates tabs, plus Rullani DataLab and a privacy-redacted public application dossier.
 - Unified slide navigation, responsive layouts, keyboard-friendly controls and accessible contact fields.
 
 ## Local development

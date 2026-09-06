@@ -1,4 +1,14 @@
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
 .references-section {
+  width: 100%;
+  min-width: 0;
   margin: 0;
   font-family: 'Quantico', sans-serif;
   color: #FFFDFD;
@@ -114,6 +124,7 @@
       transform: scale(0.5);
       transform-origin: center center;
       margin-left: 50px;
+      overflow: visible;
     }
 
     .vertical-title {

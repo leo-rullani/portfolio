@@ -12,6 +12,7 @@ interface MenuText {
   navWhyMe: string;
   navSkills: string;
   navMyWork: string;
+  navCv: string;
   navContact: string;
   mobileSkillSet: string;
   mobileMyWork: string;
@@ -44,6 +45,7 @@ export class MenuComponent {
       navWhyMe: 'Why me',
       navSkills: 'Skills',
       navMyWork: 'My Work',
+      navCv: 'CV',
       navContact: 'Contact',
       mobileSkillSet: 'My Skill Set',
       mobileMyWork: 'My Work',
@@ -59,6 +61,7 @@ export class MenuComponent {
       navWhyMe: 'Warum ich',
       navSkills: 'Skills',
       navMyWork: 'Projekte',
+      navCv: 'CV',
       navContact: 'Kontakt',
       mobileSkillSet: 'Meine Skills',
       mobileMyWork: 'Meine Projekte',
@@ -74,6 +77,7 @@ export class MenuComponent {
       navWhyMe: 'Perché io',
       navSkills: 'Competenze',
       navMyWork: 'Progetti',
+      navCv: 'CV',
       navContact: 'Contatti',
       mobileSkillSet: 'Le mie competenze',
       mobileMyWork: 'I miei progetti',
@@ -89,6 +93,7 @@ export class MenuComponent {
       navWhyMe: 'Pourquoi moi',
       navSkills: 'Compétences',
       navMyWork: 'Projets',
+      navCv: 'CV',
       navContact: 'Contact',
       mobileSkillSet: 'Mes compétences',
       mobileMyWork: 'Mes projets',
@@ -104,6 +109,7 @@ export class MenuComponent {
       navWhyMe: 'Por qué yo',
       navSkills: 'Habilidades',
       navMyWork: 'Proyectos',
+      navCv: 'CV',
       navContact: 'Contacto',
       mobileSkillSet: 'Mis habilidades',
       mobileMyWork: 'Mis proyectos',
@@ -119,6 +125,7 @@ export class MenuComponent {
       navWhyMe: 'Pse unë',
       navSkills: 'Aftësitë',
       navMyWork: 'Projektet',
+      navCv: 'CV',
       navContact: 'Kontakt',
       mobileSkillSet: 'Aftësitë e mia',
       mobileMyWork: 'Projektet e mia',
@@ -134,6 +141,7 @@ export class MenuComponent {
       navWhyMe: 'Wieso ich',
       navSkills: 'Mini Skills',
       navMyWork: 'Projäkt',
+      navCv: 'CV',
       navContact: 'Kontakt',
       mobileSkillSet: 'Mini Skills',
       mobileMyWork: 'Mini Projäkt',
@@ -149,6 +157,7 @@ export class MenuComponent {
       navWhyMe: 'Porquê eu',
       navSkills: 'Competências',
       navMyWork: 'Projetos',
+      navCv: 'CV',
       navContact: 'Contacto',
       mobileSkillSet: 'As minhas competências',
       mobileMyWork: 'Os meus projetos',
@@ -210,6 +219,7 @@ export class MenuComponent {
     if (!container) return;
     container.scrollTo({
       left: index * window.innerWidth,
+      top: 0,
       behavior: 'smooth'
     });
   }
@@ -248,6 +258,11 @@ export class MenuComponent {
     this.handleScroll(3, 'my-work-slide');
   }
 
+  scrollToCareer(): void {
+    this.activeLink = 'cv';
+    this.handleScroll(5, 'career-profile-slide');
+  }
+
   scrollToContact(): void {
     this.activeLink = 'contact';
     this.handleScroll(6, 'contact-me-slide');
@@ -265,6 +280,11 @@ export class MenuComponent {
 
   onMyWork(): void {
     this.scrollToMyWork();
+    this.isOverlayOpen = false;
+  }
+
+  onCareer(): void {
+    this.scrollToCareer();
     this.isOverlayOpen = false;
   }
 

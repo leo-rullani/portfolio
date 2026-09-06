@@ -139,8 +139,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
     if(this.wheelTimeout)clearTimeout(this.wheelTimeout);
     this.wheelTimeout=setTimeout(()=>{
       let d=this.accumulatedDelta;this.accumulatedDelta=0;this.wheelTimeout=null;
-      if(d>0)this.scrollEl.nativeElement.scrollTo({left:this.scrollEl.nativeElement.scrollLeft+window.innerWidth,behavior:'smooth'});
-      else if(d<0)this.scrollEl.nativeElement.scrollTo({left:this.scrollEl.nativeElement.scrollLeft-window.innerWidth,behavior:'smooth'});
+      if(d>0)this.scrollEl.nativeElement.scrollTo({left:this.scrollEl.nativeElement.scrollLeft+window.innerWidth,top:0,behavior:'smooth'});
+      else if(d<0)this.scrollEl.nativeElement.scrollTo({left:this.scrollEl.nativeElement.scrollLeft-window.innerWidth,top:0,behavior:'smooth'});
     },this.debounceTime);
   };
 

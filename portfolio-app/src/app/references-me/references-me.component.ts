@@ -277,8 +277,9 @@ export class ReferencesMeComponent {
   scrollNext(): void {
     const distance = window.innerWidth;
     if (this.scrollEl?.nativeElement) {
-      this.scrollEl.nativeElement.scrollBy({
-        left: distance,
+      this.scrollEl.nativeElement.scrollTo({
+        left: this.scrollEl.nativeElement.scrollLeft + distance,
+        top: 0,
         behavior: 'smooth'
       });
     } else {

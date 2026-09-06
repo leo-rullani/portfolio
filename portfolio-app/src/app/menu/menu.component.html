@@ -41,6 +41,14 @@
     </button>
     <button
       type="button"
+      aria-controls="career-profile-slide"
+      [class.active]="activeLink === 'cv'"
+      (click)="scrollToCareer()"
+    >
+      {{ text[activeLang].navCv }}
+    </button>
+    <button
+      type="button"
       aria-controls="contact-me-slide"
       [class.active]="activeLink === 'contact'"
       (click)="scrollToContact()"
@@ -108,6 +116,14 @@
         (click)="onMyWork()"
       >
         {{ text[activeLang].mobileMyWork }}
+      </button>
+      <button
+        type="button"
+        aria-controls="career-profile-slide"
+        [class.active]="activeLink === 'cv'"
+        (click)="onCareer()"
+      >
+        {{ text[activeLang].navCv }}
       </button>
       <button
         type="button"
